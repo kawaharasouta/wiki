@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import sphinx_rtd_theme
+
 # -- Project information -----------------------------------------------------
 project = u'wiki of khwarizmi'
 copyright = 'KAWAHARA souta (@khwarizmi6514)'
