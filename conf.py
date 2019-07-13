@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 # -- Project information -----------------------------------------------------
-project = u'KamueeとLinuxのL3転送性能の比較'
+project = u'wiki of khwarizmi'
 copyright = '2018, Hosei University , NTT Communications'
-author = 'Souta Kawahara, Hiroki Shirokura'
+author = 'KAWAHARA souta'
 version = ''
 release = '0.0.0'
 
