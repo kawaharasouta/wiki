@@ -2,7 +2,7 @@
 
 # -- Project information -----------------------------------------------------
 project = u'wiki of khwarizmi'
-copyright = '2018, Hosei University , NTT Communications'
+copyright = 'KAWAHARA souta (@khwarizmi6514)'
 author = 'KAWAHARA souta'
 version = ''
 release = '0.0.0'
