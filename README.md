@@ -1,4 +1,4 @@
-# jr-nttcom
+# wiki
 
 setup env on ubuntu
 ```
