@@ -11,7 +11,7 @@ version = ''
 release = '0.0.0'
 
 # -- General configuration ---------------------------------------------------
-extensions = [ 'sphinx.ext.todo' ]
+extensions = [ 'sphinx.ext.todo', 'sphinx.ext.githubpages' ]
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
