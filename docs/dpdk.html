@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DPDK &mdash; wiki  ドキュメント</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="test1" href="test1.html" />
+    <link rel="prev" title="wiki of khwarizmi" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DPDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup">setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#envs">envs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#packages">packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-and-build-dpdk">clone and build DPDK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-hugepages">setup Hugepages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bind-nic">bind NIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useage">useage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#skelton-with-tap">skelton with tap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pktgen">pktgen</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test1.html">test1</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>DPDK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dpdk.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dpdk">
+<h1>DPDK<a class="headerlink" href="#dpdk" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="setup">
+<h2>setup<a class="headerlink" href="#setup" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="envs">
+<h3>envs<a class="headerlink" href="#envs" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;export RTE_SDK=$HOME/dpdk&quot; &gt;&gt; $HOME/.bashrc
+$ echo &quot;export RTE_TARGET=x86_64-native-linuxapp-gcc&quot; &gt;&gt; $HOME/.bashrc
+</pre></div>
+</div>
+</div>
+<div class="section" id="packages">
+<h3>packages<a class="headerlink" href="#packages" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install -y libpcap-dev python linux-headers-`uname -r` build-essential git libnuma-dev
+</pre></div>
+</div>
+</div>
+<div class="section" id="clone-and-build-dpdk">
+<h3>clone and build DPDK<a class="headerlink" href="#clone-and-build-dpdk" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone http://dpdk.org/git/dpdk $RTE_SDK
+$ cd $RTE_SDK
+$ make install T=$RTE_TARGET
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-hugepages">
+<h3>setup Hugepages<a class="headerlink" href="#setup-hugepages" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
+- GRUB_CMDLINE_LINUX=&quot;&quot;
++ GRUB_CMDLINE_LINUX=&quot;hugepages=1024&quot;
+$ sudo grub-mkconfig -o /boot/grub/grub.cfg
+$ sudo mkdir -p /mnt/huge
+$ sudo vim /etc/fstab
++ nodev /mnt/huge hugetlbfs defaults 0 0
+$ reboot
+</pre></div>
+</div>
+</div>
+<div class="section" id="helloworld">
+<h3>helloworld<a class="headerlink" href="#helloworld" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $RTE_SDK/examples/helloworld
+$ make
+$ sudo ./build/helloworld
+</pre></div>
+</div>
+</div>
+<div class="section" id="bind-nic">
+<h3>bind NIC<a class="headerlink" href="#bind-nic" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>comming soon</p>
+</div>
+<div class="section" id="useage">
+<h3>useage<a class="headerlink" href="#useage" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="skelton-with-tap">
+<h4>skelton with tap<a class="headerlink" href="#skelton-with-tap" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ./build/basicfwd --vdev=net_tap0,iface=tap0 --vdev=net_tap1,iface=tap1
+</pre></div>
+</div>
+</div>
+<div class="section" id="pktgen">
+<h4>pktgen<a class="headerlink" href="#pktgen" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>dpdk v16.11</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/slankdev/pktgen
+$ sudo ./app/x86_64-native-linuxapp-gcc/pktgen -- -P -m &quot;[1-7].0,[16-23].0,[8-15].1,[24-31].1&quot;
+</pre></div>
+</div>
+<div class="section" id="command">
+<h5>command<a class="headerlink" href="#command" title="このヘッドラインへのパーマリンク">¶</a></h5>
+<p><em>再表示</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">redisplay</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="test1.html" class="btn btn-neutral float-right" title="test1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="wiki of khwarizmi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
