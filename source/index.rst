@@ -16,6 +16,16 @@ wiki
    kvm
    ssh_config
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: technote:
+
+   technote/rss
+   technote/interrupt
+   technote/kernel_packet
+
+
 .. toctree::
    :maxdepth: 1
    :caption: cheetsheets:

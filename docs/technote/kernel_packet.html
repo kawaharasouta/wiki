@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bash &mdash; wiki  ドキュメント</title>
+  <title>linuxのパケットの送受信について &mdash; wiki  ドキュメント</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="test1" href="../test1.html" />
-    <link rel="prev" title="linuxのパケットの送受信について" href="../technote/kernel_packet.html" /> 
+    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="prev" title="NICの割り込みについて" href="interrupt.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,23 +88,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../ssh_config.html">ssh_config</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">linuxのパケットの送受信について</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">送信の時に使われるコアの話</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">bash</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#add-user">add user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">メモ系</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">標準エラー出力のリダイレクト例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">ファイル内検索</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">該当ファイル以外を削除</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
 </ul>
 
@@ -151,13 +145,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>bash</li>
+      <li>linuxのパケットの送受信について</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/cheetsheets/bash.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/technote/kernel_packet.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,35 +164,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="bash">
-<h1>bash<a class="headerlink" href="#bash" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="add-user">
-<h2>add user<a class="headerlink" href="#add-user" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
-$ sudo passwd [username]
-</pre></div>
-</div>
-</div>
+  <div class="section" id="linux">
+<h1>linuxのパケットの送受信について<a class="headerlink" href="#linux" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
-<h2>メモ系<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id2">
-<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">help</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">less</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id3">
-<h3>ファイル内検索<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -r &quot;xxx&quot; ./
-</pre></div>
-</div>
-</div>
-<div class="section" id="id4">
-<h3>該当ファイル以外を削除<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls | grep -v &quot;file name&quot; | xargs rm -rf
-</pre></div>
-</div>
-</div>
+<h2>送信の時に使われるコアの話<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>この間L3フォアーディングの計測をしていて，あるインタフェースに4，あるインタフェースに1このコアを割り当ててた．
+※ここでいる割り当てるとはRSSのところに書いたビットマスクを割り当てたと言う意味で，ポーリングとか言う意味ではない．※
+いろんな調査の関係で4コアのインタフェースから1コアのインタフェースに片方向だけのトラフィックを流していた．
+ワイヤレートなので受信の4コアの使用率が振り切るのだが，送信側の割り当てたコアも使用率が振り切っていた．
+これはつまり，送信の場合もirqのビットマスクを見てコアが使われていると言うことになる．
+ここら辺の送信周りがどうなっているか調査したい．</p>
+<p>ちなみに感覚的に送信と受信のコアの使用率の関係は大体送信が受信の1/2くらいな感じがしてる．</p>
 </div>
 </div>
 
@@ -210,10 +186,10 @@ $ sudo passwd [username]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../test1.html" class="btn btn-neutral float-right" title="test1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../technote/kernel_packet.html" class="btn btn-neutral float-left" title="linuxのパケットの送受信について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="interrupt.html" class="btn btn-neutral float-left" title="NICの割り込みについて" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

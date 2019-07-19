@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>linuxのRSSに関して &mdash; wiki  ドキュメント</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="NICの割り込みについて" href="interrupt.html" />
+    <link rel="prev" title="ssh_config" href="../ssh_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh_config.html">ssh_config</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">linuxのRSSに関して</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">linuxはデフォでどのようにRSSを行なっているか．</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">linuxで明示的にRSSで使うコア数を制限する</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>linuxのRSSに関して</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/technote/rss.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linuxrss">
+<h1>linuxのRSSに関して<a class="headerlink" href="#linuxrss" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>linuxはデフォでどのようにRSSを行なっているか．<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>linuxでは，割り込みの区別にirq番号と言うものを使っている．
+irqとは，I/O APICを経由するPCIデバイスの割り込みが上がってくる物理的な割り込み線もしくはそこから上がってくる割り込み要求信号のことで，のことで
+現在のMSI・MIS-X割り込みでは使われていないが，おそらく歴史的経緯からlinuxで割り込みの区別をするのにirq番号とか言うものが使われている．
+デバイスドライバはデバイスの初期化時にこのirq番号をカーネルから取得する．その後割り込みがあった場合にはこのirq番号に割り込みをあげることになる．
+この番号は/proc/interruptで確認することができる．ここには各irqから各コアに対して割り込みが行われた数を記録してある．(他にもっといい確認方法ありそう)
+各irqにはデバイスドライバが起動時に名前をつけていて，pciバスアドレスだったりドライバ名が入っていたり，NICだとインタフェース名が入っていたりもする．
+ここで，一つのデバイスからいくつのirqが生えているかが確認できるが，インタフェースのirqを見て見ると複数のirqを所持していることがわかる．
+ただしこの数はデバイスやデバイスドライバ・割り込みの種類にも関係するが，マルチキューNICではほとんどの場合確実に複数のirqを持っている．
+さてこのirqであるが，ここから上がってきた割り込みがどのコアによって処理されるかはどのように決まっているのだろうか．
+それは /proc/irq/{irq_num}/smp_affinity に設定されている．
+試しにこれファイルの中身を見て見ると,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="p">,</span><span class="mi">00000002</span>
+</pre></div>
+</div>
+<p>のような内容になっている．これは割り込み先のCPUのビットマスクである．
+この場合0x02は0b10であるため，1番コアに割り込みがいくことになる．
+この割り込みビットマスクはlinuxでは通常，irqbalanceによってBadNUMAを起こさないようにかつ別のCPUに割り込みが行くようにバランシングされている．
+またこのirqはNICに用意された受信キューの数だけ用意され．NICはRSSによってパケットをハッシュ値ごとに別の受信キューのキューイングされる(と思われる)ため，
+割り込みが複数のCPUに分散されRSSにより負荷分散ができているということになる．</p>
+</div>
+<div class="section" id="id2">
+<h2>linuxで明示的にRSSで使うコア数を制限する<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>RSSの試験の時にコア数を制限して計測をする方法を記載する．</p>
+<p>レポート書く時に一緒にかくう〜〜〜〜</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="interrupt.html" class="btn btn-neutral float-right" title="NICの割り込みについて" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../ssh_config.html" class="btn btn-neutral float-left" title="ssh_config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
