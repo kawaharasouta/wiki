@@ -1,0 +1,125 @@
+kvm
+====
+
+package
+--------
+:: 
+
+  $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst
+
+start config
+--------------
+::
+
+  sudo systemctl enable libvirt-bin
+
+make image
+----------
+::
+
+  $ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.qcow2 8G
+
+install 
+--------
+
+serial *cannot install*
+~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+  $ sudo virt-install \
+    --name ubuntu1804 \
+    --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
+    --vcpus 2 \
+    --ram 512 \
+    --os-type linux \
+    --graphics none \
+    --console pty,target_type=serial \
+    --network bridge:virbr0 \
+    --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
+    --extra-args 'console=ttyS0,115200n8 serial'
+
+vnc
+~~~~
+::
+
+  $ sudo virt-install \
+    --name ubuntu1804 \
+    --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
+    --vcpus 2 \
+    --ram 512 \
+    --os-type linux \
+    --graphics vnc,port=5900,listen=0.0.0.0,keymap=us,password=passwd \
+    --network bridge:virbr0 \
+    --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso 
+
+file focation
+--------------
+::
+
+  vm images         /var/lib/libvirt/images/
+  iso images          /var/lib/libvirt/boot/
+  xml file                /etc/libvirt/qemu/
+  network file       /etc/libvirt/qemu/networks/
+
+macvtap, macvlanを使ったブリッジ接続
+-------------------------------------
+
+ゲストのxmlファイルを
+
+::
+
+  <interface type='direct'>
+    <mac address='52:54:00:94:9a:a0'/>
+    <source dev='eth0' mode='bridge'/>
+    <model type='virtio'/>
+    <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+  </interface>
+
+とかするとブリッジ接続されるが，ホストの物理インタフェース(ここではeth0はvlanの外と見なされてホストとゲストが通信ができない．
+そこでmacvlanを使う．
+ホストで
+
+::
+
+  $ sudo ip link add dev macvlan0 link eth0 type macvlan mode bridge
+  $ sudo ip addr del <address> dev eth0
+  $ sudo ip addr add <address> dev macvlan0
+  $ sudo ip link set up dev macvlan0
+  $ sudo ip route add default via <default route> (dev ~~)
+
+とするとホストとゲストで接続可能になる．
+参考: macvlan_
+
+add intel e1000 nic 
+--------------------
+::
+
+  <interface type='bridge'>
+    <mac address='52:54:00:85:7a:0d'/>
+    <source bridge='virbr0'/>
+    <model type='e1000'/>
+    <address type='pci' domain='0x0000' bus='0x01' slot='0x03' function='0x0'/>
+  </interface>
+
+ubuntu image download
+---------------------
+::
+
+  $ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.2-live-server-amd64.iso
+
+
+reference
+---------
+
+domain_xml_format_  
+
+network_xml_format_  
+
+virsh_
+
+
+
+.. _macvlan: https://tenforward.hatenablog.com/entry/20111221/1324466720
+.. _domain_xml_format: https://libvirt.org/format.html
+.. _network_xml_format: https://libvirt.org/formatnetwork.html#examplesBridge
+.. _virsh: http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf

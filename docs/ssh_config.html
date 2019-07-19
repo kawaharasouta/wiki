@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>wiki of khwarizmi &mdash; wiki  ドキュメント</title>
+  <title>ssh_config &mdash; wiki  ドキュメント</title>
   
 
   
@@ -28,8 +28,7 @@
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="検索" href="search.html" />
-    <link rel="next" title="DPDK" href="dpdk.html" /> 
+    <link rel="search" title="検索" href="search.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -48,7 +47,7 @@
           
 
           
-            <a href="#"> wiki
+            <a href="index.html"> wiki
           
 
           
@@ -82,11 +81,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-</ul>
-<p class="caption"><span class="caption-text">cheetsheets:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test1.html">test1</a></li>
 </ul>
 
@@ -102,7 +96,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">wiki</a>
+          <a href="index.html">wiki</a>
         
       </nav>
 
@@ -131,15 +125,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">wiki</a> &raquo;</li>
+      <li><a href="index.html">wiki</a> &raquo;</li>
         
-      <li>wiki of khwarizmi</li>
+      <li>ssh_config</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/ssh_config.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -152,41 +146,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="wiki-of-khwarizmi">
-<h1>wiki of khwarizmi<a class="headerlink" href="#wiki-of-khwarizmi" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>wiki</p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dpdk.html#setup">setup</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#package">package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#start-config">start config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#make-image">make image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#file-focation">file focation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#macvtap-macvlan">macvtap, macvlanを使ったブリッジ接続</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#add-intel-e1000-nic">add intel e1000 nic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#ubuntu-image-download">ubuntu image download</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvm.html#reference">reference</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ssh_config.html#ssh-keygen">ssh_keygen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssh_config.html#gihub-setting">gihub setting</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="ssh-config">
+<h1>ssh_config<a class="headerlink" href="#ssh-config" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="ssh-keygen">
+<h2>ssh_keygen<a class="headerlink" href="#ssh-keygen" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="simple">
+<dt>::</dt><dd><p>$ ssh-keygen -t rsa -b 4096 -C &quot;<a class="reference external" href="mailto:kawahara6514&#37;&#52;&#48;gmail&#46;com">kawahara6514<span>&#64;</span>gmail<span>&#46;</span>com</a>&quot;
+Enter file in which to save the key (/Users/khwarizmi/.ssh/id_rsa): &lt;path to key&gt;
+Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend no passphrase.</p>
+</dd>
+</dl>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">cheetsheets:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="cheetsheets/bash.html">bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test1.html">test1</a></li>
-</ul>
+<div class="section" id="gihub-setting">
+<h2>gihub setting<a class="headerlink" href="#gihub-setting" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>accsess <a class="reference external" href="https://github.com/settings/keys">github_keys</a></p>
+<div class="section" id="copy-public-key">
+<h3>copy public key<a class="headerlink" href="#copy-public-key" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="simple">
+<dt>::</dt><dd><p>$ pbcopy &lt; &lt;path to public key&gt;</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="config-for-git">
+<h3>config for git<a class="headerlink" href="#config-for-git" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<dl class="simple">
+<dt>::</dt><dd><dl class="simple">
+<dt>Host github</dt><dd><p>HostName github.com
+User git</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 
@@ -195,13 +186,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="dpdk.html" class="btn btn-neutral float-right" title="DPDK" accesskey="n" rel="next">下一篇</a>
-      
-      
-    </div>
   
 
   <hr/>

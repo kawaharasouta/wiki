@@ -12,9 +12,16 @@ wiki
    :maxdepth: 2
    :caption: Contents:
 
-   dpdk.rst
-   test1
+   dpdk
+   kvm
+   ssh_config
 
+.. toctree::
+   :maxdepth: 1
+   :caption: cheetsheets:
+
+   cheetsheets/bash
+   test1
 
 
 ..
