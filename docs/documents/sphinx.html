@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx &mdash; wiki  ドキュメント</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="prev" title="Tex" href="tex.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh_config.html">ssh_config</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tex.html">Tex</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">sphinx</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ubuntu">ubuntu環境構築</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirement">requirement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#html">html</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#latexpdf">latexpdf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build">build</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#makefile-example">Makefile example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-target">make target</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>sphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/documents/sphinx.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx">
+<h1>sphinx<a class="headerlink" href="#sphinx" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="ubuntu">
+<h2>ubuntu環境構築<a class="headerlink" href="#ubuntu" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="requirement">
+<h3>requirement<a class="headerlink" href="#requirement" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>python3.6.8?</p></li>
+<li><p>python3-pip</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install python3-sphinx
+$ pip3 install sphinx
+</pre></div>
+</div>
+<div class="section" id="html">
+<h4>html<a class="headerlink" href="#html" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>no more requirement</p>
+</div>
+<div class="section" id="latexpdf">
+<h4>latexpdf<a class="headerlink" href="#latexpdf" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">instal</span> <span class="o">-</span><span class="n">y</span> <span class="n">texlive</span><span class="o">-</span><span class="n">fonts</span><span class="o">-</span><span class="n">recommended</span> \
+        <span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">recommended</span> <span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">extra</span> \
+        <span class="n">texlive</span><span class="o">-</span><span class="n">lang</span><span class="o">-</span><span class="n">japanese</span> <span class="n">latexmk</span> <span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">base</span> <span class="n">python3</span><span class="o">-</span><span class="n">sphinx</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="build">
+<h2>build<a class="headerlink" href="#build" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="makefile-example">
+<h3>Makefile example<a class="headerlink" href="#makefile-example" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Minimal makefile for Sphinx documentation
+#
+
+# You can set these variables from the command line, and also
+# from the environment for the first two.
+SPHINXOPTS    ?=
+SPHINXBUILD   ?= sphinx-build
+SOURCEDIR     = source
+BUILDDIR      = build
+
+# Put it first so that &quot;make&quot; without argument is like &quot;make help&quot;.
+help:
+  @$(SPHINXBUILD) -M help &quot;$(SOURCEDIR)&quot; &quot;$(BUILDDIR)&quot; $(SPHINXOPTS) $(O)
+
+.PHONY: help Makefile docs
+
+# Catch-all target: route all unknown targets to Sphinx using the new
+# &quot;make mode&quot; option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
+%: Makefile
+  @$(SPHINXBUILD) -M $@ &quot;$(SOURCEDIR)&quot; &quot;$(BUILDDIR)&quot; $(SPHINXOPTS) $(O)
+
+docs:
+  @$(SPHINXBUILD) -b html $(SOURCEDIR) &quot;docs&quot; $(SPHINXOPTS) $(0)
+</pre></div>
+</div>
+</div>
+<div class="section" id="make-target">
+<h3>make target<a class="headerlink" href="#make-target" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>make 打てばターゲット一覧が出る．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="tex.html" class="btn btn-neutral float-left" title="Tex" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

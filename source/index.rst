@@ -33,6 +33,13 @@ wiki
    cheetsheets/bash
    test1
 
+.. toctree::
+   :maxdepth: 1
+   :caption: documents:
+   
+   documents/tex
+   documents/sphinx
+
 
 ..
         * :ref:`genindex`
