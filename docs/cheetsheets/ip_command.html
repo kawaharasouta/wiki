@@ -97,6 +97,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ip command</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#netns">netns関連いろいろ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">references</a></li>
 </ul>
 </li>
@@ -172,6 +173,33 @@
             
   <div class="section" id="ip-command">
 <h1>ip command<a class="headerlink" href="#ip-command" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="netns">
+<h2>netns関連いろいろ<a class="headerlink" href="#netns" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><strong>ns0というnetnsを作成</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">netns</span> <span class="n">add</span> <span class="n">ns0</span>
+</pre></div>
+</div>
+<p><strong>ns0にネットワークインタフェースeth6を割り当てる</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">link</span> <span class="nb">set</span> <span class="n">netns</span> <span class="n">ns0</span> <span class="n">dev</span> <span class="n">eth6</span>
+</pre></div>
+</div>
+<p><strong>ne0を削除</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">netns</span> <span class="k">del</span> <span class="n">ne0</span>
+</pre></div>
+</div>
+<p><strong>現在自分がいるnetns名を取得する</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">netns</span> <span class="n">identify</span>
+</pre></div>
+</div>
+<p><strong>netns全削除</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="o">-</span><span class="nb">all</span> <span class="n">netns</span> <span class="n">delete</span>
+</pre></div>
+</div>
+<p><strong>vethの追加</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ip link add [veth name] type veth peer name [veth peer name]
+</pre></div>
+</div>
+<p>net-tools と iprouteの比較</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -243,6 +271,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <div class="section" id="references">
 <h2>references<a class="headerlink" href="#references" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>

@@ -1,7 +1,47 @@
 ip command
 ===========
 
+netns関連いろいろ
+-----------------
 
+**ns0というnetnsを作成**
+
+::
+
+  sudo ip netns add ns0
+
+**ns0にネットワークインタフェースeth6を割り当てる**
+
+::
+
+  sudo ip link set netns ns0 dev eth6 
+
+**ne0を削除**
+
+::
+
+  sudo ip netns del ne0
+
+**現在自分がいるnetns名を取得する**
+
+::
+
+  ip netns identify
+
+**netns全削除**
+
+::
+  
+  sudo ip -all netns delete
+
+
+**vethの追加**
+
+::
+
+  $ ip link add [veth name] type veth peer name [veth peer name]
+
+net-tools と iprouteの比較
 
 .. csv-table::
   :header: 効果, net-tools, iproute
