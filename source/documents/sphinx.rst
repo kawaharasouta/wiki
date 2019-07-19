@@ -30,7 +30,12 @@ latexpdf
 	  texlive-latex-recommended texlive-latex-extra \
 	  texlive-lang-japanese latexmk texlive-latex-base python3-sphinx
 
+**conf.py**
 
+::
+
+  language = 'ja'
+  latex_docclass = {'manual': 'jsbook'}
 
 
 
@@ -82,3 +87,20 @@ make 打てばターゲット一覧が出る．
 ::
 	
 	$ make 
+
+
+theme (i.e. sphinx_rtd_theme
+``````
+
+**install thema**
+
+::
+
+ $ pip3 install sphinx sphinx_rtd_theme 
+
+
+**edit conf.py**
+
+::
+
+  html_theme = 'sphinx_rtd_theme'

@@ -31,6 +31,7 @@ wiki
    :caption: cheetsheets:
 
    cheetsheets/bash
+   cheetsheets/ip_command
    test1
 
 .. toctree::

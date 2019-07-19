@@ -95,6 +95,7 @@
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
@@ -112,6 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#build">build</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#makefile-example">Makefile example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#make-target">make target</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theme-i-e-sphinx-rtd-theme">theme (i.e. sphinx_rtd_theme</a></li>
 </ul>
 </li>
 </ul>
@@ -207,6 +209,11 @@ $ pip3 install sphinx
         <span class="n">texlive</span><span class="o">-</span><span class="n">lang</span><span class="o">-</span><span class="n">japanese</span> <span class="n">latexmk</span> <span class="n">texlive</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">base</span> <span class="n">python3</span><span class="o">-</span><span class="n">sphinx</span>
 </pre></div>
 </div>
+<p><strong>conf.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;ja&#39;</span>
+<span class="n">latex_docclass</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;manual&#39;</span><span class="p">:</span> <span class="s1">&#39;jsbook&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -244,6 +251,17 @@ docs:
 <h3>make target<a class="headerlink" href="#make-target" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>make 打てばターゲット一覧が出る．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
+</pre></div>
+</div>
+</div>
+<div class="section" id="theme-i-e-sphinx-rtd-theme">
+<h3>theme (i.e. sphinx_rtd_theme<a class="headerlink" href="#theme-i-e-sphinx-rtd-theme" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><strong>install thema</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install sphinx sphinx_rtd_theme
+</pre></div>
+</div>
+<p><strong>edit conf.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
 </pre></div>
 </div>
 </div>
