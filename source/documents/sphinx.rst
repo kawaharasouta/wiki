@@ -104,3 +104,10 @@ theme (i.e. sphinx_rtd_theme
 ::
 
   html_theme = 'sphinx_rtd_theme'
+
+theme_sample_
+
+
+
+
+.. _theme_sample: https://sphinx-themes.org/

@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kvm &mdash; wiki  ドキュメント</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="ssh_config" href="ssh_config.html" />
+    <link rel="prev" title="DPDK" href="dpdk.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kvm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#package">package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-config">start config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-image">make image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install">install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-cannot-install">serial <em>cannot install</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vnc">vnc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlanを使ったブリッジ接続</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-intel-e1000-nic">add intel e1000 nic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kvm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/contents/kvm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kvm">
+<h1>kvm<a class="headerlink" href="#kvm" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="package">
+<h2>package<a class="headerlink" href="#package" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-config">
+<h2>start config<a class="headerlink" href="#start-config" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">libvirt</span><span class="o">-</span><span class="nb">bin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="make-image">
+<h2>make image<a class="headerlink" href="#make-image" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.qcow2 8G
+</pre></div>
+</div>
+</div>
+<div class="section" id="install">
+<h2>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="serial-cannot-install">
+<h3>serial <em>cannot install</em><a class="headerlink" href="#serial-cannot-install" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install \
+  --name ubuntu1804 \
+  --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
+  --vcpus 2 \
+  --ram 512 \
+  --os-type linux \
+  --graphics none \
+  --console pty,target_type=serial \
+  --network bridge:virbr0 \
+  --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
+  --extra-args &#39;console=ttyS0,115200n8 serial&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="vnc">
+<h3>vnc<a class="headerlink" href="#vnc" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install \
+  --name ubuntu1804 \
+  --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
+  --vcpus 2 \
+  --ram 512 \
+  --os-type linux \
+  --graphics vnc,port=5900,listen=0.0.0.0,keymap=us,password=passwd \
+  --network bridge:virbr0 \
+  --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="file-focation">
+<h2>file focation<a class="headerlink" href="#file-focation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vm</span> <span class="n">images</span>         <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
+<span class="n">iso</span> <span class="n">images</span>          <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span>
+<span class="n">xml</span> <span class="n">file</span>                <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">qemu</span><span class="o">/</span>
+<span class="n">network</span> <span class="n">file</span>       <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">qemu</span><span class="o">/</span><span class="n">networks</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="macvtap-macvlan">
+<h2>macvtap, macvlanを使ったブリッジ接続<a class="headerlink" href="#macvtap-macvlan" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ゲストのxmlファイルを</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;direct&#39;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">mac</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;52:54:00:94:9a:a0&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">source</span> <span class="n">dev</span><span class="o">=</span><span class="s1">&#39;eth0&#39;</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;virtio&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x00&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x03&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>とかするとブリッジ接続されるが，ホストの物理インタフェース(ここではeth0はvlanの外と見なされてホストとゲストが通信ができない．
+そこでmacvlanを使う．
+ホストで</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ip link add dev macvlan0 link eth0 type macvlan mode bridge
+$ sudo ip addr del &lt;address&gt; dev eth0
+$ sudo ip addr add &lt;address&gt; dev macvlan0
+$ sudo ip link set up dev macvlan0
+$ sudo ip route add default via &lt;default route&gt; (dev ~~)
+</pre></div>
+</div>
+<p>とするとホストとゲストで接続可能になる．
+参考: <a class="reference external" href="https://tenforward.hatenablog.com/entry/20111221/1324466720">macvlan</a></p>
+</div>
+<div class="section" id="add-intel-e1000-nic">
+<h2>add intel e1000 nic<a class="headerlink" href="#add-intel-e1000-nic" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">mac</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;52:54:00:85:7a:0d&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;virbr0&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;e1000&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x03&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ubuntu-image-download">
+<h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.2-live-server-amd64.iso
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference external" href="https://libvirt.org/format.html">domain_xml_format</a></p>
+<p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
+<p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ssh_config.html" class="btn btn-neutral float-right" title="ssh_config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dpdk.html" class="btn btn-neutral float-left" title="DPDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

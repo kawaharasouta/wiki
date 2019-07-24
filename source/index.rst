@@ -12,9 +12,10 @@ wiki
    :maxdepth: 2
    :caption: Contents:
 
-   dpdk
-   kvm
-   ssh_config
+   contents/dpdk
+   contents/kvm
+   contents/ssh_config
+   contents/c_c++
 
 
 .. toctree::
