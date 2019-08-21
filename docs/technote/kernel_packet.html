@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>linuxのパケットの送受信について &mdash; wiki  ドキュメント</title>
+  <title>linuxのパケットの送受信について &mdash; wiki  documentation</title>
   
 
   
@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
         <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -34,8 +43,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="bash" href="../cheetsheets/bash.html" />
     <link rel="prev" title="NICの割り込みについて" href="interrupt.html" /> 
 </head>
@@ -101,7 +110,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -172,9 +180,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="linux">
-<h1>linuxのパケットの送受信について<a class="headerlink" href="#linux" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>linuxのパケットの送受信について<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>送信の時に使われるコアの話<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>送信の時に使われるコアの話<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>この間L3フォアーディングの計測をしていて，あるインタフェースに4，あるインタフェースに1このコアを割り当ててた．
 ※ここでいる割り当てるとはRSSのところに書いたビットマスクを割り当てたと言う意味で，ポーリングとか言う意味ではない．※
 いろんな調査の関係で4コアのインタフェースから1コアのインタフェースに片方向だけのトラフィックを流していた．

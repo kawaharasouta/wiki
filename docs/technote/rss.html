@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>linuxのRSSに関して &mdash; wiki  ドキュメント</title>
+  <title>linuxのRSSに関して &mdash; wiki  documentation</title>
   
 
   
@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
         <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -34,8 +43,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="NICの割り込みについて" href="interrupt.html" />
     <link rel="prev" title="c, c++" href="../contents/c_c++.html" /> 
 </head>
@@ -102,7 +111,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -173,9 +181,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="linuxrss">
-<h1>linuxのRSSに関して<a class="headerlink" href="#linuxrss" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>linuxのRSSに関して<a class="headerlink" href="#linuxrss" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>linuxはデフォでどのようにRSSを行なっているか．<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>linuxはデフォでどのようにRSSを行なっているか．<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>linuxでは，割り込みの区別にirq番号と言うものを使っている．
 irqとは，I/O APICを経由するPCIデバイスの割り込みが上がってくる物理的な割り込み線もしくはそこから上がってくる割り込み要求信号のことで，のことで
 現在のMSI・MIS-X割り込みでは使われていないが，おそらく歴史的経緯からlinuxで割り込みの区別をするのにirq番号とか言うものが使われている．
@@ -187,7 +195,7 @@ irqとは，I/O APICを経由するPCIデバイスの割り込みが上がって
 さてこのirqであるが，ここから上がってきた割り込みがどのコアによって処理されるかはどのように決まっているのだろうか．
 それは /proc/irq/{irq_num}/smp_affinity に設定されている．
 試しにこれファイルの中身を見て見ると,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="p">,</span><span class="mi">00000002</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="p">,</span><span class="mi">00000002</span>
 </pre></div>
 </div>
 <p>のような内容になっている．これは割り込み先のCPUのビットマスクである．
@@ -197,7 +205,7 @@ irqとは，I/O APICを経由するPCIデバイスの割り込みが上がって
 割り込みが複数のCPUに分散されRSSにより負荷分散ができているということになる．</p>
 </div>
 <div class="section" id="id2">
-<h2>linuxで明示的にRSSで使うコア数を制限する<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>linuxで明示的にRSSで使うコア数を制限する<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>RSSの試験の時にコア数を制限して計測をする方法を記載する．</p>
 <p>レポート書く時に一緒にかくう〜〜〜〜</p>
 </div>

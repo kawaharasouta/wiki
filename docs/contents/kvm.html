@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kvm &mdash; wiki  ドキュメント</title>
+  <title>kvm &mdash; wiki  documentation</title>
   
 
   
@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
         <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -34,8 +43,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ssh_config" href="ssh_config.html" />
     <link rel="prev" title="DPDK" href="dpdk.html" /> 
 </head>
@@ -113,7 +122,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -184,30 +192,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="kvm">
-<h1>kvm<a class="headerlink" href="#kvm" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>kvm<a class="headerlink" href="#kvm" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="package">
-<h2>package<a class="headerlink" href="#package" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst
+<h2>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst
 </pre></div>
 </div>
 </div>
 <div class="section" id="start-config">
-<h2>start config<a class="headerlink" href="#start-config" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">libvirt</span><span class="o">-</span><span class="nb">bin</span>
+<h2>start config<a class="headerlink" href="#start-config" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">libvirt</span><span class="o">-</span><span class="nb">bin</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="make-image">
-<h2>make image<a class="headerlink" href="#make-image" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.qcow2 8G
+<h2>make image<a class="headerlink" href="#make-image" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.qcow2 8G
 </pre></div>
 </div>
 </div>
 <div class="section" id="install">
-<h2>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="serial-cannot-install">
-<h3>serial <em>cannot install</em><a class="headerlink" href="#serial-cannot-install" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install \
+<h3>serial <em>cannot install</em><a class="headerlink" href="#serial-cannot-install" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-install \
   --name ubuntu1804 \
   --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
   --vcpus 2 \
@@ -222,8 +230,8 @@
 </div>
 </div>
 <div class="section" id="vnc">
-<h3>vnc<a class="headerlink" href="#vnc" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install \
+<h3>vnc<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-install \
   --name ubuntu1804 \
   --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
   --vcpus 2 \
@@ -237,8 +245,8 @@
 </div>
 </div>
 <div class="section" id="file-focation">
-<h2>file focation<a class="headerlink" href="#file-focation" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vm</span> <span class="n">images</span>         <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
+<h2>file focation<a class="headerlink" href="#file-focation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vm</span> <span class="n">images</span>         <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
 <span class="n">iso</span> <span class="n">images</span>          <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span>
 <span class="n">xml</span> <span class="n">file</span>                <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">qemu</span><span class="o">/</span>
 <span class="n">network</span> <span class="n">file</span>       <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">qemu</span><span class="o">/</span><span class="n">networks</span><span class="o">/</span>
@@ -246,9 +254,9 @@
 </div>
 </div>
 <div class="section" id="macvtap-macvlan">
-<h2>macvtap, macvlanを使ったブリッジ接続<a class="headerlink" href="#macvtap-macvlan" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>macvtap, macvlanを使ったブリッジ接続<a class="headerlink" href="#macvtap-macvlan" title="Permalink to this headline">¶</a></h2>
 <p>ゲストのxmlファイルを</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;direct&#39;</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;direct&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mac</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;52:54:00:94:9a:a0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">dev</span><span class="o">=</span><span class="s1">&#39;eth0&#39;</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;virtio&#39;</span><span class="o">/&gt;</span>
@@ -259,7 +267,7 @@
 <p>とかするとブリッジ接続されるが，ホストの物理インタフェース(ここではeth0はvlanの外と見なされてホストとゲストが通信ができない．
 そこでmacvlanを使う．
 ホストで</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ip link add dev macvlan0 link eth0 type macvlan mode bridge
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ip link add dev macvlan0 link eth0 type macvlan mode bridge
 $ sudo ip addr del &lt;address&gt; dev eth0
 $ sudo ip addr add &lt;address&gt; dev macvlan0
 $ sudo ip link set up dev macvlan0
@@ -270,8 +278,8 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 参考: <a class="reference external" href="https://tenforward.hatenablog.com/entry/20111221/1324466720">macvlan</a></p>
 </div>
 <div class="section" id="add-intel-e1000-nic">
-<h2>add intel e1000 nic<a class="headerlink" href="#add-intel-e1000-nic" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
+<h2>add intel e1000 nic<a class="headerlink" href="#add-intel-e1000-nic" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mac</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;52:54:00:85:7a:0d&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;virbr0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;e1000&#39;</span><span class="o">/&gt;</span>
@@ -281,13 +289,13 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 </div>
 </div>
 <div class="section" id="ubuntu-image-download">
-<h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.2-live-server-amd64.iso
+<h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.2-live-server-amd64.iso
 </pre></div>
 </div>
 </div>
 <div class="section" id="reference">
-<h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://libvirt.org/format.html">domain_xml_format</a></p>
 <p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
 <p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>

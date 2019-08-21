@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NICの割り込みについて &mdash; wiki  ドキュメント</title>
+  <title>NICの割り込みについて &mdash; wiki  documentation</title>
   
 
   
@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
         <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -34,8 +43,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="linuxのパケットの送受信について" href="kernel_packet.html" />
     <link rel="prev" title="linuxのRSSに関して" href="rss.html" /> 
 </head>
@@ -98,7 +107,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -169,7 +177,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="nic">
-<h1>NICの割り込みについて<a class="headerlink" href="#nic" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>NICの割り込みについて<a class="headerlink" href="#nic" title="Permalink to this headline">¶</a></h1>
 <p>NICはI/O APICとかそう言うのを経由して割り込みが上がってくるらしいんだが，
 そういったPCIデバイスの割り込みには歴史的に，irqと言う物理的な割り込み線がI/O APICに接続されて割り込みが送信されていた．
 この構成では割り込みの数が物理配線に依存し，限られたirqを複数のデバイスで共有する仕組みになっていて，さらに1つのデバイスで割り込みを複数持つことができなかった．

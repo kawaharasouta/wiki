@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bash &mdash; wiki  ドキュメント</title>
+  <title>bash &mdash; wiki  documentation</title>
   
 
   
@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
         <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -34,8 +43,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ip command" href="ip_command.html" />
     <link rel="prev" title="linuxのパケットの送受信について" href="../technote/kernel_packet.html" /> 
 </head>
@@ -107,7 +116,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../test1.html">test1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -178,31 +186,31 @@
            <div itemprop="articleBody">
             
   <div class="section" id="bash">
-<h1>bash<a class="headerlink" href="#bash" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="add-user">
-<h2>add user<a class="headerlink" href="#add-user" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
+<h2>add user<a class="headerlink" href="#add-user" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
 $ sudo passwd [username]
 </pre></div>
 </div>
 </div>
 <div class="section" id="id1">
-<h2>メモ系<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>メモ系<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">help</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">less</span>
+<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">help</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">less</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h3>ファイル内検索<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -r &quot;xxx&quot; ./
+<h3>ファイル内検索<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ grep -r &quot;xxx&quot; ./
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h3>該当ファイル以外を削除<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls | grep -v &quot;file name&quot; | xargs rm -rf
+<h3>該当ファイル以外を削除<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ls | grep -v &quot;file name&quot; | xargs rm -rf
 </pre></div>
 </div>
 </div>

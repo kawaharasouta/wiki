@@ -33,7 +33,6 @@ wiki
 
    cheetsheets/bash
    cheetsheets/ip_command
-   test1
 
 .. toctree::
    :maxdepth: 1
