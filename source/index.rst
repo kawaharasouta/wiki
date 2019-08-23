@@ -33,6 +33,7 @@ wiki
 
    cheetsheets/bash
    cheetsheets/ip_command
+   cheetsheets/vim
 
 .. toctree::
    :maxdepth: 1

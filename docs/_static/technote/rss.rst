@@ -36,3 +36,21 @@ RSSの試験の時にコア数を制限して計測をする方法を記載す�
 
 
 
+
+
+
+reference
+----------
+
+ - `irqbalance <https://sfujiwara.hatenablog.com/entry/20121221/1356084456>`_
+ - `ビットマスクと割り込み <https://diary.atzm.org/20111027.html>`_
+ - `ethtool queueとか <https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-configuration_tools#sect-Red_Hat_Enterprise_Linux-Performance_Tuning_Guide-Configuration_tools-Configuring_Receive_Side_Scaling_RSS>`_
+ - `RSS無効化なんかもう一個 <https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rss>`_
+ - `モジュールパラメータ1 <https://stackoverflow.com/questions/23730268/ixgbe-setting-the-number-of-rx-tx-queues>`_
+ - `モジュールパラメータ2 <https://www.nic.ad.jp/ja/materials/iw/2011/proceedings/s09/s09-01.pdf>`_
+
+
+
+
+
+

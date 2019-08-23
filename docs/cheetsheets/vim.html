@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ssh_config &mdash; wiki  documentation</title>
+  <title>vim &mdash; wiki  documentation</title>
   
 
   
@@ -44,9 +44,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="c, c++" href="c_c++.html" />
-    <link rel="prev" title="kvm" href="kvm.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,19 +89,11 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ssh_config</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ssh-keygen">ssh_keygen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gihub-setting">gihub setting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#copy-public-key">copy public key</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#config-for-git">config for git</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
@@ -113,9 +103,8 @@
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -166,13 +155,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>ssh_config</li>
+      <li>vim</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/contents/ssh_config.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cheetsheets/vim.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,32 +174,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ssh-config">
-<h1>ssh_config<a class="headerlink" href="#ssh-config" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="ssh-keygen">
-<h2>ssh_keygen<a class="headerlink" href="#ssh-keygen" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -t rsa -b 4096 -C &quot;kawahara6514@gmail.com&quot;
-Enter file in which to save the key (/Users/khwarizmi/.ssh/id_rsa): &lt;path to key&gt;
-Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend no passphrase.
+  <div class="section" id="vim">
+<h1>vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>コマンド<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">コマンド名</th>
+<th class="head">機能</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>d</td>
+<td>削除</td>
+</tr>
+<tr class="row-odd"><td>c</td>
+<td>変更</td>
+</tr>
+<tr class="row-even"><td>y</td>
+<td>コピー</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">モーション</th>
+<th class="head">機能</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>w</td>
+<td>カーソル位置から空白を含む単語の末尾</td>
+</tr>
+<tr class="row-odd"><td>e</td>
+<td>カーソル位置から空白を含まない単語の末尾</td>
+</tr>
+<tr class="row-even"><td>$</td>
+<td>カーソル位置から行末</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tab">
+<h2>tab空白<a class="headerlink" href="#tab" title="Permalink to this headline">¶</a></h2>
+<p>tab -&gt; 空白</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">expandtab</span>
+<span class="p">:</span><span class="n">retab</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="gihub-setting">
-<h2>gihub setting<a class="headerlink" href="#gihub-setting" title="Permalink to this headline">¶</a></h2>
-<p>accsess <a class="reference external" href="https://github.com/settings/keys">github_keys</a></p>
-<div class="section" id="copy-public-key">
-<h3>copy public key<a class="headerlink" href="#copy-public-key" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ pbcopy &lt; &lt;path to public key&gt;
+<p>空白 -&gt; tab</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>:set noexpndtab
+:retab!
 </pre></div>
-</div>
-</div>
-<div class="section" id="config-for-git">
-<h3>config for git<a class="headerlink" href="#config-for-git" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">github</span>
-  <span class="n">HostName</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span>
-  <span class="n">User</span> <span class="n">git</span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -220,15 +243,6 @@ Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend n
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="c_c++.html" class="btn btn-neutral float-right" title="c, c++" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="kvm.html" class="btn btn-neutral float-left" title="kvm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
