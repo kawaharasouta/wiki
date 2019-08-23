@@ -16,6 +16,7 @@ wiki
    contents/kvm
    contents/ssh_config
    contents/c_c++
+   contents/xdp
 
 
 .. toctree::
