@@ -13,7 +13,6 @@ ssh_keygen
 
 
 
-
 gihub setting 
 ---------------
 
@@ -24,7 +23,7 @@ copy public key
 
 ::
 
-  $ pbcopy < <path to public key>
+  $ cat <path to public key> | pbcopy 
 
 config for git 
 ~~~~~~~~~~~~~~~~

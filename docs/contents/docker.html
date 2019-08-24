@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ssh_config &mdash; wiki  documentation</title>
+  <title>Docker &mdash; wiki  documentation</title>
   
 
   
@@ -45,8 +45,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="c, c++" href="c_c++.html" />
-    <link rel="prev" title="Docker" href="docker.html" /> 
+    <link rel="next" title="ssh_config" href="ssh_config.html" />
+    <link rel="prev" title="kvm" href="kvm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,16 +94,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ssh_config</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ssh-keygen">ssh_keygen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gihub-setting">gihub setting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#copy-public-key">copy public key</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#config-for-git">config for git</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-ubuntu">install (ubuntu)</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 </ul>
@@ -168,13 +163,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>ssh_config</li>
+      <li>Docker</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/contents/ssh_config.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/contents/docker.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,32 +182,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ssh-config">
-<h1>ssh_config<a class="headerlink" href="#ssh-config" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="ssh-keygen">
-<h2>ssh_keygen<a class="headerlink" href="#ssh-keygen" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -t rsa -b 4096 -C &quot;kawahara6514@gmail.com&quot;
-Enter file in which to save the key (/Users/khwarizmi/.ssh/id_rsa): &lt;path to key&gt;
-Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend no passphrase.
+  <div class="section" id="docker">
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-ubuntu">
+<h2>install (ubuntu)<a class="headerlink" href="#install-ubuntu" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt update &amp;&amp; sudo apt install -y \
+  apt-transport-https ca-certificates curl software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository \
+  &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable&quot;
+$ sudo apt update &amp;&amp; sudo apt install -y docker-ce
+$ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマンドを実行させるため．このあとデーモンの再起動とリログ必要かも?
 </pre></div>
-</div>
-</div>
-<div class="section" id="gihub-setting">
-<h2>gihub setting<a class="headerlink" href="#gihub-setting" title="Permalink to this headline">¶</a></h2>
-<p>accsess <a class="reference external" href="https://github.com/settings/keys">github_keys</a></p>
-<div class="section" id="copy-public-key">
-<h3>copy public key<a class="headerlink" href="#copy-public-key" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat &lt;path to public key&gt; | pbcopy
-</pre></div>
-</div>
-</div>
-<div class="section" id="config-for-git">
-<h3>config for git<a class="headerlink" href="#config-for-git" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">github</span>
-  <span class="n">HostName</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span>
-  <span class="n">User</span> <span class="n">git</span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -225,10 +207,10 @@ Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend n
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="c_c++.html" class="btn btn-neutral float-right" title="c, c++" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ssh_config.html" class="btn btn-neutral float-right" title="ssh_config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="docker.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="kvm.html" class="btn btn-neutral float-left" title="kvm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
