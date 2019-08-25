@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Docker</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-ubuntu">install (ubuntu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commands">commands</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
@@ -194,6 +195,16 @@ $ sudo add-apt-repository \
   $(lsb_release -cs) stable&quot;
 $ sudo apt update &amp;&amp; sudo apt install -y docker-ce
 $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマンドを実行させるため．このあとデーモンの再起動とリログ必要かも?
+</pre></div>
+</div>
+<p>※tmuxのセッションからだとsudoなしがうまく行かなくなる．</p>
+</div>
+<div class="section" id="commands">
+<h2>commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker run -it --name &quot;name&quot; ubuntu:18.04 bash    #名前をつける
+$ docker run -p 8080:80 -it ubuntu:18.04 bash       #ホストの8080ポートをコンテナの80ポートにフォアード
+$ docker stop $(docker ps -q)                       #起動中のコンテナ全部停止
+$ docker rm $(docker ps -aq)                        #停止中コンテナ全削除
 </pre></div>
 </div>
 </div>

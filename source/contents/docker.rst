@@ -15,3 +15,18 @@ install (ubuntu)
     $(lsb_release -cs) stable"
   $ sudo apt update && sudo apt install -y docker-ce
   $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマンドを実行させるため．このあとデーモンの再起動とリログ必要かも?
+
+※tmuxのセッションからだとsudoなしがうまく行かなくなる．
+
+
+commands
+---------
+
+::
+  
+  $ docker run -it --name "name" ubuntu:18.04 bash    #名前をつける
+  $ docker run -p 8080:80 -it ubuntu:18.04 bash       #ホストの8080ポートをコンテナの80ポートにフォアード
+  $ docker stop $(docker ps -q)                       #起動中のコンテナ全部停止
+  $ docker rm $(docker ps -aq)                        #停止中コンテナ全削除
+
+
