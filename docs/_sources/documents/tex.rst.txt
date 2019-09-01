@@ -37,4 +37,4 @@ ubuntu環境構築
 
 
 .. _mac_tex_img: http://tug.org/mactex/ 
-.. _tex_jp: http://doratex.hatenablog.jp/entry/20180501/1525144736
+.. _tex_jp: https://doratex.hatenablog.jp/entry/20190502/1556775026
