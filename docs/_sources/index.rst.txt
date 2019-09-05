@@ -39,6 +39,12 @@ wiki
 
 .. toctree::
    :maxdepth: 1
+   :caption: system tracing:
+
+   system_tracing/dtrace
+
+.. toctree::
+   :maxdepth: 1
    :caption: documents:
    
    documents/tex
