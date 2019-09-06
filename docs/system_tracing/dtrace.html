@@ -113,7 +113,12 @@
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">DTrace</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DTrace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">使い方?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">プローブ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#provider">provider</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -185,6 +190,73 @@
             
   <div class="section" id="dtrace">
 <h1>DTrace<a class="headerlink" href="#dtrace" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>使い方?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">probe_dewcriotion</span> <span class="o">/</span><span class="n">predicate</span><span class="o">/</span> <span class="p">{</span> <span class="n">action</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>プローブ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">provider</span><span class="p">:</span><span class="n">module</span><span class="p">:</span><span class="n">function</span><span class="p">:</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provider">
+<h2>provider<a class="headerlink" href="#provider" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">provider</th>
+<th class="head">プロバイダ</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>syscall</td>
+<td>システムコールトラップテーブル</td>
+</tr>
+<tr class="row-odd"><td>vminfo</td>
+<td>仮想メモリ統計</td>
+</tr>
+<tr class="row-even"><td>sysinfo</td>
+<td>システム統計</td>
+</tr>
+<tr class="row-odd"><td>profile</td>
+<td>任意のサンプリング</td>
+</tr>
+<tr class="row-even"><td>sched</td>
+<td>カーネルスケジューリングイベント</td>
+</tr>
+<tr class="row-odd"><td>proc</td>
+<td>プロセスレベルのイベント</td>
+</tr>
+<tr class="row-even"><td>io</td>
+<td>ブロックデバイスのイベント(作成，実行，終了)</td>
+</tr>
+<tr class="row-odd"><td>pid</td>
+<td>ユーザレベルの動的トレーシング</td>
+</tr>
+<tr class="row-even"><td>tcp</td>
+<td>TCPプロトコルのイベント(接続，送信，受信)</td>
+</tr>
+<tr class="row-odd"><td>ip</td>
+<td>IPプロトコルのイベント</td>
+</tr>
+<tr class="row-even"><td>fbt</td>
+<td>カーネルレベルの動的トレーシング</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>また，その他の高水準言語</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
