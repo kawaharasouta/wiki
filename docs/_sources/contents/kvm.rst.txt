@@ -105,7 +105,7 @@ ubuntu image download
 ---------------------
 ::
 
-  $ wget http://releases.ubuntu.com/18.04/ubuntu-18.04.2-live-server-amd64.iso
+  $ wget http://ftp-srv2.kddilabs.jp/Linux/packages/ubuntu/releases-cd/18.04.3/ubuntu-18.04.3-live-server-amd64.iso
 
 
 reference
