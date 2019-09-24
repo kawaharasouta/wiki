@@ -102,6 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#vnc">vnc</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#clone">clone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlanを使ったブリッジ接続</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-intel-e1000-nic">add intel e1000 nic</a></li>
@@ -203,7 +204,7 @@
 <h1>kvm<a class="headerlink" href="#kvm" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="package">
 <h2>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 </pre></div>
 </div>
 </div>
@@ -234,6 +235,10 @@
   --network bridge:virbr0 \
   --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
   --extra-args &#39;console=ttyS0,115200n8 serial&#39;
+
+$ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --location &#39;http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/&#39; --network network=default,model=virtio --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+######$ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso --network network=default,model=virtio --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+多分こっちだと成功する．あとでまとめる
 </pre></div>
 </div>
 </div>
@@ -250,6 +255,13 @@
   --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="clone">
+<h2>clone<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-clone --original vm_org --name vm_clone --file /var/lib/libvirt/images/vm_clone.img   # .imgを作成しておく必要はない
+$ sudo virt-sysprep -d vm_clone --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
+</pre></div>
 </div>
 </div>
 <div class="section" id="file-focation">

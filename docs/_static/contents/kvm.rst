@@ -5,7 +5,7 @@ package
 --------
 :: 
 
-  $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst
+  $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
 start config
 --------------
@@ -38,6 +38,10 @@ serial *cannot install*
     --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
     --extra-args 'console=ttyS0,115200n8 serial'
 
+  $ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --location 'http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --network network=default,model=virtio --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
+  ######$ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso --network network=default,model=virtio --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
+  多分こっちだと成功する．あとでまとめる
+
 vnc
 ~~~~
 ::
@@ -51,6 +55,14 @@ vnc
     --graphics vnc,port=5900,listen=0.0.0.0,keymap=us,password=passwd \
     --network bridge:virbr0 \
     --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso 
+
+clone
+------
+
+::
+
+  $ sudo virt-clone --original vm_org --name vm_clone --file /var/lib/libvirt/images/vm_clone.img   # .imgを作成しておく必要はない
+  $ sudo virt-sysprep -d vm_clone --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
 
 file focation
 --------------
