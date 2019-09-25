@@ -106,7 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlanを使ったブリッジ接続</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#add-intel-e1000-nic">add intel e1000 nic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-nic">add nic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 </ul>
@@ -307,13 +307,20 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 <p>とするとホストとゲストで接続可能になる．
 参考: <a class="reference external" href="https://tenforward.hatenablog.com/entry/20111221/1324466720">macvlan</a></p>
 </div>
-<div class="section" id="add-intel-e1000-nic">
-<h2>add intel e1000 nic<a class="headerlink" href="#add-intel-e1000-nic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-nic">
+<h2>add nic<a class="headerlink" href="#add-nic" title="Permalink to this headline">¶</a></h2>
+<p>e1000</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">mac</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;52:54:00:85:7a:0d&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;virbr0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;e1000&#39;</span><span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x03&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;virbr0&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;virtio&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
 </pre></div>
 </div>

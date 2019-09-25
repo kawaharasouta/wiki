@@ -18,6 +18,7 @@ wiki
    contents/docker
    contents/ssh_config
    contents/c_c++
+   contents/golang
    contents/xdp
 
 

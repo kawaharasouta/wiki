@@ -112,16 +112,27 @@ macvtap, macvlanを使ったブリッジ接続
 とするとホストとゲストで接続可能になる．
 参考: macvlan_
 
-add intel e1000 nic 
+add nic 
 --------------------
+
+e1000
+
 ::
 
   <interface type='bridge'>
-    <mac address='52:54:00:85:7a:0d'/>
     <source bridge='virbr0'/>
     <model type='e1000'/>
-    <address type='pci' domain='0x0000' bus='0x01' slot='0x03' function='0x0'/>
+    <address type='pci' domain='0x0000' bus='0x01' slot='0x02' function='0x0'/>
   </interface>
+
+::
+  
+  <interface type='bridge'>
+    <source bridge='virbr0'/>
+    <model type='virtio'/>
+    <address type='pci' domain='0x0000' bus='0x01' slot='0x02' function='0x0'/>
+  </interface>
+  
 
 ubuntu image download
 ---------------------
