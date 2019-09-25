@@ -103,6 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#clone">clone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlanを使ったブリッジ接続</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-intel-e1000-nic">add intel e1000 nic</a></li>
@@ -210,7 +211,7 @@
 </div>
 <div class="section" id="start-config">
 <h2>start config<a class="headerlink" href="#start-config" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">libvirt</span><span class="o">-</span><span class="nb">bin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemctl enable libvirt-bin
 </pre></div>
 </div>
 </div>
@@ -261,6 +262,15 @@ $ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --acc
 <h2>clone<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-clone --original vm_org --name vm_clone --file /var/lib/libvirt/images/vm_clone.img   # .imgを作成しておく必要はない
 $ sudo virt-sysprep -d vm_clone --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
+</pre></div>
+</div>
+</div>
+<div class="section" id="rename-domain">
+<h2>rename domain<a class="headerlink" href="#rename-domain" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ uuidgen           #コピっとく
+$ sudo virsh edit [old domain]
+  change name &amp; uuid
+$ sudo virsh undefine [old domain]
 </pre></div>
 </div>
 </div>

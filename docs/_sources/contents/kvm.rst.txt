@@ -11,7 +11,7 @@ start config
 --------------
 ::
 
-  sudo systemctl enable libvirt-bin
+  $ sudo systemctl enable libvirt-bin
 
 make image
 ----------
@@ -63,6 +63,16 @@ clone
 
   $ sudo virt-clone --original vm_org --name vm_clone --file /var/lib/libvirt/images/vm_clone.img   # .imgを作成しておく必要はない
   $ sudo virt-sysprep -d vm_clone --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
+
+rename domain 
+---------------
+
+::
+  
+  $ uuidgen           #コピっとく
+  $ sudo virsh edit [old domain]
+    change name & uuid
+  $ sudo virsh undefine [old domain]
 
 file focation
 --------------

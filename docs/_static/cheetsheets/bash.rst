@@ -3,17 +3,22 @@ bash
 
 add user
 ---------
+
 ::
 
   $ sudo useradd -m -G users,sudo -s /bin/bash [username]
   $ sudo passwd [username]
 
 
+change hostname 
+----------------
 
+::
 
-
-
-
+  $ sudo vim /etc/cloud/cloud.cfg   #cloud-init が入ってる場合
+   - preserve_hostname: fauls
+   + preserve_hostname: true
+  $ sudo hostnamectl set-hostname [hostname]
 
 
 
@@ -24,10 +29,6 @@ shell芸的tips
 
   awk '{print $1, $3}'        #1,3列目を取得
   awk 'NR==2,NR==5'           #2~5行目を取得
-
-
-
-
 
 
 

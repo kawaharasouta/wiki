@@ -94,6 +94,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
@@ -109,6 +110,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">bash</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#add-user">add user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-hostname">change hostname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#shelltips">shell芸的tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">メモ系</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">標準エラー出力のリダイレクト例</a></li>
@@ -120,6 +122,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -195,6 +201,15 @@
 <h2>add user<a class="headerlink" href="#add-user" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
 $ sudo passwd [username]
+</pre></div>
+</div>
+</div>
+<div class="section" id="change-hostname">
+<h2>change hostname<a class="headerlink" href="#change-hostname" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/cloud/cloud.cfg   #cloud-init が入ってる場合
+ - preserve_hostname: fauls
+ + preserve_hostname: true
+$ sudo hostnamectl set-hostname [hostname]
 </pre></div>
 </div>
 </div>
