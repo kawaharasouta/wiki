@@ -44,7 +44,7 @@ netns関連いろいろ
 net-tools と iprouteの比較
 
 .. csv-table::
-  :header: 効果, net-tools, iproute
+  :header: 動作, net-tools, iproute
   :widths: 15, 15, 15
 
   arp table表示, arp -a, ip neigh
@@ -62,6 +62,18 @@ net-tools と iprouteの比較
   ip table 表示, route, ip route 
   set default gate way, route add default gw 192.168.1.1, ip route add default via 192.168.0.1
 
+brctl と iprouteの比較
+
+.. csv-table::
+  :header: 動作, brctl, iproute
+  :widths: 15, 15, 15
+
+  ブリッジ追加, brctl addbr [bridge], ip link add [bridge] type bridge
+  ブリッジ削除, brctl delbr [bridge], ip link del [bridge]
+  対象のブリッジのIF表示, brctl show [bridge], ip link show master [bridge] (or bridge link show [bridge]
+  全ブリッジのIF表示, brctl show, bridge link show 
+  IF追加, brctl addif [bridge] [if], ip link set dev [if] master [bridge]
+  IF削除, brctl delif [bridge] [if], ip link set dev [if] nomaster
 
 references
 ------------

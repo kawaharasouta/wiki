@@ -125,6 +125,8 @@ e1000
     <address type='pci' domain='0x0000' bus='0x01' slot='0x02' function='0x0'/>
   </interface>
 
+virtio
+
 ::
   
   <interface type='bridge'>
@@ -133,6 +135,17 @@ e1000
     <address type='pci' domain='0x0000' bus='0x01' slot='0x02' function='0x0'/>
   </interface>
   
+
+ovsの場合
+
+::
+
+  <interface type='bridge'>
+    <source bridge='ovs-sw'/>
+    <address type='pci' domain='0x0000' bus='0x01' slot='0x02' function='0x0'/>
+    <virtualport type='openvswitch'/>
+  </interface>
+
 
 ubuntu image download
 ---------------------

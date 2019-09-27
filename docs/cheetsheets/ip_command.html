@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tex" href="../documents/tex.html" />
+    <link rel="next" title="vim" href="vim.html" />
     <link rel="prev" title="bash" href="bash.html" /> 
 </head>
 
@@ -94,8 +94,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
@@ -111,6 +115,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#references">references</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -216,7 +225,7 @@
 <col width="33%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">効果</th>
+<tr class="row-odd"><th class="head">動作</th>
 <th class="head">net-tools</th>
 <th class="head">iproute</th>
 </tr>
@@ -280,6 +289,46 @@
 </tr>
 </tbody>
 </table>
+<p>brctl と iprouteの比較</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">動作</th>
+<th class="head">brctl</th>
+<th class="head">iproute</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ブリッジ追加</td>
+<td>brctl addbr [bridge]</td>
+<td>ip link add [bridge] type bridge</td>
+</tr>
+<tr class="row-odd"><td>ブリッジ削除</td>
+<td>brctl delbr [bridge]</td>
+<td>ip link del [bridge]</td>
+</tr>
+<tr class="row-even"><td>対象のブリッジのIF表示</td>
+<td>brctl show [bridge]</td>
+<td>ip link show master [bridge] (or bridge link show [bridge]</td>
+</tr>
+<tr class="row-odd"><td>全ブリッジのIF表示</td>
+<td>brctl show</td>
+<td>bridge link show</td>
+</tr>
+<tr class="row-even"><td>IF追加</td>
+<td>brctl addif [bridge] [if]</td>
+<td>ip link set dev [if] master [bridge]</td>
+</tr>
+<tr class="row-odd"><td>IF削除</td>
+<td>brctl delif [bridge] [if]</td>
+<td>ip link set dev [if] nomaster</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="references">
 <h2>references<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
@@ -300,7 +349,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../documents/tex.html" class="btn btn-neutral float-right" title="Tex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vim.html" class="btn btn-neutral float-right" title="vim" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="bash.html" class="btn btn-neutral float-left" title="bash" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
