@@ -66,7 +66,7 @@ brctl と iprouteの比較
 
 .. csv-table::
   :header: 動作, brctl, iproute
-  :widths: 15, 15, 15
+  :widths: 6, 6, 6
 
   ブリッジ追加, brctl addbr [bridge], ip link add [bridge] type bridge
   ブリッジ削除, brctl delbr [bridge], ip link del [bridge]

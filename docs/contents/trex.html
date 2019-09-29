@@ -44,7 +44,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="prev" title="Open vSwitch" href="ovs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,7 +91,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
@@ -99,6 +101,13 @@
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TRex</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#iruyatu">iruyatu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-environment">hardware environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hello-world">hello world</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
@@ -189,11 +198,54 @@
 <div class="section" id="iruyatu">
 <h2>iruyatu<a class="headerlink" href="#iruyatu" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install python python python-pipa
+$ sudo apt install linux-headers-`uname -r` build-essential
 </pre></div>
 </div>
+<p>#ちょいちょいModuleNotFoundError: No module named 'distutils.util'が出るんだけど, 普通に実行できる時もあるしでながら動いてる時もあるしよくわからん. python3でやれってことなのか?</p>
+</div>
+<div class="section" id="hardware-environment">
+<h2>hardware environment<a class="headerlink" href="#hardware-environment" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>CPU</td>
+<td>3コア以上</td>
+</tr>
+<tr class="row-even"><td>memory</td>
+<td>2G以上(たぶん)</td>
+</tr>
+<tr class="row-odd"><td>インタフェース</td>
+<td>3つ以上(使用していないものが2つ以上)</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="install">
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo mkdir -p /opt/trex
+$ cd /opt/trex
+$ sudo wget --no-cache https://trex-tgn.cisco.com/trex/release/latest
+$ sudo tar -xzvf latest
+</pre></div>
+</div>
+</div>
+<div class="section" id="hello-world">
+<h2>hello world<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
+<p>利用できるポートの確認</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">dpdk_setup_ports</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>configをインタラクティブに作成 ※履歴見たいのあとで付け足すかも</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">dpdk_setup_ports</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span>
+</pre></div>
+</div>
+<p>トラフィック生成</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./t-rex-64 -f ./cap2/dns.yaml -d 10
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -202,6 +254,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ovs.html" class="btn btn-neutral float-left" title="Open vSwitch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
