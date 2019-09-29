@@ -21,6 +21,7 @@ wiki
    contents/golang
    contents/xdp
    contents/ovs
+   contents/trex
 
 
 .. toctree::
