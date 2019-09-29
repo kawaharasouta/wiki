@@ -64,6 +64,26 @@ clone
   $ sudo virt-clone --original vm_org --name vm_clone --file /var/lib/libvirt/images/vm_clone.img   # .imgを作成しておく必要はない
   $ sudo virt-sysprep -d vm_clone --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
 
+and change hostname 
+
+
+change memory size
+-------------------
+
+::
+
+  #max memory sizeを変更
+  $ sudo virsh setmaxmem [domain] 4G
+
+  #起動中にmemory size変更(停止したら戻る)
+  $ sudo viesh setmem [domain] 4G
+
+  #停止中のマシンの次回以降のmemory sizeを変更
+  $ sudo virsh setmem [domain] 4G --config
+
+  #確認
+  $ sudo virsh dominfo [domain] | grep mem
+
 rename domain 
 ---------------
 

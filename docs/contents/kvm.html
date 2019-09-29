@@ -103,6 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#clone">clone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-memory-size">change memory size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlanを使ったブリッジ接続</a></li>
@@ -117,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
@@ -263,6 +265,23 @@ $ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --acc
 <h2>clone<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-clone --original vm_org --name vm_clone --file /var/lib/libvirt/images/vm_clone.img   # .imgを作成しておく必要はない
 $ sudo virt-sysprep -d vm_clone --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
+</pre></div>
+</div>
+<p>and change hostname</p>
+</div>
+<div class="section" id="change-memory-size">
+<h2>change memory size<a class="headerlink" href="#change-memory-size" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#max memory sizeを変更
+$ sudo virsh setmaxmem [domain] 4G
+
+#起動中にmemory size変更(停止したら戻る)
+$ sudo viesh setmem [domain] 4G
+
+#停止中のマシンの次回以降のmemory sizeを変更
+$ sudo virsh setmem [domain] 4G --config
+
+#確認
+$ sudo virsh dominfo [domain] | grep mem
 </pre></div>
 </div>
 </div>

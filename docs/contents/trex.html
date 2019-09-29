@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Open vSwitch &mdash; wiki  documentation</title>
+  <title>TRex &mdash; wiki  documentation</title>
   
 
   
@@ -44,9 +44,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
-    <link rel="prev" title="XDP" href="xdp.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,7 +89,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
@@ -100,12 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Open vSwitch</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#operation">operation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#kvmvmovs">kvmのVMをovsに接続</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
@@ -172,13 +165,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Open vSwitch</li>
+      <li>TRex</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/contents/ovs.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/contents/trex.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,33 +184,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="open-vswitch">
-<h1>Open vSwitch<a class="headerlink" href="#open-vswitch" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="trex">
+<h1>TRex<a class="headerlink" href="#trex" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="iruyatu">
+<h2>iruyatu<a class="headerlink" href="#iruyatu" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install python python python-pipa
+</pre></div>
+</div>
+</div>
 <div class="section" id="install">
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install openvswitch-switch openvswitch-common
-</pre></div>
-</div>
-</div>
-<div class="section" id="operation">
-<h2>operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ovs-vsctl show
-$ sudo ovs-vsctl add-br [switch]
-$ sudo ovs-vsctl del-br [switch]
-$ sudo ovs-vsctl add-port [switch] [port]
-$ sudo ovs-vsctl del-port [switch] [port]
-</pre></div>
-</div>
-</div>
-<div class="section" id="kvmvmovs">
-<h2>kvmのVMをovsに接続<a class="headerlink" href="#kvmvmovs" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;ovs-sw&#39;</span><span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="n">virtualport</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;openvswitch&#39;</span><span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
-</pre></div>
-</div>
 </div>
 </div>
 
@@ -226,15 +202,6 @@ $ sudo ovs-vsctl del-port [switch] [port]
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="xdp.html" class="btn btn-neutral float-left" title="XDP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
