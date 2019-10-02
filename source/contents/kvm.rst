@@ -103,8 +103,20 @@ file focation
   xml file                /etc/libvirt/qemu/
   network file       /etc/libvirt/qemu/networks/
 
-macvtap, macvlanを使ったブリッジ接続
--------------------------------------
+ブリッジ接続
+------------
+
+Linux bridge
+~~~~~~~~~~~~~~
+
+ブリッジ作成してそこに物理インタフェースぶっこむだけ.
+インタフェースとブリッジのリンク上げ忘れよくするから注意.
+
+ovs
+~~~~
+
+macvtap, macvlan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ゲストのxmlファイルを
 

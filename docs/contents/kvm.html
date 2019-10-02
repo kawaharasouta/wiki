@@ -106,7 +106,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#change-memory-size">change memory size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlanを使ったブリッジ接続</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">ブリッジ接続</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux-bridge">Linux bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ovs">ovs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlan</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#add-nic">add nic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
@@ -119,6 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
@@ -135,6 +141,7 @@
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -303,8 +310,18 @@ $ sudo virsh undefine [old domain]
 </pre></div>
 </div>
 </div>
+<div class="section" id="id1">
+<h2>ブリッジ接続<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux-bridge">
+<h3>Linux bridge<a class="headerlink" href="#linux-bridge" title="Permalink to this headline">¶</a></h3>
+<p>ブリッジ作成してそこに物理インタフェースぶっこむだけ.
+インタフェースとブリッジのリンク上げ忘れよくするから注意.</p>
+</div>
+<div class="section" id="ovs">
+<h3>ovs<a class="headerlink" href="#ovs" title="Permalink to this headline">¶</a></h3>
+</div>
 <div class="section" id="macvtap-macvlan">
-<h2>macvtap, macvlanを使ったブリッジ接続<a class="headerlink" href="#macvtap-macvlan" title="Permalink to this headline">¶</a></h2>
+<h3>macvtap, macvlan<a class="headerlink" href="#macvtap-macvlan" title="Permalink to this headline">¶</a></h3>
 <p>ゲストのxmlファイルを</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;direct&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mac</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;52:54:00:94:9a:a0&#39;</span><span class="o">/&gt;</span>
@@ -326,6 +343,7 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 </div>
 <p>とするとホストとゲストで接続可能になる．
 参考: <a class="reference external" href="https://tenforward.hatenablog.com/entry/20111221/1324466720">macvlan</a></p>
+</div>
 </div>
 <div class="section" id="add-nic">
 <h2>add nic<a class="headerlink" href="#add-nic" title="Permalink to this headline">¶</a></h2>

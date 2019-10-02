@@ -46,6 +46,7 @@ wiki
    :caption: system tracing:
 
    system_tracing/dtrace
+   system_tracing/systemtap
 
 .. toctree::
    :maxdepth: 1
