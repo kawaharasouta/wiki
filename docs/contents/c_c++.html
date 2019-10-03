@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="next" title="option" href="inc_c_c++/option.html" />
     <link rel="prev" title="ssh_config" href="ssh_config.html" /> 
 </head>
 
@@ -94,8 +94,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">c, c++</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">c, c++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inc_c_c++/option.html">option</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inc_c_c++/attribute.html">attribute (関数の属性機能)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inc_c_c++/signal.html">signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inc_c_c++/version_management.html">update-alternativesによる複数バージョン管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inc_c_c++/header_memo.html">ヘッダ構造体メモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inc_c_c++/segv.html">segv対策</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
@@ -107,11 +121,22 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
             
@@ -178,6 +203,16 @@
             
   <div class="section" id="c-c">
 <h1>c, c++<a class="headerlink" href="#c-c" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="inc_c_c++/option.html">option</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inc_c_c++/attribute.html">attribute (関数の属性機能)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inc_c_c++/signal.html">signal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inc_c_c++/version_management.html">update-alternativesによる複数バージョン管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inc_c_c++/header_memo.html">ヘッダ構造体メモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inc_c_c++/segv.html">segv対策</a></li>
+</ul>
+</div>
 </div>
 
 
@@ -188,7 +223,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="inc_c_c++/option.html" class="btn btn-neutral float-right" title="option" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="ssh_config.html" class="btn btn-neutral float-left" title="ssh_config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

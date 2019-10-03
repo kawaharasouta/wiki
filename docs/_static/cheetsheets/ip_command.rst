@@ -70,7 +70,7 @@ brctl と iprouteの比較
 
   ブリッジ追加, brctl addbr [bridge], ip link add [bridge] type bridge
   ブリッジ削除, brctl delbr [bridge], ip link del [bridge]
-  対象のブリッジのIF表示, brctl show [bridge], ip link show master [bridge] (or bridge link show [bridge]
+  対象のブリッジのIF表示, brctl show [bridge], ip link show master [bridge] (or bridge link show [bridge] ※期待通りに動作しない
   全ブリッジのIF表示, brctl show, bridge link show 
   IF追加, brctl addif [bridge] [if], ip link set dev [if] master [bridge]
   IF削除, brctl delif [bridge] [if], ip link set dev [if] nomaster

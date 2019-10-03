@@ -56,6 +56,13 @@ wiki
    documents/sphinx
 
 
+.. toctree::
+  :maxdepth: 1
+  :caption: test:
+  
+  test/doc
+
+
 ..
         * :ref:`genindex`
         * :ref:`modindex`

@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>signal &mdash; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="golang" href="../golang.html" />
+    <link rel="prev" title="attribute (関数の属性機能)" href="attribute.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../c_c++.html">c, c++</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="option.html">option</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attribute.html">attribute (関数の属性機能)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">signal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#header">header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method">method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#point">point</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">ハンドラの再設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">システムコールの再起動</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">シグナルのブロック</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">signalで簡単にやる方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trex.html">TRex</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../system_tracing/systemtap.html">systemtap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../test/doc.html#include">include</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../c_c++.html">c, c++</a> &raquo;</li>
+        
+      <li>signal</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/contents/inc_c_c++/signal.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="signal">
+<h1>signal<a class="headerlink" href="#signal" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="header">
+<h2>header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include&lt;signal.h&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method">
+<h2>method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">sigaction</span><span class="p">(</span><span class="nb">int</span> <span class="n">sig</span><span class="p">,</span> <span class="n">const</span> <span class="n">struct</span> <span class="n">sigaction</span> <span class="o">*</span><span class="n">act</span><span class="p">,</span> <span class="n">struct</span> <span class="n">sigaction</span> <span class="o">*</span><span class="n">oldact</span><span class="p">);</span>
+
+<span class="n">struct</span> <span class="n">sigaction</span> <span class="p">{</span>
+  <span class="o">/*</span> <span class="n">sa_handler</span><span class="o">.</span> <span class="n">sa_sigactionは片方のみ使う</span> <span class="o">*/</span>
+  <span class="n">void</span> <span class="p">(</span><span class="o">*</span><span class="n">sa_handler</span><span class="p">)(</span><span class="nb">int</span><span class="p">);</span>
+  <span class="n">void</span> <span class="p">(</span><span class="o">*</span><span class="n">sa_sigaction</span><span class="p">)(</span><span class="nb">int</span> <span class="p">,</span> <span class="n">siginfo_t</span><span class="o">*</span><span class="p">,</span> <span class="n">void</span><span class="o">*</span><span class="p">);</span>
+  <span class="n">sigset_t</span> <span class="n">sa_mask</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">sa_flags</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="point">
+<h2>point<a class="headerlink" href="#point" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>ハンドラの再設定<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>sgiaction()は、OSにかかわらず
+シグナルハンドラの設定を保持し続けることが保証されています。</p>
+</div>
+<div class="section" id="id2">
+<h3>システムコールの再起動<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>sigaction()は、デフォルトではシステムコールを再起動しません。
+sa_flagsメンバにSA_RESTARTを追加すると再起動する設定になります。
+一般的には再起動される方が便利なので、SA_RESTARTは常に追加しておくのが無難です。</p>
+</div>
+<div class="section" id="id3">
+<h3>シグナルのブロック<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>struct sigactoinのメンバsa_maskで、ブロックするシグナルを指定できます。
+さらに、シグナルハンドラの起動中は処理中のシグナルを自動的にブロックしてくれるので、
+ほとんどの場合はsa_maskは空にしておけば十分です。
+sa_maskを空にするには、sigemptyset()を使います。</p>
+<p>例: <a class="reference external" href="https://github.com/kawaharasouta/mysignal_samp">example</a></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>signalで簡単にやる方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>任意のSGINALを任意のfuncでトラップする.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">signal</span> <span class="p">(</span><span class="n">SIGNAL</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+</pre></div>
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">シグナル</th>
+<th class="head">概要</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SIGINT</td>
+<td>キーボードからの割り込み Ctrl + C</td>
+</tr>
+<tr class="row-odd"><td>SIGQUIT</td>
+<td>キーボードに夜中止 Ctrl + または Ctrl + 4</td>
+</tr>
+<tr class="row-even"><td>SIGTSTP</td>
+<td>端末(tty)から入力された一旦停止 Ctrl + Z</td>
+</tr>
+<tr class="row-odd"><td>SIGTERM</td>
+<td>終了 (コマンド)kill pid</td>
+</tr>
+<tr class="row-even"><td>SIGSTOP</td>
+<td>一時停止 (コマンド) Kill -s SIGSTOP pid</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../golang.html" class="btn btn-neutral float-right" title="golang" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="attribute.html" class="btn btn-neutral float-left" title="attribute (関数の属性機能)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
