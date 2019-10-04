@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pthread &mdash; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trex.html">TRex</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../system_tracing/systemtap.html">systemtap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../test/doc.html#include">include</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>pthread</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/contents/inc_c_c++/pthread.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pthread">
+<h1>pthread<a class="headerlink" href="#pthread" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>最重要メソッド<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pthread-create">
+<h3>pthread_create<a class="headerlink" href="#pthread-create" title="Permalink to this headline">¶</a></h3>
+<p>スレッドを生成する</p>
+<div class="section" id="id2">
+<h4>宣言<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span><span class="n">thread</span><span class="p">,</span> <span class="n">const</span> <span class="n">pthread_attr_t</span> <span class="o">*</span><span class="n">attr</span><span class="p">,</span> <span class="n">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="p">),</span> <span class="n">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>引数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>thread: スレッド識別子(スレッドID)
+attr: 作成するスレッドの属性指定パラメータ. 通常はNULLでいい.
+start_routine: 新しいスレッドで実行される関数
+arg: start_routineの引数になる. 必要ない場合はNULLでいい.</p>
+</div>
+<div class="section" id="id4">
+<h4>返り値<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>成功した場合は 0
+失敗した場合は エラーコード</p>
+<p>pthread_createが完了するとすぐに帰ってくる.
+また, スレッドの実行順序などについてはOSのみが知る.</p>
+</div>
+</div>
+<div class="section" id="pthread-exit">
+<h3>pthread_exit<a class="headerlink" href="#pthread-exit" title="Permalink to this headline">¶</a></h3>
+<p>スレッドを終了する</p>
+<div class="section" id="id5">
+<h4>宣言<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">pthread_exit</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">retval</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h4>引数<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>retval: これがスレッドの戻り値となる</p>
+</div>
+</div>
+<div class="section" id="pthread-join">
+<h3>pthread_join<a class="headerlink" href="#pthread-join" title="Permalink to this headline">¶</a></h3>
+<p>スレッド終了待ち(消去)</p>
+<div class="section" id="id7">
+<h4>宣言<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span> <span class="n">thread</span><span class="p">,</span> <span class="n">void</span> <span class="o">**</span><span class="n">retval</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h4>引数<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>thread: 待つスレッドのスレッドID.
+retval: 対象スレッドの戻り値が入る. 使わない場合はNULLでいい.</p>
+</div>
+<div class="section" id="id9">
+<h4>返り値<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h4>注意<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>一度pthread_joinを使って消去したスレッドに対して再度pthread_joinすることは
+非常に危険なので絶対に行わない.
+これを実行した後には,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">thread</span> <span class="o">=</span> <span class="n">NULL</span>
+</pre></div>
+</div>
+<p>としておくと良い</p>
+</div>
+</div>
+<div class="section" id="pthread-self">
+<h3>pthread_self<a class="headerlink" href="#pthread-self" title="Permalink to this headline">¶</a></h3>
+<p>自分のスレッドIDを取得する</p>
+<div class="section" id="id11">
+<h4>宣言<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pthread_t</span> <span class="n">pthread_self</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h4>返り値<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>自分のスレッドID</p>
+</div>
+</div>
+<div class="section" id="pthread-mutex-trylock">
+<h3>pthread_mutex_trylock<a class="headerlink" href="#pthread-mutex-trylock" title="Permalink to this headline">¶</a></h3>
+<p>ミューテックスがOFFの時はONにして0を返す. ONの時は0以外を返す.
+これはあまり使われない(後述)</p>
+<div class="section" id="id13">
+<h4>宣言<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">pthread_mutex_trylock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pthread-mutex-lock">
+<h3>pthread_mutex_lock<a class="headerlink" href="#pthread-mutex-lock" title="Permalink to this headline">¶</a></h3>
+<p>ミューテックスがOFFの時にはONにして0を返す. ONの時はOFFになるまで待つ.
+trylock よりもこちらの方がよく使われる.</p>
+<div class="section" id="id14">
+<h4>宣言<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>引数</p>
+<p>attr: スレッドの属性. 普通に使う時はNULLでいい.</p>
+</div>
+</div>
+<div class="section" id="pthread-mutex-destroy">
+<h3>pthread_mutex_destroy<a class="headerlink" href="#pthread-mutex-destroy" title="Permalink to this headline">¶</a></h3>
+<p>ミューテックスの破棄</p>
+<div class="section" id="id15">
+<h4>宣言<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">pthread_mutex_destroy</span><span class="p">(</span><span class="n">pthread_mutex</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pthread-mutex-unlock">
+<h3>pthread_mutex_unlock<a class="headerlink" href="#pthread-mutex-unlock" title="Permalink to this headline">¶</a></h3>
+<p>ミューテックスをOFFにする</p>
+<div class="section" id="id16">
+<h4>宣言<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>スレッド変数について<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<p>スレッドプログラミングで注意するべき点の一つに, 変数の扱いがある
+スレッドではメモリが共有されるため, 変数の扱いに気をつけなければならないが,
+スレッド変数を使うとうまくプログラミングすることができる時がある.
+ただし, これを用いるとコードが汚くなる傾向があるため, あまり用いられない.
+構造体を用いて綺麗にコーディングする方が良いと言われる.</p>
+<p>pthread_key_create
+pthread_key_delete
+pthread_setspecific
+pthread_getspecific</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -12,3 +12,5 @@ c, c++
   inc_c_c++/version_management
   inc_c_c++/header_memo
   inc_c_c++/segv
+  inc_c_c++/os
+  inc_c_c++/pthread
