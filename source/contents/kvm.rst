@@ -111,6 +111,7 @@ Linux bridge
 
 ブリッジ作成してそこに物理インタフェースぶっこむだけ.
 インタフェースとブリッジのリンク上げ忘れよくするから注意.
+なんか知らないけどグローバルに向けられない．
 
 ovs
 ~~~~
@@ -168,7 +169,7 @@ virtio
   </interface>
   
 
-ovsの場合
+ブリッジがovsの場合
 
 ::
 
@@ -178,6 +179,16 @@ ovsの場合
     <virtualport type='openvswitch'/>
   </interface>
 
+SR-IOV
+--------
+
+::
+
+  $ sudo vim /etc/default/grub
+  + GRUB_CMDLINE_LINUX="intel_iommu=on"
+  $ sudo update-grub2
+
+wakarann
 
 ubuntu image download
 ---------------------

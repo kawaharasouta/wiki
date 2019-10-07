@@ -107,6 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technote/interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technote/boot.html">ブートローダについてのメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -198,82 +199,25 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="contents/dpdk.html">DPDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/dpdk.html#setup">setup</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contents/kvm.html">kvm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#package">package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#start-config">start config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#make-image">make image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#clone">clone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#change-memory-size">change memory size</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#rename-domain">rename domain</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#file-focation">file focation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#id1">ブリッジ接続</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#add-nic">add nic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#ubuntu-image-download">ubuntu image download</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/kvm.html#reference">reference</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="contents/dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/kvm.html">kvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contents/vagrant.html">vagrant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contents/docker.html">Docker</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/docker.html#install-ubuntu">install (ubuntu)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/docker.html#commands">commands</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contents/ssh_config.html">ssh_config</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/ssh_config.html#ssh-keygen">ssh_keygen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/ssh_config.html#gihub-setting">gihub setting</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contents/c_c++.html">c, c++</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/option.html">option</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/attribute.html">attribute (関数の属性機能)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/signal.html">signal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/version_management.html">update-alternativesによる複数バージョン管理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/header_memo.html">ヘッダ構造体メモ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/segv.html">segv対策</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/os.html">OS定義マクロ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/inc_c_c++/pthread.html">pthread</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contents/golang.html">golang</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/golang.html#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/golang.html#hello-world">Hello, World</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="contents/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contents/xdp.html">XDP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contents/ovs.html">Open vSwitch</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/ovs.html#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/ovs.html#operation">operation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/ovs.html#kvmvmovs">kvmのVMをovsに接続</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contents/trex.html">TRex</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="contents/trex.html#iruyatu">iruyatu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/trex.html#hardware-environment">hardware environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/trex.html#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contents/trex.html#hello-world">hello world</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/trex.html">TRex</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="technote/rss.html">linuxのRSSに関して</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="technote/rss.html#id1">linuxはデフォでどのようにRSSを行なっているか．</a></li>
-<li class="toctree-l2"><a class="reference internal" href="technote/rss.html#id2">linuxで明示的にRSSで使うコア数を制限する</a></li>
-<li class="toctree-l2"><a class="reference internal" href="technote/rss.html#reference">reference</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technote/interrupt.html">NICの割り込みについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="technote/kernel_packet.html">linuxのパケットの送受信について</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="technote/kernel_packet.html#id1">送信の時に使われるコアの話</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technote/boot.html">ブートローダについてのメモ</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">

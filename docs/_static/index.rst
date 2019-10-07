@@ -9,51 +9,52 @@ wiki of khwarizmi
 wiki
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 1
+  :caption: Contents:
 
-   contents/dpdk
-   contents/kvm
-   contents/vagrant
-   contents/docker
-   contents/ssh_config
-   contents/c_c++
-   contents/golang
-   contents/xdp
-   contents/ovs
-   contents/trex
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: technote:
-
-   technote/rss
-   technote/interrupt
-   technote/kernel_packet
+  contents/dpdk
+  contents/kvm
+  contents/vagrant
+  contents/docker
+  contents/ssh_config
+  contents/c_c++
+  contents/golang
+  contents/xdp
+  contents/ovs
+  contents/trex
 
 
 .. toctree::
-   :maxdepth: 1
-   :caption: cheetsheets:
+  :maxdepth: 1
+  :caption: technote:
 
-   cheetsheets/bash
-   cheetsheets/ip_command
-   cheetsheets/vim
+  technote/rss
+  technote/interrupt
+  technote/kernel_packet
+  technote/boot
 
-.. toctree::
-   :maxdepth: 1
-   :caption: system tracing:
-
-   system_tracing/dtrace
-   system_tracing/systemtap
 
 .. toctree::
-   :maxdepth: 1
-   :caption: documents:
-   
-   documents/tex
-   documents/sphinx
+  :maxdepth: 1
+  :caption: cheetsheets:
+
+  cheetsheets/bash
+  cheetsheets/ip_command
+  cheetsheets/vim
+
+.. toctree::
+  :maxdepth: 1
+  :caption: system tracing:
+
+  system_tracing/dtrace
+  system_tracing/systemtap
+
+.. toctree::
+  :maxdepth: 1
+  :caption: documents:
+  
+  documents/tex
+  documents/sphinx
 
 
 .. toctree::

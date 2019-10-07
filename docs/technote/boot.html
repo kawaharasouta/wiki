@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ブートローダについてのメモ &mdash; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="prev" title="linuxのパケットの送受信について" href="kernel_packet.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ブートローダについてのメモ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ファイル構成と設定方法について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#etc-default-grub">/etc/default/grub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#etc-grub-d">/etc/grub.d/</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ブートローダについてのメモ</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/technote/boot.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>ブートローダについてのメモ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>PCが起動時に, OSを呼び出すためのソフトウェア．
+一般的にハードディスクの先頭にある「MBR(マスターブートレコード)」
+という領域に記録されている．
+PCの電源を投入するとBIOSが起動され，BIOSがブートローダを呼び出し，
+その後ブートローダがカーネル(OS)を呼び出す．</p>
+<p>僕の理解では，BIOS(UEFI)はファームウェアだからギリギリハードウェアの領域で，
+ブートローダからソフトウェアという印象．</p>
+<p>おそらく今の主流はGRUB2でubuntuは早々これを導入していた．
+他のデストリはしばらく従来の「GRUB Legacy」を使っていた．</p>
+<p>以下，GRUB2についてのメモ</p>
+<div class="section" id="id2">
+<h2>ファイル構成と設定方法について<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>設定のメインファイルは「/etc/grub/grub.cfg」だが，
+このファイルは直接編集する訳ではなく，別のファイルに設定を書き，
+コマンドを実行してファイルを生成する．
+編集するファイルは「/etc/default/grub」と「/etc/grub.d/」．
+これらを編集したのちに</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+or
+
+$ sudo update-grub2       #これちょっとオプションとか足りないかもしれないけど
+</pre></div>
+</div>
+<p>とかする．</p>
+</div>
+<div class="section" id="etc-default-grub">
+<h2>/etc/default/grub<a class="headerlink" href="#etc-default-grub" title="Permalink to this headline">¶</a></h2>
+<p>grub-mkconfigはシェル(sh)スクリプトで，基本的にはそれに読み込まれる
+パラメータを記述するファイル．</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ</th>
+<th class="head">説明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GRUB_DEFAULT</td>
+<td><div class="first last line-block">
+<div class="line">デフォルトのOSを指定する為のパラメータ．</div>
+<div class="line">index，メニューで表示される名称の他,</div>
+<div class="line">「saved」とすると前回起動したOSがデフォルトになる．</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>GRUB_TIMEOUT</td>
+<td>デフォルトのOSを起動するまでの時間を秒で指定する．</td>
+</tr>
+<tr class="row-even"><td>GRUB_HIDDEN_TIMEOUT</td>
+<td><div class="first last line-block">
+<div class="line">これが指定されるとメニューの表示がない．</div>
+<div class="line">また，これで指定された秒数だけ待つ．</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>GRUB_HIDDEN_TIMEOUT_QUIET</td>
+<td><div class="first last line-block">
+<div class="line">trueかfalseを指定する．</div>
+<div class="line">falseの場合画面にGRUB_HIDDEN_TIMEOUTの残り時間を表示する．</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>GRUB_CMDLINE_LINUX</td>
+<td>カーネルのコマンドラインオプションを追加する．</td>
+</tr>
+<tr class="row-odd"><td>GRUB_CMDLINE_LINUX_DEFAULT_DEFAULT</td>
+<td>通常起動の場合にコマンドラインオプションを追加する．</td>
+</tr>
+<tr class="row-even"><td>GRUB_GFXMOD</td>
+<td>画像の解像度を指定するパラメータ．</td>
+</tr>
+<tr class="row-odd"><td>GRUB_BACKGROUND</td>
+<td>背景画像を指定するパラメータ．</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="etc-grub-d">
+<h2>/etc/grub.d/<a class="headerlink" href="#etc-grub-d" title="Permalink to this headline">¶</a></h2>
+<p>「README」，「.dpkg-」以外の実行権限のあるファイルが対象．
+これらは/etc/default/grubの設定に従った内容を出力するので，
+基本的にこのファイルも編集しない．どうしてもの場合のみ編集する．</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kernel_packet.html" class="btn btn-neutral float-left" title="linuxのパケットの送受信について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
