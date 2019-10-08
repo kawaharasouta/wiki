@@ -114,6 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#etc-grub-d">/etc/grub.d/</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#os">OSが起動した後どうなってるのって話</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -288,6 +289,12 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 これらは/etc/default/grubの設定に従った内容を出力するので，
 基本的にこのファイルも編集しない．どうしてもの場合のみ編集する．</p>
 </div>
+</div>
+<div class="section" id="os">
+<h1>OSが起動した後どうなってるのって話<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
+<p>OSが起動した後，まずinitの為のソフトウェアを走らせようとどこかのパスのソフトウェアを走らせる．(ゆたかさんの本にパス書いてあったはずだからそれ見て書く
+これが古いubuntuだとUpstart?だったり，1604くらいから?はsystemdだったりする．</p>
+<p>あとはまだ書くのめんどいからここ参照(<a class="reference external" href="http://equj65.net/tech/systemd-boot/">http://equj65.net/tech/systemd-boot/</a>)</p>
 </div>
 
 
