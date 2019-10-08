@@ -113,6 +113,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#add-nic">add nic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sr-iov">SR-IOV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 </ul>
@@ -131,6 +132,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -147,6 +149,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
             
@@ -315,7 +322,8 @@ $ sudo virsh undefine [old domain]
 <div class="section" id="linux-bridge">
 <h3>Linux bridge<a class="headerlink" href="#linux-bridge" title="Permalink to this headline">¶</a></h3>
 <p>ブリッジ作成してそこに物理インタフェースぶっこむだけ.
-インタフェースとブリッジのリンク上げ忘れよくするから注意.</p>
+インタフェースとブリッジのリンク上げ忘れよくするから注意.
+なんか知らないけどグローバルに向けられない．</p>
 </div>
 <div class="section" id="ovs">
 <h3>ovs<a class="headerlink" href="#ovs" title="Permalink to this headline">¶</a></h3>
@@ -363,7 +371,7 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 <span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>ovsの場合</p>
+<p>ブリッジがovsの場合</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;ovs-sw&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
@@ -371,6 +379,15 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 <span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="sr-iov">
+<h2>SR-IOV<a class="headerlink" href="#sr-iov" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
++ GRUB_CMDLINE_LINUX=&quot;intel_iommu=on&quot;
+$ sudo update-grub2
+</pre></div>
+</div>
+<p>wakarann</p>
 </div>
 <div class="section" id="ubuntu-image-download">
 <h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="Permalink to this headline">¶</a></h2>
