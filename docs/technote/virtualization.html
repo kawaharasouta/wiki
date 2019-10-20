@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>仮想環境に関する内容 &mdash; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#os">OSが起動した後どうなってるのって話</a></li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>仮想環境に関する内容</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/technote/virtualization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>仮想環境に関する内容<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>※ここでの話は基本的にKVM/QEMUの話が前提．そうでない場合は注釈をつける．※</p>
+<div class="section" id="id2">
+<h2>ハイパーバイザに関して<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>そのうちハイパーバイザに関するVMin/exitとかnonrootとかintel-VTとかそこらへんのことを書くけど今は書いてない</p>
+</div>
+<div class="section" id="paravirtualization-virtio">
+<h2>準仮想化(paravirtualization)とvirtioに関して<a class="headerlink" href="#paravirtualization-virtio" title="Permalink to this headline">¶</a></h2>
+<p>すでに述べた(ことになっている)通り，通常の仮想化の際はハードウェアに対するIOは全てハードウェアのシミュレーションが行われる．
+これにより，従来のドライバをそのまま使用することができるため，可用性?を担保できる．このような物を完全仮想化とかいう．
+ところでこのハードウェアをエミュレートする方式は，ハードウェア操作のたびにVMexitが発生してしまうため，効率的ではない．
+そこで，エミュレーションによる性能低下を図るものが準仮想化(paravirtualization)であり，そのフレームワークがvirtioである．</p>
+<div class="section" id="id3">
+<h3>完全仮想化が遅い理由<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>ハードウェア操作はその主たる部分がレジスタ操作である．仮想環境でもそれは同じであり，ハードウェア操作の際には
+数回のレジスタ操作が行われる．
+また，ハードウェアをエミュレーションするとは，ハードウェアの持つべきレジスタ群を持ちそれらの動作に関する定義を持つことである．
+ところで，ハードウェアのエミュレーションはQEMUによって行われる．QEMUはホストOS上の(ユーザ)プロセスである．
+ホストOSがハードウェア操作を行う場合，ホストのメモリ空間にアクセスすることになるため，
+VMexitしてハイパーバイザにハードウェアレジスタアクセスをエミュレートしてもらう必要があり，
+エミュレートが終わるとVMenterされ動作がゲストOSに帰ってくる．
+この一連の動作は仮想環境でのみ起こる操作であるため，実ハードウェアとの性能差が出ます．</p>
+<div class="section" id="vmx-non-root-modevmx-root-mode">
+<h4>VMX non-root mode・VMX root mode間のモード遷移にかかるコスト<a class="headerlink" href="#vmx-non-root-modevmx-root-mode" title="Permalink to this headline">¶</a></h4>
+<p>ハードウェアレジスタアクセス時のVMExitとゲスト再開時のVMEntryでは，
+それぞれVMX non-root modeとVMX root modeの間でモード遷移が発生します．
+この遷移のコストはCPUの進化に伴い小さくなってきているものの，VMExit・VMEntryにそれぞれ1000サイクルほど消費します．</p>
+</div>
+<div class="section" id="id4">
+<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>多くの場合，ハイパーバイザのデバイスエミュレータはユーザプロセス上で動作しています．
+このため，ハードウェアレジスタアクセスをエミュレートするにはカーネルモードからユーザモードへ遷移し，
+エミュレーションを行ってからカーネルモード へ戻ってくる必要があります．</p>
+<p>また，ユーザプロセスはプロセススケジューラが適切と判断したタイミングで実行されるため，
+VMExit直後にデバイスエミュレータのプロセスが実行される保証はありません．</p>
+<p>同様に，ゲスト再開のVMEntryについてもデバイスエミュレーション終了直後に行われる保証はなく，
+スケジューリング待ちになる可能性もあります．</p>
+<p>また，たいていの完全仮想化デバイスでは一度のI/Oに複数回レジスタアクセスを行う必要があります
+(たとえば，あるNICの受信処理では5〜6回のレジスタアクセスが必要になります)．
+レジスタアクセスを行うたびに，上述の処理が発生し，大きなコストがかかります．
+高速なI/Oが求められるデバイスの場合には，ここが性能上のボトルネックになります．</p>
+<p>(ハイパーバイザの作り方～ちゃんと理解する仮想化技術～ 第１１回 virtioによる準仮想化デバイス
+その１「virtioの概要とVirtio PCI」より引用)</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

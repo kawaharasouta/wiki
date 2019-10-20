@@ -32,7 +32,7 @@ wiki
   technote/interrupt
   technote/kernel_packet
   technote/boot
-
+  technote/virtualization
 
 .. toctree::
   :maxdepth: 1
