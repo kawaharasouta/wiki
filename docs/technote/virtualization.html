@@ -44,7 +44,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="prev" title="ブートローダについてのメモ" href="boot.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,12 +104,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html">ブートローダについてのメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#os">OSが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">仮想環境に関する内容</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ハイパーバイザに関して</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#paravirtualization-virtio">準仮想化(paravirtualization)とvirtioに関して</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">完全仮想化が遅い理由</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vmx-non-root-modevmx-root-mode">VMX non-root mode・VMX root mode間のモード遷移にかかるコスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">デバイスエミュレーションの呼び出しにかかるコスト</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#virtio">virtioの概要</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -205,7 +220,8 @@
 <p>すでに述べた(ことになっている)通り，通常の仮想化の際はハードウェアに対するIOは全てハードウェアのシミュレーションが行われる．
 これにより，従来のドライバをそのまま使用することができるため，可用性?を担保できる．このような物を完全仮想化とかいう．
 ところでこのハードウェアをエミュレートする方式は，ハードウェア操作のたびにVMexitが発生してしまうため，効率的ではない．
-そこで，エミュレーションによる性能低下を図るものが準仮想化(paravirtualization)であり，そのフレームワークがvirtioである．</p>
+そこで，エミュレーションによる性能低下を図るものが準仮想化(paravirtualization)であり，
+その(Linuxでの)フレームワークがvirtioである．</p>
 <div class="section" id="id3">
 <h3>完全仮想化が遅い理由<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>ハードウェア操作はその主たる部分がレジスタ操作である．仮想環境でもそれは同じであり，ハードウェア操作の際には
@@ -216,6 +232,7 @@
 VMexitしてハイパーバイザにハードウェアレジスタアクセスをエミュレートしてもらう必要があり，
 エミュレートが終わるとVMenterされ動作がゲストOSに帰ってくる．
 この一連の動作は仮想環境でのみ起こる操作であるため，実ハードウェアとの性能差が出ます．</p>
+<p>(以下，一般的なハイパーバイザ環境でのIO性能低下についての引用)</p>
 <div class="section" id="vmx-non-root-modevmx-root-mode">
 <h4>VMX non-root mode・VMX root mode間のモード遷移にかかるコスト<a class="headerlink" href="#vmx-non-root-modevmx-root-mode" title="Permalink to this headline">¶</a></h4>
 <p>ハードウェアレジスタアクセス時のVMExitとゲスト再開時のVMEntryでは，
@@ -235,10 +252,13 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 (たとえば，あるNICの受信処理では5〜6回のレジスタアクセスが必要になります)．
 レジスタアクセスを行うたびに，上述の処理が発生し，大きなコストがかかります．
 高速なI/Oが求められるデバイスの場合には，ここが性能上のボトルネックになります．</p>
-<p>(ハイパーバイザの作り方～ちゃんと理解する仮想化技術～ 第１１回 virtioによる準仮想化デバイス
+<p>(以上，ハイパーバイザの作り方～ちゃんと理解する仮想化技術～ 第１１回 virtioによる準仮想化デバイス
 その１「virtioの概要とVirtio PCI」より引用)</p>
 </div>
 </div>
+</div>
+<div class="section" id="virtio">
+<h2>virtioの概要<a class="headerlink" href="#virtio" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -247,6 +267,15 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="boot.html" class="btn btn-neutral float-left" title="ブートローダについてのメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
