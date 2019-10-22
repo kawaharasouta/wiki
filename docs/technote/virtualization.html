@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="next" title="CPU関連について" href="cpu.html" />
     <link rel="prev" title="ブートローダについてのメモ" href="boot.html" /> 
 </head>
 
@@ -121,9 +121,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#virtio">virtioの概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vhost">vhostとは</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#memo">memo</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連について</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -261,11 +263,22 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 <div class="section" id="virtio">
 <h2>virtioの概要<a class="headerlink" href="#virtio" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="vhost">
+<h2>vhostとは<a class="headerlink" href="#vhost" title="Permalink to this headline">¶</a></h2>
+<p>この文章はかなりの不確実な成分を含んでいるのであとで必ず書き直す．
+virtioと並んでvhostという準仮想ドライバがある．
+virtioはバックエンドにQEMUを用いるが，vhostはカーネル空間にバックエンドが存在する．
+そのため，コンテキストスイッチが少ない．
+とりあえず今の所QEMUを使わないvirtioという風に認識している．</p>
+</div>
 <div class="section" id="memo">
 <h2>memo<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>virtioのゲスト側の実装はVMM側の実装とは別れている．
 ゲストマシンはvirtioのドライバを持っていてかつVMM側でvirtioのバックエンドドライバが動いている必要がある．</li>
+<li>昔していた誤解
+virtioは準仮想「ネットワークインタフェース」のことだと思っていたが，そうではなく「準仮想ドライバのフレームワーク」．
+それはネットワークインタフェース実装はvirtio-net</li>
 </ul>
 </div>
 </div>
@@ -278,7 +291,7 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cpu.html" class="btn btn-neutral float-right" title="CPU関連について" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="boot.html" class="btn btn-neutral float-left" title="ブートローダについてのメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
