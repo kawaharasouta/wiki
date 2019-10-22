@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="next" title="TRex" href="trex.html" />
     <link rel="prev" title="XDP" href="xdp.html" /> 
 </head>
 
@@ -102,16 +102,27 @@
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Open vSwitch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-type">command type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#operation">operation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#kvmvmovs">kvmのVMをovsに接続</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#ovs-dpdk">OvS DPDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirement">requirement</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#os">OSが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">仮想環境に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連について</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -122,11 +133,17 @@
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
             
@@ -199,6 +216,20 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="command-type">
+<h2>command type<a class="headerlink" href="#command-type" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ovs-vsctl
+Used for configuring the ovs-vswitchd configuration database (known as ovs-db)</li>
+<li>ovs-ofctl
+A command line tool for monitoring and administering OpenFlow switches</li>
+<li>ovs-dpctl
+Used to administer Open vSwitch datapaths</li>
+<li>ovs−appctl
+Used for querying and controlling Open vSwitch daemons</li>
+</ul>
+<p>参考: <a class="reference external" href="https://komeiy.hatenablog.com/entry/2015/06/26/233746">https://komeiy.hatenablog.com/entry/2015/06/26/233746</a> クソほど有能な資料</p>
+</div>
 <div class="section" id="operation">
 <h2>operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ovs-vsctl show
@@ -212,10 +243,46 @@ $ sudo ovs-vsctl del-port [switch] [port]
 <div class="section" id="kvmvmovs">
 <h2>kvmのVMをovsに接続<a class="headerlink" href="#kvmvmovs" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;ovs-sw&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;[ovs sw name]&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">virtualport</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;openvswitch&#39;</span><span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">interface</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ovs-dpdk">
+<h1>OvS DPDK<a class="headerlink" href="#ovs-dpdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>install<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install openvswitch-switch-dpdk
+$ sudo update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/ovs-vswitchd-dpdk      # dpdk対応verに切り替えてるだけ
+</pre></div>
+</div>
+</div>
+<div class="section" id="requirement">
+<h2>requirement<a class="headerlink" href="#requirement" title="Permalink to this headline">¶</a></h2>
+<p>DPDK:
+OVS:
+QEMU:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo mkdir -p /usr/local/openvswitch/       # ソケットを配置しておくディレクトリ
+$ sudo touch /usr/local/openvswitch/dpdkvhostclient0
+$ sudo touch /usr/local/openvswitch/dpdkvhostclient1
+$ sudo ovs-vsctl add-br [bridge name] -- set bridge [bridge name] datapath_type=netdev
+$ sudo ovs-vsctl add-port [bridge name] dpdkvhostclient0 \
+  -- set Interface dpdkvhostclient0 type=dpdkvhostuserclient \
+     options:vhost-server-path=/usr/local/openvswitch/dpdkvhostclient0
+$ sudo ovs-vsctl add-port [bridge name] dpdkvhostclient1 \
+  -- set Interface dpdkvhostclient1 type=dpdkvhostuserclient \
+     options:vhost-server-path=/usr/local/openvswitch/dpdkvhostclient1
+$
+$ sudo virsh edit [VM]
+  &lt;interface type=&#39;vhostuser&#39;&gt;
+    &lt;source type=&#39;unix&#39;
+      path=&#39;/usr/local/openvswitch/dpdkvhostclient0&#39;
+      mode=&#39;server&#39;/&gt;
+    &lt;model type=&#39;virtio&#39;/&gt;
+  &lt;/interface&gt;
 </pre></div>
 </div>
 </div>
@@ -229,7 +296,7 @@ $ sudo ovs-vsctl del-port [switch] [port]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="trex.html" class="btn btn-neutral float-right" title="TRex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="xdp.html" class="btn btn-neutral float-left" title="XDP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="next" title="仮想環境に関する内容" href="virtualization.html" />
     <link rel="prev" title="linuxのパケットの送受信について" href="kernel_packet.html" /> 
 </head>
 
@@ -115,6 +115,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#os">OSが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualization.html">仮想環境に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連について</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -292,8 +294,10 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 </div>
 <div class="section" id="os">
 <h1>OSが起動した後どうなってるのって話<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
-<p>OSが起動した後，まずinitの為のソフトウェアを走らせようとどこかのパスのソフトウェアを走らせる．(ゆたかさんの本にパス書いてあったはずだからそれ見て書く
-これが古いubuntuだとUpstart?だったり，1604くらいから?はsystemdだったりする．</p>
+<p>OSが起動した後，まず初期化の為のソフトウェア(ブーとプロセス)を走らせる．
+これが古いubuntuだとinit/Upstart?だったり，1604くらいから?はsystemdだったりする．
+ちなみに/sbin/init(これがinit)が一番最初に走るらしいのだが，これはinit時代の名残のようである．
+今は/sbin/initはsystemd(/lib/systemd/systemdとか)へのシンボリックリンクになっている</p>
 <p>あとはまだ書くのめんどいからここ参照(<a class="reference external" href="http://equj65.net/tech/systemd-boot/">http://equj65.net/tech/systemd-boot/</a>)</p>
 </div>
 
@@ -305,7 +309,7 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="virtualization.html" class="btn btn-neutral float-right" title="仮想環境に関する内容" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="kernel_packet.html" class="btn btn-neutral float-left" title="linuxのパケットの送受信について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
