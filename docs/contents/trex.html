@@ -101,6 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">TRex</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#iruyatu">iruyatu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hardware-environment">hardware environment</a></li>
@@ -114,6 +115,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">仮想環境に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連について</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -124,11 +132,17 @@
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
             
@@ -246,7 +260,7 @@ $ sudo tar -xzvf latest
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./t-rex-64 -f ./cap2/dns.yaml -d 10
 </pre></div>
 </div>
-<p>※実行した後はネットワークスタックからインタフェースが見えなくなる※</p>
+<p>※いつものDPDKのやつで実行した後はネットワークスタックからインタフェースが見えなくなる※</p>
 </div>
 </div>
 

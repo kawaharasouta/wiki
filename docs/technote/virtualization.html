@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CPU関連について" href="cpu.html" />
+    <link rel="next" title="related computer science" href="cs.html" />
     <link rel="prev" title="ブートローダについてのメモ" href="boot.html" /> 
 </head>
 
@@ -101,6 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
@@ -109,7 +110,10 @@
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html">ブートローダについてのメモ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#os">OSが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">仮想環境に関する内容</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">ハイパーバイザに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#paravirtualization-virtio">準仮想化(paravirtualization)とvirtioに関して</a><ul>
@@ -129,7 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#memo">memo</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -221,6 +225,18 @@
 <div class="section" id="id2">
 <h2>ハイパーバイザに関して<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>そのうちハイパーバイザに関するVMin/exitとかnonrootとかintel-VTとかそこらへんのことを書くけど今は書いてない</p>
+<p>ちなみに，VMCSはVMの数だけ用意されるとshuu先生の資料にあったが，あれはおそらく間違いで，vcpuの数だけ存在するはずだ．</p>
+<p>intel-VTはVMX-rootモードとVMX-non-rootモードを追加するもの．それはそうなのだが，どうやら別の見方があるようだ．
+一部の見解では，「リングプロテクションにring0よりも上の特権階層を加えるもの」という見解があるらしい．
+これは非常に大きなポイントである．
+今までは，</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/before.png"><img alt="../_images/before.png" src="../_images/before.png" style="width: 346.40000000000003px; height: 278.8px;" /></a>
+</div>
+<p>だと思ってたのが実は</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/after.png"><img alt="../_images/after.png" src="../_images/after.png" style="width: 549.6px; height: 434.8px;" /></a>
+</div>
 </div>
 <div class="section" id="paravirtualization-virtio">
 <h2>準仮想化(paravirtualization)とvirtioに関して<a class="headerlink" href="#paravirtualization-virtio" title="Permalink to this headline">¶</a></h2>
@@ -318,7 +334,7 @@ virtioは準仮想「ネットワークインタフェース」のことだと�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cpu.html" class="btn btn-neutral float-right" title="CPU関連について" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="boot.html" class="btn btn-neutral float-left" title="ブートローダについてのメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

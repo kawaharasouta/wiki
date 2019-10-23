@@ -215,7 +215,8 @@
 一般的にハードディスクの先頭にある「MBR(マスターブートレコード)」
 という領域に記録されている．
 PCの電源を投入するとBIOSが起動され，BIOSがブートローダを呼び出し，
-その後ブートローダがカーネル(OS)を呼び出す．</p>
+その後ブートローダがカーネル(OS)を呼び出す．
+どうやらUEFIではMBRとかのところらへんが少し違うらしいがよくわからん．</p>
 <p>僕の理解では，BIOS(UEFI)はファームウェアだからギリギリハードウェアの領域で，
 ブートローダからソフトウェアという印象．</p>
 <p>おそらく今の主流はGRUB2でubuntuは早々にこれを導入していた．
@@ -359,6 +360,13 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 </div>
 <div class="section" id="boot">
 <h1>bootに関するまとめ<a class="headerlink" href="#boot" title="Permalink to this headline">¶</a></h1>
+<p>ちなみにこれはUEFIの場合はおそらく間違っているので修正が必要．</p>
+<p>※参考※<a class="reference external" href="https://eng-entrance.com/linux-bootloader">https://eng-entrance.com/linux-bootloader</a>
+UEFIの場合はUEFI自体が一つのシステムとして形になっており、
+FAT系のパーティションを自力で検出、のちにGPTをロードしOSを読み出してゆくというながれになる。
+昨今のGRUBであればUEFI環境でも問題なく稼動する。
+しかし、もし何か事情があって古いブートローダ、例えば古典的なLILOを使用しなければならないときはUEFIをレガシーなモードで動作させると、
+従来のBIOSとMBRの組み合わせと同じ挙動を再現するようになっている。</p>
 <ol class="arabic simple">
 <li>電源が入る．</li>
 <li>BIOS(UEFI)が起動し，ハードウェアが初期化される．</li>

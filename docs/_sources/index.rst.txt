@@ -33,7 +33,7 @@ wiki
   technote/kernel_packet
   technote/boot
   technote/virtualization
-  technote/cpu
+  technote/cs
 
 .. toctree::
   :maxdepth: 1

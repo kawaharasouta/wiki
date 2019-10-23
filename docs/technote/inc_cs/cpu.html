@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CPU関連について &mdash; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="カーネル関連について" href="kernel.html" />
+    <link rel="prev" title="related computer science" href="../cs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/trex.html">TRex</a></li>
+</ul>
+<p class="caption"><span class="caption-text">technote:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization.html">仮想環境に関する内容</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../cs.html">related computer science</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CPU関連について</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ring">ringプロテクション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cache">cacheについて</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instruction-cache-i-cache">instruction cache(i-cache)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-cache-d-cache">data cache(d-cache)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">カーネル関連について</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/vim.html">vim</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../system_tracing/systemtap.html">systemtap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../test/doc.html#include">include</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../cs.html">related computer science</a> &raquo;</li>
+        
+      <li>CPU関連について</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/technote/inc_cs/cpu.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cpu">
+<h1>CPU関連について<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ring">
+<h2>ringプロテクション<a class="headerlink" href="#ring" title="Permalink to this headline">¶</a></h2>
+<p>システムのリソースを保護するための，階層構造特権レベルアーキテクチャのこと</p>
+<div class="figure align-left" id="id1">
+<a class="reference internal image-reference" href="../../_images/Priv_rings.svg"><img alt="../../_images/Priv_rings.svg" src="../../_images/Priv_rings.svg" /></a>
+<p class="caption"><span class="caption-text">リングプロテクション(<a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2f/Priv_rings.svg">https://upload.wikimedia.org/wikipedia/commons/2/2f/Priv_rings.svg</a>)</span></p>
+</div>
+<p>図のように(概念上は?)4つのレベルが存在するが，
+使用するかはOSによるし，今日の一般的なOSは2つのレベルしか使用していない．Linux・Windowsもそう．
+また，そのプロセッサが幾つのレベルまで使えるかはおそらくハードウェア依存なんだと思う．
+ほとんどの場合はそれを使い切っていない．
+OSがソフトウェアレベルで用意する場合ももちろんあるようだ．</p>
+<p>Linuxではring0をカーネル空間，ring3をユーザ空間として使っているようだ．</p>
+<p>また，CPUのモードでスーパーバイザモードというものあって，
+これを使ってLinuxはカーネルとユーザを分けているといった記述もある．
+2つは同じものなのか，違うものなのか，違うとしたら並列に存在するものなのか．
+はたまたringプロテクションはモードなのかどうか．
+これらの話は違うアーキテクチャの話なのか．
+いまいちよくわからないところである．</p>
+</div>
+<div class="section" id="cache">
+<h2>cacheについて<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="instruction-cache-i-cache">
+<h3>instruction cache(i-cache)<a class="headerlink" href="#instruction-cache-i-cache" title="Permalink to this headline">¶</a></h3>
+<p>キャッシュメモリの中で，プログラムを対象とするもの．
+d-cache(後述)と違ってデータの更新がないので構造が単純らしい．</p>
+</div>
+<div class="section" id="data-cache-d-cache">
+<h3>data cache(d-cache)<a class="headerlink" href="#data-cache-d-cache" title="Permalink to this headline">¶</a></h3>
+<p>キャッシュメモリの中で，プログラムを対象とするメモリ．
+データは更新されることがあり，メモリへの反映などがあるため構造が複雑らしい．</p>
+<div class="section" id="memo">
+<h4>memo<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h4>
+<p><strong>プログラマーが知っておくべき「PC内部の通信速度」</strong></p>
+<p><a class="reference external" href="http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html">http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html</a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kernel.html" class="btn btn-neutral float-right" title="カーネル関連について" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../cs.html" class="btn btn-neutral float-left" title="related computer science" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
