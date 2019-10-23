@@ -101,6 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 </ul>
 <p class="caption"><span class="caption-text">technote:</span></p>
@@ -108,13 +109,19 @@
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ブートローダについてのメモ</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#grub2">GRUB2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">ファイル構成と設定方法について</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#etc-default-grub">/etc/default/grub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#etc-grub-d">/etc/grub.d/</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#os">OSが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#systemd">systemd</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#systemctl">systemctlコマンド</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">仮想環境に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連について</a></li>
 </ul>
@@ -211,8 +218,11 @@ PCの電源を投入するとBIOSが起動され，BIOSがブートローダを�
 その後ブートローダがカーネル(OS)を呼び出す．</p>
 <p>僕の理解では，BIOS(UEFI)はファームウェアだからギリギリハードウェアの領域で，
 ブートローダからソフトウェアという印象．</p>
-<p>おそらく今の主流はGRUB2でubuntuは早々これを導入していた．
+<p>おそらく今の主流はGRUB2でubuntuは早々にこれを導入していた．
 他のデストリはしばらく従来の「GRUB Legacy」を使っていた．</p>
+</div>
+<div class="section" id="grub2">
+<h1>GRUB2<a class="headerlink" href="#grub2" title="Permalink to this headline">¶</a></h1>
 <p>以下，GRUB2についてのメモ</p>
 <div class="section" id="id2">
 <h2>ファイル構成と設定方法について<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -292,13 +302,72 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 基本的にこのファイルも編集しない．どうしてもの場合のみ編集する．</p>
 </div>
 </div>
-<div class="section" id="os">
-<h1>OSが起動した後どうなってるのって話<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
-<p>OSが起動した後，まず初期化の為のソフトウェア(ブーとプロセス)を走らせる．
+<div class="section" id="id3">
+<h1>カーネルが起動した後どうなってるのって話<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>カーネルが起動した後，まず初期化の為のソフトウェア(ブートプロセス)を走らせる．
 これが古いubuntuだとinit/Upstart?だったり，1604くらいから?はsystemdだったりする．
-ちなみに/sbin/init(これがinit)が一番最初に走るらしいのだが，これはinit時代の名残のようである．
-今は/sbin/initはsystemd(/lib/systemd/systemdとか)へのシンボリックリンクになっている</p>
+ちなみに/sbin/initが一番最初に走るらしいのだが，これはinit時代の名残なのかLinuxのinitプロセスとかいう意味なのかそういうのは知らない．．
+今は/sbin/initはsystemd(/lib/systemd/systemdとか)へのシンボリックリンクになっているため，systemdが動くことになる．</p>
 <p>あとはまだ書くのめんどいからここ参照(<a class="reference external" href="http://equj65.net/tech/systemd-boot/">http://equj65.net/tech/systemd-boot/</a>)</p>
+</div>
+<div class="section" id="systemd">
+<h1>systemd<a class="headerlink" href="#systemd" title="Permalink to this headline">¶</a></h1>
+<p>うおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+詳細はまたこんどだなああああああああああああ</p>
+<div class="section" id="systemctl">
+<h2>systemctlコマンド<a class="headerlink" href="#systemctl" title="Permalink to this headline">¶</a></h2>
+<p><strong>SYNOPSIS</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemctl [OPTIONS...] COMMAND [NAME...]
+</pre></div>
+</div>
+<p><strong>OPTIONS</strong></p>
+<blockquote>
+<div>めんどいあとでかく</div></blockquote>
+<p><strong>COMMAND</strong></p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">COMMAND</th>
+<th class="head">意味</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>start</td>
+<td>Unitを開始</td>
+</tr>
+<tr class="row-odd"><td>stop</td>
+<td>Unitを停止</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>ステータスを見る</td>
+</tr>
+<tr class="row-odd"><td>reload</td>
+<td>設定ファイルをリロード</td>
+</tr>
+<tr class="row-even"><td>restart</td>
+<td>リスタート(対象が停止してたら起動)</td>
+</tr>
+<tr class="row-odd"><td>kill</td>
+<td>対象のUnitに対してシグナルを送る．デフォルトはSIGTERM(killコマンドで出るシグナル)． --signal= で指定可能．</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="boot">
+<h1>bootに関するまとめ<a class="headerlink" href="#boot" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>電源が入る．</li>
+<li>BIOS(UEFI)が起動し，ハードウェアが初期化される．</li>
+<li>MBRからブートローダが読み込まれ起動し，カーネルの読み込み・起動が行われる．</li>
+<li>モジュールのロード後，/sbin/init(systemd)が起動する．</li>
+<li>default.targetというUnitが処理される．</li>
+<li>システムの用途に適した(登録された?)ターゲットが処理される．</li>
+<li>ログイン受付開始</li>
+</ol>
 </div>
 
 

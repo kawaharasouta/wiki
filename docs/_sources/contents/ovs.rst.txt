@@ -62,6 +62,7 @@ install
 
   $ sudo apt install openvswitch-switch-dpdk
   $ sudo update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/ovs-vswitchd-dpdk      # dpdk対応verに切り替えてるだけ
+  ※/usr/sbin/ovs-vswitchd      #戻す時こっち
 
 requirement 
 ============
