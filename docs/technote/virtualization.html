@@ -118,13 +118,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#id2">仮想化の問題点</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#xen">Xenの準仮想化について</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cpu">CPUの仮想化支援</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">自分のしばらく悩んでいたこと</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">ハイパーバイザに関して</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">ハイパーバイザに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#paravirtualization-virtio">準仮想化(paravirtualization)とvirtioに関して</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">完全仮想化が遅い理由</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">完全仮想化が遅い理由</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#vmx-non-root-modevmx-root-mode">VMX non-root mode・VMX root mode間のモード遷移にかかるコスト</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">デバイスエミュレーションの呼び出しにかかるコスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">デバイスエミュレーションの呼び出しにかかるコスト</a></li>
 </ul>
 </li>
 </ul>
@@ -269,11 +270,29 @@ Xenは準仮想化，すなわち，ゲストOSに一部改変を加えること
 </div>
 <div class="section" id="cpu">
 <h3>CPUの仮想化支援<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
-</div>
+<p>Intel-VTとかの話をするんだけど今時間ないから後でするね．
+ring -1 なのかなあ．</p>
 </div>
 <div class="section" id="id3">
-<h2>ハイパーバイザに関して<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>そのうちハイパーバイザに関するVMin/exitとかnonrootとかintel-VTとかそこらへんのことを書くけど今は書いてない</p>
+<h3>自分のしばらく悩んでいたこと<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>CPUを完全仮想化した場合はなんとなく仮想マシンの動作の主体みたいなものがわかる．
+当然ユーザプロセスなんだからホストでプロセスとして処理されてるんだろうなって感じ．
+じゃあ，仮想化支援使った場合どうなんだろうって話．
+実プロセッサにinstructionがオフロードされるのはまあいいんだけど，動作の主体みたいなものがわからなくて混乱した．</p>
+<p>じゃあ例えば，ゲストが特になんのプロセスも持ってなかった時，(普通はなんらかのデーモンが動いてるはずだけど今は考えない．後で考える)
+この時は特にプロセスは何も動いてないから
+当然vCPUも特になんのinstructionも実行しないから実CPUでゲストのinstructionが発生してる訳も無い．
+この状態から何かあった時，何かあった時っていうのはこういう場合は必ずハードウェアからの入出力が伴ってるはずなので
+kvmから割り込みがVMに怒ってVMenterしてるはずだよね．だから動作の主体というか発端はkvmになるわけだ．
+そのkvmプロセスからVMenterしたinstructionが実プロセッサ上で実行されているとこういうわけな気がしてる．
+デーモンの時も簡単で，これが何かの操作で起動した場合は必ずハードウェアからの入出力が伴ってるから↑と一緒．
+起動時のデーモンだったらそもそもの起動時，電源が入ってvcpuが動いてMBRを読み出すくらいのところでVMExitしそうだし，その発端の命令って
+間違いなくkvmが出してそうだからそういうことだよね．</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>ハイパーバイザに関して<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>そのうちハイパーバイザに関するVMenter/exitとかnonrootとかintel-VTとかそこらへんのことを書くけど今は書いてない</p>
 <p>ちなみに，VMCSはVMの数だけ用意されるとshuu先生の資料にあったが，あれはおそらく間違いで，vcpuの数だけ存在するはずだ．</p>
 <p>intel-VTはVMX-rootモードとVMX-non-rootモードを追加するもの．それはそうなのだが，どうやら別の見方があるようだ．
 一部の見解では，「リングプロテクションにring0よりも上の特権階層を加えるもの」という見解があるらしい．
@@ -313,8 +332,8 @@ Xenは準仮想化，すなわち，ゲストOSに一部改変を加えること
 ところでこのハードウェアをエミュレートする方式は，ハードウェア操作のたびにVMexitが発生してしまうため，効率的ではない．
 そこで，エミュレーションによる性能低下を図るものが準仮想化(paravirtualization)であり，
 その(Linuxでの)フレームワークがvirtioである．</p>
-<div class="section" id="id4">
-<h3>完全仮想化が遅い理由<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>完全仮想化が遅い理由<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>ハードウェア操作はその主たる部分がレジスタ操作である．仮想環境でもそれは同じであり，ハードウェア操作の際には
 数回のレジスタ操作が行われる．
 また，ハードウェアをエミュレーションするとは，ハードウェアの持つべきレジスタ群を持ちそれらの動作に関する定義を持つことである．
@@ -330,8 +349,8 @@ VMexitしてハイパーバイザにハードウェアレジスタアクセス�
 それぞれVMX non-root modeとVMX root modeの間でモード遷移が発生します．
 この遷移のコストはCPUの進化に伴い小さくなってきているものの，VMExit・VMEntryにそれぞれ1000サイクルほど消費します．</p>
 </div>
-<div class="section" id="id5">
-<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>多くの場合，ハイパーバイザのデバイスエミュレータはユーザプロセス上で動作しています．
 このため，ハードウェアレジスタアクセスをエミュレートするにはカーネルモードからユーザモードへ遷移し，
 エミュレーションを行ってからカーネルモード へ戻ってくる必要があります．</p>
@@ -368,9 +387,7 @@ vhost-net module enables KVM (QEMU) to offload the servicing of virtio-net devic
 たぶん，vhostはゲストから見るとvirtioとはなんら違いがないんじゃないか．
 ゲストから見たらvirtioって見えてそう．多分virtio_pciが見えてるだろうし．
 ↑これはおそらく正しくて今までのvirtioのメカニズムが使われている．</p>
-<p>vhostは、ゲストネットワークトラフィックをカーネル側から直接TUNデバイスに直接渡すことにより、上記のプロセスを加速できます。 このモデルでは、QEMUはvirtqueueの直接制御をカーネルドライバーに渡します。
-とかって書いてある資料あったけど，これだとQEMUのパスは一応通ってそうなんだけどどうなのこれ．
-QEMUのパス通ってるんだったらコンテキスト一応切り替わるからダメな気がするんだけど．</p>
+<p>vhostは、ゲストネットワークトラフィックをカーネル側から直接TUNデバイスに直接渡すことにより、上記のプロセスを加速できます。 このモデルでは、QEMUはvirtqueueの直接制御をカーネルドライバーに渡します。</p>
 </div>
 <div class="section" id="vhost-user">
 <h2>vhost-user<a class="headerlink" href="#vhost-user" title="Permalink to this headline">¶</a></h2>
@@ -387,16 +404,15 @@ serverは別にいてDPDKアプライアンスはclientとしてそれ(serverは
 <div class="section" id="virtio-vhost-user">
 <h2>virtio-vhost-user<a class="headerlink" href="#virtio-vhost-user" title="Permalink to this headline">¶</a></h2>
 <p>なんか，VM間の通信に強いようなやつっぽくて，
-一つのゲストに対してvhostのバックエンドをオフロードしてるっぽくて，VM-VMの通信がホストを介さないでできているような感じのものっぽい．</p>
+一つのゲストに対してvhostのバックエンドをオフロードしてるっぽくて，VM-VMの通信がホストを介さないでできているような感じのものっぽい．
+<a class="reference external" href="https://wiki.qemu.org/Features/VirtioVhostUser">https://wiki.qemu.org/Features/VirtioVhostUser</a></p>
 </div>
 <div class="section" id="memo">
 <h2>memo<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>virtioのゲスト側の実装はVMM側の実装とは別れている．
-ゲストマシンはvirtioのドライバを持っていてかつVMM側でvirtioのバックエンドドライバが動いている必要がある．</li>
-<li>昔していた誤解
-virtioは準仮想「ネットワークインタフェース」のことだと思っていたが，そうではなく「準仮想ドライバのフレームワーク」．
-それはネットワークインタフェース実装はvirtio-net</li>
+ゲストマシンはvirtioのドライバを持っていてかつVMM側でvirtioのバックエンドドライバが動いている必要がある．
+なんかvritioだのvhostうんたらだのあるけどゲストはともかくvirtioだと思っておけばいいよってやつ．</li>
 </ul>
 </div>
 </div>
