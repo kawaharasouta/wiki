@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>仮想環境に関する内容 &mdash; wiki  documentation</title>
+  <title>ハイパーバイザ仮想化に関する内容 &mdash; wiki  documentation</title>
   
 
   
@@ -114,12 +114,17 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">仮想環境に関する内容</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">ハイパーバイザに関して</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ハイパーバイザ仮想化に関する内容</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">仮想化の問題点</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xen">Xenの準仮想化について</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpu">CPUの仮想化支援</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">ハイパーバイザに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#paravirtualization-virtio">準仮想化(paravirtualization)とvirtioに関して</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">完全仮想化が遅い理由</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">完全仮想化が遅い理由</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#vmx-non-root-modevmx-root-mode">VMX non-root mode・VMX root mode間のモード遷移にかかるコスト</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">デバイスエミュレーションの呼び出しにかかるコスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">デバイスエミュレーションの呼び出しにかかるコスト</a></li>
 </ul>
 </li>
 </ul>
@@ -200,7 +205,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>仮想環境に関する内容</li>
+      <li>ハイパーバイザ仮想化に関する内容</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -220,10 +225,53 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>仮想環境に関する内容<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>ハイパーバイザ仮想化に関する内容<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>※ここでの話は基本的にKVM/QEMUの話が前提．そうでない場合は注釈をつける．※</p>
 <div class="section" id="id2">
-<h2>ハイパーバイザに関して<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>仮想化の問題点<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>現代のマシンの3大コンポーネントは CPU・メモリ・(データ/デバイス)IO の3つである．
+仮想マシンを動かすということは，上記の3つをなんらかの方法により動いているように見せるというものである．
+IOはハードウェアエミュレータで取り合えず仮想化ができそうだ．
+メモリはCPUがどうにかなればCPUの保護機能でどうにかしてくれそうだし，そうでなくてもOSが持ってるメモリプロテクション機能とかあるし
+なんかよろしくやってくれそうな感じがする．
+となるとCPUである．
+とりあえず動作すればいいだけならハードウェアエミュレータでCPUをエミュレートすれば良いのでなんだかこれも達成できそうであるが，
+ここでCPUをエミュレートすることをもうちょっと掘り下げて考える．
+仮想マシンのinstructionはあるユーザランドのエミュレータで実行されようとする．
+それはエミュレータによってユーザランドのプロセスとして処理される．
+それはカーネル空間に入って処理がなされる．
+CPUに~~~~~~
+こう考えると，仮想マシン上ではたった一つのinstructionが，実プロセッサではどれだけ大量のinstructionnに増えていることだろう．
+コンテキストスイッチもあるしリングプロテクションの遷移もあるし，
+本当に実行したいinstructionを実行するのにどれだけの余剰のinstructionが生まれるのだろう．
+こういうわけでパフォーマンスの問題が大きくのしかかることになる．
+完全仮想化には大きなパフォーマンスの犠牲が伴うのである．
+じゃあ至極単純に仮想マシンのinstructionも実プロセッサに丸投げしようと思うとまた違う問題が発生する．
+基本的にOSはリングプロテクションのring0で実行されることになっている．
+これは，実ハードの全てのリソースに対して操作権限を持っているということである．
+これでは，ホストOSや他のゲストOSに対して変更を加えてしまうようなことが起こりえない．
+よってこの方法はダメ．</p>
+<p>ではこの問題をどうやって解決するか．
+一つの回答が準仮想化である．
+さらにもう一つの回答がCPUの仮想化支援である．
+それについて説明する．</p>
+<div class="section" id="xen">
+<h3>Xenの準仮想化について<a class="headerlink" href="#xen" title="Permalink to this headline">¶</a></h3>
+<p>Xenの仮想化手法について説明する．
+Xenは準仮想化，すなわち，ゲストOSに一部改変を加えることによって仮想化を実現している．
+具体的には，OSが実行されるリングプロテクションの権限を変更することである．
+例えば通常のLinuxでは，カーネル(OS)空間はring0，ユーザ空間はring3で実行されている．
+これをカーネル空間はring1で実行されるように変更を行う．
+この時もちろんハイパーバイザであるXenはring0である．
+これにより他に影響を与えることを防ぐことができる．
+ただしこれはOSに変更を加える必要がある．</p>
+</div>
+<div class="section" id="cpu">
+<h3>CPUの仮想化支援<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>ハイパーバイザに関して<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>そのうちハイパーバイザに関するVMin/exitとかnonrootとかintel-VTとかそこらへんのことを書くけど今は書いてない</p>
 <p>ちなみに，VMCSはVMの数だけ用意されるとshuu先生の資料にあったが，あれはおそらく間違いで，vcpuの数だけ存在するはずだ．</p>
 <p>intel-VTはVMX-rootモードとVMX-non-rootモードを追加するもの．それはそうなのだが，どうやら別の見方があるようだ．
@@ -237,6 +285,25 @@
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/after.png"><img alt="../_images/after.png" src="../_images/after.png" style="width: 549.6px; height: 434.8px;" /></a>
 </div>
+<p>というような風になっている可能性があるということである．
+つまりどういうことかというと，ハイパーバイザとホストカーネル空間は今まで同じ位置だと思ってた
+(なんならハイパーバイザはホストカーネルサブセットだと思ってた)
+のが，ハイパーバイザが一番高い特権レベルに存在することになるということである．
+また，これってリングプロテクションとVMX-root, non-rootは並列に存在するものなのか同じ概念を別に表記してるだけなのにこんがらがってるのか
+そういうのがよくわからん．
+でも普通に考えてHOSTはVMX-rootであるような気がするから上の図は違う気がするんだけど，
+いやていうかこの緑の下の図のリングプロテクションの番号だとゲストOSに変更加わっちゃうからこれは絶対に違う．</p>
+<p>とりあえずshuu先生の</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/shuu-vt.png"><img alt="../_images/shuu-vt.png" src="../_images/shuu-vt.png" style="width: 167.20000000000002px; height: 143.20000000000002px;" /></a>
+</div>
+<p>には途轍もない違和感を感じるようになってしまった．</p>
+<p>色々考えた結果，</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/my-vt.png"><img alt="../_images/my-vt.png" src="../_images/my-vt.png" style="width: 511.20000000000005px; height: 458.0px;" /></a>
+</div>
+<p>とすると，OSにプロテクションの番号の変更もなくなんとなくいい感じになってる気もするんだ．
+もっと調査が必要だ．</p>
 </div>
 <div class="section" id="paravirtualization-virtio">
 <h2>準仮想化(paravirtualization)とvirtioに関して<a class="headerlink" href="#paravirtualization-virtio" title="Permalink to this headline">¶</a></h2>
@@ -245,8 +312,8 @@
 ところでこのハードウェアをエミュレートする方式は，ハードウェア操作のたびにVMexitが発生してしまうため，効率的ではない．
 そこで，エミュレーションによる性能低下を図るものが準仮想化(paravirtualization)であり，
 その(Linuxでの)フレームワークがvirtioである．</p>
-<div class="section" id="id3">
-<h3>完全仮想化が遅い理由<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>完全仮想化が遅い理由<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>ハードウェア操作はその主たる部分がレジスタ操作である．仮想環境でもそれは同じであり，ハードウェア操作の際には
 数回のレジスタ操作が行われる．
 また，ハードウェアをエミュレーションするとは，ハードウェアの持つべきレジスタ群を持ちそれらの動作に関する定義を持つことである．
@@ -262,8 +329,8 @@ VMexitしてハイパーバイザにハードウェアレジスタアクセス�
 それぞれVMX non-root modeとVMX root modeの間でモード遷移が発生します．
 この遷移のコストはCPUの進化に伴い小さくなってきているものの，VMExit・VMEntryにそれぞれ1000サイクルほど消費します．</p>
 </div>
-<div class="section" id="id4">
-<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>多くの場合，ハイパーバイザのデバイスエミュレータはユーザプロセス上で動作しています．
 このため，ハードウェアレジスタアクセスをエミュレートするにはカーネルモードからユーザモードへ遷移し，
 エミュレーションを行ってからカーネルモード へ戻ってくる必要があります．</p>
@@ -287,6 +354,7 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 完全仮想化の場合はデータのやりとり(つまりレジスタ操作)の際に必ず逐一VMExitを発生させる必要があったけど，
 共有メモリだからそれがないはず．
 virtqueueはどこだ．</p>
+<p>これvirtio ringとvirtqueueの記述逆では．</p>
 </div>
 <div class="section" id="vhost">
 <h2>vhostとは<a class="headerlink" href="#vhost" title="Permalink to this headline">¶</a></h2>
