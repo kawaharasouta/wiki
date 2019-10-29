@@ -162,9 +162,8 @@ virtio_pciっていうのがなんかPCIデバイスをエミュレートして�
 実際のデータやりとりはvirtio ringっていうメモリ領域でやる．これはshared memory空間にいて，
 完全仮想化の場合はデータのやりとり(つまりレジスタ操作)の際に必ず逐一VMExitを発生させる必要があったけど，
 共有メモリだからそれがないはず．
-virtqueueはどこだ．
+virtqueueはvirtioのキュー構造体．
 
-これvirtio ringとvirtqueueの記述逆では．
 
 
 
@@ -177,11 +176,14 @@ vhostとは
 この文章はかなりの不確実な成分を含んでいるのであとで必ず書き直す．
 virtioと並んでvhostという準仮想ドライバがある．
 virtioはバックエンドにQEMUを用いるが，vhostはカーネル空間にバックエンドが存在する．
-そのため，コンテキストスイッチが少ない．
+vhost-net module enables KVM (QEMU) to offload the servicing of virtio-net devices to the vhost-net kernel module
+そのため，ringプロテクション遷移が少ない．
 とりあえず今の所QEMUを使わないvirtioという風に認識している．
 でこれのネットワークインタフェース実装がvhost-net
 たぶん，vhostはゲストから見るとvirtioとはなんら違いがないんじゃないか．
 ゲストから見たらvirtioって見えてそう．多分virtio_pciが見えてるだろうし．
+↑これはおそらく正しくて今までのvirtioのメカニズムが使われている．
+
 
 
 vhostは、ゲストネットワークトラフィックをカーネル側から直接TUNデバイスに直接渡すことにより、上記のプロセスを加速できます。 このモデルでは、QEMUはvirtqueueの直接制御をカーネルドライバーに渡します。
@@ -192,7 +194,7 @@ vhost-user
 ===========
 
 上のvhostのDPDKアプライアンスのための実装としてvhost-userなるものがあるらしい．
-カーネル空間を飛ばすみたいな記述もあったんだけどこれってどっちのカーネル空間の事言ってるんですか
+vhostでカーネル空間にあったバックエンドをユーザ空間に持ち出すことにより，ホストでのDPDKの利用可能性を高めたもの．
 
 vhost-user server と client
 ------------------------------
@@ -201,6 +203,12 @@ DPDK v16.07でvHostユーザークライアントモードが導入され、DPDK
 とりあえずclient使っとけばいいよみたいな感じ．
 要は，DPDKアプライアンスがvhost-userの主体?になる(clientはQEMUらしい)とそれがクラッシュした時に再現が大変になるから
 serverは別にいてDPDKアプライアンスはclientとしてそれ(serverはQEMU)を利用するような形態にしたということ．
+
+virtio-vhost-user
+===================
+
+なんか，VM間の通信に強いようなやつっぽくて，
+一つのゲストに対してvhostのバックエンドをオフロードしてるっぽくて，VM-VMの通信がホストを介さないでできているような感じのものっぽい．
 
 memo
 =========
