@@ -64,15 +64,22 @@ grub-mkconfigはシェル(sh)スクリプトで，基本的にはそれに読み
   GRUB_GFXMOD, 画像の解像度を指定するパラメータ．
   GRUB_BACKGROUND, 背景画像を指定するパラメータ．
 
+コマンドラインオプションに関して: http://manpages.ubuntu.com/manpages/bionic/ja/man7/bootparam.7.html
+
+
+コマンドラインオプションを確認する
+
+::
+
+  $ sudo cat /proc/cmdline
+
+
 /etc/grub.d/
 ==============
 
 「README」，「.dpkg-」以外の実行権限のあるファイルが対象．
 これらは/etc/default/grubの設定に従った内容を出力するので，
 基本的にこのファイルも編集しない．どうしてもの場合のみ編集する．
-
-
-
 
 
 
@@ -101,13 +108,6 @@ systemd
 
 うおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお
 詳細はまたこんどだなああああああああああああ
-
-
-
-
-
-
-
 
 
 
