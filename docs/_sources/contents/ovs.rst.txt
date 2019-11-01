@@ -76,16 +76,24 @@ QEMU:
 
 ::
 
+  $ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl stop ovsdb-server ovs-vswitchd
+  $ sudo rm   -rf /tmp/openvswitch && mkdir -p /tmp/openvswitch
+  $ sudo rm -f /usr/local/var/run/openvswitch/conf.db
+  $ sudo ovsdb-tool create \
+    /usr/local/var/run/openvswitch/conf.db \
+    /usr/share/openvswitch/vswitch.ovsschema      # コピって/usr/share/localとかに置くようにした方がいいかも?
+
+
   $ sudo mkdir -p /usr/local/openvswitch/       # ソケットを配置しておくディレクトリ
   $ sudo touch /usr/local/openvswitch/dpdkvhostclient0
   $ sudo touch /usr/local/openvswitch/dpdkvhostclient1
   $ sudo ovs-vsctl add-br [bridge name] -- set bridge [bridge name] datapath_type=netdev
-  $ sudo ovs-vsctl add-port [bridge name] dpdkvhostclient0 \
-    -- set Interface dpdkvhostclient0 type=dpdkvhostuserclient \
-       options:vhost-server-path=/usr/local/openvswitch/dpdkvhostclient0
   $ sudo ovs-vsctl add-port [bridge name] dpdkvhostclient1 \
     -- set Interface dpdkvhostclient1 type=dpdkvhostuserclient \
        options:vhost-server-path=/usr/local/openvswitch/dpdkvhostclient1
+  $ sudo ovs-vsctl add-port [bridge name] dpdkvhostclient2 \
+    -- set Interface dpdkvhostclient2 type=dpdkvhostuserclient \
+       options:vhost-server-path=/usr/local/openvswitch/dpdkvhostclient2
   $
   $ sudo virsh edit [VM]
     <interface type='vhostuser'>

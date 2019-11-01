@@ -85,7 +85,8 @@ grub-mkconfigはシェル(sh)スクリプトで，基本的にはそれに読み
 
 カーネルが起動した後，まず初期化の為のソフトウェア(ブートプロセス)を走らせる．
 これが古いubuntuだとinit/Upstart?だったり，1604くらいから?はsystemdだったりする．
-ちなみに/sbin/initが一番最初に走るらしいのだが，これはinit時代の名残なのかLinuxのinitプロセスとかいう意味なのかそういうのは知らない．．
+カーネルは初期の実行コマンドとして/sbin/init, /etc/init, /bin/init, /bin/shの順番で実行を試み，全てに失敗したらpanicする．
+ちなみに初期コマンドはカーネルのコマンドラインオプションで指定することができて，init=...ってする．
 今は/sbin/initはsystemd(/lib/systemd/systemdとか)へのシンボリックリンクになっているため，systemdが動くことになる．
 
 
