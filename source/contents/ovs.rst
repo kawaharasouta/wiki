@@ -81,6 +81,11 @@ QEMU:
     + GRUB_CMDLINE_LINUX_DEFAULT="default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87"
   $ sudo vim /etc/dpdk/dpdk.conf
     + NR_1G_PAGES=8
+  $ sudo vim /etc/libvirt/qemu.conf
+    - #user = "root"
+    - #group = "root"
+    + user = "root"
+    + group = "root"
   $ sudo update-grub && sudo reboot
   
   # いるかどうかわからないけど
