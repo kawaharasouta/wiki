@@ -269,13 +269,24 @@ $ sudo update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/o
 <p>DPDK:
 OVS:
 QEMU:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl stop ovsdb-server ovs-vswitchd
-$ sudo rm   -rf /tmp/openvswitch &amp;&amp; mkdir -p /tmp/openvswitch
-$ sudo rm -f /usr/local/var/run/openvswitch/conf.db
-$ sudo ovsdb-tool create \
-  /usr/local/var/run/openvswitch/conf.db \
-  /usr/share/openvswitch/vswitch.ovsschema      # コピって/usr/share/localとかに置くようにした方がいいかも?
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl restart ovsdb-server ovs-vswitchd
+$ sudo vim /etc/default/grub
+  + GRUB_CMDLINE_LINUX_DEFAULT=&quot;default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87&quot;
+$ sudo vim /etc/dpdk/dpdk.conf
+  + NR_1G_PAGES=8
+$ sudo update-grub &amp;&amp; sudo reboot
 
+# いるかどうかわからないけど
+$ sudo mkdir -p /mnt/huge
+$ sudo mkdir -p /mnt/huge_2mb
+$ sudo mount -t hugetlbfs none /mnt/huge
+$ sudo mount -t hugetlbfs none /mnt/huge_2mb -o pagesize=2MB
+$ sudo sudo mount -t hugetlbfs none /dev/hugepages
+
+$ sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-init=true
+$ sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-lcore-mask=0xfffffbffffefffffbffffe
+$ sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-socket-mem=&quot;1024,1024&quot;
+$ sudo ovs-vsctl set Open_vSwitch . other_config:pmd-cpu-mask=1E0000000001E
 
 $ sudo mkdir -p /usr/local/openvswitch/       # ソケットを配置しておくディレクトリ
 $ sudo touch /usr/local/openvswitch/dpdkvhostclient0
@@ -289,12 +300,23 @@ $ sudo ovs-vsctl add-port [bridge name] dpdkvhostclient2 \
      options:vhost-server-path=/usr/local/openvswitch/dpdkvhostclient2
 $
 $ sudo virsh edit [VM]
-  &lt;interface type=&#39;vhostuser&#39;&gt;
-    &lt;source type=&#39;unix&#39;
-      path=&#39;/usr/local/openvswitch/dpdkvhostclient0&#39;
-      mode=&#39;server&#39;/&gt;
-    &lt;model type=&#39;virtio&#39;/&gt;
-  &lt;/interface&gt;
+  + &lt;currentMemory unit=&#39;KiB&#39;&gt;~~~~~~~&lt;/currentMemory&gt;
+  + &lt;memoryBacking&gt;
+  + &lt;hugepages/&gt;
+  + &lt;/memoryBacking&gt;
+  --------------------------------------------------------
+  + &lt;cpu mode=&#39;host-passthrough&#39;&gt;
+  + &lt;numa&gt;
+  + &lt;cell id=&#39;0&#39; cpus=&#39;0&#39; memory=&#39;1048576&#39; unit=&#39;KiB&#39; memAccess=&#39;shared&#39;/&gt;
+  + &lt;/numa&gt;
+  + &lt;/cpu&gt;
+  --------------------------------------------------------
+  + &lt;interface type=&#39;vhostuser&#39;&gt;
+  +   &lt;source type=&#39;unix&#39;
+  +     path=&#39;/usr/local/openvswitch/dpdkvhostclient0&#39;
+  +     mode=&#39;server&#39;/&gt;
+  +   &lt;model type=&#39;virtio&#39;/&gt;
+  + &lt;/interface&gt;
 </pre></div>
 </div>
 </div>

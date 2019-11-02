@@ -76,13 +76,24 @@ QEMU:
 
 ::
 
-  $ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl stop ovsdb-server ovs-vswitchd
-  $ sudo rm   -rf /tmp/openvswitch && mkdir -p /tmp/openvswitch
-  $ sudo rm -f /usr/local/var/run/openvswitch/conf.db
-  $ sudo ovsdb-tool create \
-    /usr/local/var/run/openvswitch/conf.db \
-    /usr/share/openvswitch/vswitch.ovsschema      # コピって/usr/share/localとかに置くようにした方がいいかも?
+  $ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl restart ovsdb-server ovs-vswitchd
+  $ sudo vim /etc/default/grub
+    + GRUB_CMDLINE_LINUX_DEFAULT="default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87"
+  $ sudo vim /etc/dpdk/dpdk.conf
+    + NR_1G_PAGES=8
+  $ sudo update-grub && sudo reboot
+  
+  # いるかどうかわからないけど
+  $ sudo mkdir -p /mnt/huge
+  $ sudo mkdir -p /mnt/huge_2mb
+  $ sudo mount -t hugetlbfs none /mnt/huge
+  $ sudo mount -t hugetlbfs none /mnt/huge_2mb -o pagesize=2MB
+  $ sudo sudo mount -t hugetlbfs none /dev/hugepages
 
+  $ sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-init=true
+  $ sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-lcore-mask=0xfffffbffffefffffbffffe
+  $ sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-socket-mem="1024,1024"
+  $ sudo ovs-vsctl set Open_vSwitch . other_config:pmd-cpu-mask=1E0000000001E
 
   $ sudo mkdir -p /usr/local/openvswitch/       # ソケットを配置しておくディレクトリ
   $ sudo touch /usr/local/openvswitch/dpdkvhostclient0
@@ -96,14 +107,23 @@ QEMU:
        options:vhost-server-path=/usr/local/openvswitch/dpdkvhostclient2
   $
   $ sudo virsh edit [VM]
-    <interface type='vhostuser'>
-      <source type='unix'
-        path='/usr/local/openvswitch/dpdkvhostclient0'
-        mode='server'/>
-      <model type='virtio'/>
-    </interface>
-
-
+    + <currentMemory unit='KiB'>~~~~~~~</currentMemory>
+    + <memoryBacking>
+    + <hugepages/>
+    + </memoryBacking>
+    --------------------------------------------------------
+    + <cpu mode='host-passthrough'>
+    + <numa>
+    + <cell id='0' cpus='0' memory='1048576' unit='KiB' memAccess='shared'/>
+    + </numa>
+    + </cpu>
+    --------------------------------------------------------
+    + <interface type='vhostuser'>
+    +   <source type='unix'
+    +     path='/usr/local/openvswitch/dpdkvhostclient0'
+    +     mode='server'/>
+    +   <model type='virtio'/>
+    + </interface>
 
 
 
