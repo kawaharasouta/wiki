@@ -133,5 +133,12 @@ QEMU:
 
 
 
-
+参考
+https://www.miraclelinux.com/tech-blog/dpdk-open-vswitch-study-7
+https://www.miraclelinux.com/tech-blog/zubcuq
+https://software.intel.com/en-us/articles/set-up-open-vswitch-with-dpdk-on-ubuntu-server
+https://metonymical.hatenablog.com/entry/2019/01/12/144217#fn-bf36e323
+https://teratail.com/questions/125716
+https://wiki.qemu.org/Documentation/vhost-user-ovs-dpdk
+https://github.com/openvswitch/ovs/blob/branch-2.6/INSTALL.DPDK.md
 
