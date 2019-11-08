@@ -17,7 +17,7 @@ install
 
 ::
 
-  $ sudo apt intadll gnupg
+  $ sudo apt install gnupg
   $ codename=$(lsb_release -c | awk  '{print $2}')
   $ sudo tee /etc/apt/sources.list.d/ddebs.list << EOF
     deb http://ddebs.ubuntu.com/ ${codename}      main restricted universe multiverse
