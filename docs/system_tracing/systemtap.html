@@ -214,6 +214,7 @@ SystemTapのコマンドであるstapコマンドがSTPスクリプトとカー�
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>「SystemTap本体」と「対象カーネルのデバッグ情報」が必要</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install gnupg
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C8CAB6595FDFF622
 $ codename=$(lsb_release -c | awk  &#39;{print $2}&#39;)
 $ sudo tee /etc/apt/sources.list.d/ddebs.list &lt;&lt; EOF
   deb http://ddebs.ubuntu.com/ ${codename}      main restricted universe multiverse
