@@ -99,7 +99,7 @@ file focation
 ::
 
   vm images         /var/lib/libvirt/images/
-  iso images          /var/lib/libvirt/boot/
+  iso images          /var/lib/libvirt/boot/    ←???
   xml file                /etc/libvirt/qemu/
   network file       /etc/libvirt/qemu/networks/
 

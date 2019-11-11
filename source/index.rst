@@ -26,7 +26,7 @@ wiki
 
 .. toctree::
   :maxdepth: 1
-  :caption: technote:
+  :caption: Technote:
 
   technote/rss
   technote/interrupt
@@ -42,6 +42,7 @@ wiki
   cheetsheets/bash
   cheetsheets/ip_command
   cheetsheets/vim
+  cheetsheets/kernel
 
 .. toctree::
   :maxdepth: 1

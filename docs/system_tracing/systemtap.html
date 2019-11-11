@@ -104,7 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 </ul>
-<p class="caption"><span class="caption-text">technote:</span></p>
+<p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
@@ -219,7 +219,7 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C8CAB6595FDFF622
   or
 $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C8CAB6595FDFF622   #fwかまされてたりするとき
 
-$ codename=$(lsb_release -c | awk  &#39;{print $2}&#39;)
+$ codename=$(lsb_release -cs)
 $ sudo tee /etc/apt/sources.list.d/ddebs.list &lt;&lt; EOF
   deb http://ddebs.ubuntu.com/ ${codename}      main restricted universe multiverse
   #deb http://ddebs.ubuntu.com/ ${codename}-security main restricted universe multiverse

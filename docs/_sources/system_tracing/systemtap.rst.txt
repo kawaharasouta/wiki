@@ -23,7 +23,7 @@ install
     or 
   $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C8CAB6595FDFF622   #fwかまされてたりするとき
 
-  $ codename=$(lsb_release -c | awk  '{print $2}')
+  $ codename=$(lsb_release -cs)
   $ sudo tee /etc/apt/sources.list.d/ddebs.list << EOF
     deb http://ddebs.ubuntu.com/ ${codename}      main restricted universe multiverse
     #deb http://ddebs.ubuntu.com/ ${codename}-security main restricted universe multiverse

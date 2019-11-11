@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bash &mdash; wiki  documentation</title>
+  <title>カーネル関連tips &mdash; wiki  documentation</title>
   
 
   
@@ -45,8 +45,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ip command" href="ip_command.html" />
-    <link rel="prev" title="カーネル関連について" href="../technote/inc_cs/kernel.html" /> 
+    <link rel="next" title="DTrace" href="../system_tracing/dtrace.html" />
+    <link rel="prev" title="vim" href="vim.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -119,22 +119,17 @@
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">bash</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#add-user">add user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#change-hostname">change hostname</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#shelltips">shell芸的tips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gnu-coreutils">GNU coreutils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">メモ系</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">標準エラー出力のリダイレクト例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">ファイル内検索</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">該当ファイル以外を削除</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#apt-ctrl-c">aptが途中で死んだ(ctrl-cで殺した)とき</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vim.html">vim</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">カーネル関連tips</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">カーネルバージョン変更</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">起動時にカーネルモジュールがロードされるようにする</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grub">grubで起動時に選べるカーネルの種類を見る</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">標準で起動するカーネルを指定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">参考</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
@@ -195,13 +190,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>bash</li>
+      <li>カーネル関連tips</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/cheetsheets/bash.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cheetsheets/kernel.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -214,70 +209,56 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="bash">
-<h1>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="add-user">
-<h2>add user<a class="headerlink" href="#add-user" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
-$ sudo passwd [username]
-</pre></div>
-</div>
-</div>
-<div class="section" id="change-hostname">
-<h2>change hostname<a class="headerlink" href="#change-hostname" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/cloud/cloud.cfg   #cloud-init が入ってる場合
- - preserve_hostname: fauls
- + preserve_hostname: true
-$ sudo hostnamectl set-hostname [hostname]
-</pre></div>
-</div>
-</div>
-<div class="section" id="shelltips">
-<h2>shell芸的tips<a class="headerlink" href="#shelltips" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;{print $1, $3}&#39;</span>        <span class="c1">#1,3列目を取得</span>
-<span class="n">awk</span> <span class="s1">&#39;NR==2,NR==5&#39;</span>           <span class="c1">#2~5行目を取得</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="gnu-coreutils">
-<h2>GNU coreutils<a class="headerlink" href="#gnu-coreutils" title="Permalink to this headline">¶</a></h2>
-<p>Linux(GNUオペレーティングシステム)の一般的なコマンドツールのパッケージらしい.</p>
-<p>コマンドの種類:</p>
-</div>
+  <div class="section" id="tips">
+<h1>カーネル関連tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>メモ系<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">help</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">less</span>
+<h2>カーネルバージョン変更<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>変更可能なバージョン確認
+$ sudo apt-cache search linux-image
+
+上で確認した中から変更したいバージョンを指定
+$ sudo apt install [linux-images-***]
 </pre></div>
 </div>
+</div>
+<div class="section" id="id2">
+<h2>起動時にカーネルモジュールがロードされるようにする<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>カーネルモジュールの正式な置き場?にモジュールをおく
+$ sudo cp [your module] /lib/modules/$(uname -r)/kernel/drivers/
+
+依存関係更新
+$ sudo depmod -ae
+
+モジュール名をmodules.confに書き込み
+$ sudo vim /etc/modules-load.d/modules.conf
+</pre></div>
+</div>
+</div>
+<div class="section" id="grub">
+<h2>grubで起動時に選べるカーネルの種類を見る<a class="headerlink" href="#grub" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo grep menuentry /boot/grub/grub.cfg
+  ...
+  menuentry &#39;Ubuntu, with Linux 5.0.0-25-generic&#39; --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option &#39;gnulinux-5.0.0-25-generic-advanced-e99082e4-8470-4019-9dcc-4535f97283ac&#39; {
+  menuentry &#39;Ubuntu, with Linux 5.0.0-25-generic (recovery mode)&#39; --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option &#39;gnulinux-5.0.0-25-generic-recovery-e99082e4-8470-4019-9dcc-4535f97283ac&#39; {
+  ...
+</pre></div>
+</div>
+<p>ちなみにlinux-imageをinstallしたらこれ増える</p>
 </div>
 <div class="section" id="id3">
-<h3>ファイル内検索<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ grep -r &quot;xxx&quot; ./
+<h2>標準で起動するカーネルを指定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#indexで指定する</span>
+<span class="n">GRUB_DEFAULT</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1">#menuの名前で指定する</span>
+<span class="n">GRUB_DEFAULT</span><span class="o">=</span><span class="s2">&quot;Ubuntu, with Linux 5.0.0-25-generic&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h3>該当ファイル以外を削除<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ls | grep -v &quot;file name&quot; | xargs rm -rf
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="apt-ctrl-c">
-<h2>aptが途中で死んだ(ctrl-cで殺した)とき<a class="headerlink" href="#apt-ctrl-c" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dpkg --configure -a
-$ sudo apt --fix-broken install
-</pre></div>
-</div>
-<p><a class="reference external" href="https://codeday.me/jp/qa/20190808/1401674.html">https://codeday.me/jp/qa/20190808/1401674.html</a>
-ダメでした〜〜〜〜〜〜〜〜</p>
-<p>こっちで行けそう</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dpkg -r --force-all [パッケージ名]
-</pre></div>
-</div>
-<p><a class="reference external" href="https://lb.raspberrypi.org/forums/viewtopic.php?t=200575">https://lb.raspberrypi.org/forums/viewtopic.php?t=200575</a></p>
+<h2>参考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>ソースコード: <a class="reference external" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
+<p>コードリーディング: <a class="reference external" href="https://elixir.bootlin.com/linux/latest/source">https://elixir.bootlin.com/linux/latest/source</a></p>
 </div>
 </div>
 
@@ -289,10 +270,10 @@ $ sudo apt --fix-broken install
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ip_command.html" class="btn btn-neutral float-right" title="ip command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../system_tracing/dtrace.html" class="btn btn-neutral float-right" title="DTrace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../technote/inc_cs/kernel.html" class="btn btn-neutral float-left" title="カーネル関連について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vim.html" class="btn btn-neutral float-left" title="vim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
