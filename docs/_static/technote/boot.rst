@@ -168,3 +168,8 @@ FAT系のパーティションを自力で検出、のちにGPTをロードしOS
 
 
 
+
+
+
+
+https://wiki.gentoo.org/wiki/GRUB2/ja

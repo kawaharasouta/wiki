@@ -18,7 +18,11 @@ install
 ::
 
   $ sudo apt install gnupg
-  $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C8CAB6595FDFF622
+
+  $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C8CAB6595FDFF622            #11371番ポートがデフォルトだけど↓
+    or 
+  $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C8CAB6595FDFF622   #fwかまされてたりするとき
+
   $ codename=$(lsb_release -c | awk  '{print $2}')
   $ sudo tee /etc/apt/sources.list.d/ddebs.list << EOF
     deb http://ddebs.ubuntu.com/ ${codename}      main restricted universe multiverse
@@ -32,3 +36,8 @@ install
 
 
   
+
+
+
+
+本家: https://sourceware.org/systemtap/
