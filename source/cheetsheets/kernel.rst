@@ -55,6 +55,39 @@ grubで起動時に選べるカーネルの種類を見る
   #menuの名前で指定する
   GRUB_DEFAULT="Ubuntu, with Linux 5.0.0-25-generic'
 
+
+dbgsymパッケージリポジトリ導入
+==============================
+
+::
+
+  $ sudo apt install gnupg
+
+  $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C8CAB6595FDFF622            #11371番ポートがデフォルトだけど↓
+    or
+  $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C8CAB6595FDFF622   #fwかまされてたりするとき
+  もしくは
+  $ wget -O - http://ddebs.ubuntu.com/dbgsym-release-key.asc | sudo apt-key add -
+
+  $ codename=$(lsb_release -cs)
+  $ sudo tee /etc/apt/sources.list.d/ddebs.list << EOF
+    deb http://ddebs.ubuntu.com/ ${codename}      main restricted universe multiverse
+    #deb http://ddebs.ubuntu.com/ ${codename}-security main restricted universe multiverse
+    deb http://ddebs.ubuntu.com/ ${codename}-updates  main restricted universe multiverse
+    deb http://ddebs.ubuntu.com/ ${codename}-proposed main restricted universe multiverse
+    EOF
+  $ sudo apt update
+
+ちなみに具体的にはここ
+http://ddebs.ubuntu.com/pool/main/l/linux/
+迷ったら直に持ってきちゃえばいい
+
+::
+
+  sudo dpkg -i  [debian package]
+
+
+
 参考
 ====
 

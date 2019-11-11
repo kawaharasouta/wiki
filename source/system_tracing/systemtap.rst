@@ -41,3 +41,11 @@ install
 
 
 本家: https://sourceware.org/systemtap/
+
+参考にしたところ
+https://gihyo.jp/admin/serial/01/ubuntu-recipe/0584
+https://www.hiroom2.com/2018/04/27/ubuntu-1804-dbgsym-ja/
+https://blog.jeffli.me/blog/2014/10/10/install-systemtap-in-ubuntu-14-dot-04/
+https://wiki.ubuntu.com/Kernel/Systemtap#Where_to_get_debug_symbols_for_kernel_X.3F
+https://blog.csdn.net/richardysteven/article/details/82525909
+
