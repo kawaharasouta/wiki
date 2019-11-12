@@ -48,12 +48,18 @@ grubで起動時に選べるカーネルの種類を見る
 ===============================
 
 ::
-  
-  #indexで指定する
-  GRUB_DEFAULT=0
 
-  #menuの名前で指定する
-  GRUB_DEFAULT="Ubuntu, with Linux 5.0.0-25-generic'
+  $ sudo vim /etc/default/grub
+    
+    #indexで指定する
+    GRUB_DEFAULT=0
+
+    #menuの名前で指定する
+    GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.0.0-25-generic'
+
+
+メインメニュー>サブメニュー とかって表記したらいいらしいんだけど，正直よくわからねえ
+http://syuu1228.hatenablog.com/entry/20130120/1358690996
 
 
 dbgsymパッケージリポジトリ導入

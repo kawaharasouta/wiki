@@ -248,13 +248,17 @@ $ sudo vim /etc/modules-load.d/modules.conf
 </div>
 <div class="section" id="id3">
 <h2>標準で起動するカーネルを指定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#indexで指定する</span>
-<span class="n">GRUB_DEFAULT</span><span class="o">=</span><span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
 
-<span class="c1">#menuの名前で指定する</span>
-<span class="n">GRUB_DEFAULT</span><span class="o">=</span><span class="s2">&quot;Ubuntu, with Linux 5.0.0-25-generic&#39;</span>
+  #indexで指定する
+  GRUB_DEFAULT=0
+
+  #menuの名前で指定する
+  GRUB_DEFAULT=&quot;Advanced options for Ubuntu&gt;Ubuntu, with Linux 5.0.0-25-generic&#39;
 </pre></div>
 </div>
+<p>メインメニュー&gt;サブメニュー とかって表記したらいいらしいんだけど，正直よくわからねえ
+<a class="reference external" href="http://syuu1228.hatenablog.com/entry/20130120/1358690996">http://syuu1228.hatenablog.com/entry/20130120/1358690996</a></p>
 </div>
 <div class="section" id="dbgsym">
 <h2>dbgsymパッケージリポジトリ導入<a class="headerlink" href="#dbgsym" title="Permalink to this headline">¶</a></h2>
