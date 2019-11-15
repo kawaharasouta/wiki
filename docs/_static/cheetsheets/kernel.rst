@@ -93,6 +93,38 @@ http://ddebs.ubuntu.com/pool/main/l/linux/
   sudo dpkg -i  [debian package]
 
 
+カーネル再構築
+===============
+
+https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB/%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95
+↑のリンクを参考にした．
+
+カーネルのソースをダウンロードして展開する．
+
+::
+
+  $ mkdir kernel && cd $_
+  $ wget https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/linux-4.15.1.tar.xz
+  $ tar -xvJf linux-4.15.1.tar.xz
+
+ビルドする
+
+::
+
+  $ cd linux-4.15.1/
+  $ make clean && make mrproper
+  # とりあえず既存の.configを持ってくる
+  $ make localmodconfig
+  # その後の設定 TUI的な感じで設定ができそう
+  $ make menuconfig
+
+  # その他の設定のやり方?
+  $ 
+
+  #いるっぽかったやつ 他もあるかも信ないけどぐぐりゃだいたいでる
+  $ sudo apt install libssl-dev bc
+
+
 
 参考
 ====

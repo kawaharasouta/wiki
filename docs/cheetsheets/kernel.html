@@ -128,7 +128,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#grub">grubで起動時に選べるカーネルの種類を見る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">標準で起動するカーネルを指定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dbgsym">dbgsymパッケージリポジトリ導入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">カーネル再構築</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -288,7 +289,33 @@ $ sudo apt update
 </div>
 </div>
 <div class="section" id="id4">
-<h2>参考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>カーネル再構築<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB/%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95">https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB/%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95</a>
+↑のリンクを参考にした．</p>
+<p>カーネルのソースをダウンロードして展開する．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir kernel &amp;&amp; cd $_
+$ wget https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/linux-4.15.1.tar.xz
+$ tar -xvJf linux-4.15.1.tar.xz
+</pre></div>
+</div>
+<p>ビルドする</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd linux-4.15.1/
+$ make clean &amp;&amp; make mrproper
+# とりあえず既存の.configを持ってくる
+$ make localmodconfig
+# その後の設定 TUI的な感じで設定ができそう
+$ make menuconfig
+
+# その他の設定のやり方?
+$
+
+#いるっぽかったやつ 他もあるかも信ないけどぐぐりゃだいたいでる
+$ sudo apt install libssl-dev bc
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>参考<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>ソースコード: <a class="reference external" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
 <p>コードリーディング: <a class="reference external" href="https://elixir.bootlin.com/linux/latest/source">https://elixir.bootlin.com/linux/latest/source</a></p>
 </div>
