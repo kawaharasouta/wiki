@@ -44,6 +44,8 @@ grubで起動時に選べるカーネルの種類を見る
 ちなみにlinux-imageをinstallしたらこれ増える
 
 
+.. _kernel_up_target:
+
 標準で起動するカーネルを指定
 ===============================
 
@@ -118,13 +120,34 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
   # その後の設定 TUI的な感じで設定ができそう
   $ make menuconfig
 
-  # その他の設定のやり方?
-  $ 
+  # その他の設定のやり方? ここら辺ncursesが必要だったりしそう
+  $ make menuconfig     # ncurses コマンドラインインターフェイス
+  $ make nconfig        # コマンドラインの新しい ncurses インターフェイス
+  $ make xconfig        #  ユーザーフレンドリーなグラフィカルインターフェイス  packagekit-qt4パッケージ必要? 簡単で初心者向けらしい
+  $ make gconfig        # GTK+ を使用する
 
-  #いるっぽかったやつ 他もあるかも信ないけどぐぐりゃだいたいでる
-  $ sudo apt install libssl-dev bc
+  # いるっぽかったやつ 他もあるかも信ないけどぐぐりゃだいたいでる
+  $ sudo apt install libssl-dev bc libelf-dev(make install の時)
+  $ make 
+
+  # モジュールをビルド
+  $ sudo make module_install
+
+  # なんかこの後下のコマンドしたらよしなにやってくれます
+  $ sudo make install 
+
+  # /boot にカーネルをコピー
+  $ sudo cp -v /arch/x86_64/boot/bzImage /boot/vmlinux-4.15.1
+
+  # 初期RAMディスク(initrd)を作成 ubuntuだとinitramfs?
+  これ正直よくわからない．
+  archだとmkinitcpioってコマンド叩いてるけどubuntuにはなくて，他のコマンド(initramfs的な感じのネーミングのがいくつか)
+  あったりするんだけどマジでよくわからなくてわからない．でよくわからなくてわからない
 
 
+この後適当に起動するカーネルを指定したりして
+:ref:`kernel_up_target`
+再起動するとビルドしたカーネルで動いてます．
 
 参考
 ====

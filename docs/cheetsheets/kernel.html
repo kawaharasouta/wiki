@@ -111,9 +111,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 </ul>
@@ -126,7 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">カーネルバージョン変更</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">起動時にカーネルモジュールがロードされるようにする</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#grub">grubで起動時に選べるカーネルの種類を見る</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">標準で起動するカーネルを指定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kernel-up-target">標準で起動するカーネルを指定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dbgsym">dbgsymパッケージリポジトリ導入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">カーネル再構築</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">参考</a></li>
@@ -247,8 +248,8 @@ $ sudo vim /etc/modules-load.d/modules.conf
 </div>
 <p>ちなみにlinux-imageをinstallしたらこれ増える</p>
 </div>
-<div class="section" id="id3">
-<h2>標準で起動するカーネルを指定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kernel-up-target">
+<span id="id3"></span><h2>標準で起動するカーネルを指定<a class="headerlink" href="#kernel-up-target" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
 
   #indexで指定する
@@ -306,13 +307,34 @@ $ make localmodconfig
 # その後の設定 TUI的な感じで設定ができそう
 $ make menuconfig
 
-# その他の設定のやり方?
-$
+# その他の設定のやり方? ここら辺ncursesが必要だったりしそう
+$ make menuconfig     # ncurses コマンドラインインターフェイス
+$ make nconfig        # コマンドラインの新しい ncurses インターフェイス
+$ make xconfig        #  ユーザーフレンドリーなグラフィカルインターフェイス  packagekit-qt4パッケージ必要? 簡単で初心者向けらしい
+$ make gconfig        # GTK+ を使用する
 
-#いるっぽかったやつ 他もあるかも信ないけどぐぐりゃだいたいでる
-$ sudo apt install libssl-dev bc
+# いるっぽかったやつ 他もあるかも信ないけどぐぐりゃだいたいでる
+$ sudo apt install libssl-dev bc libelf-dev(make install の時)
+$ make
+
+# モジュールをビルド
+$ sudo make module_install
+
+# なんかこの後下のコマンドしたらよしなにやってくれます
+$ sudo make install
+
+# /boot にカーネルをコピー
+$ sudo cp -v /arch/x86_64/boot/bzImage /boot/vmlinux-4.15.1
+
+# 初期RAMディスク(initrd)を作成 ubuntuだとinitramfs?
+これ正直よくわからない．
+archだとmkinitcpioってコマンド叩いてるけどubuntuにはなくて，他のコマンド(initramfs的な感じのネーミングのがいくつか)
+あったりするんだけどマジでよくわからなくてわからない．でよくわからなくてわからない
 </pre></div>
 </div>
+<p>この後適当に起動するカーネルを指定したりして
+<a class="reference internal" href="#kernel-up-target"><span class="std std-ref">標準で起動するカーネルを指定</span></a>
+再起動するとビルドしたカーネルで動いてます．</p>
 </div>
 <div class="section" id="id5">
 <h2>参考<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>

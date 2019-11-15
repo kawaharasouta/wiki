@@ -104,24 +104,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 </ul>
-<p class="caption"><span class="caption-text">technote:</span></p>
+<p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ブートローダについてのメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#grub2">GRUB2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">ファイル構成と設定方法について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">仕組み</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">ファイル構成と設定方法について</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#etc-default-grub">/etc/default/grub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#etc-grub-d">/etc/grub.d/</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id4">カーネルが起動した後どうなってるのって話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#systemd">systemd</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#systemctl">systemctlコマンド</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 </ul>
@@ -130,6 +132,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
@@ -214,19 +217,28 @@
 <p>PCが起動時に, OSを呼び出すためのソフトウェア．
 一般的にハードディスクの先頭にある「MBR(マスターブートレコード)」
 という領域に記録されている．
-PCの電源を投入するとBIOSが起動され，BIOSがブートローダを呼び出し，
+PCの電源を投入するとBIOSが起動される．BIOSは0xfffffff0(reset vector)番地に格納されている．
+BIOSがブートローダを呼び出し，
 その後ブートローダがカーネル(OS)を呼び出す．
+MBRの探索は優先度の高いブートデバイスから順番にそのデバイスの1セクタの末尾2バイトが0x55, 0xaa(boot signature)であるか確認する
+発見するとそのセクタを 0x7c00 番地にロードして実行する．
 どうやらUEFIではMBRとかのところらへんが少し違うらしいがよくわからん．</p>
 <p>僕の理解では，BIOS(UEFI)はファームウェアだからギリギリハードウェアの領域で，
 ブートローダからソフトウェアという印象．</p>
 <p>おそらく今の主流はGRUB2でubuntuは早々にこれを導入していた．
-他のデストリはしばらく従来の「GRUB Legacy」を使っていた．</p>
+他のデストリはしばらく従来の「GRUB Legacy」を使っていた．
+ちなみにGRUBは GRand Unified Bootloader とかっていう
+UEFIは Unified Extensible Firmware Interface とかっていう
+他にはSyslinux とか LILOとかっていうのがあるらしい．</p>
 </div>
 <div class="section" id="grub2">
 <h1>GRUB2<a class="headerlink" href="#grub2" title="Permalink to this headline">¶</a></h1>
 <p>以下，GRUB2についてのメモ</p>
 <div class="section" id="id2">
-<h2>ファイル構成と設定方法について<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>仕組み<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>ファイル構成と設定方法について<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>設定のメインファイルは「/etc/grub/grub.cfg」だが，
 このファイルは直接編集する訳ではなく，別のファイルに設定を書き，
 コマンドを実行してファイルを生成する．
@@ -308,8 +320,8 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 基本的にこのファイルも編集しない．どうしてもの場合のみ編集する．</p>
 </div>
 </div>
-<div class="section" id="id3">
-<h1>カーネルが起動した後どうなってるのって話<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id4">
+<h1>カーネルが起動した後どうなってるのって話<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
 <p>カーネルが起動した後，まず初期化の為のソフトウェア(ブートプロセス)を走らせる．
 これが古いubuntuだとinit/Upstart?だったり，1604くらいから?はsystemdだったりする．
 カーネルは初期の実行コマンドとして/sbin/init, /etc/init, /bin/init, /bin/shの順番で実行を試み，全てに失敗したらpanicする．
@@ -382,7 +394,26 @@ FAT系のパーティションを自力で検出、のちにGPTをロードしOS
 <li>システムの用途に適した(登録された?)ターゲットが処理される．</li>
 <li>ログイン受付開始</li>
 </ol>
-<p><a class="reference external" href="https://wiki.gentoo.org/wiki/GRUB2/ja">https://wiki.gentoo.org/wiki/GRUB2/ja</a></p>
+</div>
+<div class="section" id="vmlinuzinitrd-img">
+<h1>vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ<a class="headerlink" href="#vmlinuzinitrd-img" title="Permalink to this headline">¶</a></h1>
+<p>vmlinuzは，ブートローダから実行されるカーネルの実行バイナリらしい．
+簡単な初期化を行なった後にカーネル本体を解凍してメモリにロードする．</p>
+<p>initrdは初期RAMディスクとかっていうらしい．
+カーネルが全ての初期化を終えた後，initrdを展開して仮のファイルシステム(ミニルート?)としてマウントする．
+本番のルートファイルシステムが置いてあるディスクをマウントするために必要なドライバや，
+各種ユーティリティが含まれる．
+initrd とinitramfsの2種類あるらしいが違いはよくわかってない．
+これあれか，init root directry か init ram disk って感じかななるほど．
+initrdのマウントに成功した後，initrdの中の/sbin/initを実行するらしい．</p>
+<p>ちなみに，/boot/ いかにvmlinuzとinitrd.imgの他にSystem.mapみたいなファイルも転がってる．
+これはカーネルが使用するシンボルテーブルらしく，メモリ上でのシンボルとアドレスの対応関係を示したものである．したものである
+nmコマンドの出力結果そのままであるらしいが正直よくわからない．</p>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/GRUB2/ja">https://wiki.gentoo.org/wiki/GRUB2/ja</a>
+<a class="reference external" href="https://keichi.net/post/linux-boot/">https://keichi.net/post/linux-boot/</a>
+<a class="reference external" href="https://0xax.gitbooks.io/linux-insides/content/index.html">https://0xax.gitbooks.io/linux-insides/content/index.html</a> ←これ英語だけどめっちゃ詳しそうでやばい．</p>
+<p><a class="reference external" href="https://ja.wikipedia.org/wiki/Vmlinux">https://ja.wikipedia.org/wiki/Vmlinux</a>
+<a class="reference external" href="https://ja.wikipedia.org/wiki/System.map">https://ja.wikipedia.org/wiki/System.map</a></p>
 </div>
 
 
