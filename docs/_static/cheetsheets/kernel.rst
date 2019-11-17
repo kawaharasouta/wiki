@@ -115,12 +115,14 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
 ::
 
   $ cd linux-4.15.1/
-  $ make clean && make mrproper
-  # とりあえず既存の.configを持ってくる
-  $ make localmodconfig
+  $ make clean && make mrproper   #色々cleanするみたいな mrproperだけでいいって聞いたこともある
+
+  # とりあえず既存の.configを持ってくる系のmakeターゲットいくつか並べておく
+  $ make localmodconfig   #既存の.configのうち
+  $ make oldconfig
+
   # その後の設定 TUI的な感じで設定ができそう
   $ make menuconfig
-
   # その他の設定のやり方? ここら辺ncursesが必要だったりしそう
   $ make menuconfig     # ncurses コマンドラインインターフェイス
   $ make nconfig        # コマンドラインの新しい ncurses インターフェイス
@@ -157,3 +159,4 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
 
 コードリーディング: https://elixir.bootlin.com/linux/latest/source
 
+linux kernel の make target: https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c

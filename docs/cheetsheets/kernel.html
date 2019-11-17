@@ -302,12 +302,14 @@ $ tar -xvJf linux-4.15.1.tar.xz
 </div>
 <p>ビルドする</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ cd linux-4.15.1/
-$ make clean &amp;&amp; make mrproper
-# とりあえず既存の.configを持ってくる
-$ make localmodconfig
+$ make clean &amp;&amp; make mrproper   #色々cleanするみたいな mrproperだけでいいって聞いたこともある
+
+# とりあえず既存の.configを持ってくる系のmakeターゲットいくつか並べておく
+$ make localmodconfig   #既存の.configのうち
+$ make oldconfig
+
 # その後の設定 TUI的な感じで設定ができそう
 $ make menuconfig
-
 # その他の設定のやり方? ここら辺ncursesが必要だったりしそう
 $ make menuconfig     # ncurses コマンドラインインターフェイス
 $ make nconfig        # コマンドラインの新しい ncurses インターフェイス
@@ -341,6 +343,7 @@ archだとmkinitcpioってコマンド叩いてるけどubuntuにはなくて，
 <h2>参考<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>ソースコード: <a class="reference external" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
 <p>コードリーディング: <a class="reference external" href="https://elixir.bootlin.com/linux/latest/source">https://elixir.bootlin.com/linux/latest/source</a></p>
+<p>linux kernel の make target: <a class="reference external" href="https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c">https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c</a></p>
 </div>
 </div>
 

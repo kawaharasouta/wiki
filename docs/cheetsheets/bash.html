@@ -111,9 +111,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 </ul>
@@ -135,6 +136,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
@@ -267,13 +269,14 @@ $ sudo hostnamectl set-hostname [hostname]
 </div>
 <div class="section" id="apt-ctrl-c">
 <h2>aptが途中で死んだ(ctrl-cで殺した)とき<a class="headerlink" href="#apt-ctrl-c" title="Permalink to this headline">¶</a></h2>
+<p>install するときに依存関係とかで足りないやつがあったときは↓みたいに(1行目いらないかも)
+すると依存関係を解決してinstallしてくれるみたい．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dpkg --configure -a
 $ sudo apt --fix-broken install
 </pre></div>
 </div>
-<p><a class="reference external" href="https://codeday.me/jp/qa/20190808/1401674.html">https://codeday.me/jp/qa/20190808/1401674.html</a>
-ダメでした〜〜〜〜〜〜〜〜</p>
-<p>こっちで行けそう</p>
+<p><a class="reference external" href="https://codeday.me/jp/qa/20190808/1401674.html">https://codeday.me/jp/qa/20190808/1401674.html</a></p>
+<p>上でダメだったやつはこれでフットプリント?履歴?みたいなのを削除?すればいい．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dpkg -r --force-all [パッケージ名]
 </pre></div>
 </div>
