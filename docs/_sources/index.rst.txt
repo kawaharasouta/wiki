@@ -34,6 +34,7 @@ wiki
   technote/boot
   technote/virtualization
   technote/cs
+  technote/tuntap
 
 .. toctree::
   :maxdepth: 1

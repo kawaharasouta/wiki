@@ -38,9 +38,28 @@ serial *cannot install*
     --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
     --extra-args 'console=ttyS0,115200n8 serial'
 
-  $ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --location 'http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --network network=default,model=virtio --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
-  ######$ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso --network network=default,model=virtio --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
-  多分こっちだと成功する．あとでまとめる
+  # これだと成功するきっと location が url にしたら通った
+  $ virt-install \
+  --connect=qemu:///system \
+  --name ubuntu1 \
+  --vcpus 1 \
+  --ram 512 \
+  --accelerate --hvm 
+  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+  --location 'http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' \
+  --network network=default,model=virtio \
+  --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
+
+  #これ成功しないやつ多分
+  $ virt-install --connect=qemu:///system \
+  --name ubuntu1 \
+  --vcpus 1 \
+  --ram 512 \
+  --accelerate --hvm \
+  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+  --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
+  --network network=default,model=virtio \
+  --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
 
 ubuntu1604が入らない話
 https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/

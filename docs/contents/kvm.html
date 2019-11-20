@@ -135,11 +135,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -262,9 +264,28 @@
   --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
   --extra-args &#39;console=ttyS0,115200n8 serial&#39;
 
-$ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --location &#39;http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/&#39; --network network=default,model=virtio --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
-######$ virt-install --connect=qemu:///system --name ubuntu1 --vcpus 1 --ram 512 --accelerate --hvm --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso --network network=default,model=virtio --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
-多分こっちだと成功する．あとでまとめる
+# これだと成功するきっと location が url にしたら通った
+$ virt-install \
+--connect=qemu:///system \
+--name ubuntu1 \
+--vcpus 1 \
+--ram 512 \
+--accelerate --hvm
+--disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+--location &#39;http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/&#39; \
+--network network=default,model=virtio \
+--nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+
+#これ成功しないやつ多分
+$ virt-install --connect=qemu:///system \
+--name ubuntu1 \
+--vcpus 1 \
+--ram 512 \
+--accelerate --hvm \
+--disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+--cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
+--network network=default,model=virtio \
+--nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 </pre></div>
 </div>
 <p>ubuntu1604が入らない話
