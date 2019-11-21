@@ -244,7 +244,7 @@
 </div>
 <div class="section" id="make-image">
 <h2>make image<a class="headerlink" href="#make-image" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.qcow2 8G
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.img 8G
 </pre></div>
 </div>
 </div>
@@ -270,7 +270,7 @@ $ virt-install \
 --name ubuntu1 \
 --vcpus 1 \
 --ram 512 \
---accelerate --hvm
+--accelerate --hvm \
 --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
 --location &#39;http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/&#39; \
 --network network=default,model=virtio \
@@ -286,10 +286,26 @@ $ virt-install --connect=qemu:///system \
 --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
 --network network=default,model=virtio \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+
+#centosの場合 (os-installerが変わるだけだから後でまとめたい
+#centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
+#メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
+$ virt-install \
+--connect=qemu:///system \
+--name centos7   \
+--vcpus 2 \
+--ram 2048   \
+--accelerate --hvm \
+--disk path=/var/lib/libvirt/images/centos7.img,size=8 \
+--location &#39;http://ftp.iij.ad.jp/pub/linux/centos/7/os/x86_64/&#39; \
+--network network=default,model=virtio \
+--nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 </pre></div>
 </div>
 <p>ubuntu1604が入らない話
-<a class="reference external" href="https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/">https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/</a></p>
+<a class="reference external" href="https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/">https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/</a>
+centos7でメモリが足りなくてinitramfsがエラる話
+<a class="reference external" href="https://www.centos.org/forums/viewtopic.php?t=67350">https://www.centos.org/forums/viewtopic.php?t=67350</a></p>
 </div>
 <div class="section" id="vnc">
 <h3>vnc<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h3>

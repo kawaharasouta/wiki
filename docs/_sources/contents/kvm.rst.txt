@@ -17,7 +17,7 @@ make image
 ----------
 ::
 
-  $ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.qcow2 8G
+  $ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.img 8G
 
 install 
 --------
@@ -44,7 +44,7 @@ serial *cannot install*
   --name ubuntu1 \
   --vcpus 1 \
   --ram 512 \
-  --accelerate --hvm 
+  --accelerate --hvm \
   --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
   --location 'http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' \
   --network network=default,model=virtio \
@@ -61,8 +61,24 @@ serial *cannot install*
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
 
+  #centosの場合 (os-installerが変わるだけだから後でまとめたい
+  #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
+  #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
+  $ virt-install \
+  --connect=qemu:///system \
+  --name centos7   \
+  --vcpus 2 \
+  --ram 2048   \
+  --accelerate --hvm \
+  --disk path=/var/lib/libvirt/images/centos7.img,size=8 \
+  --location 'http://ftp.iij.ad.jp/pub/linux/centos/7/os/x86_64/' \
+  --network network=default,model=virtio \
+  --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
+
 ubuntu1604が入らない話
 https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/
+centos7でメモリが足りなくてinitramfsがエラる話
+https://www.centos.org/forums/viewtopic.php?t=67350
 
 vnc
 ~~~~
