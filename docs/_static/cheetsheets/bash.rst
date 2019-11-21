@@ -82,3 +82,9 @@ https://codeday.me/jp/qa/20190808/1401674.html
   $ sudo dpkg -r --force-all [パッケージ名]
 
 https://lb.raspberrypi.org/forums/viewtopic.php?t=200575
+
+
+Linuxデストリ
+---------------
+
+http://note.kurodigi.com/linux-version/
