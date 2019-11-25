@@ -163,7 +163,7 @@ macvtap, macvlan
 
   <interface type='direct'>
     <mac address='52:54:00:94:9a:a0'/>
-    <source dev='eth0' mode='bridge'/>
+    <source dev='eth0' mode='bridge'/>    #devがtapでも動いた
     <model type='virtio'/>
     <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
   </interface>
