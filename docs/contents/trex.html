@@ -107,6 +107,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#hardware-environment">hardware environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hello-world">hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">一般的な使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#statless-traffic">statless traffic生成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">パケットの確認</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">トラフィックを流す</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -214,7 +221,7 @@
 <h1>TRex<a class="headerlink" href="#trex" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="iruyatu">
 <h2>iruyatu<a class="headerlink" href="#iruyatu" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install python python python-pip
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install python python-pip
 $ sudo apt install linux-headers-`uname -r` build-essential
 </pre></div>
 </div>
@@ -242,8 +249,7 @@ $ sudo apt install linux-headers-`uname -r` build-essential
 </div>
 <div class="section" id="install">
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo mkdir -p /opt/trex
-$ cd /opt/trex
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo mkdir -p /opt/trex &amp;&amp; cd $_
 $ sudo wget --no-cache https://trex-tgn.cisco.com/trex/release/latest
 $ sudo tar -xzvf latest
 </pre></div>
@@ -255,15 +261,91 @@ $ sudo tar -xzvf latest
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">dpdk_setup_ports</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">s</span>
 </pre></div>
 </div>
-<p>configをインタラクティブに作成 ※履歴見たいのあとで付け足すかも</p>
+<p>configをインタラクティブに作成
+使用するポートやアドレス等の設定
+※履歴見たいのあとで付け足すかも</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">dpdk_setup_ports</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span>
 </pre></div>
 </div>
-<p>トラフィック生成</p>
+<p>これで設定ファイルが/etc/trex_cfg.yamlにできる．</p>
+<p>テストトラフィック生成</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./t-rex-64 -f ./cap2/dns.yaml -d 10
 </pre></div>
 </div>
+<p>インタラクティブモードで実行してpingを飛ばしたりして確認とかもしたらよい．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">t</span><span class="o">-</span><span class="n">rex</span><span class="o">-</span><span class="mi">64</span> <span class="o">-</span><span class="n">i</span>
+</pre></div>
+</div>
 <p>※いつものDPDKのやつで実行した後はネットワークスタックからインタフェースが見えなくなる※</p>
+</div>
+<div class="section" id="id1">
+<h2>一般的な使い方<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="statless-traffic">
+<h3>statless traffic生成<a class="headerlink" href="#statless-traffic" title="Permalink to this headline">¶</a></h3>
+<p>stl/ にStateless traffic?用のpythonファイルがあるのでそれ使う．
+trex_stl_libとかで書く．scapy使ってると思う．</p>
+<p>e.g. stl/my_udp_1pkt.py</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">trex_stl_lib.api</span> <span class="k">import</span> <span class="o">*</span>
+
+ <span class="k">class</span> <span class="nc">STLS1</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+     <span class="k">def</span> <span class="nf">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">fsize</span>  <span class="o">=</span><span class="mi">64</span><span class="p">;</span>
+
+     <span class="k">def</span> <span class="nf">create_pkt_base</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;10.1.0.2&quot;</span><span class="p">,</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;10.2.0.2&quot;</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">create_stream</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="c1"># Create base packet and pad it to size</span>
+         <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fsize</span> <span class="o">-</span> <span class="mi">4</span><span class="p">;</span> <span class="c1"># HW will add 4 bytes ethernet FCS</span>
+         <span class="n">base_pkt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pkt_base</span> <span class="p">()</span>
+         <span class="n">pad</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">base_pkt</span><span class="p">))</span> <span class="o">*</span> <span class="s1">&#39;x&#39;</span>
+         <span class="n">pkt</span> <span class="o">=</span> <span class="n">STLPktBuilder</span><span class="p">(</span><span class="n">pkt</span> <span class="o">=</span> <span class="n">base_pkt</span><span class="o">/</span><span class="n">pad</span><span class="p">,</span> <span class="n">vm</span> <span class="o">=</span> <span class="p">[])</span>
+
+         <span class="k">return</span> <span class="n">STLStream</span><span class="p">(</span><span class="n">packet</span> <span class="o">=</span> <span class="n">pkt</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">STLTXCont</span><span class="p">())</span>
+
+     <span class="k">def</span> <span class="nf">get_streams</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="c1"># create 1 stream</span>
+         <span class="k">return</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_stream</span><span class="p">()</span> <span class="p">]</span>
+
+
+ <span class="c1"># dynamic load - used for trex console or simulator</span>
+ <span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+     <span class="k">return</span> <span class="n">STLS1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>パケットの確認<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>よくわからんけどなんかコマンドでpcapできるからそれ見て確認したらいい．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./stl-sim -f stl/my_udp_1pkt.py -o ~/my_udp_1pkt.pcap
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>トラフィックを流す<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>インタラクティブモードでtrexを動かしておく
+※デーモンにしてもいいんだろうけどインタラクティブモードにしとくとリアタイでトラフィック見える</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./t-rex-64 -i
+</pre></div>
+</div>
+<p>別のコンソールでtrexコンソールなるものを起動．コマンドラインで操作する．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./trex-console
+
+# 送信例
+trex&gt;start -p 0 -m 100kbps -f stl/my_udp_1pkt.py
+# 停止
+trex&gt;stop
+# tuiモード(pkygen-dpdkみたいになるぜ．コンソールの画面サイズがある程度ないと怒られてエラる．
+trex&gt;tui
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>参考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://trex-tgn.cisco.com/">https://trex-tgn.cisco.com/</a></p>
+<p><a class="reference external" href="https://foobaron.hatenablog.com/entry/2019/03/10/cisco-trex-traffic-generator-l3-stateless">https://foobaron.hatenablog.com/entry/2019/03/10/cisco-trex-traffic-generator-l3-stateless</a></p>
 </div>
 </div>
 
