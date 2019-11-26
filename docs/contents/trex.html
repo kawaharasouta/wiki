@@ -110,24 +110,27 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">technote:</span></p>
+<p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id3">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">仮想環境に関する内容</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
@@ -211,7 +214,7 @@
 <h1>TRex<a class="headerlink" href="#trex" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="iruyatu">
 <h2>iruyatu<a class="headerlink" href="#iruyatu" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install python python python-pipa
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install python python python-pip
 $ sudo apt install linux-headers-`uname -r` build-essential
 </pre></div>
 </div>

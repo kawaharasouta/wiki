@@ -8,7 +8,7 @@ iruyatu
 
 ::
     
-  $ sudo apt install python python python-pipa
+  $ sudo apt install python python python-pip
   $ sudo apt install linux-headers-`uname -r` build-essential
 
 #ちょいちょいModuleNotFoundError: No module named 'distutils.util'が出るんだけど, 普通に実行できる時もあるしでながら動いてる時もあるしよくわからん. python3でやれってことなのか?
