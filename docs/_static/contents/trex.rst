@@ -66,8 +66,8 @@ configをインタラクティブに作成
 ※いつものDPDKのやつで実行した後はネットワークスタックからインタフェースが見えなくなる※
 
 
-一般的な使い方
-===============
+とりあえずトラフィック流す
+============================
 
 
 statless traffic生成
@@ -139,6 +139,27 @@ e.g. stl/my_udp_1pkt.py
   trex>stop
   # tuiモード(pkygen-dpdkみたいになるぜ．コンソールの画面サイズがある程度ないと怒られてエラる．
   trex>tui
+
+
+command
+===========
+
+::
+
+  $ sudo ./t-rex-64 -f <traffic_yaml> -m <rate multiplier>  -d <duration>  -l <latency test rate>  -c <cores> --lm <active port mask>
+
+この使い方するとき，パケットはTCP/UDPパケットじゃないとダメみたい．
+
+::
+
+  ERROR packet 1 is not supported, should be Ethernet/IP(0x0800)/(TCP|UDP) format try to convert it using Wireshark !
+
+って言われた．
+https://trex-tgn.cisco.com/trex/doc/trex_manual.html#cml-line
+
+
+yaml
+======
 
 
 

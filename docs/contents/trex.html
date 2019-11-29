@@ -107,12 +107,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#hardware-environment">hardware environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hello-world">hello world</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">一般的な使い方</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">とりあえずトラフィック流す</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#statless-traffic">statless traffic生成</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">パケットの確認</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">トラフィックを流す</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#command">command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#yaml">yaml</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">参考</a></li>
 </ul>
 </li>
@@ -279,7 +281,7 @@ $ sudo tar -xzvf latest
 <p>※いつものDPDKのやつで実行した後はネットワークスタックからインタフェースが見えなくなる※</p>
 </div>
 <div class="section" id="id1">
-<h2>一般的な使い方<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>とりあえずトラフィック流す<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="statless-traffic">
 <h3>statless traffic生成<a class="headerlink" href="#statless-traffic" title="Permalink to this headline">¶</a></h3>
 <p>stl/ にStateless traffic?用のpythonファイルがあるのでそれ使う．
@@ -341,6 +343,21 @@ trex&gt;tui
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="command">
+<h2>command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./t-rex-64 -f &lt;traffic_yaml&gt; -m &lt;rate multiplier&gt;  -d &lt;duration&gt;  -l &lt;latency test rate&gt;  -c &lt;cores&gt; --lm &lt;active port mask&gt;
+</pre></div>
+</div>
+<p>この使い方するとき，パケットはTCP/UDPパケットじゃないとダメみたい．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ERROR packet 1 is not supported, should be Ethernet/IP(0x0800)/(TCP|UDP) format try to convert it using Wireshark !
+</pre></div>
+</div>
+<p>って言われた．
+<a class="reference external" href="https://trex-tgn.cisco.com/trex/doc/trex_manual.html#cml-line">https://trex-tgn.cisco.com/trex/doc/trex_manual.html#cml-line</a></p>
+</div>
+<div class="section" id="yaml">
+<h2>yaml<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="id4">
 <h2>参考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
