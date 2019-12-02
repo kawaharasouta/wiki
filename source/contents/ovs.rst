@@ -34,6 +34,13 @@ operation
   $ sudo ovs-vsctl del-br [switch]
   $ sudo ovs-vsctl add-port [switch] [port]
   $ sudo ovs-vsctl del-port [switch] [port]
+  # bridgeのリスト
+  $ sudo ovs-vstcl list-br
+
+  $ sudo ovs-ofctl show [switch]
+  $ sudo ovs-ofctl dump-flows [switch]
+  $ sudo ovs-ofctl add-flow [switch] in_port=[port num],action={output:[port num] または all}   #actionは他にも指定方法ありそう
+  $ sudo ovs-ofctl del-flow [switch]  # switch指定がなかったら全ルール削除
 
 
 kvmのVMをovsに接続
@@ -100,6 +107,7 @@ QEMU:
   $ sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-socket-mem="1024,1024"
   $ sudo ovs-vsctl set Open_vSwitch . other_config:pmd-cpu-mask=1E0000000001E
 
+  # VMのインタフェースの場合
   $ sudo mkdir -p /usr/local/openvswitch/       # ソケットを配置しておくディレクトリ
   $ sudo touch /usr/local/openvswitch/dpdkvhostclient0
   $ sudo touch /usr/local/openvswitch/dpdkvhostclient1
@@ -129,6 +137,10 @@ QEMU:
     +     mode='server'/>
     +   <model type='virtio'/>
     + </interface>
+
+  # 物理インタフェースの場合
+  $ sudo dpdk-devbind -b uio_pci_generic [pci bus]
+  $ sudo ovs-vsctl add-port [bridge name] nic0 -- set Interface nic0 type=dpdk options:dpdk-devargs=[pci bus]
 
 
 確か，VMにそこそこメモリあげないと動かなかった気がするので動かなかったら確認するといい?
