@@ -139,14 +139,22 @@ QEMU:
     + </interface>
 
   # 物理インタフェースの場合
-  $ sudo dpdk-devbind -b uio_pci_generic [pci bus]
+  $ sudo dpdk-devbind -b igb_uio [pci bus]      # ドライバは任意?
   $ sudo ovs-vsctl add-port [bridge name] nic0 -- set Interface nic0 type=dpdk options:dpdk-devargs=[pci bus]
-
+  
 
 確か，VMにそこそこメモリあげないと動かなかった気がするので動かなかったら確認するといい?
 curentじゃないのが1G, currentが500Mで動いてたけどどうなんだろう．
 というか，なんか1G以上メモリをあげられなかったんだけどこれはなんだ?
 他のVMにはあげられてるのでOVS-DPDKが原因なんだろうけどなんなんだろう．
+
+
+memo
+=====
+
+- 最初flowはNORMALが設定されてるけど，ちゃんとflowをそれぞれ設定した方がスループット出る．
+
+
 
 
 参考

@@ -75,6 +75,16 @@ brctl と iprouteの比較
   IF追加, brctl addif [bridge] [if], ip link set dev [if] master [bridge]
   IF削除, brctl delif [bridge] [if], ip link set dev [if] nomaster
 
+
+rxqueueを変更?
+-----------------
+
+::
+
+  sudo ip link set dev dum0 numtxqueues 10
+
+
+
 references
 ------------
 

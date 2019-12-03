@@ -110,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#ovs-dpdk">OvS DPDK</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirement">requirement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memo">memo</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
@@ -335,7 +336,7 @@ $ sudo virsh edit [VM]
   + &lt;/interface&gt;
 
 # 物理インタフェースの場合
-$ sudo dpdk-devbind -b uio_pci_generic [pci bus]
+$ sudo dpdk-devbind -b igb_uio [pci bus]      # ドライバは任意?
 $ sudo ovs-vsctl add-port [bridge name] nic0 -- set Interface nic0 type=dpdk options:dpdk-devargs=[pci bus]
 </pre></div>
 </div>
@@ -343,6 +344,12 @@ $ sudo ovs-vsctl add-port [bridge name] nic0 -- set Interface nic0 type=dpdk opt
 curentじゃないのが1G, currentが500Mで動いてたけどどうなんだろう．
 というか，なんか1G以上メモリをあげられなかったんだけどこれはなんだ?
 他のVMにはあげられてるのでOVS-DPDKが原因なんだろうけどなんなんだろう．</p>
+</div>
+<div class="section" id="memo">
+<h2>memo<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>最初flowはNORMALが設定されてるけど，ちゃんとflowをそれぞれ設定した方がスループット出る．</li>
+</ul>
 <p>参考
 <a class="reference external" href="https://www.miraclelinux.com/tech-blog/dpdk-open-vswitch-study-7">https://www.miraclelinux.com/tech-blog/dpdk-open-vswitch-study-7</a>
 <a class="reference external" href="https://www.miraclelinux.com/tech-blog/zubcuq">https://www.miraclelinux.com/tech-blog/zubcuq</a>
