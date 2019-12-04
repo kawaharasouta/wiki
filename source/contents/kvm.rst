@@ -77,8 +77,10 @@ serial *cannot install*
 
 ubuntu1604が入らない話
 https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/
+
 centos7でメモリが足りなくてinitramfsがエラる話
 https://www.centos.org/forums/viewtopic.php?t=67350
+
 locationをどうするかみたいな
 https://qiita.com/t_niimura/items/5991c8a2d07b94c06bce
 

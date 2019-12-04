@@ -30,6 +30,9 @@ commands
   $ docker stop $(docker ps -q)                       #起動中のコンテナ全部停止
   $ docker rm $(docker ps -aq)                        #停止中コンテナ全削除
 
+  #コンテナ情報取得
+  $ docker inspect [container id]
+
 
 
 images

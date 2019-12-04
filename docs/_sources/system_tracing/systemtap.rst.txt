@@ -44,9 +44,48 @@ debianパッケージで頑張ってみたけどちょっと無理そうか?
 本家: https://sourceware.org/systemtap/
 
 参考にしたところ
+
 https://gihyo.jp/admin/serial/01/ubuntu-recipe/0584
+
 https://www.hiroom2.com/2018/04/27/ubuntu-1804-dbgsym-ja/
+
 https://blog.jeffli.me/blog/2014/10/10/install-systemtap-in-ubuntu-14-dot-04/
+
 https://wiki.ubuntu.com/Kernel/Systemtap#Where_to_get_debug_symbols_for_kernel_X.3F
+
 https://blog.csdn.net/richardysteven/article/details/82525909
 
+
+
+
+
+もうなんかわかんねえからとにかく参考にしたリンク貼っとくぞおら
+
+http://myokota.hatenablog.jp/entry/2015/01/03/235944
+
+https://mmitou.hatenadiary.org/entry/20120721/1342879187
+
+ubuntuデバグ情報
+https://wiki.ubuntu.com/Debug%20Symbol%20Packages
+
+centos
+https://access.redhat.com/ja/solutions/289453
+
+linux kernel-devel
+https://qiita.com/metheglin/items/60261f474ccdfb467574
+https://download.parallels.com/desktop/v10/docs/ja_JP/Parallels%20Desktop%20User's%20Guide/33307.ht
+
+https://blog.jeffli.me/blog/2014/10/10/install-systemtap-in-ubuntu-14-dot-04/m
+
+https://blog.csdn.net/richardysteven/article/details/82525909
+
+https://kernhack.hatenablog.com/entry/2015/12/26/165142
+
+https://askubuntu.com/questions/1079874/unknown-sequence-editconfigs-when-trying-to-build-a-kernel
+
+https://www.itread01.com/content/1550387720.html
+
+systemtap arch wiki
+https://wiki.archlinux.jp/index.php/SystemTap
+
+https://sourceware.org/systemtap/wiki/SystemtapOnDebian
