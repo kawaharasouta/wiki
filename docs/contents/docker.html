@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ssh_config" href="ssh_config.html" />
-    <link rel="prev" title="kvm" href="kvm.html" /> 
+    <link rel="prev" title="vagrant" href="vagrant.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,31 +94,57 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Docker</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-ubuntu">install (ubuntu)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commands">commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#images">images</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 </ul>
-<p class="caption"><span class="caption-text">technote:</span></p>
+<p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
             
@@ -208,6 +234,11 @@ $ docker rm $(docker ps -aq)                        #停止中コンテナ全削
 </pre></div>
 </div>
 </div>
+<div class="section" id="images">
+<h2>images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<p># ソースコード眺めるやつのdockerコンテナらしいぞ! hayakawa-sanしゅごい!
+<a class="reference external" href="https://hub.docker.com/r/yutarohayakawa/elixir/">https://hub.docker.com/r/yutarohayakawa/elixir/</a></p>
+</div>
 </div>
 
 
@@ -221,7 +252,7 @@ $ docker rm $(docker ps -aq)                        #停止中コンテナ全削
         <a href="ssh_config.html" class="btn btn-neutral float-right" title="ssh_config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="kvm.html" class="btn btn-neutral float-left" title="kvm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vagrant.html" class="btn btn-neutral float-left" title="vagrant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
