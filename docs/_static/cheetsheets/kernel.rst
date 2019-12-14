@@ -152,6 +152,27 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
 :ref:`kernel_up_target`
 再起動するとビルドしたカーネルで動いてます．
 
+便利なカーネルコンフィグ
+-------------------------
+
+起動中に /proc/config.gz でカーネルコンフィグを確認できるようにする．
+
+::
+
+  $ grep IKCONFIG .config
+  CONFIG_IKCONFIG=y
+  CONFIG_IKCONFIG_PROC=y
+
+menuconfigだと
+
+::
+
+  General setup --->
+    <*> Kernel .config support
+    [*]   Enable access to .config through /proc/config.gz 
+
+**こんなことしなくても/boot/config-`uname -r`とかで見れるんじゃね?**
+
 参考
 ====
 

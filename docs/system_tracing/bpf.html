@@ -131,8 +131,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="systemtap.html">systemtap</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">BPFとは</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#ebpf">eBPF</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BPFとは</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -212,9 +214,18 @@
 <p>Berkeley Packet Filterの略．現在はパケットフィルタ以外のOS用途で使われる．
 eBPFとかに拡張されてる．XDPもこれを用いたもの．
 多分ここではBPFの話はほとんでしない．eBPFかXDPの話だけすると思う．</p>
+<div class="section" id="install">
+<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>カーネルコンフィグ</p>
+<p><a class="reference external" href="https://github.com/iovisor/bcc/blob/master/INSTALL.md#kernel-configuration">https://github.com/iovisor/bcc/blob/master/INSTALL.md#kernel-configuration</a></p>
+<p>ここ見ればいい．
+結構最初から設定されてる気がする．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt-get install -y \
+  bpfcc-tools python3-bpfcc \
+  linux-headers-`uname -r`
+</pre></div>
 </div>
-<div class="section" id="ebpf">
-<h1>eBPF<a class="headerlink" href="#ebpf" title="Permalink to this headline">¶</a></h1>
+</div>
 </div>
 
 

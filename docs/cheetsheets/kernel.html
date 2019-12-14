@@ -117,6 +117,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul class="current">
@@ -129,8 +131,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#grub">grubで起動時に選べるカーネルの種類を見る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#kernel-up-target">標準で起動するカーネルを指定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dbgsym">dbgsymパッケージリポジトリ導入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">カーネル再構築</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">カーネル再構築</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">便利なカーネルコンフィグ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -138,6 +143,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -338,9 +344,25 @@ archだとmkinitcpioってコマンド叩いてるけどubuntuにはなくて，
 <p>この後適当に起動するカーネルを指定したりして
 <a class="reference internal" href="#kernel-up-target"><span class="std std-ref">標準で起動するカーネルを指定</span></a>
 再起動するとビルドしたカーネルで動いてます．</p>
-</div>
 <div class="section" id="id5">
-<h2>参考<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h3>便利なカーネルコンフィグ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>起動中に /proc/config.gz でカーネルコンフィグを確認できるようにする．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ grep IKCONFIG .config
+CONFIG_IKCONFIG=y
+CONFIG_IKCONFIG_PROC=y
+</pre></div>
+</div>
+<p>menuconfigだと</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">General</span> <span class="n">setup</span> <span class="o">---&gt;</span>
+  <span class="o">&lt;*&gt;</span> <span class="n">Kernel</span> <span class="o">.</span><span class="n">config</span> <span class="n">support</span>
+  <span class="p">[</span><span class="o">*</span><span class="p">]</span>   <span class="n">Enable</span> <span class="n">access</span> <span class="n">to</span> <span class="o">.</span><span class="n">config</span> <span class="n">through</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p><strong>こんなことしなくても/boot/config-`uname -r`とかで見れるんじゃね?</strong></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>参考<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>ソースコード: <a class="reference external" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
 <p>コードリーディング: <a class="reference external" href="https://elixir.bootlin.com/linux/latest/source">https://elixir.bootlin.com/linux/latest/source</a></p>
 <p>linux kernel の make target: <a class="reference external" href="https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c">https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c</a></p>
