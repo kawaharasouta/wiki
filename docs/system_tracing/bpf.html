@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CPU関連のメモ &mdash; wiki  documentation</title>
+  <title>BPFとは &mdash; wiki  documentation</title>
   
 
   
@@ -45,8 +45,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TUN/TAPの調査" href="tuntap.html" />
-    <link rel="prev" title="カーネル関連について" href="inc_cs/kernel.html" /> 
+    <link rel="next" title="Tex" href="../documents/tex.html" />
+    <link rel="prev" title="systemtap" href="systemtap.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -105,23 +105,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html">ブートローダについてのメモ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#grub2">GRUB2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">CPU関連のメモ</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">そもそもCPUってなんなのって話</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -131,10 +128,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="systemtap.html">systemtap</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#ebpf">eBPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -190,13 +188,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>CPU関連のメモ</li>
+      <li>BPFとは</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/technote/cpu.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/system_tracing/bpf.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -209,25 +207,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cpu">
-<h1>CPU関連のメモ<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>そもそもCPUってなんなのって話<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>昔適当にIC並べて全加算器作ったりとかあったけど，これにレジスタついたりしたらもうCPUだよねって人と話たりしたんだけど，それだけだと正直よくわからんよね．
-だって僕の知ってるCPUってプログラム読み込んだりするし，なんかidleしたりするし，計算のために人間のいろんな助け必要としないし，
-そう考えるとCPUってなんなのかが本当にわからなくなる．
-じゃあCPUってなんなのか．</p>
-<p><strong>CPUとは</strong></p>
-<ul class="simple">
-<li>命令fetch:  プログラムカウンタ(レジスタ?)を見て命令(プログラム)をメモリから読む</li>
-<li>デコード:   命令を解読?</li>
-<li>演算:       命令を実行</li>
-<li>ストア:     結果をメモリに格納</li>
-</ul>
-<p>以上の動作をクロックに合わせて繰り返す．</p>
-<p>これがCPU．
-逆にいうとこれだけ満たしていればCPU．</p>
+  <div class="section" id="bpf">
+<h1>BPFとは<a class="headerlink" href="#bpf" title="Permalink to this headline">¶</a></h1>
+<p>Berkeley Packet Filterの略．現在はパケットフィルタ以外のOS用途で使われる．
+eBPFとかに拡張されてる．XDPもこれを用いたもの．
+多分ここではBPFの話はほとんでしない．eBPFかXDPの話だけすると思う．</p>
 </div>
+<div class="section" id="ebpf">
+<h1>eBPF<a class="headerlink" href="#ebpf" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -238,10 +225,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tuntap.html" class="btn btn-neutral float-right" title="TUN/TAPの調査" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../documents/tex.html" class="btn btn-neutral float-right" title="Tex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="inc_cs/kernel.html" class="btn btn-neutral float-left" title="カーネル関連について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="systemtap.html" class="btn btn-neutral float-left" title="systemtap" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

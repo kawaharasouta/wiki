@@ -19,6 +19,9 @@ install (ubuntu)
 
 ※tmuxのセッションからだとsudoなしがうまく行かなくなる．
 
+もっとも簡単なdocker公式セットアップ?
+https://qiita.com/zembutsu/items/bedb18e1061303e217b8
+
 
 commands
 ========

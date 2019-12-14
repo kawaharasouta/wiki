@@ -34,6 +34,7 @@ wiki
   technote/boot
   technote/virtualization
   technote/cs
+  technote/cpu
   technote/tuntap
 
 .. toctree::
@@ -51,6 +52,7 @@ wiki
 
   system_tracing/dtrace
   system_tracing/systemtap
+  system_tracing/bpf
 
 .. toctree::
   :maxdepth: 1
