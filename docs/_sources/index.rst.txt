@@ -36,6 +36,7 @@ wiki
   technote/cs
   technote/cpu
   technote/tuntap
+  technote/auth
 
 .. toctree::
   :maxdepth: 1

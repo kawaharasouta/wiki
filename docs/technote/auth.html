@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linuxの認証周りの話 &mdash; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="prev" title="TUN/TAPの調査" href="tuntap.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technote:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linuxの認証周りの話</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pam">PAM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#passwd">passwd変更</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Linuxの認証周りの話</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/technote/auth.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linux">
+<h1>Linuxの認証周りの話<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pam">
+<h2>PAM<a class="headerlink" href="#pam" title="Permalink to this headline">¶</a></h2>
+<p>Linuxには認証機能を使うソフトウェアがたくさんあるけど，それぞれのソフトウェアで独自に認証機能を実装してるのはよくないのでモジュールにしたものがある．
+それが PAMとかPAM認証 とかってやつ．</p>
+<p>/etc/pam.d を見ると，なんかよく見るデーモンの名前のファイルとかがあって，認証にはこいつらを使ってるぽいらしいくさい．
+これ以上はよくわからなくなりそうだから触れない．こういうのがあったよっていうメモ．</p>
+<p>参照: <a class="reference external" href="https://ozuma.hatenablog.jp/entry/20131005/1380942386">https://ozuma.hatenablog.jp/entry/20131005/1380942386</a></p>
+<div class="section" id="passwd">
+<h3>passwd変更<a class="headerlink" href="#passwd" title="Permalink to this headline">¶</a></h3>
+<p>it is based on a dictionary word とかって怒られる時の対処
+なんか↓のようにしたら動いた．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/pam.d/passwd
+
++ password   sufficient   pam_unix.so nullok md5 shadow
++ password   required     pam_deny.so
+</pre></div>
+</div>
+<p>参照: <a class="reference external" href="https://volvox.hateblo.jp/entry/20130813/1376399307">https://volvox.hateblo.jp/entry/20130813/1376399307</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tuntap.html" class="btn btn-neutral float-left" title="TUN/TAPの調査" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
