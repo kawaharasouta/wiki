@@ -22,6 +22,7 @@ wiki
   contents/xdp
   contents/ovs
   contents/trex
+  contents/openvpn
 
 
 .. toctree::
