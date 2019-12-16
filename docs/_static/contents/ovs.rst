@@ -42,6 +42,17 @@ operation
   $ sudo ovs-ofctl add-flow [switch] in_port=[port num],action={output:[port num] または all}   #actionは他にも指定方法ありそう
   $ sudo ovs-ofctl del-flow [switch]  # switch指定がなかったら全ルール削除
 
+  # flow確認
+  $ sudo ovs-ofctl dump-flows [switch]
+  # flow削除
+  $ sudo ovs-ofctl del-flows [switch]
+  # flow追加
+  $ sudo ovs-ofctl show br0        # ポートとか確認
+  $ sudo ovs-ofctl add-flow br0 in_port=1,action=output:3     # 特定のフロールール追加
+  ## 他の追加の方法は↓にリンク貼っとく
+
+
+flow追加: http://alexei-karamazov.hatenablog.com/entry/2013/12/20/103346
 
 kvmのVMをovsに接続
 ===================
@@ -53,9 +64,6 @@ kvmのVMをovsに接続
     <address type='pci' domain='0x0000' bus='0x01' slot='0x02' function='0x0'/>
     <virtualport type='openvswitch'/>
   </interface>
-
-
-
 
 
 ==================
@@ -74,9 +82,11 @@ install
 requirement 
 ============
 
-DPDK:
-OVS:
-QEMU:
+::
+
+  DPDK:
+  OVS:
+  QEMU:
 
 
 

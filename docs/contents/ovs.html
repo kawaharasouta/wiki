@@ -128,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -141,6 +142,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -251,8 +253,18 @@ $ sudo ovs-ofctl show [switch]
 $ sudo ovs-ofctl dump-flows [switch]
 $ sudo ovs-ofctl add-flow [switch] in_port=[port num],action={output:[port num] または all}   #actionは他にも指定方法ありそう
 $ sudo ovs-ofctl del-flow [switch]  # switch指定がなかったら全ルール削除
+
+# flow確認
+$ sudo ovs-ofctl dump-flows [switch]
+# flow削除
+$ sudo ovs-ofctl del-flows [switch]
+# flow追加
+$ sudo ovs-ofctl show br0        # ポートとか確認
+$ sudo ovs-ofctl add-flow br0 in_port=1,action=output:3     # 特定のフロールール追加
+## 他の追加の方法は↓にリンク貼っとく
 </pre></div>
 </div>
+<p>flow追加: <a class="reference external" href="http://alexei-karamazov.hatenablog.com/entry/2013/12/20/103346">http://alexei-karamazov.hatenablog.com/entry/2013/12/20/103346</a></p>
 </div>
 <div class="section" id="kvmvmovs">
 <h2>kvmのVMをovsに接続<a class="headerlink" href="#kvmvmovs" title="Permalink to this headline">¶</a></h2>
@@ -277,9 +289,11 @@ $ sudo update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/o
 </div>
 <div class="section" id="requirement">
 <h2>requirement<a class="headerlink" href="#requirement" title="Permalink to this headline">¶</a></h2>
-<p>DPDK:
-OVS:
-QEMU:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DPDK</span><span class="p">:</span>
+<span class="n">OVS</span><span class="p">:</span>
+<span class="n">QEMU</span><span class="p">:</span>
+</pre></div>
+</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl restart ovsdb-server ovs-vswitchd
 $ sudo vim /etc/default/grub
   + GRUB_CMDLINE_LINUX_DEFAULT=&quot;default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87&quot;
