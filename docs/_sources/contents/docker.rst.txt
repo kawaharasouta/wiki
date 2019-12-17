@@ -28,7 +28,7 @@ commands
 
 ::
   
-  $ docker run -it --name "name" ubuntu:18.04 bash    #名前をつける
+  $ docker run -it --name [name] ubuntu:18.04 bash    #名前をつける
   $ docker run -p 8080:80 -it ubuntu:18.04 bash       #ホストの8080ポートをコンテナの80ポートにフォアード
   $ docker stop $(docker ps -q)                       #起動中のコンテナ全部停止
   $ docker rm $(docker ps -aq)                        #停止中コンテナ全削除
@@ -36,7 +36,8 @@ commands
   #コンテナ情報取得
   $ docker inspect [container id]
 
-
+  # Dockerfileからbuildする(Dockerfileがいるディレクトリに入って)
+  $ docker build -t khwarizmi/[name] .
 
 images
 ========
