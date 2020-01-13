@@ -103,6 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -119,9 +120,11 @@
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CPU関連のメモ</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">そもそもCPUってなんなのって話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#romram">ROMとかRAMとかメモリ系の話</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -227,6 +230,41 @@
 <p>以上の動作をクロックに合わせて繰り返す．</p>
 <p>これがCPU．
 逆にいうとこれだけ満たしていればCPU．</p>
+</div>
+<div class="section" id="romram">
+<h2>ROMとかRAMとかメモリ系の話<a class="headerlink" href="#romram" title="Permalink to this headline">¶</a></h2>
+<p>メモリとはなんなのか．
+0,1を記憶・保持しておく素子．(素子ってなんか違う気がするけどとりあえずこのままでいいや)
+そんなのはわかっている．
+記憶ってなんだよ．保持ってなんだよ．
+フリップフロップだけ見せてドヤ顔してくる人いるけどそんなのもちろんわかってて，
+さらに揮発性がどうだのとか言われるとよりわからなくなる．</p>
+<p>さて，端的に僕の結論を述べると，
+メモリとは「スイッチ」である．</p>
+<p>1bitのメモリを考える．
+これは当然，1つの0,1を記憶・保持しておくものなんだけど，
+電気的に考えるともっとわかりやすくて，
+その素子の出力の0,1を素子の状態でコントロールできるやつ．
+みたいなイメージ．
+↑よくわからないと思うんだけど，実際にスイッチを1bitメモリにしたのを見ればマジで早いから見ればいいんだ．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ここに〜〜〜〜
+図を〜〜〜〜〜
+かいて〜〜〜〜
+いれるの〜〜〜〜
+</pre></div>
+</div>
+<p>これ，スイッチをONにすると接地されて電気的にLowに，そしてOFFにするとHighになるわけだ
+メモリに書き込む行為はスイッチのON, OFFを切り替える行為と同じであるわけだが，
+ここまでくると今度は書き込み(スイッチの切り替え)とかいう概念がわからなくなるかもしれない．
+そりゃそうだ僕もPCのメモリを書き換えるためにスイッチぽちぽちしたことなんてない．
+では実際メモリの書き込みってどうなってるのか，昔のメモリの話をする．
+昔のメモリはさっきいったスイッチのところに「~~~~~~~~」(<strong>名前忘れたから書くんやで</strong>)というものを使っていたらしい．
+これは，「電流を大量に流すと断線するただの導線」見たいなものらしく，本来保護回路に使われるものらしい．
+つまり，メモリへの書き込みを「大量に電流を流して導線を切る」ことに置き換えている．
+もちろん導線を戻すことはできないのでこれは一度書き込みしたら変えられない，すなわちROMである．
+これRANにするにはどうするかっていうとなんか「~~~~~~~~」っていうのとかあるらしいぞ．
+よくわかんないけどそういうのは電気の人に任せてもいい領域だと僕は判断した．
+磁気系の記憶素子も僕の理解すべき範疇ではないと判断した．</p>
 </div>
 </div>
 
