@@ -120,7 +120,9 @@
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CPU関連のメモ</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">そもそもCPUってなんなのって話</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">クロックジェネレータ(発振回路)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">リセット回路とクロック回路の話する前に</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">リセット回路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">クロックジェネレータ(発振回路)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#romram">ROMとかRAMとかメモリ系の話</a></li>
 </ul>
 </li>
@@ -233,7 +235,24 @@
 逆にいうとこれだけ満たしていればCPU．</p>
 </div>
 <div class="section" id="id2">
-<h2>クロックジェネレータ(発振回路)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>リセット回路とクロック回路の話する前に<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>チャタリングとかCRフィルタとかシュミットトリガとかの説明もしかしたらした方がいいのかもしれないけど
+とりあえず今はかかなくていいかな．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>今チャタリング: スイッチの接点の衝突により発生する物理的なバウンド．
+今CRフィルタ: コンデンサへの電荷の貯まりに時間をかけることによってチャタリングを防止する．
+今シュミットトリガ: 回路にHでもLでもない不安定な状態の電圧が入力されることがあるとき，それを綺麗に整形するみたいなやつ．
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>リセット回路<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>CPUが動くときに一番最初に必要になるやつ．．．みたいな．こんな書き方でいいのか．
+もちろん設計によるけど，スイッチ押したらL(またはH)になるみたいな回路作ればいい．
+クロックジェネレータ見ればわかるから説明省く．
+ちなみに，リセット回路のスイッチを手動でぽちぽちすれば手動クロックになるぜ．</p>
+</div>
+<div class="section" id="id4">
+<h2>クロックジェネレータ(発振回路)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>CPUの動作の同期を取っているもの．
 あんま詳しくない人でもCPU選ぶときにクロック周波数とかあるから知ってるやつ．
 電気的には，ある一定周期でHとLを行ったり来たりする回路．
