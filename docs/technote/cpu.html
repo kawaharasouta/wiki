@@ -241,6 +241,15 @@
 実際には水晶発振子とかが使われるらしいよ．</p>
 <p>回路は↓のようになる．</p>
 <a class="reference internal image-reference" href="../_images/clock_generator.png"><img alt="../_images/clock_generator.png" class="align-center" src="../_images/clock_generator.png" style="width: 349.20000000000005px; height: 284.0px;" /></a>
+<p>これだけ見るとなんだこれって感じなんだけど，ある一点の電位から考えると綺麗に発振するのがわかるからしゅごい．
+(これ，出力Aの隣のNOTのところが出力なんだけど書き忘れたから気が向いたら描き直すかも)</p>
+<p>点AがLだったとすると，点BはHで点CはLになる
+すると回路は↓のように読み替えられる．</p>
+<a class="reference internal image-reference" href="../_images/clock_generator_L.png"><img alt="../_images/clock_generator_L.png" class="align-center" src="../_images/clock_generator_L.png" style="width: 638.4000000000001px; height: 366.0px;" /></a>
+<p>(この図Aの位置が右にずれてるから気が向いたらなおそ.)</p>
+<p>この状態だと，BからCに電流が流れるのでコンデンサに電荷が溜まって行き，電圧がしきい値まで上がると点AがHと認識されるようになる．
+AがHだと，(最初の図に戻って見るとわかりやすいけど)BがL，CがHになる．
+すると今度は回路が↓のように読み替えられる．</p>
 </div>
 <div class="section" id="romram">
 <h2>ROMとかRAMとかメモリ系の話<a class="headerlink" href="#romram" title="Permalink to this headline">¶</a></h2>
