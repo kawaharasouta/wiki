@@ -250,6 +250,12 @@
 <p>この状態だと，BからCに電流が流れるのでコンデンサに電荷が溜まって行き，電圧がしきい値まで上がると点AがHと認識されるようになる．
 AがHだと，(最初の図に戻って見るとわかりやすいけど)BがL，CがHになる．
 すると今度は回路が↓のように読み替えられる．</p>
+<a class="reference internal image-reference" href="../_images/clock_generator_H.png"><img alt="../_images/clock_generator_H.png" class="align-center" src="../_images/clock_generator_H.png" style="width: 713.6px; height: 338.8px;" /></a>
+<p>ちなみにこのときAの電圧は プルアップ電圧+しきい値
+こうなると今度はコンデンサが放電，電荷がなくなると以前とは逆向きの電荷を貯め初めて，またしきい値まで電荷がたまると点AがLになる．
+これが電源が供給されている間ずっと繰り返される．</p>
+<p>※右端が出力となるような形のクロックジェネレータの回路を一応載せておく※</p>
+<a class="reference internal image-reference" href="../_images/clock_generator_2.png"><img alt="../_images/clock_generator_2.png" class="align-center" src="../_images/clock_generator_2.png" style="width: 514.8000000000001px; height: 294.8px;" /></a>
 </div>
 <div class="section" id="romram">
 <h2>ROMとかRAMとかメモリ系の話<a class="headerlink" href="#romram" title="Permalink to this headline">¶</a></h2>
