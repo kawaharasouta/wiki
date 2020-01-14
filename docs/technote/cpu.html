@@ -120,6 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CPU関連のメモ</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">そもそもCPUってなんなのって話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">クロックジェネレータ(発振回路)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#romram">ROMとかRAMとかメモリ系の話</a></li>
 </ul>
 </li>
@@ -230,6 +231,16 @@
 <p>以上の動作をクロックに合わせて繰り返す．</p>
 <p>これがCPU．
 逆にいうとこれだけ満たしていればCPU．</p>
+</div>
+<div class="section" id="id2">
+<h2>クロックジェネレータ(発振回路)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>CPUの動作の同期を取っているもの．
+あんま詳しくない人でもCPU選ぶときにクロック周波数とかあるから知ってるやつ．
+電気的には，ある一定周期でHとLを行ったり来たりする回路．
+これの立ち上がりとか立ち下がり?に合わせてCPUは動作することになる．もちろんどちらかは設計による．
+実際には水晶発振子とかが使われるらしいよ．</p>
+<p>回路は↓のようになる．</p>
+<a class="reference internal image-reference" href="../_images/clock_generator.png"><img alt="../_images/clock_generator.png" class="align-center" src="../_images/clock_generator.png" style="width: 349.20000000000005px; height: 284.0px;" /></a>
 </div>
 <div class="section" id="romram">
 <h2>ROMとかRAMとかメモリ系の話<a class="headerlink" href="#romram" title="Permalink to this headline">¶</a></h2>
