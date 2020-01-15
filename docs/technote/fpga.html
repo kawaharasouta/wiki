@@ -128,7 +128,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#usb-blaster-install">USB-Blasterドライバ install</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">なんか色々メモっとくゾーン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">なんか色々メモっとくゾーン</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">命名規則</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">ファイルの種類?</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#verilog-hdl">Verilog HDL</a></li>
 </ul>
 </li>
@@ -239,6 +243,74 @@ OS: Windows10</p>
 </div>
 <div class="section" id="id3">
 <h2>なんか色々メモっとくゾーン<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>命名規則<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">項目</th>
+<th class="head">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ファイル</td>
+<td>小文字 拡張子は「.v」</td>
+</tr>
+<tr class="row-odd"><td>モジュール</td>
+<td>大文字</td>
+</tr>
+<tr class="row-even"><td>入出力信号</td>
+<td>大文字</td>
+</tr>
+<tr class="row-odd"><td>パラメータ</td>
+<td>大文字</td>
+</tr>
+<tr class="row-even"><td>内部信号</td>
+<td>小文字</td>
+</tr>
+<tr class="row-odd"><td>ローアクティブ信号</td>
+<td>先頭に「n」</td>
+</tr>
+<tr class="row-even"><td>HDLファイルの保存場所</td>
+<td>プロジェクトファイルないの「HDL」ディレクトリ</td>
+</tr>
+<tr class="row-odd"><td>プロジェクト名と最上位階層名</td>
+<td>大文字で同一にする</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h3>ファイルの種類?<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">項目</th>
+<th class="head">内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>~~~~.v</td>
+<td>verilogファイル?</td>
+</tr>
+<tr class="row-odd"><td>~~~~.qsf</td>
+<td>ピンアサインファイル(他各種設定ファイル?)</td>
+</tr>
+<tr class="row-even"><td>~~~~.sdc</td>
+<td>制約ファイル(クロックとか使うのにいる?)</td>
+</tr>
+<tr class="row-odd"><td>~~~~.qpf</td>
+<td>プロジェクトファイル</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="verilog-hdl">
 <h2>Verilog HDL<a class="headerlink" href="#verilog-hdl" title="Permalink to this headline">¶</a></h2>
