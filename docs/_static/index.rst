@@ -38,6 +38,7 @@ wiki
   technote/cpu
   technote/tuntap
   technote/auth
+  technote/fpga
 
 .. toctree::
   :maxdepth: 1
