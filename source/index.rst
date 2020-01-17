@@ -35,9 +35,9 @@ wiki
   technote/boot
   technote/virtualization
   technote/cs
-  technote/cpu
   technote/tuntap
   technote/auth
+  technote/cpu
   technote/fpga
 
 .. toctree::
