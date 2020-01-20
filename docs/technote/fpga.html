@@ -122,19 +122,20 @@
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FPGA関連</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">開発環境</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">環境構築</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">そもそもFPGAらへんの歴史とか知識</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">開発環境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">環境構築</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#quartus-prime-install">Quartus Prime install</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usb-blaster-install">USB-Blasterドライバ install</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">基本的な使い方</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">まずはじめに</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">ロジックアナライザの使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">基本的な使い方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">まずはじめに</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">ロジックアナライザの使い方</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#memo">なんか色々メモっとくゾーン</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">命名規則</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">ファイルの種類?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">FPGAについて誤解していたこととわかったこと</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">命名規則</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">ファイルの種類?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">FPGAについて誤解していたこととわかったこと</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gpio">GPIO</a></li>
 </ul>
 </li>
@@ -232,39 +233,42 @@
 <h1>FPGA関連<a class="headerlink" href="#fpga" title="Permalink to this headline">¶</a></h1>
 <p>今後ずっとFPGAをやっていくかはわかんないけど，今後の役に立ちそうなことはmemoしておこうかな．</p>
 <div class="section" id="id1">
-<h2>開発環境<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>そもそもFPGAらへんの歴史とか知識<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2>開発環境<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>ボード: DE0-CV (altera(Intel))
 開発ソフトウェア: Quartus Prime Lite Edition ver17.0 (<a class="reference external" href="https://www.intel.co.jp/content/www/jp/ja/software/programmable/quartus-prime/download.html">https://www.intel.co.jp/content/www/jp/ja/software/programmable/quartus-prime/download.html</a>)
 OS: Windows10</p>
 </div>
-<div class="section" id="id2">
-<h2>環境構築<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>環境構築<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="quartus-prime-install">
 <h3>Quartus Prime install<a class="headerlink" href="#quartus-prime-install" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="usb-blaster-install">
 <h3>USB-Blasterドライバ install<a class="headerlink" href="#usb-blaster-install" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="id3">
-<h3>基本的な使い方<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-</div>
 <div class="section" id="id4">
-<h3>まずはじめに<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>基本的な使い方<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3>まずはじめに<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Quartus Prime(以下QP)にもエディタ的な機能はついているが，
 基本的にはファイルの編集はエディタで編集してそれをImportする形で利用する．
 ファイル構成?とかはとりあえず <a class="reference internal" href="#memo"><span class="std std-ref">なんか色々メモっとくゾーン</span></a> を見ればいいかも．</p>
 <p>これ以降はあとでメモるぞ．</p>
 </div>
-<div class="section" id="id5">
-<h3>ロジックアナライザの使い方<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>ロジックアナライザの使い方<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>設計時のデバグとかで使うらしいぞ．</p>
 <p>あとでメモるぞ．</p>
 </div>
 </div>
 <div class="section" id="memo">
-<span id="id6"></span><h2>なんか色々メモっとくゾーン<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id7">
-<h3>命名規則<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h2>なんか色々メモっとくゾーン<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>命名規則<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -303,8 +307,8 @@ OS: Windows10</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id8">
-<h3>ファイルの種類?<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>ファイルの種類?<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />
@@ -333,8 +337,8 @@ OS: Windows10</p>
 <p>どうやら基本的にはverilogを書いて，設計によって制約ファイルを修正するみたいな感じでdevelopしていく感じぽい．
 ピンアサインはピンとかを名前づけするものみたいだから同じボードには使い回ししてもいいものっぽい．</p>
 </div>
-<div class="section" id="id9">
-<h3>FPGAについて誤解していたこととわかったこと<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>FPGAについて誤解していたこととわかったこと<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>当初，FPGAは電気回路をプログラミングできるみたいなイメージかと思っていた．
 一個一個素子とかを定義したりして，繋いでいくようなイメージ．
 (もちろん僕がまだ知らないだけでできるのかもしれないけど)</p>
