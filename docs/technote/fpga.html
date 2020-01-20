@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="bash" href="../cheetsheets/bash.html" />
-    <link rel="prev" title="Linuxの認証周りの話" href="auth.html" /> 
+    <link rel="prev" title="CPU関連のメモ" href="cpu.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -118,9 +118,9 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FPGA関連</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">開発環境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">環境構築</a><ul>
@@ -131,6 +131,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#id3">なんか色々メモっとくゾーン</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id4">命名規則</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">ファイルの種類?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">FPGAについて誤解していたこととわかったこと</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpio">GPIO</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#verilog-hdl">Verilog HDL</a></li>
@@ -313,6 +315,22 @@ OS: Windows10</p>
 <p>どうやら基本的にはverilogを書いて，設計によって制約ファイルを修正するみたいな感じでdevelopしていく感じぽい．
 ピンアサインはピンとかを名前づけするものみたいだから同じボードには使い回ししてもいいものっぽい．</p>
 </div>
+<div class="section" id="id6">
+<h3>FPGAについて誤解していたこととわかったこと<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>当初，FPGAは電気回路をプログラミングできるみたいなイメージかと思っていた．
+一個一個素子とかを定義したりして，繋いでいくようなイメージ．
+(もちろん僕がまだ知らないだけでできるのかもしれないけど)</p>
+<p>ただし基本的な使い方は，モジュールという小さな昨日の塊を作って，
+それをつなぎ合わせていくようなものだった．
+モジュールの定義はC的なプログラミングができる．
+また，つなげる先はモジュール同士はもちろん，物理的なスイッチやLEDなどと接続が簡単にできる．
+モジュールとは，CPUで言うなら，ALU・レジスタ群・PC...とかのイメージ．</p>
+</div>
+<div class="section" id="gpio">
+<h3>GPIO<a class="headerlink" href="#gpio" title="Permalink to this headline">¶</a></h3>
+<p>GPIO(General Purpoes Input/Outpu) はデジタル信号の汎用入出力のピンのこと．
+rasbberypayとかにもついてる．</p>
+</div>
 </div>
 <div class="section" id="verilog-hdl">
 <h2>Verilog HDL<a class="headerlink" href="#verilog-hdl" title="Permalink to this headline">¶</a></h2>
@@ -330,7 +348,7 @@ OS: Windows10</p>
         <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="auth.html" class="btn btn-neutral float-left" title="Linuxの認証周りの話" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cpu.html" class="btn btn-neutral float-left" title="CPU関連のメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
