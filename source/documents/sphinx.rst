@@ -105,7 +105,7 @@ theme (i.e. sphinx_rtd_theme
 
   html_theme = 'sphinx_rtd_theme'
 
-theme_sample_
+利用できるテーマは theme_sample_ を参照．
 
 
 
