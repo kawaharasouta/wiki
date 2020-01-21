@@ -26,7 +26,7 @@ latexpdf
 
 ::
 
-  sudo apt instal -y texlive-fonts-recommended \
+  sudo apt install -y texlive-fonts-recommended \
 	  texlive-latex-recommended texlive-latex-extra \
 	  texlive-lang-japanese latexmk texlive-latex-base python3-sphinx
 
