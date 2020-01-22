@@ -123,9 +123,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -233,16 +234,15 @@ $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマン�
 </div>
 <div class="section" id="commands">
 <h2>commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker run -it --name [name] ubuntu:18.04 bash    #名前をつける
-$ docker run -p 8080:80 -it ubuntu:18.04 bash       #ホストの8080ポートをコンテナの80ポートにフォアード
-$ docker stop $(docker ps -q)                       #起動中のコンテナ全部停止
-$ docker rm $(docker ps -aq)                        #停止中コンテナ全削除
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker run -it --name [name] ubuntu:18.04 bash        #名前をつける
+$ docker run -p 8080:80 -it ubuntu:18.04 bash           #ホストの8080ポートをコンテナの80ポートにフォアード
+$ docker run --link [container name]:{link name] nginx  #コンテナをリンクさせる例(nginxでリバースプロキシするときにやったので
+$ docker stop $(docker ps -q)                           #起動中のコンテナ全部停止
+$ docker rm $(docker ps -aq)                            #停止中コンテナ全削除
+$ docker rename [old name] [new name]                   #コンテナリネーム
 
-#コンテナ情報取得
-$ docker inspect [container id]
-
-# Dockerfileからbuildする(Dockerfileがいるディレクトリに入って)
-$ docker build -t khwarizmi/[name] .
+$ docker inspect [container id]           #コンテナ情報取得
+$ docker build -t khwarizmi/[name] .      #Dockerfileからbuildする(Dockerfileがいるディレクトリに入って)
 </pre></div>
 </div>
 </div>

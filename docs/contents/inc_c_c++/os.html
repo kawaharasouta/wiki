@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="golang" href="../golang.html" />
+    <link rel="next" title="pthread" href="pthread.html" />
     <link rel="prev" title="segv対策" href="segv.html" /> 
 </head>
 
@@ -105,29 +105,46 @@
 <li class="toctree-l2"><a class="reference internal" href="header_memo.html">ヘッダ構造体メモ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="segv.html">segv対策</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">OS定義マクロ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pthread.html">pthread</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openvpn.html">OpenVPN</a></li>
 </ul>
-<p class="caption"><span class="caption-text">technote:</span></p>
+<p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../technote/rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../technote/interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/tuntap.html">TUN/TAPの調査</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/fpga.html">FPGA関連</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../system_tracing/systemtap.html">systemtap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../system_tracing/bpf.html">BPFとは</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -226,7 +243,7 @@ __APPLE__ ‐ Mac OSシリーズの場合、1
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../golang.html" class="btn btn-neutral float-right" title="golang" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pthread.html" class="btn btn-neutral float-right" title="pthread" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="segv.html" class="btn btn-neutral float-left" title="segv対策" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -42,6 +42,14 @@ latexpdf
 
 
 
+init
+------
+
+::
+
+  $ sphinx-quickstart
+
+適当にやればすぐできる．
 
 
 
