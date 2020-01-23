@@ -101,6 +101,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">golang</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cmd">cmd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">参考</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -217,6 +219,7 @@
 <h1>golang<a class="headerlink" href="#golang" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="install">
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>ここ見た方がいいかも <a class="reference external" href="https://golang.org/doc/install">https://golang.org/doc/install</a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># linux
 $ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
 $ sudo tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
@@ -224,8 +227,8 @@ $ sudo tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
 $ brew install go
 
 # if not seted
-$ export PATH=$PATH:/usr/local/go/bin
-$ export GOPATH=$HOME/go                              #ワーキングディレクトのパス
+$ export PATH=$PATH:/usr/local/go/bin                 # go installしたときに実行ファイルが飛んでくとこにパス通しとけ的なやつですかね? これ普通に$GOPATH/binでいいんじゃねって気がしてきた．
+$ export GOPATH=$HOME/go                              # ワーキングディレクトのパス
 </pre></div>
 </div>
 </div>
@@ -235,6 +238,25 @@ $ export GOPATH=$HOME/go                              #ワーキングディレ�
 $ $GOPATH/bin/helloworld
 </pre></div>
 </div>
+</div>
+<div class="section" id="cmd">
+<h2>cmd<a class="headerlink" href="#cmd" title="Permalink to this headline">¶</a></h2>
+<p><strong>go</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ go run test.go      #即時実行
+$ go build test.go    #コンパイル
+$ go fmt test.go      #フォーマット整形
+</pre></div>
+</div>
+<p><strong>godoc</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ godoc fmt           #パッケージのドキュメントを見る
+$ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブラウザからドキュメント確認する
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>本家: <a class="reference external" href="https://golang.org/">https://golang.org/</a>
+チュートリアル的な: <a class="reference external" href="http://golang.jp/go_tutorial">http://golang.jp/go_tutorial</a>  本家の日本語約で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．</p>
 </div>
 </div>
 
