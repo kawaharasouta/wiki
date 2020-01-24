@@ -47,6 +47,12 @@ cmd
   $ godoc -http=":3000" #公式と同様のインタフェースでブラウザからドキュメント確認する
 
 
+
+
+SDL2をGOで使う
+https://github.com/veandco/go-sdl2
+
+
 参考
 ======
 
