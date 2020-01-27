@@ -28,6 +28,13 @@ Hello, World
   $ go get gopl.io/ch1/helloworld
   $ $GOPATH/bin/helloworld
 
+Examples
+=========
+
+::
+
+  $ go get github.com/veandco/go-sdl2-examples/examples
+
 cmd
 =======
 
