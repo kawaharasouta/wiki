@@ -104,6 +104,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cmd">cmd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdl2">SDL2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample">sample</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -259,13 +264,29 @@ $ go fmt test.go      #フォーマット整形
 $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブラウザからドキュメント確認する
 </pre></div>
 </div>
-<p>SDL2をGOで使う
-<a class="reference external" href="https://github.com/veandco/go-sdl2">https://github.com/veandco/go-sdl2</a></p>
 </div>
 <div class="section" id="id1">
 <h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>本家: <a class="reference external" href="https://golang.org/">https://golang.org/</a>
 チュートリアル的な: <a class="reference external" href="http://golang.jp/go_tutorial">http://golang.jp/go_tutorial</a>  本家の日本語約で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．</p>
+</div>
+<div class="section" id="sdl2">
+<h2>SDL2<a class="headerlink" href="#sdl2" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://wiki.libsdl.org/">https://wiki.libsdl.org/</a>
+<a class="reference external" href="https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants">https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants</a>
+<a class="reference external" href="https://github.com/veandco/go-sdl2">https://github.com/veandco/go-sdl2</a></p>
+<div class="section" id="id2">
+<h3>install<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ go get -v github.com/veandco/go-sdl2/{sdl,img,mix,ttf}
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample">
+<h3>sample<a class="headerlink" href="#sample" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ go get github.com/veandco/go-sdl2-examples/examples
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 

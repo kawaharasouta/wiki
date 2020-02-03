@@ -56,12 +56,41 @@ cmd
 
 
 
-SDL2をGOで使う
-https://github.com/veandco/go-sdl2
-
 
 参考
 ======
 
 本家: https://golang.org/
 チュートリアル的な: http://golang.jp/go_tutorial  本家の日本語約で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．
+
+
+
+
+
+
+
+
+
+
+
+
+SDL2
+=====
+
+https://wiki.libsdl.org/
+https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants
+https://github.com/veandco/go-sdl2
+
+install 
+---------
+
+::
+  
+  $ go get -v github.com/veandco/go-sdl2/{sdl,img,mix,ttf}
+
+sample
+----------
+
+::
+
+  $ go get github.com/veandco/go-sdl2-examples/examples
