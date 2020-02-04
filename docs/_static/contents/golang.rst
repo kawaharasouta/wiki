@@ -62,6 +62,9 @@ cmd
 
 本家: https://golang.org/
 チュートリアル的な: http://golang.jp/go_tutorial  本家の日本語約で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．
+とりあえず日本語の入門記事の一つ: http://gihyo.jp/dev/feature/01/go_4beginners
+見ると幸せになれるらしいよ: https://qiita.com/tenntenn/items/0e33a4959250d1a55045
+プロジェクトレイアウトの話: https://techdo.mediado.jp/entry/2019/01/18/112503
 
 
 
