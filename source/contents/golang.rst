@@ -69,9 +69,11 @@ cmd
 
 
 
+条件分岐コンパイル
+===================
 
-
-
+Cとかで #ifdef でやるような条件コンパイルやる方法
+参考: https://qiita.com/yamasaki-masahide/items/8e5d59467dcf67d9b0be
 
 
 

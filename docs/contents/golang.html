@@ -104,8 +104,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cmd">cmd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">条件分岐コンパイル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sdl2">SDL2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">install</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sample">sample</a></li>
 </ul>
 </li>
@@ -273,13 +274,18 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 見ると幸せになれるらしいよ: <a class="reference external" href="https://qiita.com/tenntenn/items/0e33a4959250d1a55045">https://qiita.com/tenntenn/items/0e33a4959250d1a55045</a>
 プロジェクトレイアウトの話: <a class="reference external" href="https://techdo.mediado.jp/entry/2019/01/18/112503">https://techdo.mediado.jp/entry/2019/01/18/112503</a></p>
 </div>
+<div class="section" id="id2">
+<h2>条件分岐コンパイル<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Cとかで #ifdef でやるような条件コンパイルやる方法
+参考: <a class="reference external" href="https://qiita.com/yamasaki-masahide/items/8e5d59467dcf67d9b0be">https://qiita.com/yamasaki-masahide/items/8e5d59467dcf67d9b0be</a></p>
+</div>
 <div class="section" id="sdl2">
 <h2>SDL2<a class="headerlink" href="#sdl2" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://wiki.libsdl.org/">https://wiki.libsdl.org/</a>
 <a class="reference external" href="https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants">https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants</a>
 <a class="reference external" href="https://github.com/veandco/go-sdl2">https://github.com/veandco/go-sdl2</a></p>
-<div class="section" id="id2">
-<h3>install<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>install<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ go get -v github.com/veandco/go-sdl2/{sdl,img,mix,ttf}
 </pre></div>
 </div>
