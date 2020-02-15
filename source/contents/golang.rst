@@ -99,3 +99,43 @@ sample
 ::
 
   $ go get github.com/veandco/go-sdl2-examples/examples
+
+
+
+
+
+struct と interface
+======================
+
+
+型を確認する
+==============
+
+::
+
+  fmt.Printf("%T", v)
+  または
+  fmt.Println(reflect.TypeOf(v))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+リンク
+===============
+
+
+https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1

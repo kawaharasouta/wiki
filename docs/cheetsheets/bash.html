@@ -138,6 +138,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#apt-ctrl-c">aptが途中で死んだ(ctrl-cで殺した)とき</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linuxデストリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">起動時にネットワークどうのこうので起動がおそいやつ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
@@ -148,7 +149,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -251,6 +252,7 @@ $ sudo hostnamectl set-hostname [hostname]
 <div class="section" id="gnu-coreutils">
 <h2>GNU coreutils<a class="headerlink" href="#gnu-coreutils" title="Permalink to this headline">¶</a></h2>
 <p>Linux(GNUオペレーティングシステム)の一般的なコマンドツールのパッケージらしい.</p>
+<p>参考:</p>
 <p>コマンドの種類:</p>
 </div>
 <div class="section" id="id1">
@@ -292,6 +294,21 @@ $ sudo apt --fix-broken install
 <div class="section" id="linux">
 <h2>Linuxデストリ<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://note.kurodigi.com/linux-version/">http://note.kurodigi.com/linux-version/</a></p>
+</div>
+<div class="section" id="id5">
+<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">start</span> <span class="n">job</span> <span class="ow">is</span> <span class="n">running</span> <span class="k">for</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">network</span> <span class="n">to</span> <span class="n">be</span> <span class="n">configured</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>とかって言われるやつ．
+↓のようにする．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ systemctl disable systemd-networkd-wait-online.service
+$ systemctl mask systemd-networkd-wait-online.service
+</pre></div>
+</div>
+<p>他参考:
+<a class="reference external" href="https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216">https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216</a>
+<a class="reference external" href="https://qiita.com/hnw/items/005b2018efaab5f954a9">https://qiita.com/hnw/items/005b2018efaab5f954a9</a></p>
 </div>
 </div>
 

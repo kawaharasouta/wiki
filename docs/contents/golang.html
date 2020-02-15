@@ -110,6 +110,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#sample">sample</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#struct-interface">struct と interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">型を確認する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">リンク</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -147,7 +150,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -296,6 +299,21 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="struct-interface">
+<h2>struct と interface<a class="headerlink" href="#struct-interface" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>型を確認する<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%T&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">または</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>リンク<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1">https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1</a></p>
 </div>
 </div>
 

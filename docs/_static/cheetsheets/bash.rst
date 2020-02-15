@@ -36,6 +36,9 @@ GNU coreutils
 
 Linux(GNUオペレーティングシステム)の一般的なコマンドツールのパッケージらしい.
 
+参考:
+
+
 コマンドの種類: 
 
 
@@ -88,3 +91,23 @@ Linuxデストリ
 ---------------
 
 http://note.kurodigi.com/linux-version/
+
+
+起動時にネットワークどうのこうので起動がおそいやつ
+----------------------------------------------------
+
+::
+
+  A start job is running for wait for network to be configured.
+
+とかって言われるやつ．
+↓のようにする．
+
+::
+
+  $ systemctl disable systemd-networkd-wait-online.service
+  $ systemctl mask systemd-networkd-wait-online.service
+
+他参考:
+https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216
+https://qiita.com/hnw/items/005b2018efaab5f954a9
