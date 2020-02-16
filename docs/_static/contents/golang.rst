@@ -119,18 +119,48 @@ struct と interface
 
 
 
+function と method 
+===================
 
+go言語にはfunctionとmethodとかいう関数の概念があるらしい．
 
+以下の構造体が宣言されていたとする．
 
+::
 
+  type Receiver struct {
+    int num
+  }
 
+functionの例
 
+::
 
+  func Function(r Receiver) (ret int) {
+    return int
+  }
+  
+methodの例
+関数名の前にレシーバ(構造体とか)が入る
 
+::
 
+  func (r Receiver) Method() (ret int) {
+    return r.num
+  }
 
+使い方の違い
 
+::
 
+  r := Receiver {
+    num = 10,
+  }
+
+  fmt.Printf("Function:\t%d\n", Function(r))
+  fmt.Printf("Method:\t%d\n", r.Function())
+
+こんな感じでC++のクラス内のメソッドみたいな感じで使える．
 
 
 
@@ -139,3 +169,14 @@ struct と interface
 
 
 https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1
+
+
+
+
+
+
+
+
+
+
+

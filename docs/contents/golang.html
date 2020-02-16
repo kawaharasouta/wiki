@@ -112,6 +112,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#struct-interface">struct と interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">型を確認する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-method">function と method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">リンク</a></li>
 </ul>
 </li>
@@ -310,6 +311,39 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="function-method">
+<h2>function と method<a class="headerlink" href="#function-method" title="Permalink to this headline">¶</a></h2>
+<p>go言語にはfunctionとmethodとかいう関数の概念があるらしい．</p>
+<p>以下の構造体が宣言されていたとする．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Receiver</span> <span class="n">struct</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">num</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>functionの例</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">Function</span><span class="p">(</span><span class="n">r</span> <span class="n">Receiver</span><span class="p">)</span> <span class="p">(</span><span class="n">ret</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>methodの例
+関数名の前にレシーバ(構造体とか)が入る</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="p">(</span><span class="n">r</span> <span class="n">Receiver</span><span class="p">)</span> <span class="n">Method</span><span class="p">()</span> <span class="p">(</span><span class="n">ret</span> <span class="nb">int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">num</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使い方の違い</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="p">:</span><span class="o">=</span> <span class="n">Receiver</span> <span class="p">{</span>
+  <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Function:</span><span class="se">\t</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Function</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;Method:</span><span class="se">\t</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">Function</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>こんな感じでC++のクラス内のメソッドみたいな感じで使える．</p>
 </div>
 <div class="section" id="id5">
 <h2>リンク<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
