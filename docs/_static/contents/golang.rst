@@ -139,8 +139,8 @@ functionの例
 
 ::
 
-  func Function(r Receiver) (ret int) {
-    return int
+  func Function(r Receiver) int {
+    return r.num
   }
   
 methodの例
@@ -148,7 +148,7 @@ methodの例
 
 ::
 
-  func (r Receiver) Method() (ret int) {
+  func (r Receiver) Method() int {
     return r.num
   }
 
@@ -157,11 +157,11 @@ methodの例
 ::
 
   r := Receiver {
-    num = 10,
+    num: 10,
   }
 
   fmt.Printf("Function:\t%d\n", Function(r))
-  fmt.Printf("Method:\t%d\n", r.Function())
+  fmt.Printf("Method:\t%d\n", r.Method())
 
 こんな感じでC++のクラス内のメソッドみたいな感じで使える．
 これでオブジェクト思考的なところを担保してるっぽい．
