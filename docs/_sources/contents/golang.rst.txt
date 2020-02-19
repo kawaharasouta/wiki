@@ -167,6 +167,21 @@ methodの例
 これでオブジェクト思考的なところを担保してるっぽい．
 
 
+バイナリ処理
+===============
+
+
+あとでメモる
+
+参照: binary_
+
+
+imported and not used
+======================
+
+https://ksakiyama134.hatenadiary.org/entry/20140309/1394378735
+
+
 リンク
 ===============
 
@@ -175,7 +190,7 @@ https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E
 
 
 
-
+.. _binary: https://qiita.com/Jxck_/items/c64d9ae0e910762eab37
 
 
 
