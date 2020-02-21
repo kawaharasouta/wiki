@@ -40,6 +40,7 @@ wiki
   technote/auth
   technote/cpu
   technote/fpga
+  technote/standard
 
 .. toctree::
   :maxdepth: 1
