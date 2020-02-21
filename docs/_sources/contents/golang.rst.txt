@@ -82,6 +82,7 @@ Cとかで #ifdef でやるような条件コンパイルやる方法
 SDL2
 =====
 
+https://www.libsdl.org/
 https://wiki.libsdl.org/
 https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants
 https://github.com/veandco/go-sdl2
