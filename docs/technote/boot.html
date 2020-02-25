@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -118,7 +119,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#etc-grub-d">/etc/grub.d/</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id4">カーネルが起動した後どうなってるのって話</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#init">initについてとプロセスの話</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="#systemd">systemd</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#systemctl">systemctlコマンド</a></li>
 </ul>
@@ -131,6 +135,7 @@
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -143,7 +148,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -334,6 +339,19 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 ちなみに初期コマンドはカーネルのコマンドラインオプションで指定することができて，init=...ってする．
 今は/sbin/initはsystemd(/lib/systemd/systemdとか)へのシンボリックリンクになっているため，systemdが動くことになる．</p>
 <p>あとはまだ書くのめんどいからここ参照(<a class="reference external" href="http://equj65.net/tech/systemd-boot/">http://equj65.net/tech/systemd-boot/</a>)</p>
+<div class="section" id="init">
+<h2>initについてとプロセスの話<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h2>
+<p>Linuxでは厳密にプロセスツリーという階層が存在する．
+これの一番上にinitがある．
+プロセスはforkすることで子プロセスを作るが，(作った元は親プロセス)
+最初のプロセス(多分initを限定していいと思うけど)を覗く全てのプロセスには親プロセスが存在する．
+子プロセスよりも先に親プロセスが死んでしまう場合，カーネルが子プロセスを親プロセスに繋ぎ直す．</p>
+<p>プロセスは終了してもすぐにはシステムから削除されず，
+プロセスの一部をメモリ内に残して親プロセスが終了を確認できるようにする．
+終了待ち合わせが完了すると子プロセスは完全に破棄される．
+終了待ち合わせがされないプロセスはゾンビプロセスと呼ばれる．
+initはゾンビプロセスが永久に存在することの内容に定期的に全ての子プロセスに終了を問い合わせる．</p>
+</div>
 </div>
 <div class="section" id="systemd">
 <h1>systemd<a class="headerlink" href="#systemd" title="Permalink to this headline">¶</a></h1>
