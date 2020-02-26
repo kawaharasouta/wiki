@@ -13,6 +13,8 @@ POSIX標準⭐︎
 UNIXシステムのシステムレベルインタフェースの標準
 
 
+http://www.knosof.co.uk/posix.html
+
 
 
 SUS⭐︎
@@ -26,6 +28,7 @@ SUS⭐︎
 LinuxはこのSUSおよびPOSIXに準拠することを念頭においているらしい．
 
 
+https://ja.wikipedia.org/wiki/Single_UNIX_Specification
 
 
 ユニケージ開発手法
@@ -36,6 +39,7 @@ UNIX系オペレーティングシステム上において，コマンドとシ�
 とりあえずshell芸的なものだと理解してる．
 
 
+https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B8%E9%96%8B%E7%99%BA%E6%89%8B%E6%B3%95
 
 
 
