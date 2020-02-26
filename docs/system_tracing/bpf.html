@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -122,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -136,6 +138,7 @@
 <li class="toctree-l1"><a class="reference internal" href="systemtap.html">systemtap</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">BPF</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">リンク</a></li>
 </ul>
 </li>
 </ul>
@@ -215,8 +218,7 @@
   <div class="section" id="bpf">
 <h1>BPF<a class="headerlink" href="#bpf" title="Permalink to this headline">¶</a></h1>
 <p>Berkeley Packet Filterの略．現在はパケットフィルタ以外のOS用途で使われる．
-eBPFとかに拡張されてる．XDPもこれを用いたもの．
-多分ここではBPFの話はほとんでしない．eBPFかXDPの話だけすると思う．</p>
+eBPFとかに拡張されてる．XDPもこれを用いたもの．</p>
 <div class="section" id="install">
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>カーネルコンフィグ</p>
@@ -228,6 +230,13 @@ eBPFとかに拡張されてる．XDPもこれを用いたもの．
   linux-headers-`uname -r`
 </pre></div>
 </div>
+</div>
+<div class="section" id="id1">
+<h2>リンク<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>オリジナルのbpfに関する論文
+<a class="reference external" href="http://www.tcpdump.org/papers/bpf-usenix93.pdf">http://www.tcpdump.org/papers/bpf-usenix93.pdf</a></p>
+<p>BPFの日本語超記事
+<a class="reference external" href="https://www.atmarkit.co.jp/ait/articles/1811/21/news010.html">https://www.atmarkit.co.jp/ait/articles/1811/21/news010.html</a></p>
 </div>
 </div>
 
