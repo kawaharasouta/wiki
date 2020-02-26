@@ -250,10 +250,18 @@ wakarann
 
 ubuntu image download
 ---------------------
+
 ::
 
   $ wget http://ftp-srv2.kddilabs.jp/Linux/packages/ubuntu/releases-cd/18.04.3/ubuntu-18.04.3-live-server-amd64.iso
 
+
+vm ip addr
+-----------
+
+::
+
+  $ sudo arp-scan -I virbr0 -l | awk '{print $1}' | tail -n 6 | head -n3
 
 reference
 ---------
