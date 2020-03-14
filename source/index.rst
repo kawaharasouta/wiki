@@ -24,6 +24,7 @@ wiki
   contents/trex
   contents/openvpn
   contents/system_programing
+  contents/autotools
 
 
 .. toctree::

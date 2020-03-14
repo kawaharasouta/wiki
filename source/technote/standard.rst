@@ -30,6 +30,9 @@ LinuxはこのSUSおよびPOSIXに準拠することを念頭においている�
 
 https://ja.wikipedia.org/wiki/Single_UNIX_Specification
 
+これめっちゃいいぞ 
+http://www.unix.org/version4
+
 
 ユニケージ開発手法
 ======================
