@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ip command" href="ip_command.html" />
-    <link rel="prev" title="FPGA関連" href="../technote/fpga.html" /> 
+    <link rel="prev" title="規格とか思想とか" href="../technote/standard.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,6 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -117,11 +119,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul class="current">
@@ -134,6 +138,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">標準エラー出力のリダイレクト例</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">ファイル内検索</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">該当ファイル以外を削除</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb">USBをマウントするやつ</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#apt-ctrl-c">aptが途中で死んだ(ctrl-cで殺した)とき</a></li>
@@ -275,6 +280,13 @@ $ sudo hostnamectl set-hostname [hostname]
 </pre></div>
 </div>
 </div>
+<div class="section" id="usb">
+<h3>USBをマウントするやつ<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
+<p>/dev/sda とか /dev/sdb とかあたりをUSBを抜き差ししながらみてデバイスファイルにあたりをつける．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">vfat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="p">[</span><span class="n">デバイスファイル</span><span class="p">]</span> <span class="o">/</span><span class="n">media</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="apt-ctrl-c">
 <h2>aptが途中で死んだ(ctrl-cで殺した)とき<a class="headerlink" href="#apt-ctrl-c" title="Permalink to this headline">¶</a></h2>
@@ -323,7 +335,7 @@ $ systemctl mask systemd-networkd-wait-online.service
         <a href="ip_command.html" class="btn btn-neutral float-right" title="ip command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../technote/fpga.html" class="btn btn-neutral float-left" title="FPGA関連" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../technote/standard.html" class="btn btn-neutral float-left" title="規格とか思想とか" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
