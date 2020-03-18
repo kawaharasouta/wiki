@@ -138,12 +138,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">標準エラー出力のリダイレクト例</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">ファイル内検索</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">該当ファイル以外を削除</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">マウントとかそういう系のやつ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#usb">USBをマウントするやつ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">フォーマットする</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#apt-ctrl-c">aptが途中で死んだ(ctrl-cで殺した)とき</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linuxデストリ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">起動時にネットワークどうのこうので起動がおそいやつ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">起動時にネットワークどうのこうので起動がおそいやつ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
@@ -280,13 +284,55 @@ $ sudo hostnamectl set-hostname [hostname]
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="id5">
+<h2>マウントとかそういう系のやつ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="usb">
 <h3>USBをマウントするやつ<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
 <p>USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
 (怖かったら/dev/sda とか /dev/sdb とかあたりをUSBを抜き差ししながらみてデバイスファイルにあたりをつける)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">vfat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="p">[</span><span class="n">デバイスファイル</span><span class="p">]</span> <span class="o">/</span><span class="n">media</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo mount -t vfat /dev/[dev file] /media
 </pre></div>
 </div>
+<p>マウントしたら，状況確認するために↓やってみとくといい．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ df
+
+Filesystem     1K-blocks     Used Available Use% Mounted on
+udev             8110576        0   8110576   0% /dev
+tmpfs            1628416     1424   1626992   1% /run
+/dev/sda2      959862832 28869252 882165420   4% /
+tmpfs            8142060        0   8142060   0% /dev/shm
+tmpfs               5120        0      5120   0% /run/lock
+tmpfs            8142060        0   8142060   0% /sys/fs/cgroup
+/dev/loop0         93568    93568         0 100% /snap/core/8689
+/dev/loop1         93568    93568         0 100% /snap/core/8592
+/dev/sda1         523248     4668    518580   1% /boot/efi
+tmpfs            1628412        0   1628412   0% /run/user/1000
+/dev/sdb1       15122312        0  15122312   0% /media
+</pre></div>
+</div>
+<p>アンマウントは↓</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo umount /dev/[dev file]
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>フォーマットする<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>もしマウントしてたらまずはアンマウントする．
+まじでしないとうんちになる．</p>
+<p><strong>ゼロフォーマットする</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dd if=/dev/zero of=/dev/[dev file] bs=16M
+</pre></div>
+</div>
+<p><strong>USBをFAT32にフォーマットする</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdosfs</span> <span class="o">-</span><span class="n">F32</span> <span class="o">-</span><span class="n">nUSB</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="p">[</span><span class="n">dev</span> <span class="n">file</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>isoファイルを焼く</p>
+<p>あとでやる
+<a class="reference external" href="https://www.archlinux.site/2018/03/linuxisoubuntulive-usb.html">https://www.archlinux.site/2018/03/linuxisoubuntulive-usb.html</a></p>
+<p>syncの面白い話:
+<a class="reference external" href="https://qiita.com/tboffice/items/9c6092278ccaab88e71e#fnref2">https://qiita.com/tboffice/items/9c6092278ccaab88e71e#fnref2</a></p>
 </div>
 </div>
 <div class="section" id="apt-ctrl-c">
@@ -308,8 +354,8 @@ $ sudo apt --fix-broken install
 <h2>Linuxデストリ<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://note.kurodigi.com/linux-version/">http://note.kurodigi.com/linux-version/</a></p>
 </div>
-<div class="section" id="id5">
-<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">start</span> <span class="n">job</span> <span class="ow">is</span> <span class="n">running</span> <span class="k">for</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">network</span> <span class="n">to</span> <span class="n">be</span> <span class="n">configured</span><span class="o">.</span>
 </pre></div>
 </div>
