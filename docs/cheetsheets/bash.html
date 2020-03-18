@@ -282,7 +282,8 @@ $ sudo hostnamectl set-hostname [hostname]
 </div>
 <div class="section" id="usb">
 <h3>USBをマウントするやつ<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
-<p>/dev/sda とか /dev/sdb とかあたりをUSBを抜き差ししながらみてデバイスファイルにあたりをつける．</p>
+<p>USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
+(怖かったら/dev/sda とか /dev/sdb とかあたりをUSBを抜き差ししながらみてデバイスファイルにあたりをつける)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">vfat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="p">[</span><span class="n">デバイスファイル</span><span class="p">]</span> <span class="o">/</span><span class="n">media</span>
 </pre></div>
 </div>
