@@ -328,7 +328,19 @@ tmpfs            1628412        0   1628412   0% /run/user/1000
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdosfs</span> <span class="o">-</span><span class="n">F32</span> <span class="o">-</span><span class="n">nUSB</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="p">[</span><span class="n">dev</span> <span class="n">file</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>isoファイルを焼く</p>
+<p>※fat32のデフォルトのクラスタサイズ</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Partition</span> <span class="n">size</span>           <span class="n">Cluster</span> <span class="n">size</span>
+<span class="o">-------------------------------------</span>
+<span class="mi">512</span> <span class="n">MB</span> <span class="n">to</span> <span class="mi">8</span><span class="p">,</span><span class="mi">191</span> <span class="n">MB</span>          <span class="mi">4</span> <span class="n">KB</span>
+<span class="mi">8</span><span class="p">,</span><span class="mi">192</span> <span class="n">MB</span> <span class="n">to</span> <span class="mi">16</span><span class="p">,</span><span class="mi">383</span> <span class="n">MB</span>       <span class="mi">8</span> <span class="n">KB</span>
+<span class="mi">16</span><span class="p">,</span><span class="mi">384</span> <span class="n">MB</span> <span class="n">to</span> <span class="mi">32</span><span class="p">,</span><span class="mi">767</span> <span class="n">MB</span>     <span class="mi">16</span> <span class="n">KB</span>
+<span class="n">Larger</span> <span class="n">than</span> <span class="mi">32</span><span class="p">,</span><span class="mi">768</span> <span class="n">MB</span>      <span class="mi">32</span> <span class="n">KB</span>
+</pre></div>
+</div>
+<p><strong>isoファイルを焼く</strong> (とりあえず例)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dd</span> <span class="n">bs</span><span class="o">=</span><span class="mi">16</span><span class="n">M</span> <span class="k">if</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">khwarizmi</span><span class="o">/</span><span class="n">FreeBSD</span><span class="o">-</span><span class="mf">12.1</span><span class="o">-</span><span class="n">RELEASE</span><span class="o">-</span><span class="n">amd64</span><span class="o">-</span><span class="n">disc1</span><span class="o">.</span><span class="n">iso</span> <span class="n">of</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span> <span class="n">status</span><span class="o">=</span><span class="n">progress</span> <span class="o">&amp;&amp;</span> <span class="n">sync</span>
+</pre></div>
+</div>
 <p>あとでやる
 <a class="reference external" href="https://www.archlinux.site/2018/03/linuxisoubuntulive-usb.html">https://www.archlinux.site/2018/03/linuxisoubuntulive-usb.html</a></p>
 <p>syncの面白い話:

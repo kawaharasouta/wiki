@@ -127,7 +127,22 @@ USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
 
   sudo mkdosfs -F32 -nUSB /dev/[dev file]
 
-isoファイルを焼く
+※fat32のデフォルトのクラスタサイズ
+
+::
+
+  Partition size           Cluster size
+  -------------------------------------
+  512 MB to 8,191 MB          4 KB
+  8,192 MB to 16,383 MB       8 KB
+  16,384 MB to 32,767 MB     16 KB
+  Larger than 32,768 MB      32 KB
+
+**isoファイルを焼く** (とりあえず例)
+
+::
+
+  sudo dd bs=16M if=/home/khwarizmi/FreeBSD-12.1-RELEASE-amd64-disc1.iso of=/dev/sdb status=progress && sync
 
 あとでやる
 https://www.archlinux.site/2018/03/linuxisoubuntulive-usb.html
