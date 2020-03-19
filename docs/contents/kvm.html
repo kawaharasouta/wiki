@@ -131,6 +131,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -144,6 +145,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
@@ -301,7 +303,7 @@ $ virt-install --connect=qemu:///system \
 #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
 $ virt-install \
 --connect=qemu:///system \
---name centos7   \
+--name centos7 \
 --vcpus 2 \
 --ram 2048   \
 --accelerate --hvm \
@@ -309,8 +311,29 @@ $ virt-install \
 --location &#39;http://ftp.iij.ad.jp/pub/linux/centos/7/os/x86_64/&#39; \
 --network network=default,model=virtio \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+
+# fedora 24までしかなかったけどとりあえず通ったっぽい．
+# 他のミラーサイトみて install tree? installable distribution image? あること探した方がいいかも
+$ sudo virt-install \
+--connect=qemu:///system \
+--name fedora24 \
+--vcpus 2 --ram 2048 --accelerate --hvm \
+--disk path=/var/lib/libvirt/images/fedora24.img,size=8 \
+--location &#39;http://ftp.iij.ad.jp/pub/linux/fedora/archive/fedora/linux/releases/24/Server/x86_64/os/&#39; \
+--network network=default,model=virtio \
+--nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+
+
+# FreeBSD なんかだめそうなんや
+http://ftp.iij.ad.jp/pub/FreeBSD/releases/amd64/12.1-RELEASE/
+普通にiso落としてやってみたら
+isoinfo: Unable to find Joliet SVD
+sudo apt iunstall gparted ダメ
 </pre></div>
 </div>
+<p>なんかこのURL指定してインストールする系のやつ，
+キックスタートインストールとか行ってRHEL系だけなのか?よくわからんけど．
+ubuntuもできたようなできなかったような気がするけどよくわからん．</p>
 <p>ubuntu1604が入らない話
 <a class="reference external" href="https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/">https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/</a></p>
 <p>centos7でメモリが足りなくてinitramfsがエラる話

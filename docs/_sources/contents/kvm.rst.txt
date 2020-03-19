@@ -66,7 +66,7 @@ serial *cannot install*
   #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
   $ virt-install \
   --connect=qemu:///system \
-  --name centos7   \
+  --name centos7 \
   --vcpus 2 \
   --ram 2048   \
   --accelerate --hvm \
@@ -74,6 +74,29 @@ serial *cannot install*
   --location 'http://ftp.iij.ad.jp/pub/linux/centos/7/os/x86_64/' \
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
+
+  # fedora 24までしかなかったけどとりあえず通ったっぽい．
+  # 他のミラーサイトみて install tree? installable distribution image? あること探した方がいいかも
+  $ sudo virt-install \ 
+  --connect=qemu:///system \ 
+  --name fedora24 \
+  --vcpus 2 --ram 2048 --accelerate --hvm \
+  --disk path=/var/lib/libvirt/images/fedora24.img,size=8 \
+  --location 'http://ftp.iij.ad.jp/pub/linux/fedora/archive/fedora/linux/releases/24/Server/x86_64/os/' \ 
+  --network network=default,model=virtio \
+  --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
+
+
+  # FreeBSD なんかだめそうなんや
+  http://ftp.iij.ad.jp/pub/FreeBSD/releases/amd64/12.1-RELEASE/
+  普通にiso落としてやってみたら
+  isoinfo: Unable to find Joliet SVD
+  sudo apt iunstall gparted ダメ
+
+
+なんかこのURL指定してインストールする系のやつ，
+キックスタートインストールとか行ってRHEL系だけなのか?よくわからんけど．
+ubuntuもできたようなできなかったような気がするけどよくわからん．
 
 ubuntu1604が入らない話
 https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/

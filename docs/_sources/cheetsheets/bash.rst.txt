@@ -121,6 +121,9 @@ USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
 
   $ sudo dd if=/dev/zero of=/dev/[dev file] bs=16M
 
+※ddによる書き込みは多分最後「dd: error writing '/dev/sdc1': No space left on device」って言われるけど
+※最後まで書き込んで出てしまうだけ(仕様なのかは知らん)なので多分無視して大丈夫
+
 **USBをFAT32にフォーマットする**
 
 ::
