@@ -1,29 +1,30 @@
+====
 kvm
 ====
 
 package
---------
+=========
 :: 
 
   $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
 start config
---------------
+=============
 ::
 
   $ sudo systemctl enable libvirt-bin
 
 make image
-----------
+===========
 ::
 
   $ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.img 8G
 
 install 
---------
+=========
 
 serial *cannot install*
-~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 ::
 
   $ sudo virt-install \
@@ -108,7 +109,7 @@ locationをどうするかみたいな
 https://qiita.com/t_niimura/items/5991c8a2d07b94c06bce
 
 vnc
-~~~~
+-----
 ::
 
   $ sudo virt-install \
@@ -122,7 +123,7 @@ vnc
     --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso 
 
 clone
-------
+=========
 
 ::
 
@@ -133,7 +134,7 @@ and change hostname
 
 
 change memory size
--------------------
+===================
 
 ::
 
@@ -150,7 +151,7 @@ change memory size
   $ sudo virsh dominfo [domain] | grep mem
 
 extend disk size
------------------
+=================
 
 まだ書き終わってない
 http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/
@@ -166,7 +167,7 @@ http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/
 
 
 rename domain 
----------------
+===============
 
 ::
   
@@ -176,7 +177,7 @@ rename domain
   $ sudo virsh undefine [old domain]
 
 file focation
---------------
+==============
 ::
 
   vm images         /var/lib/libvirt/images/
@@ -185,20 +186,20 @@ file focation
   network file       /etc/libvirt/qemu/networks/
 
 ブリッジ接続
-------------
+=============
 
 Linux bridge
-~~~~~~~~~~~~~~
+-------------
 
 ブリッジ作成してそこに物理インタフェースぶっこむだけ.
 インタフェースとブリッジのリンク上げ忘れよくするから注意.
 なんか知らないけどグローバルに向けられない．
 
 ovs
-~~~~
+-------
 
 macvtap, macvlan
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------
 
 ゲストのxmlファイルを
 
@@ -227,7 +228,7 @@ macvtap, macvlan
 参考: macvlan_
 
 add nic 
---------------------
+==========
 
 e1000
 
@@ -261,7 +262,7 @@ virtio
   </interface>
 
 SR-IOV
---------
+==========
 
 ::
 
@@ -272,7 +273,7 @@ SR-IOV
 wakarann
 
 ubuntu image download
----------------------
+=========================
 
 ::
 
@@ -281,10 +282,12 @@ ubuntu image download
 
 vm ip addr
 -----------
+VMのアドレス探すやつだけど，arp-scanじゃなくていいの見つけてしまった．
 
 ::
 
-  $ sudo arp-scan -I virbr0 -l | awk '{print $1}' | tail -n 6 | head -n3
+  $ sudo arp-scan -I virbr0 -l | awk '{print $1}' | tail -n 6 | head -n3    #オプションは適当
+  $ sudo virsh net-dhcp-leases default | awk '{print $5, $6}'
 
 reference
 ---------
