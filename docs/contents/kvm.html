@@ -115,11 +115,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#add-nic">add nic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sr-iov">SR-IOV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#reference">reference</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">接続方法とかに関して</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
@@ -495,20 +494,34 @@ $ sudo update-grub2
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ wget http://ftp-srv2.kddilabs.jp/Linux/packages/ubuntu/releases-cd/18.04.3/ubuntu-18.04.3-live-server-amd64.iso
 </pre></div>
 </div>
+</div>
 <div class="section" id="vm-ip-addr">
-<h3>vm ip addr<a class="headerlink" href="#vm-ip-addr" title="Permalink to this headline">¶</a></h3>
+<h2>vm ip addr<a class="headerlink" href="#vm-ip-addr" title="Permalink to this headline">¶</a></h2>
 <p>VMのアドレス探すやつだけど，arp-scanじゃなくていいの見つけてしまった．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo arp-scan -I virbr0 -l | awk &#39;{print $1}&#39; | tail -n 6 | head -n3    #オプションは適当
 $ sudo virsh net-dhcp-leases default | awk &#39;{print $5, $6}&#39;
 </pre></div>
 </div>
 </div>
+<div class="section" id="id2">
+<h2>接続方法とかに関して<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>接続方法は多分
+- ssh
+- console
+- virt-manager
+- virt-viewer
+- vnc
+くらいしかないと思う．
+そのうちvirt-manager, virt-viewerはGUIで，
+vncはお外から見える環境がちゃんと整っていれば．
+sshはもちろんsshdが動いてないとで
+consoleはちゃんとカーネルパラメータ設定してからじゃないと無理．</p>
+</div>
 <div class="section" id="reference">
-<h3>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h3>
+<h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://libvirt.org/format.html">domain_xml_format</a></p>
 <p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
 <p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>
-</div>
 </div>
 </div>
 
