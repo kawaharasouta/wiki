@@ -105,6 +105,30 @@ serial *cannot install*
 キックスタートインストールとか行ってRHEL系だけなのか?よくわからんけど．
 ubuntuもできたようなできなかったような気がするけどよくわからん．
 
+なんかvirt-installのmanにlocationのURLここだぞって(おそらく)言ってるとこがあったから貼っとく
+
+::
+ 
+  Some distro specific url samples:
+
+   Fedora/Red Hat Based
+       http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os
+
+   Debian
+       http://ftp.us.debian.org/debian/dists/stable/main/installer-amd64/
+
+   Ubuntu
+       http://us.archive.ubuntu.com/ubuntu/dists/wily/main/installer-amd64/
+
+   Suse
+       http://download.opensuse.org/distribution/11.0/repo/oss/
+
+   Mandriva
+       ftp://ftp.uwsg.indiana.edu/linux/mandrake/official/2009.0/i586/
+
+   Mageia
+       ftp://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/1
+
 ubuntu1604が入らない話
 https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/
 

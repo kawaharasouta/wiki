@@ -341,6 +341,28 @@ sudo virsh --connect qemu:///system start freebsd1201
 <p>なんかこのURL指定してインストールする系のやつ，
 キックスタートインストールとか行ってRHEL系だけなのか?よくわからんけど．
 ubuntuもできたようなできなかったような気がするけどよくわからん．</p>
+<p>なんかvirt-installのmanにlocationのURLここだぞって(おそらく)言ってるとこがあったから貼っとく</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Some</span> <span class="n">distro</span> <span class="n">specific</span> <span class="n">url</span> <span class="n">samples</span><span class="p">:</span>
+
+ <span class="n">Fedora</span><span class="o">/</span><span class="n">Red</span> <span class="n">Hat</span> <span class="n">Based</span>
+     <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">fedoraproject</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="n">Server</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">os</span>
+
+ <span class="n">Debian</span>
+     <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">us</span><span class="o">.</span><span class="n">debian</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span><span class="n">dists</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">installer</span><span class="o">-</span><span class="n">amd64</span><span class="o">/</span>
+
+ <span class="n">Ubuntu</span>
+     <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">us</span><span class="o">.</span><span class="n">archive</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">dists</span><span class="o">/</span><span class="n">wily</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">installer</span><span class="o">-</span><span class="n">amd64</span><span class="o">/</span>
+
+ <span class="n">Suse</span>
+     <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">opensuse</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">distribution</span><span class="o">/</span><span class="mf">11.0</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span><span class="n">oss</span><span class="o">/</span>
+
+ <span class="n">Mandriva</span>
+     <span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">uwsg</span><span class="o">.</span><span class="n">indiana</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">mandrake</span><span class="o">/</span><span class="n">official</span><span class="o">/</span><span class="mf">2009.0</span><span class="o">/</span><span class="n">i586</span><span class="o">/</span>
+
+ <span class="n">Mageia</span>
+     <span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="n">distrib</span><span class="o">-</span><span class="n">coffee</span><span class="o">.</span><span class="n">ipsl</span><span class="o">.</span><span class="n">jussieu</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">Mageia</span><span class="o">/</span><span class="n">distrib</span><span class="o">/</span><span class="mi">1</span>
+</pre></div>
+</div>
 <p>ubuntu1604が入らない話
 <a class="reference external" href="https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/">https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/</a></p>
 <p>centos7でメモリが足りなくてinitramfsがエラる話
