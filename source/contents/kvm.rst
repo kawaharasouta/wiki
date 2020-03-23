@@ -94,6 +94,12 @@ serial *cannot install*
   isoinfo: Unable to find Joliet SVD
   sudo apt iunstall gparted ダメ
 
+  https://www.freebsd.org/ja/where.html
+  こっから仮想マシンイメージゲットしてきて
+  sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
+  sudo virsh --connect qemu:///system start freebsd1201
+  とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．と思ったら見えたやん．
+
 
 なんかこのURL指定してインストールする系のやつ，
 キックスタートインストールとか行ってRHEL系だけなのか?よくわからんけど．
