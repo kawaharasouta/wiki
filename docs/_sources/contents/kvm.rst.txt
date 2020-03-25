@@ -88,18 +88,53 @@ serial *cannot install*
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
 
 
-  # FreeBSD なんかだめそうなんや
+  # FreeBSD なんかだめそう1
   http://ftp.iij.ad.jp/pub/FreeBSD/releases/amd64/12.1-RELEASE/
   普通にiso落としてやってみたら
   isoinfo: Unable to find Joliet SVD
   sudo apt iunstall gparted ダメ
 
+  # FreeBSD なんかダメそう2
   https://www.freebsd.org/ja/where.html
   こっから仮想マシンイメージゲットしてきて
   sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
   sudo virsh --connect qemu:///system start freebsd1201
-  とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．と思ったら見えたやん．
+  とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．見えたけどsshd動いてなくて泣いた．
 
+  # shuu先生ありがとうございます．． インストーラー動いたけど，とまるやつ．
+  isoファイルをダウンロードしたあと，マウントして中身を取り出して適当な場所におく．ちゃんとunmountする．
+  $ wget https://download.freebsd.org/ftp/releases/amd64/amd64/ISO-IMAGES/12.1/FreeBSD-12.1-RELEASE-amd64-dvd1.iso
+  $ mkdir fbsd1201-iso
+  $ sudo mount -o loop,ro ./FreeBSD-12.1-RELEASE-amd64-dvd1.iso /mnt/freebsd1201-iso/
+  $ sudo cp -av /mnt/freebsd1201-iso/* ./freebsd1201-iso/
+  $ sudo umount /mnt/freebsd1201-iso/
+  ブートローダのコンソールモードをCOMへ設定する．．らしいよ．．
+  $ cd fbsd10-iso/
+  $ echo 'console="comconsole"' > boot/loader.conf #ワンチャン権限で怒られます．
+  ↑で変更した設定でisoファイルを作る．  
+  $ sudo apt install genisoimage
+  $ mkisofs -v -b boot/cdboot -no-emul-boot -r -J -V "FREEBSD_INSTALL" -o ~/Headless-FreeBSD.iso ./
+  $ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/freebsd.img 15G
+  $ sudo virt-install --connect=qemu:///system --name freebsd \
+    --vcpus 2 --ram 2048 \
+    --serial pty -v \
+    --disk=/var/lib/libvirt/images/freebsd.img,format=qcow2,bus=virtio --nographics \
+    -c Headless-FreeBSD.iso  --network network=default,model=virtio
+
+  なんかFreeBSDの can't find '/boot/entropy' とかの問題
+  https://forums.freebsd.org/threads/installing-9-0-release-mounting-dvd-failed-with-error-19.36579/
+  のところに書いてある
+  mountroot> cd9660:/dev/cd0
+  で解決してしまって．．
+  この状態だとホストキーがなくてsshdが動いていないので，
+  # ssh-keygen -A     # ホストキーを作る
+  # /etc/rc.d/sshd start
+  とすると動く．
+  ちゃんとここまでやらないと中に入れないただの箱になるからマジ気を付ける．
+  あと，あとで別のところにメモするけど，
+  known_hostsで衝突があった時,
+  ssh-keygen -R [hostname]
+  とかってやるとknown_hostsの該当部分消してくれるんだってすごいね．
 
 なんかこのURL指定してインストールする系のやつ，
 キックスタートインストールとか行ってRHEL系だけなのか?よくわからんけど．
