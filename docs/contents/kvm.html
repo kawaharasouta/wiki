@@ -338,7 +338,7 @@ sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 -
 sudo virsh --connect qemu:///system start freebsd1201
 とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．見えたけどsshd動いてなくて泣いた．
 
-# shuu先生ありがとうございます．． インストーラー動いたけど，とまるやつ．
+# shuu先生ありがとうございます．． ちゃんと動いたやつ．
 isoファイルをダウンロードしたあと，マウントして中身を取り出して適当な場所におく．ちゃんとunmountする．
 $ wget https://download.freebsd.org/ftp/releases/amd64/amd64/ISO-IMAGES/12.1/FreeBSD-12.1-RELEASE-amd64-dvd1.iso
 $ mkdir fbsd1201-iso
@@ -405,6 +405,11 @@ ubuntuもできたようなできなかったような気がするけどよく�
 <a class="reference external" href="https://www.centos.org/forums/viewtopic.php?t=67350">https://www.centos.org/forums/viewtopic.php?t=67350</a></p>
 <p>locationをどうするかみたいな
 <a class="reference external" href="https://qiita.com/t_niimura/items/5991c8a2d07b94c06bce">https://qiita.com/t_niimura/items/5991c8a2d07b94c06bce</a></p>
+<p>FreeBSD参照先
+<a class="reference external" href="http://syuu1228.hatenablog.com/entry/20130511/1368267757">http://syuu1228.hatenablog.com/entry/20130511/1368267757</a>
+<a class="reference external" href="http://vega.pgw.jp/~kabe/bsd/fb10-qemu-kvm.html">http://vega.pgw.jp/~kabe/bsd/fb10-qemu-kvm.html</a>
+<a class="reference external" href="https://forums.freebsd.org/threads/installing-9-0-release-mounting-dvd-failed-with-error-19.36579/">https://forums.freebsd.org/threads/installing-9-0-release-mounting-dvd-failed-with-error-19.36579/</a>
+<a class="reference external" href="https://forums.freebsd.org/threads/mount-cdrom.60063/">https://forums.freebsd.org/threads/mount-cdrom.60063/</a></p>
 </div>
 <div class="section" id="vnc">
 <h3>vnc<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h3>

@@ -101,7 +101,7 @@ serial *cannot install*
   sudo virsh --connect qemu:///system start freebsd1201
   とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．見えたけどsshd動いてなくて泣いた．
 
-  # shuu先生ありがとうございます．． インストーラー動いたけど，とまるやつ．
+  # shuu先生ありがとうございます．． ちゃんと動いたやつ．
   isoファイルをダウンロードしたあと，マウントして中身を取り出して適当な場所におく．ちゃんとunmountする．
   $ wget https://download.freebsd.org/ftp/releases/amd64/amd64/ISO-IMAGES/12.1/FreeBSD-12.1-RELEASE-amd64-dvd1.iso
   $ mkdir fbsd1201-iso
@@ -172,6 +172,12 @@ https://www.centos.org/forums/viewtopic.php?t=67350
 
 locationをどうするかみたいな
 https://qiita.com/t_niimura/items/5991c8a2d07b94c06bce
+
+FreeBSD参照先
+http://syuu1228.hatenablog.com/entry/20130511/1368267757
+http://vega.pgw.jp/~kabe/bsd/fb10-qemu-kvm.html
+https://forums.freebsd.org/threads/installing-9-0-release-mounting-dvd-failed-with-error-19.36579/
+https://forums.freebsd.org/threads/mount-cdrom.60063/
 
 vnc
 -----

@@ -1,8 +1,9 @@
+===========
 ssh_config
-==========
+===========
 
 ssh_keygen
------------
+===========
 
 ::
 
@@ -14,19 +15,19 @@ ssh_keygen
 
 
 gihub setting 
----------------
+===============
 
 accsess github_keys_
 
 copy public key
-~~~~~~~~~~~~~~~~
+-----------------
 
 ::
 
   $ cat <path to public key> | pbcopy 
 
 config for git 
-~~~~~~~~~~~~~~~~
+-----------------
 
 ::
 
@@ -36,10 +37,25 @@ config for git
 
 
 
+ssh host key
+==============
+
+ホストキーがなくてsshd動かなかったりする時があるんだ．
+sudoいるかも．
+
+::
+
+  $ ssh-keygen -A
 
 
+known hosts duplication
+==========================
 
+今までvimで開いて該当行削除してたけど，お便利なコマンド
 
+::
+
+  $ ssh-keygen -R [hostname]
 
 
 

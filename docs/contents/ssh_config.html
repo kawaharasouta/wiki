@@ -103,6 +103,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#config-for-git">config for git</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#ssh-host-key">ssh host key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-hosts-duplication">known hosts duplication</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
@@ -112,6 +114,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -125,11 +129,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -142,7 +148,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -243,6 +249,21 @@ Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend n
   <span class="n">User</span> <span class="n">git</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="ssh-host-key">
+<h2>ssh host key<a class="headerlink" href="#ssh-host-key" title="Permalink to this headline">¶</a></h2>
+<p>ホストキーがなくてsshd動かなかったりする時があるんだ．
+sudoいるかも．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -A
+</pre></div>
+</div>
+</div>
+<div class="section" id="known-hosts-duplication">
+<h2>known hosts duplication<a class="headerlink" href="#known-hosts-duplication" title="Permalink to this headline">¶</a></h2>
+<p>今までvimで開いて該当行削除してたけど，お便利なコマンド</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -R [hostname]
+</pre></div>
 </div>
 </div>
 </div>
