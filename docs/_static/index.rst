@@ -25,6 +25,7 @@ wiki
   contents/openvpn
   contents/system_programing
   contents/autotools
+  contents/freebsd
 
 
 .. toctree::
