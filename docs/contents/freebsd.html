@@ -109,6 +109,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">freebsd関連のメモする場所</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sshd">sshdが動いてない話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sudo">sudo入れる</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dotfile">dotfileの話</a></li>
 </ul>
 </li>
 </ul>
@@ -220,7 +221,7 @@
             
   <div class="section" id="freebsd">
 <h1>freebsd関連のメモする場所<a class="headerlink" href="#freebsd" title="Permalink to this headline">¶</a></h1>
-<p>整理されたら消しそう．</p>
+<p>そのうち消しそう．</p>
 <div class="section" id="sshd">
 <h2>sshdが動いてない話<a class="headerlink" href="#sshd" title="Permalink to this headline">¶</a></h2>
 <p>install直後にやらないとsshできなくなって終わる(時がある)から気を付けろ．</p>
@@ -233,6 +234,12 @@
 <h2>sudo入れる<a class="headerlink" href="#sudo" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://hacolab.hatenablog.com/entry/2019/01/15/235905">https://hacolab.hatenablog.com/entry/2019/01/15/235905</a>
 ユーザをwhellに追加するのはインストールの時にやっとくのがいい．</p>
+<p>なんか知らんけどFreeBSDでsudoしたらホームディレクトリが変わってる?
+なんかdotfileのsetup.sh動かした時よくわからん挙動した．
+なぜかはよくわからん．</p>
+</div>
+<div class="section" id="dotfile">
+<h2>dotfileの話<a class="headerlink" href="#dotfile" title="Permalink to this headline">¶</a></h2>
 <p>vim
 vimrcはそのまま行けた．プラグインのインストールもbundleちゃんと入れれば大丈夫だった．
 viがまともにviだからvimにシンボリックリンク貼った方がいいかも．</p>
@@ -243,15 +250,6 @@ viがまともにviだからvimにシンボリックリンク貼った方がい�
 bashrc使えたけど，bash_profileが必要だった．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo pkg install bash
 $ chsh -s bash khwarizmi
-</pre></div>
-</div>
-<p>git</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo pkg install git
-</pre></div>
-</div>
-<p>tmux
-これも普通に大丈夫</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo pkg install tmux
 </pre></div>
 </div>
 </div>

@@ -2,7 +2,7 @@
 freebsd関連のメモする場所
 ==========================
 
-整理されたら消しそう．
+そのうち消しそう．
 
 sshdが動いてない話
 ====================
@@ -20,10 +20,15 @@ sudo入れる
 https://hacolab.hatenablog.com/entry/2019/01/15/235905
 ユーザをwhellに追加するのはインストールの時にやっとくのがいい．
 
+なんか知らんけどFreeBSDでsudoしたらホームディレクトリが変わってる?
+なんかdotfileのsetup.sh動かした時よくわからん挙動した．
+なぜかはよくわからん．
 
 
 
 
+dotfileの話
+==============
 
 vim
 vimrcはそのまま行けた．プラグインのインストールもbundleちゃんと入れれば大丈夫だった．
@@ -42,15 +47,3 @@ bashrc使えたけど，bash_profileが必要だった．
   $ sudo pkg install bash 
   $ chsh -s bash khwarizmi
 
-git 
-
-::
-
-  $ sudo pkg install git 
-
-tmux 
-これも普通に大丈夫
-
-::
-
-  $ sudo pkg install tmux
