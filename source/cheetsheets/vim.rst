@@ -2,6 +2,10 @@
 vim 
 ====
 
+vim日本語ドキュメント:
+https://vim-jp.org/vimdoc-ja/usr_90.html
+vim-jp:
+https://vim-jp.org/docs/build_linux.html
 
 ビルド
 =======
