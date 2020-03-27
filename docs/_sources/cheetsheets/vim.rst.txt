@@ -1,9 +1,20 @@
+====
 vim 
 ====
 
 
+ビルド
+=======
+
+::
+
+  $ git clone https://github.com/vim/vim.git -b v8.2.0000
+  $ cd vim
+  $ ./configure --with-features=huge --enable-fail-if-missing
+  $ make && sudo make install
+
 コマンド
-----------
+==========
 
 .. csv-table::
   :header: コマンド名, 機能
@@ -22,7 +33,7 @@ vim
   $, カーソル位置から行末
 
 tab空白
---------
+===========
 
 tab -> 空白
 

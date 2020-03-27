@@ -104,6 +104,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -117,18 +120,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">vim</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">コマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">ビルド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">コマンド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tab">tab空白</a></li>
 </ul>
 </li>
@@ -138,7 +144,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -216,7 +222,16 @@
   <div class="section" id="vim">
 <h1>vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>コマンド<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>ビルド<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/vim/vim.git -b v8.2.0000
+$ cd vim
+$ ./configure --with-features=huge --enable-fail-if-missing
+$ make &amp;&amp; sudo make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>コマンド<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="50%" />

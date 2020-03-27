@@ -106,6 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -134,6 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#change-hostname">change hostname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#shelltips">shell芸的tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gnu-coreutils">GNU coreutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git">git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">メモ系</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">標準エラー出力のリダイレクト例</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">ファイル内検索</a></li>
@@ -235,6 +237,7 @@
             
   <div class="section" id="bash">
 <h1>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h1>
+<p>※このページcommand util的な名前に変えた方がいい気がするんだ．</p>
 <div class="section" id="add-user">
 <h2>add user<a class="headerlink" href="#add-user" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
@@ -263,6 +266,21 @@ $ sudo hostnamectl set-hostname [hostname]
 <p>Linux(GNUオペレーティングシステム)の一般的なコマンドツールのパッケージらしい.</p>
 <p>参考:</p>
 <p>コマンドの種類:</p>
+</div>
+<div class="section" id="git">
+<h2>git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+<p>でっけえリポジトリをcloneする時</p>
+<p>ソフトウェアが使いたいだけなら
+タグ指定でcloneしちゃう</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone [repo url] -b [tag name]
+</pre></div>
+</div>
+<p>とりあえずお手元に引っ張る時
+直近でcloneする</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">depth</span> <span class="mi">1</span> <span class="p">[</span><span class="n">repo</span> <span class="n">url</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://qiita.com/yasshcy/items/bd96469f4f30c0e57312">https://qiita.com/yasshcy/items/bd96469f4f30c0e57312</a></p>
 </div>
 <div class="section" id="id1">
 <h2>メモ系<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>

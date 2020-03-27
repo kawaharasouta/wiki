@@ -2,6 +2,8 @@
 bash
 ======
 
+※このページcommand util的な名前に変えた方がいい気がするんだ．
+
 add user
 ==========
 
@@ -42,6 +44,26 @@ Linux(GNUオペレーティングシステム)の一般的なコマンドツー�
 
 コマンドの種類: 
 
+git
+======
+
+でっけえリポジトリをcloneする時
+
+ソフトウェアが使いたいだけなら
+タグ指定でcloneしちゃう
+
+::
+
+  $ git clone [repo url] -b [tag name]  
+
+とりあえずお手元に引っ張る時
+直近でcloneする
+
+::
+
+  git clone --depth 1 [repo url]
+
+https://qiita.com/yasshcy/items/bd96469f4f30c0e57312
 
 メモ系
 =========
