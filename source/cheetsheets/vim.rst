@@ -6,12 +6,20 @@ vim
 ビルド
 =======
 
+インストール
+
 ::
 
   $ git clone https://github.com/vim/vim.git -b v8.2.0000
   $ cd vim
   $ ./configure --with-features=huge --enable-fail-if-missing
   $ make && sudo make install
+
+アンインストール
+
+::
+
+  make uninstall
 
 コマンド
 ==========

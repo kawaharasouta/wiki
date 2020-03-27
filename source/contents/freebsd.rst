@@ -47,3 +47,10 @@ bashrc使えたけど，bash_profileが必要だった．
   $ sudo pkg install bash 
   $ chsh -s bash khwarizmi
 
+
+ファイルシステムをマウントしとく
+=====================================
+
+::
+
+  # mount -t procfs proc /proc    # procfs

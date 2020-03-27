@@ -110,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#sshd">sshdが動いてない話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sudo">sudo入れる</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dotfile">dotfileの話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">ファイルシステムをマウントしとく</a></li>
 </ul>
 </li>
 </ul>
@@ -250,6 +251,12 @@ viがまともにviだからvimにシンボリックリンク貼った方がい�
 bashrc使えたけど，bash_profileが必要だった．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo pkg install bash
 $ chsh -s bash khwarizmi
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>ファイルシステムをマウントしとく<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># mount -t procfs proc /proc    # procfs</span>
 </pre></div>
 </div>
 </div>

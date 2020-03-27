@@ -143,6 +143,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">マウントとかそういう系のやつ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fs">fs(ファイルシステム)もマウント状況をみたいやつ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usb">USBをマウントするやつ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">フォーマットする</a></li>
 </ul>
@@ -305,6 +306,12 @@ $ sudo hostnamectl set-hostname [hostname]
 </div>
 <div class="section" id="id5">
 <h2>マウントとかそういう系のやつ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fs">
+<h3>fs(ファイルシステム)もマウント状況をみたいやつ<a class="headerlink" href="#fs" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ df -aT
+</pre></div>
+</div>
+</div>
 <div class="section" id="usb">
 <h3>USBをマウントするやつ<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
 <p>USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
