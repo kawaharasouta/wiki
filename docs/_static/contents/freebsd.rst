@@ -54,3 +54,10 @@ bashrc使えたけど，bash_profileが必要だった．
 ::
 
   # mount -t procfs proc /proc    # procfs
+
+起動時にマウントするようする
+
+::
+
+  # vim /etc/fstab
+  + proc /proc procfs rw 0 0
