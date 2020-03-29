@@ -2,6 +2,8 @@
 vim 
 ====
 
+cheetsheetじゃなくてcontentsの方がいい気がしてきた．
+
 vim日本語ドキュメント:
 https://vim-jp.org/vimdoc-ja/usr_90.html
 vim-jp:
@@ -24,6 +26,25 @@ https://vim-jp.org/docs/build_linux.html
 ::
 
   make uninstall
+
+プラグイン(vundle)導入
+========================
+
+::
+
+  $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  $ vim ~/.vimrc    # head
+    + set nocompatible
+    + filetype off
+    + set rtp+=~/.vim/bundle/Vundle.vim
+    + call vundle#begin()
+    + 
+    + Plugin 'VundleVim/Vundle.vim'
+    + ......
+    +
+    + call vundle#end()
+    + filetype plugin indent on
+  $ vim +PluginInstall +qall
 
 コマンド
 ==========
