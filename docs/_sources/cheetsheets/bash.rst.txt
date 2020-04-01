@@ -219,11 +219,11 @@ cache確認
   $ type [command]
   [command] is hashed (/usr/bin/[command])    #みたいな感じ
 
-cacheを更新?する
+vimのcacheを消す
 
 ::
 
-  $ hash -r
+  $ hash -d vim
 
 シェルがビルトインコマンドではないコマンドを実行する場合、環境変数PATHから該当する実行ファイルを探す必要がありますが、
 頻繁に使うコマンドは「ハッシュテーブル」と呼ばれる場所に記憶しています。
