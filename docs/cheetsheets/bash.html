@@ -149,8 +149,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#apt-ctrl-c">aptが途中で死んだ(ctrl-cで殺した)とき</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linuxデストリ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">起動時にネットワークどうのこうので起動がおそいやつ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">起動時にネットワークどうのこうので起動がおそいやつ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
@@ -389,12 +390,26 @@ $ sudo apt --fix-broken install
 </div>
 <p><a class="reference external" href="https://lb.raspberrypi.org/forums/viewtopic.php?t=200575">https://lb.raspberrypi.org/forums/viewtopic.php?t=200575</a></p>
 </div>
+<div class="section" id="id7">
+<h2>いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>コマンドって大体cacheされてるからいろんな方法でインストールし直して繰り返したりしてると
+同じコマンド名だけどインストールされるPathが違くて前の場所にcacheされてて思い通りのところを見に行かないみたいなそういうのある．</p>
+<p>cache確認</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ type [command]
+[command] is hashed (/usr/bin/[command])    #みたいな感じ
+</pre></div>
+</div>
+<p>cacheを更新?する</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ hash -r
+</pre></div>
+</div>
+</div>
 <div class="section" id="linux">
 <h2>Linuxデストリ<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://note.kurodigi.com/linux-version/">http://note.kurodigi.com/linux-version/</a></p>
 </div>
-<div class="section" id="id7">
-<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">start</span> <span class="n">job</span> <span class="ow">is</span> <span class="n">running</span> <span class="k">for</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">network</span> <span class="n">to</span> <span class="n">be</span> <span class="n">configured</span><span class="o">.</span>
 </pre></div>
 </div>
