@@ -141,6 +141,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#neovim">neovim</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dein-vim">dein.vim</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xdg">XDG系?の変数の定義</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#init-vim">init.vimの作成</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">プラグイン導入例</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kernel.html">カーネル関連tips</a></li>
@@ -340,6 +346,81 @@ $ pip3 install neovim
 $ sudo apt install xclip xsel
 </pre></div>
 </div>
+<p>nvim開いて</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">echo</span> <span class="n">has</span><span class="p">(</span><span class="s1">&#39;python3&#39;</span><span class="p">)</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>なるの確認しといた方が良さげ．</p>
+</div>
+<div class="section" id="dein-vim">
+<h2>dein.vim<a class="headerlink" href="#dein-vim" title="Permalink to this headline">¶</a></h2>
+<p>※なんかこれやったら/etc/alternatives/vimがnvimみるようになってビビったんだけど．</p>
+<div class="section" id="xdg">
+<h3>XDG系?の変数の定義<a class="headerlink" href="#xdg" title="Permalink to this headline">¶</a></h3>
+<p>これに関してはneovimのインストール時にやった方が良さげな気はしてる．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim
++ set -x XDG_CONFIG_HOME $HOME/.config
++ set -x XDG_CACHE_HOME $HOME/.cache
+
+$ source ~/.config/fish/config.fish
+適当にechoして確認しとけ
+</pre></div>
+</div>
+</div>
+<div class="section" id="init-vim">
+<h3>init.vimの作成<a class="headerlink" href="#init-vim" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir $XDG_CONFIG_HOME/nvim
+$ vim $XDG_CONFIG_HOME/nvim/init.vim
++ &quot; dein.vim {{{
++ &quot;  directory configuration
++ let s:config_home = empty($XDG_CONFIG_HOME) ? expand(&#39;~/.config&#39;) : $XDG_CONFIG_HOME
++ let s:dein_config_dir = s:config_home . &#39;/nvim/dein&#39;
++ let s:toml_file = s:dein_config_dir . &#39;/toml/dein.toml&#39;
++ let s:cache_home = empty($XDG_CACHE_HOME) ? expand(&#39;~/.cache&#39;) : $XDG_CACHE_HOME
++ let s:dein_dir = s:cache_home . &#39;/dein&#39;
++ let s:dein_repo_dir = s:dein_dir . &#39;/repos/github.com/Shougo/dein.vim&#39;
++ &quot;  dein installation
++ if !isdirectory(s:dein_repo_dir)
++   call system(&#39;git clone https://github.com/Shougo/dein.vim &#39; . shellescape(s:dein_repo_dir))
++ endif
++ &quot;  path
++ let &amp;runtimepath = s:dein_repo_dir . &quot;,&quot; . &amp;runtimepath
++ if dein#load_state(s:dein_dir)
++   call dein#begin(s:dein_dir)
++   call dein#load_toml(s:toml_file, {&#39;lazy&#39;: 0})
++   call dein#end()
++   call dein#save_state()
++ endif
++ &quot;  install new plugins
++ if has(&#39;vim_starting&#39;) &amp;&amp; dein#check_install()
++   call dein#install()
++ endif
++ &quot; dein.vim }}}
+</pre></div>
+</div>
+<p>Neovimを再起動したらdeinが取得される．
+dein.vimのヘルプが↓のように見れたらOK．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">helptags</span> <span class="o">~/.</span><span class="n">cache</span><span class="o">/</span><span class="n">dein</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Shougo</span><span class="o">/</span><span class="n">dein</span><span class="o">.</span><span class="n">vim</span><span class="o">/</span><span class="n">doc</span>
+<span class="p">:</span><span class="n">h</span> <span class="n">dein</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>プラグイン導入例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.config/nvim/dein/toml/dein.toml
++ [[plugins]]
++ repo = &#39;itchyny/lightline.vim&#39;
+</pre></div>
+</div>
+<p>起動したら導入されるが，一部のプラグインで</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">UpdateRemotePlugins</span>
+</pre></div>
+</div>
+<p>して再起動しないといけないものもあるみたい．</p>
+<p>参照
+<a class="reference external" href="https://qiita.com/giwagiwa/items/128aec59af622efc7a97">https://qiita.com/giwagiwa/items/128aec59af622efc7a97</a></p>
 </div>
 </div>
 

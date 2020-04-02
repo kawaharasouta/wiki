@@ -102,3 +102,93 @@ install
 
   $ sudo apt install xclip xsel
    
+nvim開いて
+
+::
+
+  :echo has('python3')
+  1
+
+なるの確認しといた方が良さげ．
+
+dein.vim
+============
+
+※なんかこれやったら/etc/alternatives/vimがnvimみるようになってビビったんだけど．
+
+XDG系?の変数の定義
+---------------------
+
+これに関してはneovimのインストール時にやった方が良さげな気はしてる．
+
+::
+
+  $ vim 
+  + set -x XDG_CONFIG_HOME $HOME/.config
+  + set -x XDG_CACHE_HOME $HOME/.cache
+
+  $ source ~/.config/fish/config.fish
+  適当にechoして確認しとけ
+
+
+init.vimの作成
+---------------
+
+::
+
+  $ mkdir $XDG_CONFIG_HOME/nvim
+  $ vim $XDG_CONFIG_HOME/nvim/init.vim
+  + " dein.vim {{{
+  + "  directory configuration
+  + let s:config_home = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
+  + let s:dein_config_dir = s:config_home . '/nvim/dein'
+  + let s:toml_file = s:dein_config_dir . '/toml/dein.toml'
+  + let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+  + let s:dein_dir = s:cache_home . '/dein'
+  + let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+  + "  dein installation
+  + if !isdirectory(s:dein_repo_dir)
+  +   call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+  + endif
+  + "  path
+  + let &runtimepath = s:dein_repo_dir . "," . &runtimepath
+  + if dein#load_state(s:dein_dir)
+  +   call dein#begin(s:dein_dir)
+  +   call dein#load_toml(s:toml_file, {'lazy': 0})
+  +   call dein#end()
+  +   call dein#save_state()
+  + endif
+  + "  install new plugins
+  + if has('vim_starting') && dein#check_install()
+  +   call dein#install()
+  + endif
+  + " dein.vim }}}
+
+Neovimを再起動したらdeinが取得される．
+dein.vimのヘルプが↓のように見れたらOK．
+
+::
+
+  :helptags ~/.cache/dein/repos/github.com/Shougo/dein.vim/doc
+  :h dein
+
+プラグイン導入例
+===================
+
+::
+
+  $ vim ~/.config/nvim/dein/toml/dein.toml
+  + [[plugins]]
+  + repo = 'itchyny/lightline.vim'
+
+起動したら導入されるが，一部のプラグインで
+
+::
+
+  :UpdateRemotePlugins
+
+して再起動しないといけないものもあるみたい．
+
+参照
+https://qiita.com/giwagiwa/items/128aec59af622efc7a97
+

@@ -182,6 +182,7 @@ https://www.archlinux.site/2018/03/linuxisoubuntulive-usb.html
 
 syncの面白い話: 
 https://qiita.com/tboffice/items/9c6092278ccaab88e71e#fnref2
+https://booth.pm/ja/items/1564734
 
 aptが途中で死んだ(ctrl-cで殺した)とき
 =======================================
