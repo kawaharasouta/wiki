@@ -81,3 +81,24 @@ tab -> 空白
 
   :set noexpndtab
   :retab!
+
+========
+neovim
+========
+
+install
+==========
+
+::
+
+  $ sudo apt-get install software-properties-common
+  #######################    $ sudo add-apt-repository ppa:neovim-ppa/unstable
+  $ sudo add-apt-repository ppa:neovim-ppa/stable
+  $ sudo apt-get update
+  $ sudo apt-get install neovim
+  $ sudo apt install python3-dev python3-pip
+  $ pip3 install -U pip3        # いらんかも
+  $ pip3 install neovim
+
+  $ sudo apt install xclip xsel
+   
