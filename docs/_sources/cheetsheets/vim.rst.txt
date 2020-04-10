@@ -123,11 +123,11 @@ XDG系?の変数の定義
 
 ::
 
-  $ vim 
-  + set -x XDG_CONFIG_HOME $HOME/.config
-  + set -x XDG_CACHE_HOME $HOME/.cache
+  $ vim ~/.bashrc
+  + export XDG_CONFIG_HOME=$HOME/.config
+  + export XDG_CACHE_HOME=$HOME/.cache
 
-  $ source ~/.config/fish/config.fish
+  $ source ~/.bashrc
   適当にechoして確認しとけ
 
 

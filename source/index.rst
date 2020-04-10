@@ -38,6 +38,7 @@ wiki
   technote/boot
   technote/virtualization
   technote/container
+  technote/unikernel
   technote/cs
   technote/tuntap
   technote/auth
