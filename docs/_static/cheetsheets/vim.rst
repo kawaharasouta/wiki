@@ -198,3 +198,36 @@ dein.vimのヘルプが↓のように見れたらOK．
 参照
 https://qiita.com/giwagiwa/items/128aec59af622efc7a97
 
+
+
+設定????
+===========
+
+これ init.vim に入れないとコマンドが正しく動かなかった
+
+::
+
+  " Define mappings
+  	autocmd FileType denite call s:denite_my_settings()
+  	function! s:denite_my_settings() abort
+  	  nnoremap <silent><buffer><expr> <CR>
+  	  \ denite#do_map('do_action')
+  	  nnoremap <silent><buffer><expr> d
+  	  \ denite#do_map('do_action', 'delete')
+  	  nnoremap <silent><buffer><expr> p
+  	  \ denite#do_map('do_action', 'preview')
+  	  nnoremap <silent><buffer><expr> q
+  	  \ denite#do_map('quit')
+  	  nnoremap <silent><buffer><expr> i
+  	  \ denite#do_map('open_filter_buffer')
+  	  nnoremap <silent><buffer><expr> <Space>
+  	  \ denite#do_map('toggle_select').'j'
+  	endfunction
+
+他にも公式の資料に設定の例とか書いてあるんだけどマジよくわからんからわからない．
+
+denite.txt
+https://github.com/Shougo/denite.nvim/blob/master/doc/denite.txt#L127
+
+参考
+https://github.com/Shougo/denite.nvim/issues/640

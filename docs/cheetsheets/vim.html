@@ -149,6 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">プラグイン導入例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">設定????</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kernel.html">カーネル関連tips</a></li>
@@ -428,6 +429,33 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <p>して再起動しないといけないものもあるみたい．</p>
 <p>参照
 <a class="reference external" href="https://qiita.com/giwagiwa/items/128aec59af622efc7a97">https://qiita.com/giwagiwa/items/128aec59af622efc7a97</a></p>
+</div>
+<div class="section" id="id4">
+<h2>設定????<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>これ init.vim に入れないとコマンドが正しく動かなかった</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&quot; Define mappings
+      autocmd FileType denite call s:denite_my_settings()
+      function! s:denite_my_settings() abort
+        nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;CR&gt;
+        \ denite#do_map(&#39;do_action&#39;)
+        nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; d
+        \ denite#do_map(&#39;do_action&#39;, &#39;delete&#39;)
+        nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; p
+        \ denite#do_map(&#39;do_action&#39;, &#39;preview&#39;)
+        nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; q
+        \ denite#do_map(&#39;quit&#39;)
+        nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; i
+        \ denite#do_map(&#39;open_filter_buffer&#39;)
+        nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Space&gt;
+        \ denite#do_map(&#39;toggle_select&#39;).&#39;j&#39;
+      endfunction
+</pre></div>
+</div>
+<p>他にも公式の資料に設定の例とか書いてあるんだけどマジよくわからんからわからない．</p>
+<p>denite.txt
+<a class="reference external" href="https://github.com/Shougo/denite.nvim/blob/master/doc/denite.txt#L127">https://github.com/Shougo/denite.nvim/blob/master/doc/denite.txt#L127</a></p>
+<p>参考
+<a class="reference external" href="https://github.com/Shougo/denite.nvim/issues/640">https://github.com/Shougo/denite.nvim/issues/640</a></p>
 </div>
 </div>
 
