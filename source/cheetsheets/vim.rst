@@ -46,6 +46,12 @@ https://vim-jp.org/docs/build_linux.html
     + filetype plugin indent on
   $ vim +PluginInstall +qall
 
+vimrcの書き方
+===============
+
+参考
+https://thinca.hatenablog.com/entry/20100205/1265307642
+
 コマンド
 ==========
 
