@@ -178,6 +178,23 @@ dein.vimのヘルプが↓のように見れたらOK．
   :helptags ~/.cache/dein/repos/github.com/Shougo/dein.vim/doc
   :h dein
 
+hookの使い方とか
+-----------------
+
+.. csv-table:: hookの種類
+  :header: "名前", "実行のタイミング", "lazy OFF", "lazy ON"
+  :widths: 5, 5, 5, 5
+
+  "hook_add",           "プラグインが追加されたとき",         "OK", "OK"
+  "hook_source",        "プラグインが読み込まれる直前",       "NG", "OK" 
+  "hook_post_source",   "プラグインが読み込まれた直後",       "NG", "OK" 
+  "hook_post_update",   "プラグインが更新された直後",         "OK", "OK" 
+  "hook_done_update",   "プラグイン全ての更新が終わった直後", "OK", "OK" 
+
+
+参考
+https://qiita.com/delphinus/items/cd221a450fd23506e81a
+
 プラグイン導入例
 ===================
 
