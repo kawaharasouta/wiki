@@ -147,10 +147,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#xdg">XDG系?の変数の定義</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#init-vim">init.vimの作成</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hook">hookの使い方とか</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">プラグイン導入例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">プラグインアンインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">設定????</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">プラグイン導入例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">設定????</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kernel.html">カーネル関連tips</a></li>
@@ -417,8 +418,8 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 </div>
 <div class="section" id="hook">
 <h3>hookの使い方とか<a class="headerlink" href="#hook" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="colwidths-given docutils" id="id5">
-<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-given docutils" id="id6">
+<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="25%" />
@@ -463,9 +464,8 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <p>参考
 <a class="reference external" href="https://qiita.com/delphinus/items/cd221a450fd23506e81a">https://qiita.com/delphinus/items/cd221a450fd23506e81a</a></p>
 </div>
-</div>
 <div class="section" id="id3">
-<h2>プラグイン導入例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>プラグイン導入例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.config/nvim/dein/toml/dein.toml
 + [[plugins]]
 + repo = &#39;itchyny/lightline.vim&#39;
@@ -480,7 +480,15 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <a class="reference external" href="https://qiita.com/giwagiwa/items/128aec59af622efc7a97">https://qiita.com/giwagiwa/items/128aec59af622efc7a97</a></p>
 </div>
 <div class="section" id="id4">
-<h2>設定????<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h3>プラグインアンインストール<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>tomlファイルから該当行を消したあと，</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">call</span> <span class="nb">map</span><span class="p">(</span><span class="n">dein</span><span class="c1">#check_clean(), &quot;delete(v:val, &#39;rf&#39;)&quot;)</span>
+<span class="p">:</span><span class="n">call</span> <span class="n">dein</span><span class="c1">#recache_runtimepath()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>設定????<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>これ init.vim に入れないとコマンドが正しく動かなかった</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&quot; Define mappings
       autocmd FileType denite call s:denite_my_settings()
@@ -505,6 +513,7 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <a class="reference external" href="https://github.com/Shougo/denite.nvim/blob/master/doc/denite.txt#L127">https://github.com/Shougo/denite.nvim/blob/master/doc/denite.txt#L127</a></p>
 <p>参考
 <a class="reference external" href="https://github.com/Shougo/denite.nvim/issues/640">https://github.com/Shougo/denite.nvim/issues/640</a></p>
+</div>
 </div>
 </div>
 

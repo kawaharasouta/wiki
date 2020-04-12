@@ -196,7 +196,7 @@ hookの使い方とか
 https://qiita.com/delphinus/items/cd221a450fd23506e81a
 
 プラグイン導入例
-===================
+-----------------
 
 ::
 
@@ -215,10 +215,20 @@ https://qiita.com/delphinus/items/cd221a450fd23506e81a
 参照
 https://qiita.com/giwagiwa/items/128aec59af622efc7a97
 
+プラグインアンインストール
+--------------------------
+
+tomlファイルから該当行を消したあと，
+
+::
+
+  :call map(dein#check_clean(), "delete(v:val, 'rf')")
+  :call dein#recache_runtimepath()
+
 
 
 設定????
-===========
+-------------
 
 これ init.vim に入れないとコマンドが正しく動かなかった
 
