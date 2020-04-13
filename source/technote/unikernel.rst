@@ -122,8 +122,22 @@ make configure の ターゲット一覧一応
     0
 
 
+static-website-tlsを動かそうとしてみたら
+------------------------------------------
 
+make dependでエラー
 
+::
+
+  The following dependencies couldn't be met:
+    - mirage-unikernel-https-unix → conduit-mirage < 3.0.0 → ocaml >= 4.07.0
+        base of this switch (use `--unlock-base' to force)
+    - mirage-unikernel-https-unix → conduit-mirage < 3.0.0 → mirage-kv >= 3.0.0 → ocaml >= 4.06.0
+        base of this switch (use `--unlock-base' to force)
+    - mirage-unikernel-https-unix → conduit-mirage < 3.0.0 → dns-client → ocaml >= 4.07.0
+        base of this switch (use `--unlock-base' to force)
+
+ocamlのバージョン4.07.0にする必要ありそう．
 
 
 

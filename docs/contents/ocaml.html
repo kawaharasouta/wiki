@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>環境構築 &mdash; wiki  documentation</title>
+  <title>OCamlについてとりあえずメモ &mdash; wiki  documentation</title>
   
 
   
@@ -44,7 +44,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="XDP" href="xdp.html" />
+    <link rel="prev" title="golang" href="golang.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,7 +91,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
@@ -97,6 +99,16 @@
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OCamlについてとりあえずメモ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">環境構築</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opam">opam環境構築</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hello-world">Hello World</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">コンパイラ(ocaml)のバージョン管理</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -195,7 +207,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>環境構築</li>
+      <li>OCamlについてとりあえずメモ</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -214,10 +226,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>環境構築<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ocaml">
+<h1>OCamlについてとりあえずメモ<a class="headerlink" href="#ocaml" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>環境構築<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install">
-<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<h3>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
 <p><strong>ubuntu</strong>
 ocamlとopam って言うのをインストールする．
 ocamlはコンパイラ，opamはパッケージとかの管理ツールと思っておけば良さそう．</p>
@@ -228,7 +242,7 @@ $ sudo apt install opam ocaml gcc make bubblewrap m4 pkg-config
 </div>
 </div>
 <div class="section" id="opam">
-<h2>opam環境構築<a class="headerlink" href="#opam" title="Permalink to this headline">¶</a></h2>
+<h3>opam環境構築<a class="headerlink" href="#opam" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ opam init
 いろいろインストールで聞かれるから適当にyしとけ
 $ vim ~/.bashrc
@@ -238,7 +252,7 @@ $ source ~/.bashrc
 </div>
 </div>
 <div class="section" id="hello-world">
-<h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
+<h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ vim my_prog.ml
   + let () = print_endline &quot;Hello, World!&quot;
 $ ocamlbuild my_prog.native
@@ -248,12 +262,41 @@ $ ./my_prog.native
 </div>
 </div>
 </div>
+<div class="section" id="id2">
+<h2>コンパイラ(ocaml)のバージョン管理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>opamで管理するんだけど，スイッチとかいう概念があってスイッチで複数のバージョンを切り替えたりする．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ opam switch create 4.07.0     #新しいバージョンをインストール
+$ opam switch                   #スイッチ一覧
+  #  switch   compiler                    description
+  →  4.07.0   ocaml-base-compiler.4.07.0  4.07.0
+     default  ocaml-system.4.05.0         default
+$ ocaml --version
+  The OCaml toplevel, version 4.07.0
+$ opam switch default
+$ eval $(opam env)
+$ ocaml --version
+  The OCaml toplevel, version 4.05.0
+</pre></div>
+</div>
+<p>細かいパスがうんたらとかそう言う話
+<a class="reference external" href="https://camlspotter.gitlab.io/blog/2018-08-08-opam-switch/">https://camlspotter.gitlab.io/blog/2018-08-08-opam-switch/</a></p>
+</div>
+</div>
 
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xdp.html" class="btn btn-neutral float-right" title="XDP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="golang.html" class="btn btn-neutral float-left" title="golang" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">環境構築</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -132,6 +133,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">なんもしないやつ</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#static-website-tls">static-website-tlsを動かそうとしてみたら</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">参考</a></li>
@@ -329,6 +331,20 @@ $ echo $?     # リターンコード確認するけど普通に0だからなん
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="static-website-tls">
+<h3>static-website-tlsを動かそうとしてみたら<a class="headerlink" href="#static-website-tls" title="Permalink to this headline">¶</a></h3>
+<p>make dependでエラー</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>The following dependencies couldn&#39;t be met:
+  - mirage-unikernel-https-unix → conduit-mirage &lt; 3.0.0 → ocaml &gt;= 4.07.0
+      base of this switch (use `--unlock-base&#39; to force)
+  - mirage-unikernel-https-unix → conduit-mirage &lt; 3.0.0 → mirage-kv &gt;= 3.0.0 → ocaml &gt;= 4.06.0
+      base of this switch (use `--unlock-base&#39; to force)
+  - mirage-unikernel-https-unix → conduit-mirage &lt; 3.0.0 → dns-client → ocaml &gt;= 4.07.0
+      base of this switch (use `--unlock-base&#39; to force)
+</pre></div>
+</div>
+<p>ocamlのバージョン4.07.0にする必要ありそう．</p>
 </div>
 </div>
 <div class="section" id="id4">

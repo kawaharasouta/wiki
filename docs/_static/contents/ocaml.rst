@@ -1,4 +1,4 @@
-============================
+=============================
 OCamlについてとりあえずメモ
 =============================
 
@@ -42,6 +42,29 @@ Hello World
     Hello, World!
 
 
+コンパイラ(ocaml)のバージョン管理
+===================================
+
+opamで管理するんだけど，スイッチとかいう概念があってスイッチで複数のバージョンを切り替えたりする．
+
+
+::
+
+  $ opam switch create 4.07.0     #新しいバージョンをインストール
+  $ opam switch                   #スイッチ一覧
+    #  switch   compiler                    description
+    →  4.07.0   ocaml-base-compiler.4.07.0  4.07.0
+       default  ocaml-system.4.05.0         default
+  $ ocaml --version
+    The OCaml toplevel, version 4.07.0
+  $ opam switch default
+  $ eval $(opam env)
+  $ ocaml --version
+    The OCaml toplevel, version 4.05.0
+
+
+細かいパスがうんたらとかそう言う話
+https://camlspotter.gitlab.io/blog/2018-08-08-opam-switch/
 
 
 
