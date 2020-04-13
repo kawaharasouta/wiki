@@ -55,6 +55,9 @@ https://thinca.hatenablog.com/entry/20100205/1265307642
 コマンド
 ==========
 
+マジここ見た方がいいんじゃね
+https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html
+
 .. csv-table::
   :header: コマンド名, 機能
   :widths: 3, 3
@@ -94,6 +97,8 @@ neovim
 
 install
 ==========
+
+https://github.com/neovim/neovim/wiki/Installing-Neovim
 
 ::
 
