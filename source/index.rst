@@ -19,6 +19,7 @@ wiki
   contents/ssh_config
   contents/c_c++
   contents/golang
+  contents/ocaml
   contents/xdp
   contents/ovs
   contents/trex

@@ -44,7 +44,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="related computer science" href="cs.html" />
+    <link rel="prev" title="コンテナ技術周辺について" href="container.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kernel_packet.html">linuxのパケットの送受信について</a></li>
@@ -119,6 +121,22 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">unikernelについて</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mirageoshelloworld">mirageOSでHelloWorldする</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">環境</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">手順</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opam">opam環境構築</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mirage">mirageパッケージのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mirageapp">mirageAPP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hello">hello言うやつ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">なんもしないやつ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">参考</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
@@ -215,8 +233,106 @@
             
   <div class="section" id="unikernel">
 <h1>unikernelについて<a class="headerlink" href="#unikernel" title="Permalink to this headline">¶</a></h1>
+<p>インストール
+<a class="reference external" href="https://mirage.io/wiki/install">https://mirage.io/wiki/install</a></p>
+<p>はろわ
+<a class="reference external" href="https://mirage.io/wiki/hello-world">https://mirage.io/wiki/hello-world</a></p>
+<div class="section" id="mirageoshelloworld">
+<h2>mirageOSでHelloWorldする<a class="headerlink" href="#mirageoshelloworld" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
-<h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h3>環境<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>OS: ubuntu18.04
+kernel: 4.15.0-91-generic
+kvm
+ocaml: 4.05.0
+opam: 2.0.4</p>
+</div>
+<div class="section" id="id2">
+<h3>手順<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>kvmはkvmのとこみろや</p>
+<p>ocamlとopamのインストール</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:avsm/ppa
+$ sudo apt update
+$ sudo apt install opam ocaml gcc make bubblewrap m4 pkg-config
+</pre></div>
+</div>
+</div>
+<div class="section" id="opam">
+<h3>opam環境構築<a class="headerlink" href="#opam" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ opam init
+  いろいろインストールで聞かれるから適当にyしとけ
+$ vim ~/.bashrc
+  + eval `opam config env`
+$ source ~/.bashrc
+</pre></div>
+</div>
+</div>
+<div class="section" id="mirage">
+<h3>mirageパッケージのインストール<a class="headerlink" href="#mirage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ opam install mirage
+$ mirage    #確認
+</pre></div>
+</div>
+</div>
+<div class="section" id="mirageapp">
+<h3>mirageAPP<a class="headerlink" href="#mirageapp" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="hello">
+<h4>hello言うやつ<a class="headerlink" href="#hello" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/mirage/mirage-skeleton.git ~/git/mirage-skeleton
+$ cd ~/git/mirage-skeleton
+$ mirage configure -t hvt     # -tはターゲット指定? これでコンパイルに必要なファイルが流れてくる． autotoolsみたいなのりだと思う． Makefileも出てくる
+$ make depend                 # 依存関係のあるパッケージを入れてるらしい
+$ make
+えらったわ
+Error: This expression has type unit Time.io
+       but an expression was expected of type &#39;a Lwt.t
+</pre></div>
+</div>
+<p>make configure の ターゲット一覧一応</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Target</span> <span class="n">platform</span> <span class="n">to</span> <span class="nb">compile</span> <span class="n">the</span> <span class="n">unikernel</span> <span class="k">for</span><span class="o">.</span> <span class="n">Valid</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span>
+<span class="n">xen</span><span class="p">,</span> <span class="n">qubes</span><span class="p">,</span> <span class="n">unix</span><span class="p">,</span> <span class="n">macosx</span><span class="p">,</span> <span class="n">virtio</span><span class="p">,</span> <span class="n">hvt</span><span class="p">,</span> <span class="n">muen</span><span class="p">,</span> <span class="n">genode</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>ちょっと保存用</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mirage</span> <span class="n">build</span>
+<span class="o">+</span> <span class="n">ocamlfind</span> <span class="n">ocamlc</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="nb">bin</span><span class="o">-</span><span class="n">annot</span> <span class="o">-</span><span class="n">safe</span><span class="o">-</span><span class="n">string</span> <span class="o">-</span><span class="n">principal</span> <span class="o">-</span><span class="n">strict</span><span class="o">-</span><span class="n">sequence</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">types</span><span class="o">-</span><span class="n">lwt</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">types</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">solo5</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">runtime</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">logs</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">clock</span><span class="o">-</span><span class="n">freestanding</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">bootvar</span><span class="o">-</span><span class="n">solo5</span> <span class="o">-</span><span class="n">package</span> <span class="n">lwt</span> <span class="o">-</span><span class="n">package</span> <span class="n">functoria</span><span class="o">-</span><span class="n">runtime</span> <span class="o">-</span><span class="n">package</span> <span class="n">duration</span> <span class="o">-</span><span class="n">predicates</span> <span class="n">mirage_solo5</span> <span class="o">-</span><span class="n">w</span> <span class="n">A</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">41</span><span class="o">-</span><span class="mi">42</span><span class="o">-</span><span class="mi">44</span> <span class="o">-</span><span class="n">color</span> <span class="n">always</span> <span class="o">-</span><span class="n">o</span> <span class="n">unikernel</span><span class="o">.</span><span class="n">cmo</span> <span class="n">unikernel</span><span class="o">.</span><span class="n">ml</span>
+<span class="n">File</span> <span class="s2">&quot;unikernel.ml&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">11</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">8</span><span class="o">-</span><span class="mi">41</span><span class="p">:</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">This</span> <span class="n">expression</span> <span class="n">has</span> <span class="nb">type</span> <span class="n">unit</span> <span class="n">Time</span><span class="o">.</span><span class="n">io</span>
+       <span class="n">but</span> <span class="n">an</span> <span class="n">expression</span> <span class="n">was</span> <span class="n">expected</span> <span class="n">of</span> <span class="nb">type</span> <span class="s1">&#39;a Lwt.t</span>
+<span class="n">Command</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">code</span> <span class="mf">2.</span>
+<span class="n">run</span> <span class="p">[</span><span class="s1">&#39;ocamlbuild&#39;</span> <span class="s1">&#39;-use-ocamlfind&#39;</span> <span class="s1">&#39;-classic-display&#39;</span> <span class="s1">&#39;-quiet&#39;</span> <span class="s1">&#39;-tags&#39;</span>
+     <span class="s1">&#39;predicate(mirage_solo5),warn(A-4-41-42-44),debug,bin_annot,strict_sequence,principal,safe_string,color(always)&#39;</span>
+     <span class="s1">&#39;-pkgs&#39;</span>
+     <span class="s1">&#39;duration,functoria-runtime,lwt,mirage-bootvar-solo5,mirage-clock-freestanding,mirage-logs,mirage-runtime,mirage-solo5,mirage-types,mirage-types-lwt&#39;</span>
+     <span class="s1">&#39;-cflags&#39;</span> <span class="s1">&#39;-g&#39;</span> <span class="s1">&#39;-lflags&#39;</span>
+     <span class="s1">&#39;-g,-dontlink,unix,-dontlink,str,-dontlink,num,-dontlink,threads&#39;</span>
+     <span class="s1">&#39;-tag-line&#39;</span> <span class="s1">&#39;&lt;static*.*&gt;: warn(-32-34)&#39;</span> <span class="s1">&#39;-Xs&#39;</span>
+     <span class="s1">&#39;_build-solo5-hvt,_build-ukvm&#39;</span> <span class="s1">&#39;main.native.o&#39;</span><span class="p">]:</span> <span class="n">exited</span> <span class="k">with</span> <span class="mi">10</span>
+<span class="n">run</span> <span class="p">[</span><span class="s1">&#39;dune&#39;</span> <span class="s1">&#39;exec&#39;</span> <span class="s1">&#39;--root&#39;</span>
+     <span class="s1">&#39;/home/khwarizmi/git/mirage-skeleton/tutorial/hello&#39;</span> <span class="s1">&#39;--&#39;</span> <span class="s1">&#39;./config.exe&#39;</span>
+     <span class="s1">&#39;build&#39;</span><span class="p">]:</span> <span class="n">exited</span> <span class="k">with</span> <span class="mi">1</span>
+<span class="n">Makefile</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">recipe</span> <span class="k">for</span> <span class="n">target</span> <span class="s1">&#39;build&#39;</span> <span class="n">failed</span>
+<span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">build</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>なんもしないやつ<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>とりあえずunixappで動かす</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd ~/git/mirage-skeleton/tutorial/noop
+$ mirage configure -t unix
+$ make depend
+$ make
+$ ./noop      # 実行ファイル
+$ echo $?     # リターンコード確認するけど普通に0だからなんか物足りない
+  0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>参考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>unikernalの情報
 <a class="reference external" href="https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0">https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0</a></p>
 <p>MirageOSのHelloWorldやってみるやつ
@@ -229,6 +345,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="container.html" class="btn btn-neutral float-left" title="コンテナ技術周辺について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
