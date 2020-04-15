@@ -105,6 +105,47 @@ make configure の ターゲット一覧一応
   make: *** [build] Error 1
 
 
+とりあえず動くように改良
+
+::
+
+  open Lwt.Infix
+
+  module Hello (Time : Mirage_time.S) = struct
+
+    let start _time =
+
+      (*let rec loop = function
+        | 0 -> Lwt.return_unit
+        | n ->
+          Logs.info (fun f -> f "hello");
+          (*Time.sleep_ns (Duration.of_sec 1) >>= fun () ->
+          loop (n-1)*)
+          Lwt.return_unit
+      in
+      loop 4*)
+
+      Logs.info (fun f -> f "hello");
+      Lwt.return_unit
+
+  end
+
+とりあえずunixAPPとして動かす
+
+::
+
+  $ mirage configure -t unix
+  $ make depend
+  $ make 
+  $ ./hello
+    2020-04-14 09:57:51 +00:00: INF [application] hello
+
+kvmで動かす
+
+::
+
+  
+
 
 なんもしないやつ
 ```````````````````

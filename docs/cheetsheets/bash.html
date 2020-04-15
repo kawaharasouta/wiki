@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -121,6 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
@@ -136,6 +138,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#shelltips">shell芸的tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gnu-coreutils">GNU coreutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#git">git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-alternatives">update-alternatives でコマンドを管理するやつ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sudocommand-not-fount">sudoでcommand not fountする</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">メモ系</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">標準エラー出力のリダイレクト例</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">ファイル内検索</a></li>
@@ -284,6 +288,43 @@ $ sudo hostnamectl set-hostname [hostname]
 </pre></div>
 </div>
 <p><a class="reference external" href="https://qiita.com/yasshcy/items/bd96469f4f30c0e57312">https://qiita.com/yasshcy/items/bd96469f4f30c0e57312</a></p>
+</div>
+<div class="section" id="update-alternatives">
+<h2>update-alternatives でコマンドを管理するやつ<a class="headerlink" href="#update-alternatives" title="Permalink to this headline">¶</a></h2>
+<p>コマンドの日本語リファレンス:
+<a class="reference external" href="https://manpages.debian.org/wheezy/dpkg/update-alternatives.8.ja.html">https://manpages.debian.org/wheezy/dpkg/update-alternatives.8.ja.html</a></p>
+<p>Linuxには，同等の役割を持ったソフトウェアが複数あったり，(エディタとか)
+様々なバージョンを使い分けたいような場合(コンパイラとか)があったりするが，
+そういうのの選択．切り替えとかをやってくれるやつ．</p>
+<p>なんかいろんなやり方とかはあとで書く．</p>
+<p>仕組みとか?:
+<a class="reference external" href="https://vinelinux.org/docs/vine6/cui-guide/update-alternatives.html">https://vinelinux.org/docs/vine6/cui-guide/update-alternatives.html</a></p>
+</div>
+<div class="section" id="sudocommand-not-fount">
+<h2>sudoでcommand not fountする<a class="headerlink" href="#sudocommand-not-fount" title="Permalink to this headline">¶</a></h2>
+<p>sudoers の env_reset オプションが有効になっている場合，
+セキュリティ上環境変数が初期化されて secure_path に設定しているパスが使われるので，環境変数 PATH が通らない。</p>
+<ol class="arabic simple">
+<li>env_reset を無効化する</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo visudo
+  - Defaults env_reset
+  + #Defaults env_reset
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>環境変数を引き継ぐ</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo visudo
+  - Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+  + #Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+  + Defaults env_keep += &quot;PATH&quot;
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>secure_pathにパスを設定してしまう</li>
+</ol>
+<p>コマンド省略</p>
 </div>
 <div class="section" id="id1">
 <h2>メモ系<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>

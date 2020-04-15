@@ -126,6 +126,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -148,6 +149,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
@@ -160,6 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
@@ -248,6 +251,10 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 </pre></div>
 </div>
+<p>これいりそう</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install virtinst         #virt-install
+</pre></div>
+</div>
 </div>
 <div class="section" id="start-config">
 <h2>start config<a class="headerlink" href="#start-config" title="Permalink to this headline">¶</a></h2>
@@ -281,8 +288,8 @@
 $ virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
---vcpus 1 \
---ram 512 \
+--vcpus 2 \
+--ram 2048 \
 --accelerate --hvm \
 --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
 --location &#39;http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/&#39; \

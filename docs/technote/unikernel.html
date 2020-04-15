@@ -99,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -317,6 +317,38 @@ Error: This expression has type unit Time.io
 <span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">build</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">1</span>
 </pre></div>
 </div>
+<p>とりあえず動くように改良</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">Lwt</span><span class="o">.</span><span class="n">Infix</span>
+
+<span class="n">module</span> <span class="n">Hello</span> <span class="p">(</span><span class="n">Time</span> <span class="p">:</span> <span class="n">Mirage_time</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">=</span> <span class="n">struct</span>
+
+  <span class="n">let</span> <span class="n">start</span> <span class="n">_time</span> <span class="o">=</span>
+
+    <span class="p">(</span><span class="o">*</span><span class="n">let</span> <span class="n">rec</span> <span class="n">loop</span> <span class="o">=</span> <span class="n">function</span>
+      <span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">Lwt</span><span class="o">.</span><span class="n">return_unit</span>
+      <span class="o">|</span> <span class="n">n</span> <span class="o">-&gt;</span>
+        <span class="n">Logs</span><span class="o">.</span><span class="n">info</span> <span class="p">(</span><span class="n">fun</span> <span class="n">f</span> <span class="o">-&gt;</span> <span class="n">f</span> <span class="s2">&quot;hello&quot;</span><span class="p">);</span>
+        <span class="p">(</span><span class="o">*</span><span class="n">Time</span><span class="o">.</span><span class="n">sleep_ns</span> <span class="p">(</span><span class="n">Duration</span><span class="o">.</span><span class="n">of_sec</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;&gt;=</span> <span class="n">fun</span> <span class="p">()</span> <span class="o">-&gt;</span>
+        <span class="n">loop</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">)</span>
+        <span class="n">Lwt</span><span class="o">.</span><span class="n">return_unit</span>
+    <span class="ow">in</span>
+    <span class="n">loop</span> <span class="mi">4</span><span class="o">*</span><span class="p">)</span>
+
+    <span class="n">Logs</span><span class="o">.</span><span class="n">info</span> <span class="p">(</span><span class="n">fun</span> <span class="n">f</span> <span class="o">-&gt;</span> <span class="n">f</span> <span class="s2">&quot;hello&quot;</span><span class="p">);</span>
+    <span class="n">Lwt</span><span class="o">.</span><span class="n">return_unit</span>
+
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>とりあえずunixAPPとして動かす</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mirage configure -t unix
+$ make depend
+$ make
+$ ./hello
+  2020-04-14 09:57:51 +00:00: INF [application] hello
+</pre></div>
+</div>
+<p>kvmで動かす</p>
 </div>
 <div class="section" id="id3">
 <h4>なんもしないやつ<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>

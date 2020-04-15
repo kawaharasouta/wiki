@@ -65,6 +65,52 @@ git
 
 https://qiita.com/yasshcy/items/bd96469f4f30c0e57312
 
+
+update-alternatives でコマンドを管理するやつ
+===============================================
+
+コマンドの日本語リファレンス:
+https://manpages.debian.org/wheezy/dpkg/update-alternatives.8.ja.html
+
+Linuxには，同等の役割を持ったソフトウェアが複数あったり，(エディタとか)
+様々なバージョンを使い分けたいような場合(コンパイラとか)があったりするが，
+そういうのの選択．切り替えとかをやってくれるやつ．
+
+
+なんかいろんなやり方とかはあとで書く．
+
+
+仕組みとか?:
+https://vinelinux.org/docs/vine6/cui-guide/update-alternatives.html
+
+
+sudoでcommand not fountする
+=============================
+
+sudoers の env_reset オプションが有効になっている場合，
+セキュリティ上環境変数が初期化されて secure_path に設定しているパスが使われるので，環境変数 PATH が通らない。
+
+1. env_reset を無効化する
+
+::
+
+  $ sudo visudo
+    - Defaults env_reset
+    + #Defaults env_reset
+
+2. 環境変数を引き継ぐ
+
+::
+
+  $ sudo visudo
+    - Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+    + #Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+    + Defaults env_keep += "PATH"
+
+3. secure_pathにパスを設定してしまう
+
+コマンド省略
+
 メモ系
 =========
 

@@ -8,6 +8,12 @@ package
 
   $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
+これいりそう
+
+::
+
+  $ sudo apt install virtinst         #virt-install
+
 start config
 =============
 ::
@@ -43,8 +49,8 @@ serial *cannot install*
   $ virt-install \
   --connect=qemu:///system \
   --name ubuntu1 \
-  --vcpus 1 \
-  --ram 512 \
+  --vcpus 2 \
+  --ram 2048 \
   --accelerate --hvm \
   --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
   --location 'http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' \
