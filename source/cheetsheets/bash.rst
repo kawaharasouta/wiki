@@ -230,6 +230,14 @@ syncの面白い話:
 https://qiita.com/tboffice/items/9c6092278ccaab88e71e#fnref2
 https://booth.pm/ja/items/1564734
 
+
+apt のPPAの話
+===============
+
+参考
+https://kazuhira-r.hatenablog.com/entry/2019/03/10/225459
+
+
 aptが途中で死んだ(ctrl-cで殺した)とき
 =======================================
 
