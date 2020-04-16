@@ -2,6 +2,27 @@
 kvm
 ====
 
+
+注意
+=======
+
+BIOSでIntel-VT無効になっていても，KVMはQEMUで頑張ってVMを動かすらしいので，
+普通にVM動かすだけだと気づかないこと多いから確認しろ．
+
+::
+
+  $ sudo kvm-ok                               ### ダメな例やぞ
+    INFO: /dev/kvm does not exist
+    HINT:   sudo modprobe kvm_intel
+    INFO: Your CPU supports KVM extensions
+    INFO: KVM (vmx) is disabled by your BIOS
+    HINT: Enter your BIOS setup and enable Virtualization Technology (VT),
+          and then hard poweroff/poweron your system
+    KVM acceleration can NOT be used
+
+https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82
+
+
 package
 =========
 :: 

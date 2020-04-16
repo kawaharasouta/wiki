@@ -94,6 +94,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">kvm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">注意</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#package">package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#start-config">start config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#make-image">make image</a></li>
@@ -107,7 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#extend-disk-size">extend disk size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">ブリッジ接続</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ブリッジ接続</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#linux-bridge">Linux bridge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ovs">ovs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlan</a></li>
@@ -117,7 +118,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#sr-iov">SR-IOV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">接続方法とかに関して</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">接続方法とかに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 </ul>
 </li>
@@ -246,6 +247,22 @@
             
   <div class="section" id="kvm">
 <h1>kvm<a class="headerlink" href="#kvm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>注意<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>BIOSでIntel-VT無効になっていても，KVMはQEMUで頑張ってVMを動かすらしいので，
+普通にVM動かすだけだと気づかないこと多いから確認しろ．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo kvm-ok                               ### ダメな例やぞ
+  INFO: /dev/kvm does not exist
+  HINT:   sudo modprobe kvm_intel
+  INFO: Your CPU supports KVM extensions
+  INFO: KVM (vmx) is disabled by your BIOS
+  HINT: Enter your BIOS setup and enable Virtualization Technology (VT),
+        and then hard poweroff/poweron your system
+  KVM acceleration can NOT be used
+</pre></div>
+</div>
+<p><a class="reference external" href="https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82">https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82</a></p>
+</div>
 <div class="section" id="package">
 <h2>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
@@ -488,8 +505,8 @@ network file       /etc/libvirt/qemu/networks/
 </pre></div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>ブリッジ接続<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>ブリッジ接続<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="linux-bridge">
 <h3>Linux bridge<a class="headerlink" href="#linux-bridge" title="Permalink to this headline">¶</a></h3>
 <p>ブリッジ作成してそこに物理インタフェースぶっこむだけ.
@@ -574,8 +591,8 @@ $ sudo virsh net-dhcp-leases default | awk &#39;{print $5, $6}&#39;
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>接続方法とかに関して<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>接続方法とかに関して<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>接続方法は多分
 - ssh
 - console
