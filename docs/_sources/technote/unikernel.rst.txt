@@ -2,15 +2,21 @@
 unikernelについて
 ====================
 
+
+参考
+
+unikernalの情報
+https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0
+
+
+mirageOSでHelloWorldする
+===========================
+
 インストール
 https://mirage.io/wiki/install
 
 はろわ
 https://mirage.io/wiki/hello-world
-
-
-mirageOSでHelloWorldする
-===========================
 
 環境
 -----
@@ -144,7 +150,7 @@ kvmで動かす
 
 ::
 
-  
+  aaaaaa
 
 
 なんもしないやつ
@@ -180,13 +186,9 @@ make dependでエラー
 
 ocamlのバージョン4.07.0にする必要ありそう．
 
-
-
 参考
-=======
+-------
 
-unikernalの情報
-https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0
 
 MirageOSのHelloWorldやってみるやつ
 https://qiita.com/t-imada/items/6ee299653ac063532b4f
