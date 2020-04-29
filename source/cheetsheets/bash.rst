@@ -44,10 +44,11 @@ Linux(GNUオペレーティングシステム)の一般的なコマンドツー�
 
 コマンドの種類: 
 
-git
-======
+git系 
+=======
 
-でっけえリポジトリをcloneする時
+でっけえのclone
+-----------------
 
 ソフトウェアが使いたいだけなら
 タグ指定でcloneしちゃう
@@ -64,6 +65,23 @@ git
   git clone --depth 1 [repo url]
 
 https://qiita.com/yasshcy/items/bd96469f4f30c0e57312
+
+リリース物をダウンロード
+-------------------------
+
+cloudius-systemsのosvでの例
+
+とりあえず以下のようにするとrelease情報がまとまってjsonみたいな感じで落ちてくる．
+
+::
+
+  $ curl https://api.github.com/repos/cloudius-systems/osv/releases
+
+これは
+
+::
+
+  $  
 
 
 update-alternatives でコマンドを管理するやつ

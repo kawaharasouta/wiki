@@ -192,3 +192,19 @@ ocamlのバージョン4.07.0にする必要ありそう．
 
 MirageOSのHelloWorldやってみるやつ
 https://qiita.com/t-imada/items/6ee299653ac063532b4f
+
+
+
+OSv
+=====
+
+やってみる
+-----------
+
+::
+
+  $ sudo apt install libvirt0
+
+
+
+
