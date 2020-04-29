@@ -81,7 +81,7 @@ cloudius-systemsのosvでの例
 
 ::
 
-  $  
+  $
 
 
 update-alternatives でコマンドを管理するやつ

@@ -44,6 +44,14 @@ UNIX系オペレーティングシステム上において，コマンドとシ�
 
 https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%8B%E3%82%B1%E3%83%BC%E3%82%B8%E9%96%8B%E7%99%BA%E6%89%8B%E6%B3%95
 
+ユニケージ手法的なので，USP(ユニバーサル・シェル・プログラミング)研究所とか言うのあった
+
+https://www.usp-lab.com/opinion.html
 
 
+UNIX哲学
+===========
 
+なんかいろんなソフトウェア開発的な哲学が書いてあった．
+
+https://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6
