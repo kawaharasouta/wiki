@@ -61,3 +61,5 @@ bashrc使えたけど，bash_profileが必要だった．
 
   # vim /etc/fstab
   + proc /proc procfs rw 0 0
+
+https://www.cyberciti.biz/faq/howto-freebsd-mount-procfs/
