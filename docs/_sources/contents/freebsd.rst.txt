@@ -63,3 +63,4 @@ bashrc使えたけど，bash_profileが必要だった．
   + proc /proc procfs rw 0 0
 
 https://www.cyberciti.biz/faq/howto-freebsd-mount-procfs/
+https://www.next-hop.net/~hiraga/FreeBSD/fstab.shtml
