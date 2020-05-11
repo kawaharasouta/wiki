@@ -89,6 +89,16 @@ serial *cannot install*
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
 
+  #ubuntu2020だと，いつものjpのやつだとインストールできなかったので．．
+  $ virt-install \
+  --connect=qemu:///system \
+  --name ubuntu1 \
+  --vcpus 2 --ram 2048 --accelerate --hvm \
+  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+  --location 'http://gb.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' \
+  --network network=default,model=virtio \
+  --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
+
   #centosの場合 (os-installerが変わるだけだから後でまとめたい
   #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
   #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．

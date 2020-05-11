@@ -324,6 +324,16 @@ $ virt-install --connect=qemu:///system \
 --network network=default,model=virtio \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 
+#ubuntu2020だと，いつものjpのやつだとインストールできなかったので．．
+$ virt-install \
+--connect=qemu:///system \
+--name ubuntu1 \
+--vcpus 2 --ram 2048 --accelerate --hvm \
+--disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+--location &#39;http://gb.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/&#39; \
+--network network=default,model=virtio \
+--nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+
 #centosの場合 (os-installerが変わるだけだから後でまとめたい
 #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
 #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
