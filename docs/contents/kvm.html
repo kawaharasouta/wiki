@@ -148,6 +148,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
@@ -324,16 +325,6 @@ $ virt-install --connect=qemu:///system \
 --network network=default,model=virtio \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 
-#ubuntu2020だと，いつものjpのやつだとインストールできなかったので．．
-$ virt-install \
---connect=qemu:///system \
---name ubuntu1 \
---vcpus 2 --ram 2048 --accelerate --hvm \
---disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
---location &#39;http://gb.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/&#39; \
---network network=default,model=virtio \
---nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
-
 #centosの場合 (os-installerが変わるだけだから後でまとめたい
 #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
 #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
@@ -434,6 +425,9 @@ ubuntuもできたようなできなかったような気がするけどよく�
      <span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="n">distrib</span><span class="o">-</span><span class="n">coffee</span><span class="o">.</span><span class="n">ipsl</span><span class="o">.</span><span class="n">jussieu</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">Mageia</span><span class="o">/</span><span class="n">distrib</span><span class="o">/</span><span class="mi">1</span>
 </pre></div>
 </div>
+<p>ubuntu2020をインストールしようとした時，うまく入らなかった．
+調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． <a class="reference internal" href="../technote/boot.html#ubuntu2020-on-kvm"><span class="std std-ref">virt-install でubuntu2020がインストールできなかった話</span></a>
+ちなみにまだインストールはできなそう．(virt-installを使った場合だと?)</p>
 <p>ubuntu1604が入らない話
 <a class="reference external" href="https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/">https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/</a></p>
 <p>centos7でメモリが足りなくてinitramfsがエラる話

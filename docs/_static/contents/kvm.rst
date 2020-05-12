@@ -89,16 +89,6 @@ serial *cannot install*
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
 
-  #ubuntu2020だと，いつものjpのやつだとインストールできなかったので．．
-  $ virt-install \
-  --connect=qemu:///system \
-  --name ubuntu1 \
-  --vcpus 2 --ram 2048 --accelerate --hvm \
-  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
-  --location 'http://gb.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' \
-  --network network=default,model=virtio \
-  --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
-
   #centosの場合 (os-installerが変わるだけだから後でまとめたい
   #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
   #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
@@ -200,6 +190,11 @@ ubuntuもできたようなできなかったような気がするけどよく�
 
    Mageia
        ftp://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/1
+
+ubuntu2020をインストールしようとした時，うまく入らなかった．
+調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． :ref:`ubuntu2020_on_kvm`
+ちなみにまだインストールはできなそう．(virt-installを使った場合だと?)
+
 
 ubuntu1604が入らない話
 https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/

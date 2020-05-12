@@ -99,12 +99,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -129,7 +132,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
@@ -142,6 +148,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
@@ -438,6 +445,37 @@ nmコマンドの出力結果そのままであるらしいが正直よくわか
 <a class="reference external" href="https://0xax.gitbooks.io/linux-insides/content/index.html">https://0xax.gitbooks.io/linux-insides/content/index.html</a> ←これ英語だけどめっちゃ詳しそうでやばい．</p>
 <p><a class="reference external" href="https://ja.wikipedia.org/wiki/Vmlinux">https://ja.wikipedia.org/wiki/Vmlinux</a>
 <a class="reference external" href="https://ja.wikipedia.org/wiki/System.map">https://ja.wikipedia.org/wiki/System.map</a></p>
+</div>
+<div class="section" id="virt-install-ubuntu2020">
+<span id="ubuntu2020-on-kvm"></span><h1>virt-install でubuntu2020がインストールできなかった話<a class="headerlink" href="#virt-install-ubuntu2020" title="Permalink to this headline">¶</a></h1>
+<p>題の通りのことになった調べた時のメモ
+普段は location に <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/</a> (2018, bionic) とかってしてインストールできてるんだけど，
+2020(focali) で <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/</a> ってしたらエラった． <a class="reference internal" href="../contents/kvm.html"><span class="doc">kvm</span></a></p>
+<p>ググったら
+<a class="reference external" href="https://github.com/virt-manager/virt-manager/pull/101">https://github.com/virt-manager/virt-manager/pull/101</a>
+こんなプルリクがvirt-managerにでてることがわかった．
+(これってマージされたらどっから見えるようになるんかな? これ見えなくなるんかな?)
+ちなみに内容は↓のような感じ</p>
+<ol class="arabic simple">
+<li>(おそらく)locationで指定されたのの後に取得できたもののpathをみて，URL指定かpath指定かを判断しているところがあるが，
+URLだった時にcurrent/images/MANIFESTを見るようになっていて，
+ubuntu2020の場合だとそこが/current/legacy-images/MANIFESTだからmatchしなくなっているのでそれを足した．</li>
+<li>os_variantが2004以上?だった時にurl_prefixなるものをlagacy~~に書き換えること</li>
+</ol>
+<p>プルリクのコメントや，実際に中をみてみた感じ，指定したpath以降の中身に差がないようだったのでこれでいけるらしい?
+(header.htmlとfooter.htmlが含まれているだけだった)
+ただ，このlagacy-imagesという命名，2020以前でもことある場面で何度か使われていて，
+時々なぜかlagacyが付かなくなっていたり(1910とか)して，どういう分け方してるのかわからん．
+あとはこのlagacyな配布はしばらくしたら止める予定みたいなことが書いてある．
+プルリクのコメントではd-iなビルドに対応すべきみたいなこと書いてあるんだけどそれに移行すると言うことなのか．．．
+「In the future, virt-manager will need to switch to
+cloud-images.ubuntu.com or maas.io images or live-server images, as
+d-i builds are going away.」
+ちなみにd-iって多分debian installerのことじゃないかと思うんだけど，いまいちよくわかってない．↓
+<a class="reference external" href="https://qiita.com/hidakanoko/items/c36ac5f1cc0eefbf8b84">https://qiita.com/hidakanoko/items/c36ac5f1cc0eefbf8b84</a>
+<a class="reference external" href="http://ftp.gnome.org/pub/debian-meetings/2006/debconf6/slides/Debian_installer_workshop-Frans_Pop/paper/">http://ftp.gnome.org/pub/debian-meetings/2006/debconf6/slides/Debian_installer_workshop-Frans_Pop/paper/</a></p>
+<p>なんかもうちょっと掘り下げたらインストーラーの仕組みとか一気にわかりそうな気がするんだけど
+今は放置しておく．</p>
 </div>
 
 

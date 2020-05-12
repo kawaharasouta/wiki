@@ -219,3 +219,45 @@ https://0xax.gitbooks.io/linux-insides/content/index.html ←これ英語だけ�
 
 https://ja.wikipedia.org/wiki/Vmlinux
 https://ja.wikipedia.org/wiki/System.map
+
+
+
+.. _ubuntu2020_on_kvm:
+
+======================================================
+virt-install でubuntu2020がインストールできなかった話
+======================================================
+
+題の通りのことになった調べた時のメモ
+普段は location に http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/ (2018, bionic) とかってしてインストールできてるんだけど，
+2020(focali) で http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/ ってしたらエラった． :doc:`../contents/kvm`
+
+ググったら
+https://github.com/virt-manager/virt-manager/pull/101
+こんなプルリクがvirt-managerにでてることがわかった．
+(これってマージされたらどっから見えるようになるんかな? これ見えなくなるんかな?)
+ちなみに内容は↓のような感じ
+
+1. (おそらく)locationで指定されたのの後に取得できたもののpathをみて，URL指定かpath指定かを判断しているところがあるが，
+   URLだった時にcurrent/images/MANIFESTを見るようになっていて，
+   ubuntu2020の場合だとそこが/current/legacy-images/MANIFESTだからmatchしなくなっているのでそれを足した．
+2. os_variantが2004以上?だった時にurl_prefixなるものをlagacy~~に書き換えること
+
+プルリクのコメントや，実際に中をみてみた感じ，指定したpath以降の中身に差がないようだったのでこれでいけるらしい?
+(header.htmlとfooter.htmlが含まれているだけだった)
+ただ，このlagacy-imagesという命名，2020以前でもことある場面で何度か使われていて，
+時々なぜかlagacyが付かなくなっていたり(1910とか)して，どういう分け方してるのかわからん．
+あとはこのlagacyな配布はしばらくしたら止める予定みたいなことが書いてある．
+プルリクのコメントではd-iなビルドに対応すべきみたいなこと書いてあるんだけどそれに移行すると言うことなのか．．．
+「In the future, virt-manager will need to switch to
+cloud-images.ubuntu.com or maas.io images or live-server images, as
+d-i builds are going away.」
+ちなみにd-iって多分debian installerのことじゃないかと思うんだけど，いまいちよくわかってない．↓
+https://qiita.com/hidakanoko/items/c36ac5f1cc0eefbf8b84
+http://ftp.gnome.org/pub/debian-meetings/2006/debconf6/slides/Debian_installer_workshop-Frans_Pop/paper/
+
+なんかもうちょっと掘り下げたらインストーラーの仕組みとか一気にわかりそうな気がするんだけど
+今は放置しておく．
+
+
+
