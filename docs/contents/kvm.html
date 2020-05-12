@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#start-config">start config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#make-image">make image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#serial-cannot-install">serial <em>cannot install</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial">serial</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vnc">vnc</a></li>
 </ul>
 </li>
@@ -288,21 +288,9 @@
 </div>
 <div class="section" id="install">
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="serial-cannot-install">
-<h3>serial <em>cannot install</em><a class="headerlink" href="#serial-cannot-install" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-install \
-  --name ubuntu1804 \
-  --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
-  --vcpus 2 \
-  --ram 512 \
-  --os-type linux \
-  --graphics none \
-  --console pty,target_type=serial \
-  --network bridge:virbr0 \
-  --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
-  --extra-args &#39;console=ttyS0,115200n8 serial&#39;
-
-# これだと成功するきっと location が url にしたら通った
+<div class="section" id="serial">
+<h3>serial<a class="headerlink" href="#serial" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span># これだと成功するきっと location が url にしたら通った
 $ virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
@@ -314,7 +302,7 @@ $ virt-install \
 --network network=default,model=virtio \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 
-#これ成功しないやつ多分
+# よく使われる --cdrom は --extra-args と併用できないのでこれダメ
 $ virt-install --connect=qemu:///system \
 --name ubuntu1 \
 --vcpus 1 \
@@ -425,9 +413,23 @@ ubuntuもできたようなできなかったような気がするけどよく�
      <span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="n">distrib</span><span class="o">-</span><span class="n">coffee</span><span class="o">.</span><span class="n">ipsl</span><span class="o">.</span><span class="n">jussieu</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">Mageia</span><span class="o">/</span><span class="n">distrib</span><span class="o">/</span><span class="mi">1</span>
 </pre></div>
 </div>
-<p>ubuntu2020をインストールしようとした時，うまく入らなかった．
+<p>ubuntu2020を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
 調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． <a class="reference internal" href="../technote/boot.html#ubuntu2020-on-kvm"><span class="std std-ref">virt-install でubuntu2020がインストールできなかった話</span></a>
-ちなみにまだインストールはできなそう．(virt-installを使った場合だと?)</p>
+ISOマウントしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた
+$ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
+$ virt-install \
+--connect=qemu:///system \
+--name ubuntu1 \
+--vcpus 2 \
+--ram 2048 \
+--accelerate --hvm \
+--disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+--location &#39;path to iso file&#39; \
+--network network=default,model=virtio \
+--nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
+</pre></div>
+</div>
 <p>ubuntu1604が入らない話
 <a class="reference external" href="https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/">https://www.mckelvaney.co.uk/blog/2019/04/17/ubuntu-16.04-loading-libc-udeb-failed-for-unknown-reasons-aborting/</a></p>
 <p>centos7でメモリが足りなくてinitramfsがエラる話

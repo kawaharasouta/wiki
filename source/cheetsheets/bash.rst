@@ -175,6 +175,9 @@ USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
 
   $ sudo mount -t vfat /dev/[dev file] /media
 
+  #isoファイルの場合もここにかいとくわ
+  $ sudo mount -t iso9660 [iso file] [target]
+
 マウントしたら，状況確認するために↓やってみとくといい．
 
 ::

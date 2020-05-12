@@ -260,4 +260,8 @@ http://ftp.gnome.org/pub/debian-meetings/2006/debconf6/slides/Debian_installer_w
 今は放置しておく．
 
 
+ところで，virt-installでISOファイルを選ぶ話，
+インストールには，vmlinuxとinitrd (で正しいかちょっと正確ではないが)が必要で，それが含まれているISOイメージである必要がある．
+ちなみにこれらはubuntu2020だとlegacyとか言う名前がついてるISOファイルにあって，install/ に入ってた．
+↑でlegacyとかd-iとかあったけど，これちょっと関係してそうな気がするよね
 

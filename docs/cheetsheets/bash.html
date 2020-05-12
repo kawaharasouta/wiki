@@ -120,6 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
@@ -379,6 +380,9 @@ $ sudo hostnamectl set-hostname [hostname]
 <p>USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
 (怖かったら/dev/sda とか /dev/sdb とかあたりをUSBを抜き差ししながらみてデバイスファイルにあたりをつける)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo mount -t vfat /dev/[dev file] /media
+
+#isoファイルの場合もここにかいとくわ
+$ sudo mount -t iso9660 [iso file] [target]
 </pre></div>
 </div>
 <p>マウントしたら，状況確認するために↓やってみとくといい．</p>

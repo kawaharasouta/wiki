@@ -50,21 +50,9 @@ make image
 install 
 =========
 
-serial *cannot install*
--------------------------
+serial 
+-------
 ::
-
-  $ sudo virt-install \
-    --name ubuntu1804 \
-    --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
-    --vcpus 2 \
-    --ram 512 \
-    --os-type linux \
-    --graphics none \
-    --console pty,target_type=serial \
-    --network bridge:virbr0 \
-    --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
-    --extra-args 'console=ttyS0,115200n8 serial'
 
   # これだと成功するきっと location が url にしたら通った
   $ virt-install \
@@ -78,7 +66,7 @@ serial *cannot install*
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
 
-  #これ成功しないやつ多分
+  # よく使われる --cdrom は --extra-args と併用できないのでこれダメ
   $ virt-install --connect=qemu:///system \
   --name ubuntu1 \
   --vcpus 1 \
@@ -191,9 +179,24 @@ ubuntuもできたようなできなかったような気がするけどよく�
    Mageia
        ftp://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/1
 
-ubuntu2020をインストールしようとした時，うまく入らなかった．
+ubuntu2020を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
 調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． :ref:`ubuntu2020_on_kvm`
-ちなみにまだインストールはできなそう．(virt-installを使った場合だと?)
+ISOマウントしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．
+
+::
+
+  #isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた
+  $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
+  $ virt-install \
+  --connect=qemu:///system \
+  --name ubuntu1 \
+  --vcpus 2 \
+  --ram 2048 \
+  --accelerate --hvm \
+  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+  --location 'path to iso file' \
+  --network network=default,model=virtio \
+  --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
 
 
 ubuntu1604が入らない話
