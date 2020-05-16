@@ -23,11 +23,20 @@ BIOSでIntel-VT無効になっていても，KVMはQEMUで頑張ってVMを動�
 https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82
 
 
+
+
+
+ubuntu_kvm_installation_
+
+
 package
 =========
 :: 
 
   $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
+
+  #ubuntu2020 (>=1810?) toriaezu
+  $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst
 
 これいりそう
 
@@ -40,6 +49,9 @@ start config
 ::
 
   $ sudo systemctl enable libvirt-bin
+
+  # ???
+  $ sudo systemctl enable libvirtd
 
 make image
 ===========
@@ -427,3 +439,4 @@ virsh_
 .. _domain_xml_format: https://libvirt.org/format.html
 .. _network_xml_format: https://libvirt.org/formatnetwork.html#examplesBridge
 .. _virsh: http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf
+.. _ubuntu_kvm_installation: https://help.ubuntu.com/community/KVM/Installation
