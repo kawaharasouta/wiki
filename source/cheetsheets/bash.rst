@@ -33,6 +33,17 @@ shell芸的tips
   awk '{print $1, $3}'        #1,3列目を取得
   awk 'NR==2,NR==5'           #2~5行目を取得
 
+エディタ
+=========
+
+正直どこまでカバーしてるのかよくわかんないけど
+
+::
+
+  $ sudo select-editor
+
+sudo必要だったのと，ホームディレクトリ以下に .select-editorみたいなファイルできる．
+
 
 GNU coreutils
 ==============
@@ -331,6 +342,25 @@ http://note.kurodigi.com/linux-version/
   $ systemctl disable systemd-networkd-wait-online.service
   $ systemctl mask systemd-networkd-wait-online.service
 
-他参考:
+参考:
 https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216
+
+
+シャットダウンに時間がかかる問題
+=================================
+
+::
+
+  A stop job is running for Session 3 of user …
+
+とかって言われるやつ
+↓のようにする
+
+::
+
+  $ sudo vim /etc/systemd/system.conf
+  - DefaultTimeoutStopSec=90s
+  + DefaultTimeoutStopSec=30s
+  
 https://qiita.com/hnw/items/005b2018efaab5f954a9
+

@@ -137,31 +137,33 @@
 <li class="toctree-l2"><a class="reference internal" href="#add-user">add user</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-hostname">change hostname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#shelltips">shell芸的tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">エディタ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gnu-coreutils">GNU coreutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#git">git系</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#clone">でっけえのclone</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">リリース物をダウンロード</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">リリース物をダウンロード</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#update-alternatives">update-alternatives でコマンドを管理するやつ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sudocommand-not-fount">sudoでcommand not fountする</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">メモ系</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">標準エラー出力のリダイレクト例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">ファイル内検索</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">該当ファイル以外を削除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">メモ系</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">標準エラー出力のリダイレクト例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">ファイル内検索</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">該当ファイル以外を削除</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">マウントとかそういう系のやつ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id7">マウントとかそういう系のやつ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#fs">fs(ファイルシステム)もマウント状況をみたいやつ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usb">USBをマウントするやつ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">フォーマットする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">フォーマットする</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#apt-ppa">apt のPPAの話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#apt-ctrl-c">aptが途中で死んだ(ctrl-cで殺した)とき</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linuxデストリ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">起動時にネットワークどうのこうので起動がおそいやつ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">起動時にネットワークどうのこうので起動がおそいやつ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">シャットダウンに時間がかかる問題</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
@@ -274,6 +276,14 @@ $ sudo hostnamectl set-hostname [hostname]
 </pre></div>
 </div>
 </div>
+<div class="section" id="id1">
+<h2>エディタ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>正直どこまでカバーしてるのかよくわかんないけど</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo select-editor
+</pre></div>
+</div>
+<p>sudo必要だったのと，ホームディレクトリ以下に .select-editorみたいなファイルできる．</p>
+</div>
 <div class="section" id="gnu-coreutils">
 <h2>GNU coreutils<a class="headerlink" href="#gnu-coreutils" title="Permalink to this headline">¶</a></h2>
 <p>Linux(GNUオペレーティングシステム)の一般的なコマンドツールのパッケージらしい.</p>
@@ -296,8 +306,8 @@ $ sudo hostnamectl set-hostname [hostname]
 </div>
 <p><a class="reference external" href="https://qiita.com/yasshcy/items/bd96469f4f30c0e57312">https://qiita.com/yasshcy/items/bd96469f4f30c0e57312</a></p>
 </div>
-<div class="section" id="id1">
-<h3>リリース物をダウンロード<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>リリース物をダウンロード<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>cloudius-systemsのosvでの例</p>
 <p>とりあえず以下のようにするとrelease情報がまとまってjsonみたいな感じで落ちてくる．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ curl https://api.github.com/repos/cloudius-systems/osv/releases
@@ -346,29 +356,29 @@ $ sudo hostnamectl set-hostname [hostname]
 </ol>
 <p>コマンド省略</p>
 </div>
-<div class="section" id="id2">
-<h2>メモ系<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h2>メモ系<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">help</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">less</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>ファイル内検索<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>ファイル内検索<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ grep -r &quot;xxx&quot; ./
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3>該当ファイル以外を削除<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>該当ファイル以外を削除<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ ls | grep -v &quot;file name&quot; | xargs rm -rf
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>マウントとかそういう系のやつ<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>マウントとかそういう系のやつ<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fs">
 <h3>fs(ファイルシステム)もマウント状況をみたいやつ<a class="headerlink" href="#fs" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ df -aT
@@ -407,8 +417,8 @@ tmpfs            1628412        0   1628412   0% /run/user/1000
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3>フォーマットする<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>フォーマットする<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>もしマウントしてたらまずはアンマウントする．
 まじでしないとうんちになる．</p>
 <p><strong>ゼロフォーマットする</strong></p>
@@ -462,8 +472,8 @@ $ sudo apt --fix-broken install
 </div>
 <p><a class="reference external" href="https://lb.raspberrypi.org/forums/viewtopic.php?t=200575">https://lb.raspberrypi.org/forums/viewtopic.php?t=200575</a></p>
 </div>
-<div class="section" id="id8">
-<h2>いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>コマンドって大体cacheされてるからいろんな方法でインストールし直して繰り返したりしてると
 同じコマンド名だけどインストールされるPathが違くて前の場所にcacheされてて思い通りのところを見に行かないみたいなそういうのある．</p>
 <p>cache確認</p>
@@ -486,8 +496,8 @@ $ sudo apt --fix-broken install
 <h2>Linuxデストリ<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://note.kurodigi.com/linux-version/">http://note.kurodigi.com/linux-version/</a></p>
 </div>
-<div class="section" id="id9">
-<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">start</span> <span class="n">job</span> <span class="ow">is</span> <span class="n">running</span> <span class="k">for</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">network</span> <span class="n">to</span> <span class="n">be</span> <span class="n">configured</span><span class="o">.</span>
 </pre></div>
 </div>
@@ -497,9 +507,22 @@ $ sudo apt --fix-broken install
 $ systemctl mask systemd-networkd-wait-online.service
 </pre></div>
 </div>
-<p>他参考:
-<a class="reference external" href="https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216">https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216</a>
-<a class="reference external" href="https://qiita.com/hnw/items/005b2018efaab5f954a9">https://qiita.com/hnw/items/005b2018efaab5f954a9</a></p>
+<p>参考:
+<a class="reference external" href="https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216">https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216</a></p>
+</div>
+<div class="section" id="id11">
+<h2>シャットダウンに時間がかかる問題<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>A stop job is running for Session 3 of user …
+</pre></div>
+</div>
+<p>とかって言われるやつ
+↓のようにする</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/systemd/system.conf
+- DefaultTimeoutStopSec=90s
++ DefaultTimeoutStopSec=30s
+</pre></div>
+</div>
+<p><a class="reference external" href="https://qiita.com/hnw/items/005b2018efaab5f954a9">https://qiita.com/hnw/items/005b2018efaab5f954a9</a></p>
 </div>
 </div>
 

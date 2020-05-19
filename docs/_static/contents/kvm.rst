@@ -36,7 +36,7 @@ package
   $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
   #ubuntu2020 (>=1810?) toriaezu
-  $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+  $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
 
 これいりそう
 
@@ -49,6 +49,9 @@ start config
 ::
 
   $ sudo systemctl enable libvirt-bin
+
+  # ???
+  $ sudo systemctl enable libvirtd
 
 make image
 ===========
@@ -64,7 +67,7 @@ serial
 ::
 
   # これだと成功するきっと location が url にしたら通った
-  $ virt-install \
+  $ sudo virt-install \
   --connect=qemu:///system \
   --name ubuntu1 \
   --vcpus 2 \
@@ -76,7 +79,7 @@ serial
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
 
   # よく使われる --cdrom は --extra-args と併用できないのでこれダメ
-  $ virt-install --connect=qemu:///system \
+  $ sudo virt-install --connect=qemu:///system \
   --name ubuntu1 \
   --vcpus 1 \
   --ram 512 \
@@ -89,7 +92,7 @@ serial
   #centosの場合 (os-installerが変わるだけだから後でまとめたい
   #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
   #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
-  $ virt-install \
+  $ sudo virt-install \
   --connect=qemu:///system \
   --name centos7 \
   --vcpus 2 \
@@ -121,7 +124,7 @@ serial
   # FreeBSD なんかダメそう2
   https://www.freebsd.org/ja/where.html
   こっから仮想マシンイメージゲットしてきて
-  sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
+  $ sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
   sudo virsh --connect qemu:///system start freebsd1201
   とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．見えたけどsshd動いてなくて泣いた．
 
@@ -195,9 +198,9 @@ ISOをマウントしてもできるはず(manにはそう書いてある)なん
 
 ::
 
-  #isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた
+  #isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
   $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
-  $ virt-install \
+  $ sudo virt-install \
   --connect=qemu:///system \
   --name ubuntu1 \
   --vcpus 2 \
@@ -292,7 +295,7 @@ rename domain
     change name & uuid
   $ sudo virsh undefine [old domain]
 
-file focation
+file location
 ==============
 ::
 
@@ -300,6 +303,7 @@ file focation
   iso images          /var/lib/libvirt/boot/    ←???
   xml file                /etc/libvirt/qemu/
   network file       /etc/libvirt/qemu/networks/
+  autostart file    /etc/libvirt/qemu/autostart/
 
 ブリッジ接続
 =============
@@ -420,6 +424,15 @@ VMのアドレス探すやつだけど，arp-scanじゃなくていいの見つ�
 vncはお外から見える環境がちゃんと整っていれば．
 sshはもちろんsshdが動いてないとで
 consoleはちゃんとカーネルパラメータ設定してからじゃないと無理．
+
+autostart setting
+==================
+
+::
+
+  sudo virsh autostart [vm name]              #enable
+  sudo virsh autostart --disable [vm name]    #disable
+  
 
 reference
 ===========

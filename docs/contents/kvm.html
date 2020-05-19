@@ -107,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#change-memory-size">change memory size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#extend-disk-size">extend disk size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#file-focation">file focation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-location">file location</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">ブリッジ接続</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#linux-bridge">Linux bridge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ovs">ovs</a></li>
@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">接続方法とかに関して</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#autostart-setting">autostart setting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 </ul>
 </li>
@@ -270,7 +271,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
 #ubuntu2020 (&gt;=1810?) toriaezu
-$ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+$ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
 </pre></div>
 </div>
 <p>これいりそう</p>
@@ -281,6 +282,9 @@ $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 <div class="section" id="start-config">
 <h2>start config<a class="headerlink" href="#start-config" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemctl enable libvirt-bin
+
+# ???
+$ sudo systemctl enable libvirtd
 </pre></div>
 </div>
 </div>
@@ -295,7 +299,7 @@ $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 <div class="section" id="serial">
 <h3>serial<a class="headerlink" href="#serial" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span># これだと成功するきっと location が url にしたら通った
-$ virt-install \
+$ sudo virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
 --vcpus 2 \
@@ -307,7 +311,7 @@ $ virt-install \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 
 # よく使われる --cdrom は --extra-args と併用できないのでこれダメ
-$ virt-install --connect=qemu:///system \
+$ sudo virt-install --connect=qemu:///system \
 --name ubuntu1 \
 --vcpus 1 \
 --ram 512 \
@@ -320,7 +324,7 @@ $ virt-install --connect=qemu:///system \
 #centosの場合 (os-installerが変わるだけだから後でまとめたい
 #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
 #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
-$ virt-install \
+$ sudo virt-install \
 --connect=qemu:///system \
 --name centos7 \
 --vcpus 2 \
@@ -352,7 +356,7 @@ sudo apt iunstall gparted ダメ
 # FreeBSD なんかダメそう2
 https://www.freebsd.org/ja/where.html
 こっから仮想マシンイメージゲットしてきて
-sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
+$ sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
 sudo virsh --connect qemu:///system start freebsd1201
 とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．見えたけどsshd動いてなくて泣いた．
 
@@ -421,9 +425,9 @@ ubuntuもできたようなできなかったような気がするけどよく�
 調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． <a class="reference internal" href="../technote/boot.html#ubuntu2020-on-kvm"><span class="std std-ref">virt-install でubuntu2020がインストールできなかった話</span></a>
 ISOをwgetしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．
 ISOをマウントしてもできるはず(manにはそう書いてある)なんだけど，マウントした場合だとinstall中にmount errorみたいなのが起きてダメだったんだよね．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた
+<div class="highlight-default"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
-$ virt-install \
+$ sudo virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
 --vcpus 2 \
@@ -507,12 +511,13 @@ $ sudo virsh undefine [old domain]
 </pre></div>
 </div>
 </div>
-<div class="section" id="file-focation">
-<h2>file focation<a class="headerlink" href="#file-focation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="file-location">
+<h2>file location<a class="headerlink" href="#file-location" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>vm images         /var/lib/libvirt/images/
 iso images          /var/lib/libvirt/boot/    ←???
 xml file                /etc/libvirt/qemu/
 network file       /etc/libvirt/qemu/networks/
+autostart file    /etc/libvirt/qemu/autostart/
 </pre></div>
 </div>
 </div>
@@ -615,6 +620,13 @@ $ sudo virsh net-dhcp-leases default | awk &#39;{print $5, $6}&#39;
 vncはお外から見える環境がちゃんと整っていれば．
 sshはもちろんsshdが動いてないとで
 consoleはちゃんとカーネルパラメータ設定してからじゃないと無理．</p>
+</div>
+<div class="section" id="autostart-setting">
+<h2>autostart setting<a class="headerlink" href="#autostart-setting" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">virsh</span> <span class="n">autostart</span> <span class="p">[</span><span class="n">vm</span> <span class="n">name</span><span class="p">]</span>              <span class="c1">#enable</span>
+<span class="n">sudo</span> <span class="n">virsh</span> <span class="n">autostart</span> <span class="o">--</span><span class="n">disable</span> <span class="p">[</span><span class="n">vm</span> <span class="n">name</span><span class="p">]</span>    <span class="c1">#disable</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
