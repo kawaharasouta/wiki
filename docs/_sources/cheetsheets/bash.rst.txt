@@ -270,6 +270,32 @@ apt のPPAの話
 参考
 https://kazuhira-r.hatenablog.com/entry/2019/03/10/225459
 
+The following packages have unmet dependencies: とか言われた時
+================================================================
+
+::
+
+  The following packages have unmet dependencies:
+   virtualbox-5.2 : Depends: libpng12-0 (>= 1.2.13-4) but it is not installable
+                    Depends: libvpx3 (>= 1.5.0) but it is not installable
+                    Recommends: libsdl-ttf2.0-0 but it is not going to be installed
+                    Recommends: pdf-viewer
+
+↑こんな感じで言われる．
+とりあえずパッケージ名でググってみると大体出てくるからppaを確認する．
+ppa名を適当に
+
+::
+
+  $ sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+
+とかってすると /etc/apt/sources.list にいい感じに書き込んでくれるので，
+あとは適当にuodateしてinstallしたらいい．
+大体一個め入れたらそのまま依存関係全部入ってきていける場合が多いけど
+もしダメだったらまた同じようなことすればいい．
+
+ppaの使いとか削除については:
+https://hibiki-press.tech/dev-env/ubuntu/add-ppa/4640#toc3
 
 aptが途中で死んだ(ctrl-cで殺した)とき
 =======================================
