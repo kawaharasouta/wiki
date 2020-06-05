@@ -103,12 +103,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#config-for-git">config for git</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#ssh-host-key">ssh host key</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#known-hosts-duplication">known hosts duplication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ssh-agent-forward">ssh-agent とか Forward の設定</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">ローカルの設定</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">踏み台設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssh-host-key">ssh host key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-hosts-duplication">known hosts duplication</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
@@ -234,9 +235,11 @@
             
   <div class="section" id="ssh-config">
 <h1>ssh_config<a class="headerlink" href="#ssh-config" title="Permalink to this headline">¶</a></h1>
+<p>configの書き方のドキュメント:
+<a class="reference external" href="https://www.ssh.com/ssh/config/">https://www.ssh.com/ssh/config/</a></p>
 <div class="section" id="ssh-keygen">
 <h2>ssh_keygen<a class="headerlink" href="#ssh-keygen" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -t rsa -b 4096 -C &quot;kawahara6514@gmail.com&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -t rsa -b 4096 -C &quot;kawahara6514@gmail.com&quot;     // -Cオプションの引数が鍵の識別子になるからわかるようにする．
 Enter file in which to save the key (/Users/khwarizmi/.ssh/id_rsa): &lt;path to key&gt;
 Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend no passphrase.
 </pre></div>
@@ -260,21 +263,6 @@ Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend n
 </div>
 </div>
 </div>
-<div class="section" id="ssh-host-key">
-<h2>ssh host key<a class="headerlink" href="#ssh-host-key" title="Permalink to this headline">¶</a></h2>
-<p>ホストキーがなくてsshd動かなかったりする時があるんだ．
-sudoいるかも．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -A
-</pre></div>
-</div>
-</div>
-<div class="section" id="known-hosts-duplication">
-<h2>known hosts duplication<a class="headerlink" href="#known-hosts-duplication" title="Permalink to this headline">¶</a></h2>
-<p>今までvimで開いて該当行削除してたけど，お便利なコマンド</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -R [hostname]
-</pre></div>
-</div>
-</div>
 <div class="section" id="ssh-agent-forward">
 <h2>ssh-agent とか Forward の設定<a class="headerlink" href="#ssh-agent-forward" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
@@ -290,6 +278,30 @@ $ ssh-add -l  // 確認
 + ForwardAgent yes
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>踏み台設定<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.ssh/config
+(踏み台を経由してsshしたいホストのところに追加する)
++ ProxyCommand ssh [踏み台にしたいホスト] -W %h:%p
+</pre></div>
+</div>
+</div>
+<div class="section" id="ssh-host-key">
+<h2>ssh host key<a class="headerlink" href="#ssh-host-key" title="Permalink to this headline">¶</a></h2>
+<p>ホストキーがなくてsshd動かなかったりする時があるんだ．
+sudoいるかも．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -A
+</pre></div>
+</div>
+</div>
+<div class="section" id="known-hosts-duplication">
+<h2>known hosts duplication<a class="headerlink" href="#known-hosts-duplication" title="Permalink to this headline">¶</a></h2>
+<p>known hostsに重複が出ちゃった時のやつ．
+今までvimで開いて該当行削除してたけど，お便利なコマンド</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -R [hostname]
+</pre></div>
 </div>
 </div>
 </div>
