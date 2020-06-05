@@ -62,3 +62,27 @@ known hosts duplication
 .. _github_keys: https://github.com/settings/keys
 
 
+ssh-agent とか Forward の設定
+===============================
+
+ローカルの設定
+----------------
+
+ssh-agent に鍵を設定する
+
+::
+
+  $ ssh-add -K [path to secretkey]
+  $ ssh-add -l  // 確認
+
+configを書き換える
+
+::
+
+  $ vim ~/.ssh/config
+  (ssh-agentを利用したいホストのところに)
+  + ForwardAgent yes
+
+
+
+

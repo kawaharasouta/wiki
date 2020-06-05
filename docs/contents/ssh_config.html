@@ -105,10 +105,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ssh-host-key">ssh host key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#known-hosts-duplication">known hosts duplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssh-agent-forward">ssh-agent とか Forward の設定</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">ローカルの設定</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -116,6 +121,7 @@
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -128,8 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
@@ -142,6 +150,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
@@ -264,6 +273,23 @@ sudoいるかも．</p>
 <p>今までvimで開いて該当行削除してたけど，お便利なコマンド</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -R [hostname]
 </pre></div>
+</div>
+</div>
+<div class="section" id="ssh-agent-forward">
+<h2>ssh-agent とか Forward の設定<a class="headerlink" href="#ssh-agent-forward" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>ローカルの設定<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>ssh-agent に鍵を設定する</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-add -K [path to secretkey]
+$ ssh-add -l  // 確認
+</pre></div>
+</div>
+<p>configを書き換える</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.ssh/config
+(ssh-agentを利用したいホストのところに)
++ ForwardAgent yes
+</pre></div>
+</div>
 </div>
 </div>
 </div>
