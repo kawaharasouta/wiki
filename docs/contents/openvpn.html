@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="next" title="システムプログラミング" href="system_programing.html" />
     <link rel="prev" title="TRex" href="trex.html" /> 
 </head>
 
@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -106,8 +107,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">OpenVPN</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#easy-install">easy install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpn">vpnサーバのローカルネットワークにアクセスするための設定とか</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -120,25 +125,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -249,6 +259,32 @@ $ source vars
 もしこっちが必要になった時のために一応残しとく</p>
 <p>参照: <a class="reference external" href="https://wings2fly.jp/yaneura/openvpn/">https://wings2fly.jp/yaneura/openvpn/</a></p>
 </div>
+<div class="section" id="vpn">
+<h2>vpnサーバのローカルネットワークにアクセスするための設定とか<a class="headerlink" href="#vpn" title="Permalink to this headline">¶</a></h2>
+<p>※正直設定ファイル系はどれが本当にいるやつなのかいまいちわからん．．．
+※openvpn-startupとか自動で動かんし．．．</p>
+<p>ローカルネットワークへの経路を追加しとくやつ．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openvpn</span><span class="o">/</span><span class="n">server</span><span class="o">.</span><span class="n">conf</span>
+<span class="o">+</span> <span class="n">push</span> <span class="s2">&quot;route 192.168.200.0 255.255.255.0&quot;</span>        <span class="o">//</span><span class="n">アドレスは環境で適当に変えろよ</span>
+</pre></div>
+</div>
+<p>．．．．
+これ以降の設定ファイル系はあとで下に書いてあるリンク見直して書き直すんだ．．．
+でも正直どれが必要でどれがいらない子なのかわからなくてめんどくさいのだ．．．</p>
+<p>ローカルにいるマシンに対して，vpnネットワークからのアクセスを許す(ファイアウォール的な意味で)のと，
+vpnネットワークへのルーティング情報を足しとく．
+※ファイアウォールに関しては僕の環境だとしなくてよかったけどとりあえずダメだったらこんなふうにしたら良さげだよね的なのだけ書いてある．※</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># ファイアウォール設定
+$ sudo iptables -I INPUT -s 10.8.0.0/24 -j ACCEPT
+$ sudo iptables -I OUTPUT -d 10.8.0.0/24 -j ACCEPT
+# ルーティング
+$ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [ローカルネットワークのインタフェース]
+</pre></div>
+</div>
+<p>参考:
+<a class="reference external" href="https://centossrv.com/openvpn.shtml">https://centossrv.com/openvpn.shtml</a>
+<a class="reference external" href="https://teratail.com/questions/140736">https://teratail.com/questions/140736</a></p>
+</div>
 </div>
 
 
@@ -259,7 +295,7 @@ $ source vars
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="system_programing.html" class="btn btn-neutral float-right" title="システムプログラミング" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="trex.html" class="btn btn-neutral float-left" title="TRex" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
