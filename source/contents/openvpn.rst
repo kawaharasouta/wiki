@@ -80,3 +80,4 @@ vpnネットワークへのルーティング情報を足しとく．
 参考:
 https://centossrv.com/openvpn.shtml
 https://teratail.com/questions/140736
+https://www.4web8.com/1171.html
