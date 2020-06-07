@@ -120,6 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">接続方法とかに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#autostart-setting">autostart setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#s411">S411の環境を作った時のメモやつ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 </ul>
 </li>
@@ -625,6 +626,25 @@ consoleはちゃんとカーネルパラメータ設定してからじゃない�
 <h2>autostart setting<a class="headerlink" href="#autostart-setting" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">virsh</span> <span class="n">autostart</span> <span class="p">[</span><span class="n">vm</span> <span class="n">name</span><span class="p">]</span>              <span class="c1">#enable</span>
 <span class="n">sudo</span> <span class="n">virsh</span> <span class="n">autostart</span> <span class="o">--</span><span class="n">disable</span> <span class="p">[</span><span class="n">vm</span> <span class="n">name</span><span class="p">]</span>    <span class="c1">#disable</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="s411">
+<h2>S411の環境を作った時のメモやつ<a class="headerlink" href="#s411" title="Permalink to this headline">¶</a></h2>
+<p>vpn掘ってVMがローカルに落ちててシームレスに使えるようにするみたいなやつ．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/networks/interface    # linux bridgeを永続化して立てる
+...
+...
+$ sudo ip link set up dev labnet-br
+$ sudo ip addr flush dev eno3         # ローカルに向いてるインタフェースを綺麗にしておく．
+$ sudo ip addr add 192.168.200.3/24 dev labnet-br       #bridgeにアドレスふればホストに普通にパケットいくようになる．
+$ sudo virsh edit [vm]        # VMの設定ファイルを書き換えて↑のブリッジにインタフェースをぶっさす．ちなみにここnetworkにした方が絶対いいけどとりあえずbridgeのまま
+...
+...
+$ ssh [vm]
+$ sudo ip link set up dev [生やしたif]
+$ sudo ip addr add 192.168.200.101 dev [生やしたif]
+$ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [生やしたif]
 </pre></div>
 </div>
 </div>

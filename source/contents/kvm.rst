@@ -24,8 +24,6 @@ https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%A
 
 
 
-
-
 ubuntu_kvm_installation_
 
 
@@ -433,6 +431,28 @@ autostart setting
   sudo virsh autostart [vm name]              #enable
   sudo virsh autostart --disable [vm name]    #disable
   
+
+S411の環境を作った時のメモやつ
+=================================
+
+vpn掘ってVMがローカルに落ちててシームレスに使えるようにするみたいなやつ．
+
+
+::
+
+  $ sudo vim /etc/networks/interface    # linux bridgeを永続化して立てる
+  ...
+  ...
+  $ sudo ip link set up dev labnet-br
+  $ sudo ip addr flush dev eno3         # ローカルに向いてるインタフェースを綺麗にしておく．
+  $ sudo ip addr add 192.168.200.3/24 dev labnet-br       #bridgeにアドレスふればホストに普通にパケットいくようになる．
+  $ sudo virsh edit [vm]        # VMの設定ファイルを書き換えて↑のブリッジにインタフェースをぶっさす．ちなみにここnetworkにした方が絶対いいけどとりあえずbridgeのまま
+  ...
+  ...
+  $ ssh [vm]
+  $ sudo ip link set up dev [生やしたif]
+  $ sudo ip addr add 192.168.200.101 dev [生やしたif]
+  $ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [生やしたif]
 
 reference
 ===========
