@@ -445,7 +445,8 @@ vpn掘ってVMがローカルに落ちててシームレスに使えるように
   ...
   $ sudo ip link set up dev labnet-br
   $ sudo ip addr flush dev eno3         # ローカルに向いてるインタフェースを綺麗にしておく．
-  $ sudo ip addr add 192.168.200.3/24 dev labnet-br       #bridgeにアドレスふればホストに普通にパケットいくようになる．
+  $ sudo ip addr add 192.168.200.3/24 dev labnet-br       #bridgeにアドレス
+  $ sudo ip link set dev eno3 master labnet-br            #物理インタフェース差す．これでパケットくる．
   $ sudo virsh edit [vm]        # VMの設定ファイルを書き換えて↑のブリッジにインタフェースをぶっさす．ちなみにここnetworkにした方が絶対いいけどとりあえずbridgeのまま
   ...
   ...
@@ -453,6 +454,21 @@ vpn掘ってVMがローカルに落ちててシームレスに使えるように
   $ sudo ip link set up dev [生やしたif]
   $ sudo ip addr add 192.168.200.101 dev [生やしたif]
   $ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [生やしたif]
+
+disk拡張する時の話
+====================
+
+diskとかでよくLVMってあるけど，よくわからなくて何もしないでいたんだけど，
+ボリューム増やしたい時に，LVMじゃないとめちゃくちゃめんどくさかったのでとりあえずLVMにしとけよ．
+
+ボリュームの増やし方．とりあえず参考URLだけ．
+
+https://gist.github.com/koudaiii/bfcaa6941bd99d688ade
+
+http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/
+
+https://qiita.com/nouphet/items/fea026c03ca86ec54111
+
 
 reference
 ===========

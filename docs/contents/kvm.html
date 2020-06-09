@@ -121,6 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id3">接続方法とかに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#autostart-setting">autostart setting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#s411">S411の環境を作った時のメモやつ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disk">disk拡張する時の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 </ul>
 </li>
@@ -637,7 +638,8 @@ consoleはちゃんとカーネルパラメータ設定してからじゃない�
 ...
 $ sudo ip link set up dev labnet-br
 $ sudo ip addr flush dev eno3         # ローカルに向いてるインタフェースを綺麗にしておく．
-$ sudo ip addr add 192.168.200.3/24 dev labnet-br       #bridgeにアドレスふればホストに普通にパケットいくようになる．
+$ sudo ip addr add 192.168.200.3/24 dev labnet-br       #bridgeにアドレス
+$ sudo ip link set dev eno3 master labnet-br            #物理インタフェース差す．これでパケットくる．
 $ sudo virsh edit [vm]        # VMの設定ファイルを書き換えて↑のブリッジにインタフェースをぶっさす．ちなみにここnetworkにした方が絶対いいけどとりあえずbridgeのまま
 ...
 ...
@@ -647,6 +649,15 @@ $ sudo ip addr add 192.168.200.101 dev [生やしたif]
 $ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [生やしたif]
 </pre></div>
 </div>
+</div>
+<div class="section" id="disk">
+<h2>disk拡張する時の話<a class="headerlink" href="#disk" title="Permalink to this headline">¶</a></h2>
+<p>diskとかでよくLVMってあるけど，よくわからなくて何もしないでいたんだけど，
+ボリューム増やしたい時に，LVMじゃないとめちゃくちゃめんどくさかったのでとりあえずLVMにしとけよ．</p>
+<p>ボリュームの増やし方．とりあえず参考URLだけ．</p>
+<p><a class="reference external" href="https://gist.github.com/koudaiii/bfcaa6941bd99d688ade">https://gist.github.com/koudaiii/bfcaa6941bd99d688ade</a></p>
+<p><a class="reference external" href="http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/">http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/</a></p>
+<p><a class="reference external" href="https://qiita.com/nouphet/items/fea026c03ca86ec54111">https://qiita.com/nouphet/items/fea026c03ca86ec54111</a></p>
 </div>
 <div class="section" id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
