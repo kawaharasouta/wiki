@@ -654,10 +654,299 @@ $ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [生やしたif]
 <h2>disk拡張する時の話<a class="headerlink" href="#disk" title="Permalink to this headline">¶</a></h2>
 <p>diskとかでよくLVMってあるけど，よくわからなくて何もしないでいたんだけど，
 ボリューム増やしたい時に，LVMじゃないとめちゃくちゃめんどくさかったのでとりあえずLVMにしとけよ．</p>
-<p>ボリュームの増やし方．とりあえず参考URLだけ．</p>
-<p><a class="reference external" href="https://gist.github.com/koudaiii/bfcaa6941bd99d688ade">https://gist.github.com/koudaiii/bfcaa6941bd99d688ade</a></p>
-<p><a class="reference external" href="http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/">http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/</a></p>
+<p>ボリュームの増やし方．
+ちゃんと元からLVMになっててそこからimgに容量増やしてVMにちゃんとマウントしてあげるやつ．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>// 現状確認 (ゲストで)
+$ sudo fdisk -l
+Disk /dev/sda: 8 GiB, 438086664192 bytes, 855638016 sectors
+Disk model: QEMU HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6c364c8f
+
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sda1  *       2048  1050623  1048576  512M  b W95 FAT32
+/dev/sda2       1052670 16775167 15722498  7.5G  5 Extended
+/dev/sda5       1052672 16775167 15722496  7.5G 8e Linux LVM
+
+
+
+
+Disk /dev/mapper/vgubuntu2004-root: 6.51 GiB, 6975127552 bytes, 13623296 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/vgubuntu2004-swap_1: 976 MiB, 1023410176 bytes, 1998848 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+// img を拡張
+$ sudo virsh shutdown [vm]
+$ sudo qemu-img resize /var/lib/libvirt/images/[vm].img +400G
+$ sudo virsh start [vm]
+
+
+// ゲストからディスク確認 408GiB に変わってる．けどパテは増えてない．
+$ sudo fdisk -l
+Disk /dev/sda: 408 GiB, 438086664192 bytes, 855638016 sectors
+Disk model: QEMU HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6c364c8f
+
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sda1  *       2048  1050623  1048576  512M  b W95 FAT32
+/dev/sda2       1052670 16775167 15722498  7.5G  5 Extended
+/dev/sda5       1052672 16775167 15722496  7.5G 8e Linux LVM
+..
+..
+..
+
+
+// 当然マウントもしてないのでdfしても増えてない
+$ df -hT
+
+// パテを切る
+$ sudo fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.34).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): p                 ### 表示
+Disk /dev/sda: 408 GiB, 438086664192 bytes, 855638016 sectors
+Disk model: QEMU HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6c364c8f
+
+Device     Boot   Start      End  Sectors  Size Id Type
+/dev/sda1  *       2048  1050623  1048576  512M  b W95 FAT32
+/dev/sda2       1052670 16775167 15722498  7.5G  5 Extended
+/dev/sda5       1052672 16775167 15722496  7.5G 8e Linux LVM
+
+Command (m for help): n               ### 新しいパテを作る
+Partition type
+   p   primary (1 primary, 1 extended, 2 free)
+   l   logical (numbered from 5)
+Select (default p): p                 ### primaryらしい
+Partition number (3,4, default 3): 3        ###3だけどかぶってなきゃ何でもいい sda3になるだけ
+First sector (16775168-855638015, default 16775168):                      ###Endみてケツにくっつくようにすればいいけど大体defがちゃんとしてる．
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (16775168-855638015, default 855638015):        ###defがえらい
+
+Created a new partition 3 of type &#39;Linux&#39; and of size 400 GiB.
+
+Command (m for help): t         ### パテタイプ変更
+Partition number (1-3,5, default 5): 3            ### sda3なのでね
+Hex code (type L to list all codes): 8e           ### 8eがLVM
+
+Changed type of partition &#39;Linux&#39; to &#39;Linux LVM&#39;.
+
+Command (m for help): p           ### 確認
+Disk /dev/sda: 408 GiB, 438086664192 bytes, 855638016 sectors
+Disk model: QEMU HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6c364c8f
+
+Device     Boot    Start       End   Sectors  Size Id Type
+/dev/sda1  *        2048   1050623   1048576  512M  b W95 FAT32
+/dev/sda2        1052670  16775167  15722498  7.5G  5 Extended
+/dev/sda3       16775168 855638015 838862848  400G 8e Linux LVM
+/dev/sda5        1052672  16775167  15722496  7.5G 8e Linux LVM
+
+Partition table entries are not in disk order.
+
+Command (m for help): w           ### 保存して終了
+The partition table has been altered.
+Syncing disks.
+
+// VM再起動してパテ変更を反映させるらしい
+
+
+*** 物理ボリューム作成→ボリュームグループを拡張→論理ボリュームを拡張 ***
+// 物理ボリュームを追加
+$ sudo pvcreate /dev/sda3
+  Physical volume &quot;/dev/sda3&quot; successfully created.
+// 確認
+$ sudo pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sda5
+  VG Name               vgubuntu2004
+  PV Size               &lt;7.50 GiB / not usable 0
+  Allocatable           yes
+  PE Size               4.00 MiB
+  Total PE              1919
+  Free PE               12
+  Allocated PE          1907
+  PV UUID               vu8L0J-Reh0-dOrU-CqhI-qCfR-Ioss-D4kTyK
+
+  &quot;/dev/sda3&quot; is a new physical volume of &quot;400.00 GiB&quot;
+  --- NEW Physical volume ---
+  PV Name               /dev/sda3
+  VG Name
+  PV Size               400.00 GiB
+  Allocatable           NO
+  PE Size               0
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               6NhpxX-FK6u-h4rQ-HXq0-LdCF-5H3m-HWuCHp
+
+// ボリュームグループ確認
+$ $ sudo vgdisplay
+  --- Volume group ---
+  VG Name               vgubuntu2004
+  System ID
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  3
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               &lt;7.50 GiB
+  PE Size               4.00 MiB
+  Total PE              1919
+  Alloc PE / Size       1907 / &lt;7.45 GiB
+  Free  PE / Size       12 / 48.00 MiB
+  VG UUID               ob5lrW-GwTB-oAOs-VQU7-pOew-YV8g-1JkTFv
+
+//ボリュームグループ拡張 sda3を加える
+$ sudo vgextend vgubuntu2004 /dev/sda3
+  Volume group &quot;vgubuntu2004&quot; successfully extended
+// VG Size が増えてる
+$ sudo vgdisplay
+  --- Volume group ---
+  VG Name               vgubuntu2004
+  System ID
+  Format                lvm2
+  Metadata Areas        2
+  Metadata Sequence No  4
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                2
+  Act PV                2
+  VG Size               &lt;407.50 GiB
+  PE Size               4.00 MiB
+  Total PE              104319
+  Alloc PE / Size       1907 / &lt;7.45 GiB
+  Free  PE / Size       102412 / &lt;400.05 GiB
+  VG UUID               ob5lrW-GwTB-oAOs-VQU7-pOew-YV8g-1JkTFv
+
+// 論理ボリューム確認
+$ sudo lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/vgubuntu2004/root
+  LV Name                root
+  VG Name                vgubuntu2004
+  LV UUID                VOf5rg-f3ax-yGc5-YEdd-0x08-Qp0O-1FdoAh
+  LV Write Access        read/write
+  LV Creation host, time ubuntu2004, 2020-06-11 16:58:25 +0900
+  LV Status              available
+  # open                 1
+  LV Size                &lt;6.50 GiB
+  Current LE             1663
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:0
+
+  --- Logical volume ---
+  LV Path                /dev/vgubuntu2004/swap_1
+  LV Name                swap_1
+  VG Name                vgubuntu2004
+  LV UUID                2hx5B2-QGEw-7dXA-5hKo-EcVW-xE1B-lD0SKR
+  LV Write Access        read/write
+  LV Creation host, time ubuntu2004, 2020-06-11 16:58:25 +0900
+  LV Status              available
+  # open                 2
+  LV Size                976.00 MiB
+  Current LE             244
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:1
+
+// 論理ボリュームの拡張 なんか全部割り当てろや「-l +100%FREE」ってやればいいらしい
+$ sudo lvextend -l +100%FREE /dev/vgubuntu2004/root
+  Size of logical volume vgubuntu2004/root changed from &lt;6.50 GiB (1663 extents) to 406.54 GiB (104075 extents).
+  Logical volume vgubuntu2004/root successfully resized.
+
+//確認したらLV Size が増えてる
+$ sudo lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/vgubuntu2004/root
+  LV Name                root
+  VG Name                vgubuntu2004
+  LV UUID                VOf5rg-f3ax-yGc5-YEdd-0x08-Qp0O-1FdoAh
+  LV Write Access        read/write
+  LV Creation host, time ubuntu2004, 2020-06-11 16:58:25 +0900
+  LV Status              available
+  # open                 1
+  LV Size                406.54 GiB
+  Current LE             104075
+  Segments               3
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:0
+
+  --- Logical volume ---
+  LV Path                /dev/vgubuntu2004/swap_1
+  LV Name                swap_1
+  VG Name                vgubuntu2004
+  LV UUID                2hx5B2-QGEw-7dXA-5hKo-EcVW-xE1B-lD0SKR
+  LV Write Access        read/write
+  LV Creation host, time ubuntu2004, 2020-06-11 16:58:25 +0900
+  LV Status              available
+  # open                 2
+  LV Size                976.00 MiB
+  Current LE             244
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:1
+
+// ファイルシステムの拡張 (少し時間かかる)
+$ sudo resize2fs /dev/vgubuntu2004/root
+resize2fs 1.45.5 (07-Jan-2020)
+Filesystem at /dev/vgubuntu2004/root is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 51
+The filesystem on /dev/vgubuntu2004/root is now 106572800 (4k) blocks long.
+
+// dfとかで確認したらおしまいや
+</pre></div>
+</div>
+<p>参考:
+<a class="reference external" href="http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/">http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/</a></p>
 <p><a class="reference external" href="https://qiita.com/nouphet/items/fea026c03ca86ec54111">https://qiita.com/nouphet/items/fea026c03ca86ec54111</a></p>
+<p>元々LVM環境が用意できてない場合のやつあったけどうまく行かなかったやつ．
+<a class="reference external" href="https://gist.github.com/koudaiii/bfcaa6941bd99d688ade">https://gist.github.com/koudaiii/bfcaa6941bd99d688ade</a></p>
 </div>
 <div class="section" id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>

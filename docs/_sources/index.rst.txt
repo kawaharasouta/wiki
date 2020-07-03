@@ -27,6 +27,7 @@ wiki
   contents/system_programing
   contents/autotools
   contents/freebsd
+  contents/dhcp
 
 
 .. toctree::
