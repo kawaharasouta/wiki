@@ -28,6 +28,7 @@ wiki
   contents/autotools
   contents/freebsd
   contents/dhcp
+  contents/syslog
 
 
 .. toctree::
