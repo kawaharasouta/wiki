@@ -139,6 +139,8 @@
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -625,8 +627,9 @@ consoleはちゃんとカーネルパラメータ設定してからじゃない�
 </div>
 <div class="section" id="autostart-setting">
 <h2>autostart setting<a class="headerlink" href="#autostart-setting" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">virsh</span> <span class="n">autostart</span> <span class="p">[</span><span class="n">vm</span> <span class="n">name</span><span class="p">]</span>              <span class="c1">#enable</span>
-<span class="n">sudo</span> <span class="n">virsh</span> <span class="n">autostart</span> <span class="o">--</span><span class="n">disable</span> <span class="p">[</span><span class="n">vm</span> <span class="n">name</span><span class="p">]</span>    <span class="c1">#disable</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virsh autostart [vm name]              #enable
+$ sudo virsh autostart --disable [vm name]    #disable
+$ ls -1 /etc/libvirt/qemu/autostart           # 確認
 </pre></div>
 </div>
 </div>

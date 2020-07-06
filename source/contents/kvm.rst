@@ -428,8 +428,9 @@ autostart setting
 
 ::
 
-  sudo virsh autostart [vm name]              #enable
-  sudo virsh autostart --disable [vm name]    #disable
+  $ sudo virsh autostart [vm name]              #enable
+  $ sudo virsh autostart --disable [vm name]    #disable
+  $ ls -1 /etc/libvirt/qemu/autostart           # 確認
   
 
 S411の環境を作った時のメモやつ
