@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="related computer science" href="cs.html" />
+    <link rel="next" title="unikernelについて" href="unikernel.html" />
     <link rel="prev" title="ハイパーバイザ仮想化に関する内容" href="virtualization.html" /> 
 </head>
 
@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -106,6 +107,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -118,8 +122,13 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">コンテナ技術周辺について</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">コンテナ技術周辺について</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linuxkit">LinuxKit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
@@ -132,6 +141,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
@@ -216,6 +226,13 @@
   <div class="section" id="id1">
 <h1>コンテナ技術周辺について<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>cgroupsとかnamespaceとかの話をここに書く．</p>
+<div class="section" id="linuxkit">
+<h2>LinuxKit<a class="headerlink" href="#linuxkit" title="Permalink to this headline">¶</a></h2>
+<p>※以下の内容は記憶でなんとなく書いているのであとで書き直すことが必要．</p>
+<p>Dockerのための必要最低限の機能を備えたハイパーバイザ動くことを多分想定されてる的なOS．
+コンテナは軽量でパフォーマンスも出るが，分離性が低いと言う問題がある．
+そこで，VM上にコンテナ仮想化環境を構築するみたいなのがあるんだけど，その時にこれを使うとVMが小さくて済むから良いよね的なそういうやつ．</p>
+</div>
 </div>
 
 
@@ -226,7 +243,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="unikernel.html" class="btn btn-neutral float-right" title="unikernelについて" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="virtualization.html" class="btn btn-neutral float-left" title="ハイパーバイザ仮想化に関する内容" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
