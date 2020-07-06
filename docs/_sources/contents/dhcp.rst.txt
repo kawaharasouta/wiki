@@ -45,7 +45,22 @@ syslog(local7)の設定
   $ sudo systemctl restart 
 
 
+static routes の配布
+https://gauvain.pocentek.net/docs/dhcpd-push-routes/
+https://qiita.com/kyokuheki/items/ccf770c6475a236d2035
 
 
 DHCPクライアント
 ==================
+
+::
+
+  $ sudo vim /etc/netplan/01-netcfg.yaml          # なんかファイル名いろいろあってよくわからん
+
+  network:
+    version: 2
+    renderer: networkd
+    ethernets:
+      enp1s2:
+        dhcp4: yes
+

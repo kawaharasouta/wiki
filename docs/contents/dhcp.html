@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="next" title="syslogについて" href="syslog.html" />
     <link rel="prev" title="freebsd関連のメモする場所" href="freebsd.html" /> 
 </head>
 
@@ -113,6 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id2">DHCPクライアント</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -257,9 +258,22 @@ $ sudo systemctl restart syslog         # 本当はrsyslogぽい
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemctl restart
 </pre></div>
 </div>
+<p>static routes の配布
+<a class="reference external" href="https://gauvain.pocentek.net/docs/dhcpd-push-routes/">https://gauvain.pocentek.net/docs/dhcpd-push-routes/</a>
+<a class="reference external" href="https://qiita.com/kyokuheki/items/ccf770c6475a236d2035">https://qiita.com/kyokuheki/items/ccf770c6475a236d2035</a></p>
 </div>
 <div class="section" id="id2">
 <h2>DHCPクライアント<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/netplan/01-netcfg.yaml          # なんかファイル名いろいろあってよくわからん
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp1s2:
+      dhcp4: yes
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -271,7 +285,7 @@ $ sudo systemctl restart syslog         # 本当はrsyslogぽい
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="syslog.html" class="btn btn-neutral float-right" title="syslogについて" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="freebsd.html" class="btn btn-neutral float-left" title="freebsd関連のメモする場所" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
