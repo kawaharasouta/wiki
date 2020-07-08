@@ -15,9 +15,7 @@ install (ubuntu)
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable"
   $ sudo apt update && sudo apt install -y docker-ce
-  $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマンドを実行させるため．このあとデーモンの再起動とリログ必要かも?
-
-※tmuxのセッションからだとsudoなしがうまく行かなくなる．
+  $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマンドを実行させるため．このあとリログ必要
 
 もっとも簡単なdocker公式セットアップ?
 https://qiita.com/zembutsu/items/bedb18e1061303e217b8

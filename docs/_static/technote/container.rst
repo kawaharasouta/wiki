@@ -2,6 +2,10 @@
 コンテナ技術周辺について
 ==========================
 
+(特に低レベルなランタイム(OCIランタイムとか言う?)に関して)コンテナの標準仕様を策定している OCI(Open Container Initiative)
+https://opencontainers.org/
+
+もう一個高レベルなランタイムはCRI(Container Runtime Interface)ランタイムとか言う．
 
 
 cgroupsとかnamespaceとかの話をここに書く．
