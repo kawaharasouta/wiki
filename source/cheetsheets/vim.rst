@@ -52,30 +52,21 @@ vimrcの書き方
 参考
 https://thinca.hatenablog.com/entry/20100205/1265307642
 
-コマンド
+操作系
 ==========
 
-マジここ見た方がいいんじゃね
+一応，dotfilesにcheetsheetがおいてあって，<c-h>で見れるようにしてあるけど，ほとんど意味がない．
+何かあった時，(しばらくコード書いてなくて慣らしたいとか，キーボード変わってちょめちょめしてるとか)
+の時に雑に編集してみたりしてる．
+https://github.com/kawaharasouta/dotfiles/blob/master/configs/vim/cheatsheet.md
+
+マジここ見た方がいいんじゃね的参照ページ
 https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html
 
-.. csv-table::
-  :header: コマンド名, 機能
-  :widths: 3, 3
-
-  d, 削除
-  c, 変更
-  y, コピー
-
-.. csv-table::
-  :header: モーション, 機能
-  :widths: 3, 3
-
-  w, カーソル位置から空白を含む単語の末尾
-  e, カーソル位置から空白を含まない単語の末尾
-  $, カーソル位置から行末
+以下メモ的な奴ら
 
 tab空白
-===========
+--------
 
 tab -> 空白
 

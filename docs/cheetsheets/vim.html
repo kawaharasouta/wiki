@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -107,6 +108,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -119,6 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
@@ -137,8 +141,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">ビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vundle">プラグイン(vundle)導入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vimrc">vimrcの書き方</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">コマンド</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tab">tab空白</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">操作系</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tab">tab空白</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#neovim">neovim</a><ul>
@@ -280,56 +286,16 @@ $ vim +PluginInstall +qall
 <a class="reference external" href="https://thinca.hatenablog.com/entry/20100205/1265307642">https://thinca.hatenablog.com/entry/20100205/1265307642</a></p>
 </div>
 <div class="section" id="id2">
-<h2>コマンド<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>マジここ見た方がいいんじゃね
+<h2>操作系<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>一応，dotfilesにcheetsheetがおいてあって，&lt;c-h&gt;で見れるようにしてあるけど，ほとんど意味がない．
+何かあった時，(しばらくコード書いてなくて慣らしたいとか，キーボード変わってちょめちょめしてるとか)
+の時に雑に編集してみたりしてる．
+<a class="reference external" href="https://github.com/kawaharasouta/dotfiles/blob/master/configs/vim/cheatsheet.md">https://github.com/kawaharasouta/dotfiles/blob/master/configs/vim/cheatsheet.md</a></p>
+<p>マジここ見た方がいいんじゃね的参照ページ
 <a class="reference external" href="https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html">https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html</a></p>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">コマンド名</th>
-<th class="head">機能</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>d</td>
-<td>削除</td>
-</tr>
-<tr class="row-odd"><td>c</td>
-<td>変更</td>
-</tr>
-<tr class="row-even"><td>y</td>
-<td>コピー</td>
-</tr>
-</tbody>
-</table>
-<table border="1" class="colwidths-given docutils">
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">モーション</th>
-<th class="head">機能</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>w</td>
-<td>カーソル位置から空白を含む単語の末尾</td>
-</tr>
-<tr class="row-odd"><td>e</td>
-<td>カーソル位置から空白を含まない単語の末尾</td>
-</tr>
-<tr class="row-even"><td>$</td>
-<td>カーソル位置から行末</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>以下メモ的な奴ら</p>
 <div class="section" id="tab">
-<h2>tab空白<a class="headerlink" href="#tab" title="Permalink to this headline">¶</a></h2>
+<h3>tab空白<a class="headerlink" href="#tab" title="Permalink to this headline">¶</a></h3>
 <p>tab -&gt; 空白</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">expandtab</span>
 <span class="p">:</span><span class="n">retab</span>
@@ -339,6 +305,7 @@ $ vim +PluginInstall +qall
 <div class="highlight-default"><div class="highlight"><pre><span></span>:set noexpndtab
 :retab!
 </pre></div>
+</div>
 </div>
 </div>
 </div>

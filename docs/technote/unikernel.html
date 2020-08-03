@@ -108,6 +108,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -120,6 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">unikernelについて</a><ul>
@@ -239,6 +242,10 @@
             
   <div class="section" id="unikernel">
 <h1>unikernelについて<a class="headerlink" href="#unikernel" title="Permalink to this headline">¶</a></h1>
+<p>クラウド環境で，シングルプロセスなVMを並列に展開するみたいな用途が結構ある．
+SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみたいなやつとか)．
+その場合，汎用OS使ってVMたてるのって汎用性が無駄だしパフォーマンスが出ない．
+そこで，アプリケーションのための小さな専用カーネルを用意してその上でアプリケーションを動かす．</p>
 <p>参考</p>
 <p>unikernalの情報
 <a class="reference external" href="https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0">https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0</a></p>
