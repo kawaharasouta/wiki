@@ -63,7 +63,7 @@ https://github.com/kawaharasouta/dotfiles/blob/master/configs/vim/cheatsheet.md
 マジここ見た方がいいんじゃね的参照ページ
 https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html
 
-以下メモ的な奴ら
+*以下メモ的な奴ら*
 
 tab空白
 --------
@@ -81,6 +81,29 @@ tab -> 空白
 
   :set noexpndtab
   :retab!
+
+helpの使い方
+===============
+
+vimにはめっちゃ充実したオンラインドキュメントがついていて，これを活用しない手はないらしいから使おう．
+
+::
+
+  ### 基本的な使い方
+  :h [わかんないこと]
+
+  ### 便利な使い方
+  :h [わかんないこと] | only    // ウィンドウを分割しないで開く
+  :h                            // ドキュメントのトップページを開く
+  :h user-manual                // ユーザマニュアル(リンクドキュメント)
+  :h howto                      // How-toリンク(リンクドキュメント)
+  :h index                      // 各モードのコマンド一覧らしい
+
+
+参照
+-----------
+
+https://nanasi.jp/articles/howto/help/vim_help.html
 
 ========
 neovim

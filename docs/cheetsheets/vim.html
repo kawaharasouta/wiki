@@ -145,6 +145,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#tab">tab空白</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#help">helpの使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">参照</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#neovim">neovim</a><ul>
@@ -153,9 +157,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#xdg">XDG系?の変数の定義</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#init-vim">init.vimの作成</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hook">hookの使い方とか</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">プラグイン導入例</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">プラグインアンインストール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">設定????</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">プラグイン導入例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">プラグインアンインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">設定????</a></li>
 </ul>
 </li>
 </ul>
@@ -293,7 +297,7 @@ $ vim +PluginInstall +qall
 <a class="reference external" href="https://github.com/kawaharasouta/dotfiles/blob/master/configs/vim/cheatsheet.md">https://github.com/kawaharasouta/dotfiles/blob/master/configs/vim/cheatsheet.md</a></p>
 <p>マジここ見た方がいいんじゃね的参照ページ
 <a class="reference external" href="https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html">https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html</a></p>
-<p>以下メモ的な奴ら</p>
+<p><em>以下メモ的な奴ら</em></p>
 <div class="section" id="tab">
 <h3>tab空白<a class="headerlink" href="#tab" title="Permalink to this headline">¶</a></h3>
 <p>tab -&gt; 空白</p>
@@ -306,6 +310,25 @@ $ vim +PluginInstall +qall
 :retab!
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="help">
+<h2>helpの使い方<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
+<p>vimにはめっちゃ充実したオンラインドキュメントがついていて，これを活用しない手はないらしいから使おう．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">### 基本的な使い方</span>
+<span class="p">:</span><span class="n">h</span> <span class="p">[</span><span class="n">わかんないこと</span><span class="p">]</span>
+
+<span class="c1">### 便利な使い方</span>
+<span class="p">:</span><span class="n">h</span> <span class="p">[</span><span class="n">わかんないこと</span><span class="p">]</span> <span class="o">|</span> <span class="n">only</span>    <span class="o">//</span> <span class="n">ウィンドウを分割しないで開く</span>
+<span class="p">:</span><span class="n">h</span>                            <span class="o">//</span> <span class="n">ドキュメントのトップページを開く</span>
+<span class="p">:</span><span class="n">h</span> <span class="n">user</span><span class="o">-</span><span class="n">manual</span>                <span class="o">//</span> <span class="n">ユーザマニュアル</span><span class="p">(</span><span class="n">リンクドキュメント</span><span class="p">)</span>
+<span class="p">:</span><span class="n">h</span> <span class="n">howto</span>                      <span class="o">//</span> <span class="n">How</span><span class="o">-</span><span class="n">toリンク</span><span class="p">(</span><span class="n">リンクドキュメント</span><span class="p">)</span>
+<span class="p">:</span><span class="n">h</span> <span class="n">index</span>                      <span class="o">//</span> <span class="n">各モードのコマンド一覧らしい</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3>参照<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://nanasi.jp/articles/howto/help/vim_help.html">https://nanasi.jp/articles/howto/help/vim_help.html</a></p>
 </div>
 </div>
 </div>
@@ -388,8 +411,8 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 </div>
 <div class="section" id="hook">
 <h3>hookの使い方とか<a class="headerlink" href="#hook" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="colwidths-given docutils" id="id6">
-<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-given docutils" id="id7">
+<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="25%" />
@@ -434,8 +457,8 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <p>参考
 <a class="reference external" href="https://qiita.com/delphinus/items/cd221a450fd23506e81a">https://qiita.com/delphinus/items/cd221a450fd23506e81a</a></p>
 </div>
-<div class="section" id="id3">
-<h3>プラグイン導入例<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>プラグイン導入例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.config/nvim/dein/toml/dein.toml
 + [[plugins]]
 + repo = &#39;itchyny/lightline.vim&#39;
@@ -449,16 +472,16 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <p>参照
 <a class="reference external" href="https://qiita.com/giwagiwa/items/128aec59af622efc7a97">https://qiita.com/giwagiwa/items/128aec59af622efc7a97</a></p>
 </div>
-<div class="section" id="id4">
-<h3>プラグインアンインストール<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>プラグインアンインストール<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>tomlファイルから該当行を消したあと，</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">call</span> <span class="nb">map</span><span class="p">(</span><span class="n">dein</span><span class="c1">#check_clean(), &quot;delete(v:val, &#39;rf&#39;)&quot;)</span>
 <span class="p">:</span><span class="n">call</span> <span class="n">dein</span><span class="c1">#recache_runtimepath()</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3>設定????<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>設定????<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>これ init.vim に入れないとコマンドが正しく動かなかった</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&quot; Define mappings
       autocmd FileType denite call s:denite_my_settings()
