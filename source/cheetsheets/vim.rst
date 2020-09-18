@@ -280,9 +280,12 @@ https://github.com/Shougo/denite.nvim/issues/640
 
 
 
-
+==========================
 vim pluginの作り方
 ==========================
+
+とりあえず細かい知識とか文法とか
+====================================
 
 pluginの作り方と言うか基本的にvim scriptに関して．
 
@@ -295,6 +298,22 @@ pluginの作り方と言うか基本的にvim scriptに関して．
   + echo "unko"
   :source sample.vim
 
+- 変数にはスコープがあるが，接頭子によって指定する． :h internal-variables
+
+::
+
+  |buffer-variable|    b:	  Local to the current buffer.
+  |window-variable|    w:	  Local to the current window.
+  |tabpage-variable|   t:	  Local to the current tab page.
+  |global-variable|    g:	  Global.
+  |local-variable|     l:	  Local to a function.
+  |script-variable|    s:	  Local to a |:source|'ed Vim script.
+  |function-argument|  a:	  Function argument (only inside a function).
+  |vim-variable|       v:	  Global, predefined by Vim.
+
+
+
 その他基本的な文法は
 https://knowledge.sakura.ad.jp/23436/
 ここを見る随時ググれ．
+
