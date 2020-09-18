@@ -162,6 +162,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id6">設定????</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#vim-plugin">vim pluginの作り方</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kernel.html">カーネル関連tips</a></li>
@@ -507,6 +508,22 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <p>参考
 <a class="reference external" href="https://github.com/Shougo/denite.nvim/issues/640">https://github.com/Shougo/denite.nvim/issues/640</a></p>
 </div>
+</div>
+<div class="section" id="vim-plugin">
+<h2>vim pluginの作り方<a class="headerlink" href="#vim-plugin" title="Permalink to this headline">¶</a></h2>
+<p>pluginの作り方と言うか基本的にvim scriptに関して．</p>
+<ul class="simple">
+<li>そもそもvim scriptはvimのExコマンド(:から始まるやつ)の集まりらしい．ただ，言語と呼ぶに差し支えない機能がしっかり備わってる．
+このファイルの基本的な実行には，:source [file name]をする．</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim sample.vim
++ echo &quot;unko&quot;
+:source sample.vim
+</pre></div>
+</div>
+<p>その他基本的な文法は
+<a class="reference external" href="https://knowledge.sakura.ad.jp/23436/">https://knowledge.sakura.ad.jp/23436/</a>
+ここを見る随時ググれ．</p>
 </div>
 </div>
 

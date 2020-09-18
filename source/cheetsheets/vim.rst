@@ -277,3 +277,24 @@ https://github.com/Shougo/denite.nvim/blob/master/doc/denite.txt#L127
 
 参考
 https://github.com/Shougo/denite.nvim/issues/640
+
+
+
+
+vim pluginの作り方
+==========================
+
+pluginの作り方と言うか基本的にvim scriptに関して．
+
+- そもそもvim scriptはvimのExコマンド(:から始まるやつ)の集まりらしい．ただ，言語と呼ぶに差し支えない機能がしっかり備わってる．
+  このファイルの基本的な実行には，:source [file name]をする．
+
+::
+
+  $ vim sample.vim
+  + echo "unko"
+  :source sample.vim
+
+その他基本的な文法は
+https://knowledge.sakura.ad.jp/23436/
+ここを見る随時ググれ．
