@@ -11,7 +11,7 @@ install
 ::
   
   # linux
-  $ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+  $ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz     // バージョンは随時最新のを↑で確認しろ
   $ sudo tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
   # mac
   $ brew install go
@@ -19,6 +19,9 @@ install
   # if not seted
   $ export PATH=$PATH:/usr/local/go/bin                 # go installしたときに実行ファイルが飛んでくとこにパス通しとけ的なやつですかね? これ普通に$GOPATH/binでいいんじゃねって気がしてきた．
   $ export GOPATH=$HOME/go                              # ワーキングディレクトのパス
+
+
+※複数バージョンの管理はいろいろあるらしいけど，とりあえず :doc:`inc_c_c++/version_management` みたいな感じにするのが良さげな気がする．
 
 Hello, World
 ==============

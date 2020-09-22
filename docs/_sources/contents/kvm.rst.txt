@@ -270,17 +270,7 @@ change memory size
 extend disk size
 =================
 
-まだ書き終わってない
-http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/
-これ見て書く
-
-::
-
-  # 現在の容量確認
-  $ sudo qemu-img info [vm].img
-  # 拡張
-  $ sudo qemu-img resize [vm].img +10G      
-
+下の方に詳しく書いた．
 
 
 rename domain 

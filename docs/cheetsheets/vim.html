@@ -165,7 +165,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#vim-plugin">vim pluginの作り方</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id7">とりあえず細かい知識とか文法とか</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">※とりあえず細かい知識とか文法とか</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">ディレクトリ構成</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kernel.html">カーネル関連tips</a></li>
@@ -415,8 +416,8 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 </div>
 <div class="section" id="hook">
 <h3>hookの使い方とか<a class="headerlink" href="#hook" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="colwidths-given docutils" id="id8">
-<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-given docutils" id="id9">
+<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="25%" />
@@ -516,7 +517,7 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <div class="section" id="vim-plugin">
 <h1>vim pluginの作り方<a class="headerlink" href="#vim-plugin" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id7">
-<h2>とりあえず細かい知識とか文法とか<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>※とりあえず細かい知識とか文法とか<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>pluginの作り方と言うか基本的にvim scriptに関して．</p>
 <ul class="simple">
 <li>そもそもvim scriptはvimのExコマンド(:から始まるやつ)の集まりらしい．ただ，言語と呼ぶに差し支えない機能がしっかり備わってる．
@@ -543,6 +544,28 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <p>その他基本的な文法は
 <a class="reference external" href="https://knowledge.sakura.ad.jp/23436/">https://knowledge.sakura.ad.jp/23436/</a>
 ここを見る随時ググれ．</p>
+</div>
+<div class="section" id="id8">
+<h2>ディレクトリ構成<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>[plugin]/
+├── autoload
+│   └── [plugin].vim
+├── doc
+│   └── [plugin].txt
+└── plugin
+     └── [plugin].vim
+</pre></div>
+</div>
+<ul class="simple">
+<li>pluginディレクトリ
+プラグインが提供するExコマンドやオプションを記述したスクリプトファイルをおく．
+メインの処理はautoloadに記述する．</li>
+<li>autoloadディレクトリ
+メインの処理を記述したスクリプトファイルをおく．
+配下のスクリプトファイルはvim起動時ではなくコマンド実行時に一度だけ読み込まれる．
+plugin配下から呼ぶことができる関数をautoload配下に定義する時、ファイル名#関数名()という命名規則に従う必要があります。これはpluginで定義したコマンドを実行する時にautoload配下のどのファイルのどの関数を呼べば良いのかを知る必要があるからです。そのため、プラグイン名が被るとautoload配下のスクリプトファイル名も被り、最悪違うプラグインの関数で上書きされる可能性があります。これがプラグイン名が被らないようにする必要がある理由です。</li>
+<li>ヘルプファイルをおく．:helpでコマンドのヘルプを引けるようになる．</li>
+</ul>
 </div>
 </div>
 

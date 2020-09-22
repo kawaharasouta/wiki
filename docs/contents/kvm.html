@@ -170,6 +170,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
@@ -496,15 +497,7 @@ $ sudo virsh dominfo [domain] | grep mem
 </div>
 <div class="section" id="extend-disk-size">
 <h2>extend disk size<a class="headerlink" href="#extend-disk-size" title="Permalink to this headline">¶</a></h2>
-<p>まだ書き終わってない
-<a class="reference external" href="http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/">http://b.ruyaka.com/2014/05/08/kvm-guest-os-increase-disc/</a>
-これ見て書く</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># 現在の容量確認
-$ sudo qemu-img info [vm].img
-# 拡張
-$ sudo qemu-img resize [vm].img +10G
-</pre></div>
-</div>
+<p>下の方に詳しく書いた．</p>
 </div>
 <div class="section" id="rename-domain">
 <h2>rename domain<a class="headerlink" href="#rename-domain" title="Permalink to this headline">¶</a></h2>

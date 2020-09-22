@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="XDP" href="xdp.html" />
+    <link rel="next" title="OCamlについてとりあえずメモ" href="ocaml.html" />
     <link rel="prev" title="pthread" href="inc_c_c++/pthread.html" /> 
 </head>
 
@@ -118,11 +118,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#id6">リンク</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -135,18 +141,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
@@ -234,7 +246,7 @@
 <h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>ここ見た方がいいかも <a class="reference external" href="https://golang.org/doc/install">https://golang.org/doc/install</a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># linux
-$ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+$ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz     // バージョンは随時最新のを↑で確認しろ
 $ sudo tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
 # mac
 $ brew install go
@@ -244,6 +256,7 @@ $ export PATH=$PATH:/usr/local/go/bin                 # go installしたとき�
 $ export GOPATH=$HOME/go                              # ワーキングディレクトのパス
 </pre></div>
 </div>
+<p>※複数バージョンの管理はいろいろあるらしいけど，とりあえず <a class="reference internal" href="inc_c_c++/version_management.html"><span class="doc">update-alternativesによる複数バージョン管理</span></a> みたいな感じにするのが良さげな気がする．</p>
 </div>
 <div class="section" id="hello-world">
 <h2>Hello, World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
@@ -373,7 +386,7 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xdp.html" class="btn btn-neutral float-right" title="XDP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ocaml.html" class="btn btn-neutral float-right" title="OCamlについてとりあえずメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="inc_c_c++/pthread.html" class="btn btn-neutral float-left" title="pthread" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
