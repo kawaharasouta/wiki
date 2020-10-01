@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="related computer science" href="cs.html" />
+    <link rel="next" title="コンテナ技術周辺について" href="container.html" />
     <link rel="prev" title="ブートローダについてのメモ" href="boot.html" /> 
 </head>
 
@@ -99,11 +99,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -116,18 +122,20 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ハイパーバイザ仮想化に関する内容</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">仮想化の問題点</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">初期の回答について</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xen">Xenの準仮想化について</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cpu">CPUの仮想化支援</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">自分のしばらく悩んでいたこと</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">自分のしばらく悩んでいたこと</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">ハイパーバイザに関して</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">ハイパーバイザに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#paravirtualization-virtio">準仮想化(paravirtualization)とvirtioに関して</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">完全仮想化が遅い理由</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">完全仮想化が遅い理由</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#vmx-non-root-modevmx-root-mode">VMX non-root mode・VMX root mode間のモード遷移にかかるコスト</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">デバイスエミュレーションの呼び出しにかかるコスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">デバイスエミュレーションの呼び出しにかかるコスト</a></li>
 </ul>
 </li>
 </ul>
@@ -145,24 +153,29 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -268,6 +281,14 @@ CPUに~~~~~~
 一つの回答が準仮想化である．
 さらにもう一つの回答がCPUの仮想化支援である．
 それについて説明する．</p>
+<p>2020.10.01追記
+初期の回答についても少しだけ加える．</p>
+<div class="section" id="id3">
+<h3>初期の回答について<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>「動的バイナリトランスレーション」というらしい．
+仮想化ソフトウェアがVMのセンシティブ命令をトラップして，ring3の命令としてCPUに投げる．
+今考えれば，VTをソフトウェア実装した感じののり．</p>
+</div>
 <div class="section" id="xen">
 <h3>Xenの準仮想化について<a class="headerlink" href="#xen" title="Permalink to this headline">¶</a></h3>
 <p>Xenの仮想化手法について説明する．
@@ -284,8 +305,8 @@ Xenは準仮想化，すなわち，ゲストOSに一部改変を加えること
 <p>Intel-VTとかの話をするんだけど今時間ないから後でするね．
 ring -1 なのかなあ．</p>
 </div>
-<div class="section" id="id3">
-<h3>自分のしばらく悩んでいたこと<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>自分のしばらく悩んでいたこと<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>CPUを完全仮想化した場合はなんとなく仮想マシンの動作の主体みたいなものがわかる．
 当然ユーザプロセスなんだからホストでプロセスとして処理されてるんだろうなって感じ．
 じゃあ，仮想化支援使った場合どうなんだろうって話．
@@ -301,8 +322,8 @@ kvmから割り込みがVMに怒ってVMenterしてるはずだよね．だか�
 間違いなくkvmが出してそうだからそういうことだよね．</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>ハイパーバイザに関して<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>ハイパーバイザに関して<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>そのうちハイパーバイザに関するVMenter/exitとかnonrootとかintel-VTとかそこらへんのことを書くけど今は書いてない</p>
 <p>ちなみに，VMCSはVMの数だけ用意されるとshuu先生の資料にあったが，あれはおそらく間違いで，vcpuの数だけ存在するはずだ．</p>
 <p>intel-VTはVMX-rootモードとVMX-non-rootモードを追加するもの．それはそうなのだが，どうやら別の見方があるようだ．
@@ -343,8 +364,8 @@ kvmから割り込みがVMに怒ってVMenterしてるはずだよね．だか�
 ところでこのハードウェアをエミュレートする方式は，ハードウェア操作のたびにVMexitが発生してしまうため，効率的ではない．
 そこで，エミュレーションによる性能低下を図るものが準仮想化(paravirtualization)であり，
 その(Linuxでの)フレームワークがvirtioである．</p>
-<div class="section" id="id5">
-<h3>完全仮想化が遅い理由<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>完全仮想化が遅い理由<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>ハードウェア操作はその主たる部分がレジスタ操作である．仮想環境でもそれは同じであり，ハードウェア操作の際には
 数回のレジスタ操作が行われる．
 また，ハードウェアをエミュレーションするとは，ハードウェアの持つべきレジスタ群を持ちそれらの動作に関する定義を持つことである．
@@ -360,8 +381,8 @@ VMexitしてハイパーバイザにハードウェアレジスタアクセス�
 それぞれVMX non-root modeとVMX root modeの間でモード遷移が発生します．
 この遷移のコストはCPUの進化に伴い小さくなってきているものの，VMExit・VMEntryにそれぞれ1000サイクルほど消費します．</p>
 </div>
-<div class="section" id="id6">
-<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>多くの場合，ハイパーバイザのデバイスエミュレータはユーザプロセス上で動作しています．
 このため，ハードウェアレジスタアクセスをエミュレートするにはカーネルモードからユーザモードへ遷移し，
 エミュレーションを行ってからカーネルモード へ戻ってくる必要があります．</p>
@@ -446,7 +467,7 @@ x86はIntel-VTとAMD-VTで互換性がないのでそれぞれの依存コード
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="container.html" class="btn btn-neutral float-right" title="コンテナ技術周辺について" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="boot.html" class="btn btn-neutral float-left" title="ブートローダについてのメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
