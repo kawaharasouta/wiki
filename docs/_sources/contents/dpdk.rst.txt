@@ -16,7 +16,8 @@ setup
   $ meson build
   $ cd build
   $ ninja
-  $ ninja install
+  $ sudo ninja install
+  $ sudo ldconfig
   これにより、ビルドサブディレクトリに DPDK がコンパイルされ、結果として得られたライブラリ、ドライバ、ヘッダファイルがシステム上にインストールされます (通常は /usr/local)。DPDK 用のパッケージ設定ファイル libdpdk.pc もインストールされ、コンパイルやアプリケーションとのリンクが容易になります。
 
   フラグの管理?にpkg-configを使ってるみたい
@@ -24,6 +25,21 @@ setup
   これで多分以前まで設定してた環境変数とかがいらなくなる感じ?
   いやこれ別にそう言う話ではない．て言うか以前から使われていて，pkgconfがいないマシンで普通に動いてたんだけどなんだこれ．
 
+  このあと，helloworld動かすときに，なんかmeson.buildを編集する必要があった．
+  $ cd examples/helloworld
+  $ vim meson.build
+  + project('dpdk-app', 'c')
+
+  + dpdk = dependency('libdpdk')
+  + sources = files('main.c')
+  + executable('dpdk-app', sources, dependencies: dpdk)
+
+  ※めんどいからサンプル丸投げしてるけど，本当ならちゃんと書き直すべき．
+  $ meson build
+  $ cd build
+  $ ninja
+
+  これでとりあえずビルドして実行までできた．
 
 依然としてmakeもできるみたいだが，どうもできないような気がする．．．?
 そもそもTOPのMakefileのallターゲットが，meson&ninja使えよっていう文を出力してるだけになってるから
