@@ -93,7 +93,8 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DPDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#setup">setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup">setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">以前のsetup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#envs">envs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#packages">packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clone-and-build-dpdk">clone and build DPDK</a></li>
@@ -115,11 +116,17 @@
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syslog.html">syslogについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -132,25 +139,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
 <p class="caption"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -229,6 +242,31 @@
 <h1>DPDK<a class="headerlink" href="#dpdk" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="setup">
 <h2>setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>ビルドツールがmakeからmeson &amp; ninjaに変わっていた(とりあえず確認 2020-09-22 DPDK 20.08.0)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install meson ninja-build
+
+とりあえずライブラリのインストールはこれで良さげ?
+$ cd $RTE_SDK
+$ meson build
+$ cd build
+$ ninja
+$ ninja install
+これにより、ビルドサブディレクトリに DPDK がコンパイルされ、結果として得られたライブラリ、ドライバ、ヘッダファイルがシステム上にインストールされます (通常は /usr/local)。DPDK 用のパッケージ設定ファイル libdpdk.pc もインストールされ、コンパイルやアプリケーションとのリンクが容易になります。
+
+フラグの管理?にpkg-configを使ってるみたい
+$ sudo apt install pkgconf
+これで多分以前まで設定してた環境変数とかがいらなくなる感じ?
+いやこれ別にそう言う話ではない．て言うか以前から使われていて，pkgconfがいないマシンで普通に動いてたんだけどなんだこれ．
+</pre></div>
+</div>
+<p>依然としてmakeもできるみたいだが，どうもできないような気がする．．．?
+そもそもTOPのMakefileのallターゲットが，meson&amp;ninja使えよっていう文を出力してるだけになってるから
+普通に無理じゃね?</p>
+<p><a class="reference external" href="https://doc.dpdk.org/guides/linux_gsg/build_dpdk.html#installation-of-dpdk-target-environment-using-make">https://doc.dpdk.org/guides/linux_gsg/build_dpdk.html#installation-of-dpdk-target-environment-using-make</a></p>
+<p>また，将来は廃止されることが明記されていて，makeを利用した方法は推奨されていない．</p>
+</div>
+<div class="section" id="id1">
+<h2>以前のsetup<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="envs">
 <h3>envs<a class="headerlink" href="#envs" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ echo &quot;export RTE_SDK=$HOME/dpdk&quot; &gt;&gt; $HOME/.bashrc

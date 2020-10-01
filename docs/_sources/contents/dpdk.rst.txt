@@ -3,7 +3,39 @@ DPDK
 
 
 setup
------
+------
+
+ビルドツールがmakeからmeson & ninjaに変わっていた(とりあえず確認 2020-09-22 DPDK 20.08.0)
+
+::
+
+  $ sudo apt install meson ninja-build
+
+  とりあえずライブラリのインストールはこれで良さげ?
+  $ cd $RTE_SDK
+  $ meson build
+  $ cd build
+  $ ninja
+  $ ninja install
+  これにより、ビルドサブディレクトリに DPDK がコンパイルされ、結果として得られたライブラリ、ドライバ、ヘッダファイルがシステム上にインストールされます (通常は /usr/local)。DPDK 用のパッケージ設定ファイル libdpdk.pc もインストールされ、コンパイルやアプリケーションとのリンクが容易になります。
+
+  フラグの管理?にpkg-configを使ってるみたい
+  $ sudo apt install pkgconf
+  これで多分以前まで設定してた環境変数とかがいらなくなる感じ?
+  いやこれ別にそう言う話ではない．て言うか以前から使われていて，pkgconfがいないマシンで普通に動いてたんだけどなんだこれ．
+
+
+依然としてmakeもできるみたいだが，どうもできないような気がする．．．?
+そもそもTOPのMakefileのallターゲットが，meson&ninja使えよっていう文を出力してるだけになってるから
+普通に無理じゃね?
+
+https://doc.dpdk.org/guides/linux_gsg/build_dpdk.html#installation-of-dpdk-target-environment-using-make
+
+また，将来は廃止されることが明記されていて，makeを利用した方法は推奨されていない．
+
+
+以前のsetup
+-----------
 
 envs
 ~~~~
@@ -47,6 +79,8 @@ helloworld
         $ cd $RTE_SDK/examples/helloworld
         $ make
         $ sudo ./build/helloworld
+
+
 
 bind NIC
 ~~~~~~~~~
