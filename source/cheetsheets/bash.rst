@@ -94,6 +94,20 @@ cloudius-systemsのosvでの例
 
   $
 
+プロジェクトのサブディレクトリだけcloneする
+----------------------------------------------
+
+https://mseeeen.msen.jp/git-sparse-checkout/
+
+gitignore Gloval
+-------------------
+
+${XDG_CONFIG_HOME}/git/ignore
+に配置すると，全てのプロジェクトに対してignoreしたいファイルを指定できる．
+
+Globalなignoreの例が
+https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+にあるからここから必要なの抜き取るのが良さげ．
 
 update-alternatives でコマンドを管理するやつ
 ===============================================
