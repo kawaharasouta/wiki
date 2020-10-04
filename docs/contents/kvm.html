@@ -104,6 +104,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#clone">clone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-vm">delete vm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-memory-size">change memory size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#extend-disk-size">extend disk size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
@@ -478,6 +479,15 @@ $ sudo virt-sysprep -d [vm_clone] --enable dhcp-client-state,machine-id,net-hwad
 </pre></div>
 </div>
 <p>and change hostname</p>
+</div>
+<div class="section" id="delete-vm">
+<h2>delete vm<a class="headerlink" href="#delete-vm" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virsh undefine [vm]
+$ sudo virsh pool-list
+$ sudo virsh vol-list [pool]
+$ sudo virsh vol-delete [path to vol]
+</pre></div>
+</div>
 </div>
 <div class="section" id="change-memory-size">
 <h2>change memory size<a class="headerlink" href="#change-memory-size" title="Permalink to this headline">¶</a></h2>

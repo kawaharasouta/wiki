@@ -249,6 +249,16 @@ clone
 
 and change hostname 
 
+delete vm
+==============
+
+::
+  
+  $ sudo virsh undefine [vm]
+  $ sudo virsh pool-list
+  $ sudo virsh vol-list [pool]
+  $ sudo virsh vol-delete [path to vol]
+
 
 change memory size
 ===================
