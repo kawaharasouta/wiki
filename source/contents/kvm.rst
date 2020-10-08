@@ -778,3 +778,25 @@ virsh_
 .. _network_xml_format: https://libvirt.org/formatnetwork.html#examplesBridge
 .. _virsh: http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf
 .. _ubuntu_kvm_installation: https://help.ubuntu.com/community/KVM/Installation
+
+
+
+
+QEMUを素で触ってみたいやつ
+============================
+
+とりあえず現状は KVM/QEMU
+
+※まとまった量になりそうだったらあとで別のページつくる．
+
+helloworld
+-----------------
+
+Xwindowのあるシステムで↓を実行
+
+::
+
+  $ kvm -monitor stdio
+
+空のVMのウィンドウが立ち上がる．
+当然何もないのでbootしないけど．

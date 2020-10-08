@@ -124,6 +124,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#s411">S411の環境を作った時のメモやつ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#disk">disk拡張する時の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qemu">QEMUを素で触ってみたいやつ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
@@ -959,6 +963,20 @@ The filesystem on /dev/vgubuntu2004/root is now 106572800 (4k) blocks long.
 <p><a class="reference external" href="https://libvirt.org/format.html">domain_xml_format</a></p>
 <p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
 <p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>
+</div>
+<div class="section" id="qemu">
+<h2>QEMUを素で触ってみたいやつ<a class="headerlink" href="#qemu" title="Permalink to this headline">¶</a></h2>
+<p>とりあえず現状は KVM/QEMU</p>
+<p>※まとまった量になりそうだったらあとで別のページつくる．</p>
+<div class="section" id="helloworld">
+<h3>helloworld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h3>
+<p>Xwindowのあるシステムで↓を実行</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ kvm -monitor stdio
+</pre></div>
+</div>
+<p>空のVMのウィンドウが立ち上がる．
+当然何もないのでbootしないけど．</p>
+</div>
 </div>
 </div>
 
