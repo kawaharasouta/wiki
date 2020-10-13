@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cmd">cmd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#go-mod">go modと開発の始め(進め)方に関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">参考</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">条件分岐コンパイル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sdl2">SDL2</a><ul>
@@ -284,6 +285,21 @@ $ go fmt test.go      #フォーマット整形
 $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブラウザからドキュメント確認する
 </pre></div>
 </div>
+</div>
+<div class="section" id="go-mod">
+<h2>go modと開発の始め(進め)方に関して<a class="headerlink" href="#go-mod" title="Permalink to this headline">¶</a></h2>
+<p>依存モジュールの管理ツールで
+なんかよくわからんけど，とりあえず開発のときに↓のようにしておくとうまいことやってくれる?
+正直よくわからんマジでよくわからんgo getとどう使ったらいいのかとかよくわからんしわからん．</p>
+<ul class="simple">
+<li>go mod init で、初期化する</li>
+<li>go buildなどのビルドコマンドで、依存モジュールを自動インストールする</li>
+<li>go list -m all で、現在の依存モジュールを表示する</li>
+<li>go get で、依存モジュールの追加やバージョンアップを行う</li>
+<li>go mod tidy で、使われていない依存モジュールを削除する</li>
+</ul>
+<p><a class="reference external" href="https://qiita.com/uchiko/items/64fb3020dd64cf211d4e">https://qiita.com/uchiko/items/64fb3020dd64cf211d4e</a>
+<a class="reference external" href="https://qiita.com/propella/items/e49bccc88f3cc2407745">https://qiita.com/propella/items/e49bccc88f3cc2407745</a></p>
 </div>
 <div class="section" id="id1">
 <h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>

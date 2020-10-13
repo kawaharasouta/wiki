@@ -800,3 +800,16 @@ Xwindowのあるシステムで↓を実行
 
 空のVMのウィンドウが立ち上がる．
 当然何もないのでbootしないけど．
+
+インストールと起動
+-----------------------
+
+::
+
+  ### install
+  $ qemu-img create -f qcow2 test.img 4G
+  $ sudo kvm -hda test.img -cdrom [path to iso file] -boot d -m 1024
+
+  ### start
+  $ sudo kvm -hda test.img -boot c -m 1024
+

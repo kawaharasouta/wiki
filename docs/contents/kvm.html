@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qemu">QEMUを素で触ってみたいやつ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">インストールと起動</a></li>
 </ul>
 </li>
 </ul>
@@ -976,6 +977,17 @@ The filesystem on /dev/vgubuntu2004/root is now 106572800 (4k) blocks long.
 </div>
 <p>空のVMのウィンドウが立ち上がる．
 当然何もないのでbootしないけど．</p>
+</div>
+<div class="section" id="id4">
+<h3>インストールと起動<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>### install
+$ qemu-img create -f qcow2 test.img 4G
+$ sudo kvm -hda test.img -cdrom [path to iso file] -boot d -m 1024
+
+### start
+$ sudo kvm -hda test.img -boot c -m 1024
+</pre></div>
+</div>
 </div>
 </div>
 </div>
