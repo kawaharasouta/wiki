@@ -252,6 +252,12 @@ root権限が必要な操作を含む場合，本来ならば当然root権限で
 <p>実行ファイルに capabilities を持たせる方法．
 注意点として，
 この方法だと起動したユーザによらずプロセスがcapabilitiesを持つことになる．</p>
+<p>CAP_NET_BIND_SERVICEを与える例</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo setcap &#39;cap_net_bind_service=+ep&#39; [path to file]
+$ getcap [path to file]
+[path to file] = cap_net_bind_service+ep
+</pre></div>
+</div>
 </div>
 <div class="section" id="ambient-capabilities">
 <h2>Ambient capabilities<a class="headerlink" href="#ambient-capabilities" title="Permalink to this headline">¶</a></h2>

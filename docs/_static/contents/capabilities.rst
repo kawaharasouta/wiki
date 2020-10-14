@@ -28,6 +28,14 @@ File capabilities
 注意点として，
 この方法だと起動したユーザによらずプロセスがcapabilitiesを持つことになる．
 
+CAP_NET_BIND_SERVICEを与える例
+
+::
+
+  $ sudo setcap 'cap_net_bind_service=+ep' [path to file]
+  $ getcap [path to file]
+  [path to file] = cap_net_bind_service+ep
+
 
 Ambient capabilities
 ======================
