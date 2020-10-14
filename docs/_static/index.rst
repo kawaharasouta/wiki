@@ -29,6 +29,7 @@ wiki
   contents/freebsd
   contents/dhcp
   contents/syslog
+  contents/capabilities
 
 
 .. toctree::
