@@ -39,6 +39,8 @@ appendが結構重いみたいな話も聞くから，これだったら実は+�
 []byteで処理させる方法と無視できないくらいの性能差が出てくるんじゃないか(↑の結合の話では差はほとんどないよねくらいの話で終わっている)
 みたいなことも思ったりするわけである．
 あと，stringと[]byte変換でうんぬんみたいな記事もあったりしてその辺りもどんなもんかと気になった．
+https://qiita.com/ikawaha/items/3c3994559dfeffb9f8c9
+https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b75ef
 
 と言うわけで実験
 

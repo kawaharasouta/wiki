@@ -264,7 +264,9 @@ strings.Joinは第一引数が[]stringだしね．
 appendが結構重いみたいな話も聞くから，これだったら実は+してった方が速い可能性あるかもとか，
 []byteで処理させる方法と無視できないくらいの性能差が出てくるんじゃないか(↑の結合の話では差はほとんどないよねくらいの話で終わっている)
 みたいなことも思ったりするわけである．
-あと，stringと[]byte変換でうんぬんみたいな記事もあったりしてその辺りもどんなもんかと気になった．</p>
+あと，stringと[]byte変換でうんぬんみたいな記事もあったりしてその辺りもどんなもんかと気になった．
+<a class="reference external" href="https://qiita.com/ikawaha/items/3c3994559dfeffb9f8c9">https://qiita.com/ikawaha/items/3c3994559dfeffb9f8c9</a>
+<a class="reference external" href="https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b75ef">https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b75ef</a></p>
 <p>と言うわけで実験</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
