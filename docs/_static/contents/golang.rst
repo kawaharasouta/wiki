@@ -81,6 +81,8 @@ https://qiita.com/propella/items/e49bccc88f3cc2407745
 見ると幸せになれるらしいよ: https://qiita.com/tenntenn/items/0e33a4959250d1a55045
 プロジェクトレイアウトの話: https://techdo.mediado.jp/entry/2019/01/18/112503
 
+☆つまづきポイントFAQ(これめっちゃいい感じ): https://future-architect.github.io/articles/20190713/
+
 
 
 
