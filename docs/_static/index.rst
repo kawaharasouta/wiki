@@ -49,6 +49,7 @@ wiki
   technote/cpu
   technote/fpga
   technote/standard
+  technote/golang_perf
 
 .. toctree::
   :maxdepth: 1
