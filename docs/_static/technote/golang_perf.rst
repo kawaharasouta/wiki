@@ -150,3 +150,6 @@ https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b7
 予想以上に[]stringのappendが遅いようだった．
 ここの考察部分あとでかこ〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜
 
+
+ちなみに，また別のところで計測はしたけど，
+[]byteをstringに変換するのも別にパフォーマンス落ちなかったので，とりあえず僕のパターンでは[]byteにして処理させてstringに戻すのが良さげだと思った．
