@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="next" title="virshのソースコードを読んだ時のメモ" href="virsh_source.html" />
     <link rel="prev" title="規格とか思想とか" href="standard.html" /> 
 </head>
 
@@ -139,6 +139,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id3">僕の状況と↑の話</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -271,13 +272,8 @@ appendが結構重いみたいな話も聞くから，これだったら実は+�
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
-  <span class="o">//</span> <span class="s2">&quot;fmt&quot;</span>
-  <span class="o">//</span> <span class="s2">&quot;log&quot;</span>
   <span class="s2">&quot;testing&quot;</span>
   <span class="s2">&quot;strings&quot;</span>
-  <span class="o">//</span> <span class="s2">&quot;os&quot;</span>
-
-  <span class="o">//</span> <span class="n">libvirt</span> <span class="s2">&quot;libvirt.org/libvirt-go&quot;</span>
 <span class="p">)</span>
 
 <span class="n">var</span> <span class="n">nn</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">500</span>
@@ -288,25 +284,16 @@ appendが結構重いみたいな話も聞くから，これだったら実は+�
 
 <span class="n">func</span> <span class="n">Benchmark_Join</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">var</span> <span class="n">names</span> <span class="p">[]</span><span class="n">string</span>
-  <span class="o">//</span> <span class="n">conn</span><span class="p">,</span> <span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="n">libvirt</span><span class="o">.</span><span class="n">NewConnect</span><span class="p">(</span><span class="s2">&quot;qemu:///system&quot;</span><span class="p">)</span>
-  <span class="o">//</span> <span class="n">doms</span><span class="p">,</span> <span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">ListAllDomains</span><span class="p">(</span><span class="n">libvirt</span><span class="o">.</span><span class="n">CONNECT_LIST_DOMAINS_ACTIVE</span><span class="p">)</span>
   <span class="k">for</span> <span class="nb">range</span> <span class="p">(</span><span class="n">make</span><span class="p">([]</span><span class="nb">int</span><span class="p">,</span> <span class="n">nn</span><span class="p">))</span> <span class="p">{</span>
-    <span class="o">//</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="n">dom</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
     <span class="n">names</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ret_string</span><span class="p">())</span>
     <span class="n">_</span> <span class="o">=</span> <span class="n">strings</span><span class="o">.</span><span class="n">Join</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="o">//</span> <span class="n">dom</span><span class="o">.</span><span class="n">Free</span><span class="p">()</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">func</span> <span class="n">Benchmark_Plus</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">var</span> <span class="n">names</span> <span class="n">string</span>
-  <span class="o">//</span> <span class="n">conn</span><span class="p">,</span> <span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="n">libvirt</span><span class="o">.</span><span class="n">NewConnect</span><span class="p">(</span><span class="s2">&quot;qemu:///system&quot;</span><span class="p">)</span>
-  <span class="o">//</span> <span class="n">doms</span><span class="p">,</span> <span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">ListAllDomains</span><span class="p">(</span><span class="n">libvirt</span><span class="o">.</span><span class="n">CONNECT_LIST_DOMAINS_ACTIVE</span><span class="p">)</span>
   <span class="k">for</span> <span class="nb">range</span> <span class="p">(</span><span class="n">make</span><span class="p">([]</span><span class="nb">int</span><span class="p">,</span> <span class="n">nn</span><span class="p">))</span> <span class="p">{</span>
-    <span class="o">//</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="p">:</span><span class="o">=</span> <span class="n">dom</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
-    <span class="o">//</span> <span class="n">names</span> <span class="o">=</span> <span class="n">names</span> <span class="o">+</span> <span class="n">ret_string</span><span class="p">()</span>
     <span class="n">names</span> <span class="o">=</span> <span class="n">names</span> <span class="o">+</span> <span class="n">ret_string</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="o">//</span> <span class="n">dom</span><span class="o">.</span><span class="n">Free</span><span class="p">()</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
@@ -315,8 +302,6 @@ appendが結構重いみたいな話も聞くから，これだったら実は+�
   <span class="k">for</span> <span class="nb">range</span> <span class="p">(</span><span class="n">make</span><span class="p">([]</span><span class="nb">int</span><span class="p">,</span> <span class="n">nn</span><span class="p">))</span> <span class="p">{</span>
     <span class="n">byt</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">byt</span><span class="p">,</span> <span class="n">ret_string</span><span class="p">()</span><span class="o">...</span><span class="p">)</span>
     <span class="n">byt</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">byt</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">...</span><span class="p">)</span>
-    <span class="o">//</span> <span class="n">byt</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">byt</span><span class="p">,</span> <span class="p">[]</span><span class="n">byte</span><span class="p">(</span><span class="n">ret_string</span><span class="p">()))</span>
-    <span class="o">//</span> <span class="n">byt</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">byt</span><span class="p">,</span> <span class="p">[]</span><span class="n">byte</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -382,7 +367,7 @@ ok      dev/string      9.631s
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="virsh_source.html" class="btn btn-neutral float-right" title="virshのソースコードを読んだ時のメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="standard.html" class="btn btn-neutral float-left" title="規格とか思想とか" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -50,6 +50,7 @@ wiki
   technote/fpga
   technote/standard
   technote/golang_perf
+  technote/virsh_source
 
 .. toctree::
   :maxdepth: 1

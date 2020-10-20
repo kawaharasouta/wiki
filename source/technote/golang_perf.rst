@@ -49,13 +49,8 @@ https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b7
   package main
 
   import (
-    // "fmt"
-    // "log"
     "testing"
     "strings"
-    // "os"
-
-    // libvirt "libvirt.org/libvirt-go"
   )
 
   var nn int = 500
@@ -66,25 +61,16 @@ https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b7
 
   func Benchmark_Join(b *testing.B) {
     var names []string
-    // conn, _ := libvirt.NewConnect("qemu:///system")
-    // doms, _ := conn.ListAllDomains(libvirt.CONNECT_LIST_DOMAINS_ACTIVE)
     for range (make([]int, nn)) {
-      // name, _ := dom.GetName()
       names = append(names, ret_string())
       _ = strings.Join(names, "\n")
-      // dom.Free()
     }
   }
 
   func Benchmark_Plus(b *testing.B) {
     var names string
-    // conn, _ := libvirt.NewConnect("qemu:///system")
-    // doms, _ := conn.ListAllDomains(libvirt.CONNECT_LIST_DOMAINS_ACTIVE)
     for range (make([]int, nn)) {
-      // name, _ := dom.GetName()
-      // names = names + ret_string()
       names = names + ret_string() + "\n"
-      // dom.Free()
     }
   }
 
@@ -93,8 +79,6 @@ https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b7
     for range (make([]int, nn)) {
       byt = append(byt, ret_string()...)
       byt = append(byt, "\n"...)
-      // byt = append(byt, []byte(ret_string()))
-      // byt = append(byt, []byte("\n"))
     }
   }
 
