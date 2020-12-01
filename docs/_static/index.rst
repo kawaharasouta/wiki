@@ -30,6 +30,7 @@ wiki
   contents/dhcp
   contents/syslog
   contents/capabilities
+  contents/haskell
 
 
 .. toctree::
