@@ -59,7 +59,8 @@ https://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6
 
 
 
-
+**debian小史**
+https://www.debian.org/doc/manuals/project-history/index.ja.html
 
 **GNU coding standards**
 https://www.gnu.org/prep/standards/
