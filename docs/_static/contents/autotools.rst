@@ -96,5 +96,13 @@ command
 
 
 
+参考
+========
+
+http://loto.sourceforge.net/feram/Autotools-memo.ja.html
+
+https://www.sourceware.org/autobook/
+
+https://cpplover.blogspot.com/2013/07/gnuautotools.html
 
 

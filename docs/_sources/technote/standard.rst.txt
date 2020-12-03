@@ -55,3 +55,19 @@ UNIX哲学
 なんかいろんなソフトウェア開発的な哲学が書いてあった．
 
 https://ja.wikipedia.org/wiki/UNIX%E5%93%B2%E5%AD%A6
+
+
+
+
+
+
+**GNU coding standards**
+https://www.gnu.org/prep/standards/
+
+
+
+
+
+
+
+
