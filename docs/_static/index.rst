@@ -31,6 +31,7 @@ wiki
   contents/syslog
   contents/capabilities
   contents/haskell
+  contents/XDG
 
 
 .. toctree::
