@@ -110,6 +110,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dhcp.html">DHCP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/syslog.html">syslogについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/capabilities.html">Linux capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -140,7 +143,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#virtio">virtioの概要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#virtio">virtio関連について</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id8">virtioの概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vhost">vhostとは</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vhost-user">vhost-user</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#vhost-user-server-client">vhost-user server と client</a></li>
@@ -161,6 +167,8 @@
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standard.html">規格とか思想とか</a></li>
+<li class="toctree-l1"><a class="reference internal" href="golang_perf.html">golangでちょっと文字列関連性能計測した時のいろんなメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -404,8 +412,12 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="virtio">
-<h2>virtioの概要<a class="headerlink" href="#virtio" title="Permalink to this headline">¶</a></h2>
+<h1>virtio関連について<a class="headerlink" href="#virtio" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://wiki.libvirt.org/page/Virtio">https://wiki.libvirt.org/page/Virtio</a></p>
+<div class="section" id="id8">
+<h2>virtioの概要<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>virtio_pciっていうのがなんかPCIデバイスをエミュレートしてる見たいな立ち回りをする感じ．
 実際のデータやりとりはvirtio ringっていうメモリ領域でやる．これはshared memory空間にいて，
 完全仮想化の場合はデータのやりとり(つまりレジスタ操作)の際に必ず逐一VMExitを発生させる必要があったけど，
