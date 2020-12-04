@@ -369,6 +369,10 @@ kvmから割り込みがVMに怒ってVMenterしてるはずだよね．だか�
 </div>
 <p>とすると，OSにプロテクションの番号の変更もなくなんとなくいい感じになってる気もするんだ．
 もっと調査が必要だ．</p>
+<p>また，<a class="reference external" href="https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net">https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net</a> にて以下のような記述もあった．</p>
+<p>メモリマネージャ、スケジューラ、ネットワークスタックなどのハイパーバイザコンポーネントがLinuxカーネルの一部として提供されます。
+VMは、ネットワークアダプタなどの専用の仮想ハードウェアを使用して、標準のLinuxスケジューラによってスケジュールされた通常のLinuxプロセスです。
+(the hypervisor components such as memory manager, scheduler, network stack, etc. are provided as part of the Linux kernel. The VMs are regular Linux processes scheduled by a standard Linux scheduler with dedicated virtual hardware such as network adapters.)</p>
 </div>
 <div class="section" id="paravirtualization-virtio">
 <h2>準仮想化(paravirtualization)とvirtioに関して<a class="headerlink" href="#paravirtualization-virtio" title="Permalink to this headline">¶</a></h2>

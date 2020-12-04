@@ -136,7 +136,11 @@ intel-VTはVMX-rootモードとVMX-non-rootモードを追加するもの．そ�
 とすると，OSにプロテクションの番号の変更もなくなんとなくいい感じになってる気もするんだ．
 もっと調査が必要だ．
 
+また，https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net にて以下のような記述もあった．
 
+メモリマネージャ、スケジューラ、ネットワークスタックなどのハイパーバイザコンポーネントがLinuxカーネルの一部として提供されます。
+VMは、ネットワークアダプタなどの専用の仮想ハードウェアを使用して、標準のLinuxスケジューラによってスケジュールされた通常のLinuxプロセスです。
+(the hypervisor components such as memory manager, scheduler, network stack, etc. are provided as part of the Linux kernel. The VMs are regular Linux processes scheduled by a standard Linux scheduler with dedicated virtual hardware such as network adapters.)
 
 
 準仮想化(paravirtualization)とvirtioに関して
