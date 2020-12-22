@@ -211,6 +211,16 @@ OSv
 
   $ sudo apt install libvirt0
 
+apps
+-------
 
+::
+
+  $ git clone https://github.com/cloudius-systems/osv.git & cd $_
+  $ git submodule update --init --recursive
+  $ sudo ./scripts/setup.py             ### 必要なパッケージ類とかインストールしてる．
+  ////// とりあえずiperfしてみたい
+  $ sudo ./scripts/build image=iperf    ### Could not access KVM kernel module: Permission denied にならないユーザならsudoいらない． (usermod -aG kvm <user name>)
+  $ sudo ./scripts/run.py -nv       ### 最近buildされたイメージをrunする． -nv はネットワークのための設定でdefaultネットワークインタフェースを生やしてくれるなんともえらいオプション ちなみにtapn(nは環境依存の整数)としてホストから見える
 
 

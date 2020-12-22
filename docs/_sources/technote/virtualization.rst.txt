@@ -87,6 +87,23 @@ kvmから割り込みがVMに怒ってVMenterしてるはずだよね．だか�
 起動時のデーモンだったらそもそもの起動時，電源が入ってvcpuが動いてMBRを読み出すくらいのところでVMExitしそうだし，その発端の命令って
 間違いなくkvmが出してそうだからそういうことだよね．
 
+また，特にCPU関連以外について，https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net にて以下のような記述もあった．
+
+メモリマネージャ、スケジューラ、ネットワークスタックなどのハイパーバイザコンポーネントがLinuxカーネルの一部として提供されます。
+VMは、ネットワークアダプタなどの専用の仮想ハードウェアを使用して、標準のLinuxスケジューラによってスケジュールされた通常のLinuxプロセスです。
+(the hypervisor components such as memory manager, scheduler, network stack, etc. are provided as part of the Linux kernel. The VMs are regular Linux processes scheduled by a standard Linux scheduler with dedicated virtual hardware such as network adapters.)
+
+
+ゲストVMはqemuプロセスの内部で実行されています。
+qemuプロセスはホストユーザ空間上で実行されているプロセスで、libvirt(ユーザ空間アプリケーション)やKVM(ホストカーネル)と通信します。
+(The guest VM is running inside the qemu process, which is simply a process running on the host user space and communicates with libvirt (user space application) and KVM (host kernel).)
+
+qemu プロセスは各ゲスト VM 用に作成されるので、N 個の VM を作成すると N 個の qemu プロセスが作成され、libvirt はそれぞれの VM と通信します。
+(A qemu process is created for each guest VM so if you create N VMs you will have N qemu processes, and libvirt will communicate with each of them. )
+
+どうも動作の主体はqemuプロセスでやっぱりいいのか．
+
+
 ハイパーバイザに関して
 ======================
 
@@ -136,11 +153,8 @@ intel-VTはVMX-rootモードとVMX-non-rootモードを追加するもの．そ�
 とすると，OSにプロテクションの番号の変更もなくなんとなくいい感じになってる気もするんだ．
 もっと調査が必要だ．
 
-また，https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net にて以下のような記述もあった．
 
-メモリマネージャ、スケジューラ、ネットワークスタックなどのハイパーバイザコンポーネントがLinuxカーネルの一部として提供されます。
-VMは、ネットワークアダプタなどの専用の仮想ハードウェアを使用して、標準のLinuxスケジューラによってスケジュールされた通常のLinuxプロセスです。
-(the hypervisor components such as memory manager, scheduler, network stack, etc. are provided as part of the Linux kernel. The VMs are regular Linux processes scheduled by a standard Linux scheduler with dedicated virtual hardware such as network adapters.)
+
 
 
 準仮想化(paravirtualization)とvirtioに関して

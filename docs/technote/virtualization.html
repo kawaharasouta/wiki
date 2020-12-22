@@ -333,6 +333,16 @@ kvmから割り込みがVMに怒ってVMenterしてるはずだよね．だか�
 デーモンの時も簡単で，これが何かの操作で起動した場合は必ずハードウェアからの入出力が伴ってるから↑と一緒．
 起動時のデーモンだったらそもそもの起動時，電源が入ってvcpuが動いてMBRを読み出すくらいのところでVMExitしそうだし，その発端の命令って
 間違いなくkvmが出してそうだからそういうことだよね．</p>
+<p>また，特にCPU関連以外について，<a class="reference external" href="https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net">https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net</a> にて以下のような記述もあった．</p>
+<p>メモリマネージャ、スケジューラ、ネットワークスタックなどのハイパーバイザコンポーネントがLinuxカーネルの一部として提供されます。
+VMは、ネットワークアダプタなどの専用の仮想ハードウェアを使用して、標準のLinuxスケジューラによってスケジュールされた通常のLinuxプロセスです。
+(the hypervisor components such as memory manager, scheduler, network stack, etc. are provided as part of the Linux kernel. The VMs are regular Linux processes scheduled by a standard Linux scheduler with dedicated virtual hardware such as network adapters.)</p>
+<p>ゲストVMはqemuプロセスの内部で実行されています。
+qemuプロセスはホストユーザ空間上で実行されているプロセスで、libvirt(ユーザ空間アプリケーション)やKVM(ホストカーネル)と通信します。
+(The guest VM is running inside the qemu process, which is simply a process running on the host user space and communicates with libvirt (user space application) and KVM (host kernel).)</p>
+<p>qemu プロセスは各ゲスト VM 用に作成されるので、N 個の VM を作成すると N 個の qemu プロセスが作成され、libvirt はそれぞれの VM と通信します。
+(A qemu process is created for each guest VM so if you create N VMs you will have N qemu processes, and libvirt will communicate with each of them. )</p>
+<p>どうも動作の主体はqemuプロセスでやっぱりいいのか．</p>
 </div>
 </div>
 <div class="section" id="id5">
@@ -369,10 +379,6 @@ kvmから割り込みがVMに怒ってVMenterしてるはずだよね．だか�
 </div>
 <p>とすると，OSにプロテクションの番号の変更もなくなんとなくいい感じになってる気もするんだ．
 もっと調査が必要だ．</p>
-<p>また，<a class="reference external" href="https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net">https://www.redhat.com/ja/blog/introduction-virtio-networking-and-vhost-net</a> にて以下のような記述もあった．</p>
-<p>メモリマネージャ、スケジューラ、ネットワークスタックなどのハイパーバイザコンポーネントがLinuxカーネルの一部として提供されます。
-VMは、ネットワークアダプタなどの専用の仮想ハードウェアを使用して、標準のLinuxスケジューラによってスケジュールされた通常のLinuxプロセスです。
-(the hypervisor components such as memory manager, scheduler, network stack, etc. are provided as part of the Linux kernel. The VMs are regular Linux processes scheduled by a standard Linux scheduler with dedicated virtual hardware such as network adapters.)</p>
 </div>
 <div class="section" id="paravirtualization-virtio">
 <h2>準仮想化(paravirtualization)とvirtioに関して<a class="headerlink" href="#paravirtualization-virtio" title="Permalink to this headline">¶</a></h2>
