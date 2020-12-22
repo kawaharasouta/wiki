@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Unikernelを試してみる &mdash; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tex" href="../documents/tex.html" />
+    <link rel="prev" title="BPF" href="../system_tracing/bpf.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/syslog.html">syslogについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/capabilities.html">Linux capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html#virtio">virtio関連について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/golang_perf.html">golangでちょっと文字列関連性能計測した時のいろんなメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
+</ul>
+<p class="caption"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
+</ul>
+<p class="caption"><span class="caption-text">poems:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unikernelを試してみる</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Unikernelの概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">試してみる</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#osv-minecraft-server">OSv で minecraft server を構築，，したかった，，</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nginxhttp">nginxでhttpサーバを建てる</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">せっかくなのでベンチマークをとってみたけど．．</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">まとめ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">参考</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Unikernelを試してみる</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/poems/ad_cale_2020.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="unikernel">
+<h1>Unikernelを試してみる<a class="headerlink" href="#unikernel" title="Permalink to this headline">¶</a></h1>
+<p>こんにちは．&#64;khwarizmi6514 です．
+この記事は <a class="reference external" href="https://adventar.org/calendars/5671">法政大学応用情報 Advent Calender 2020</a> の23日目の記事です．</p>
+<p>本来はこういった人目につくような行動は好かないのですが，学生最後の年と言うことで思い出にと思い，名を連ねてみました．
+あまりにも家から出なくて日付感覚がなく，気付いたら担当日になってしまっていたので頑張って書きます．</p>
+<p>話は題の通りUnikernelについてです．
+※この記事は読みやすさのため，または筆者の主観を含むため，正確ではない情報を含みます．</p>
+<div class="section" id="id1">
+<h2>Unikernelの概要<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Unikernelを恐れずに一言で言うと，
+「あるアプリケーション実行のための小さなkernel」
+です．</p>
+<p>kernelは汎用性のため，多くの機能を持ちますが，ある一つのアプリケーションの実行を考えたとき，機能の全てが必要になるようなものはないでしょう．
+そこで使わない機能を除いた小さなkernelをアプリケーションに紐づけてアプリケーションを動かすようにします．
+unikernelの主な長所として4つ書かれています．(<a class="reference external" href="http://unikernel.org/">http://unikernel.org/</a>)
+- Improved security
+- Small footprint
+- Highly optimized
+- Fast boot</p>
+<p>様々な実装が存在し，特徴も異なります．
+詳しい情報は，リンク先に任せることとして．．．</p>
+<p>試してみる話が本題なので，早速試していきたいと思います．</p>
+</div>
+<div class="section" id="id2">
+<h2>試してみる<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="osv-minecraft-server">
+<h3>OSv で minecraft server を構築，，したかった，，<a class="headerlink" href="#osv-minecraft-server" title="Permalink to this headline">¶</a></h3>
+<p>OSv(<a class="reference external" href="http://osv.io/">http://osv.io/</a>) はUnikernelの実装の中でも有名なものの一つで，既存のUnixアプリケーションの実行のために設計され，様々な環境に対応したUnikernelです．
+これを利用してminecraft server が構築できることが知られているので，これを行いたかったのですが，
+うまく実行することができませんでした．
+間に合いそうにないので，ひとまず記事を書き上げるために別の目標を設定することにします．
+後日取り組んで成果が出た場合，ここに追記することにします．
+minecraftは身近で有名ですから，これが達成できたら良い話題になるなと思ったのですが，申し訳ありません．</p>
+</div>
+<div class="section" id="nginxhttp">
+<h3>nginxでhttpサーバを建てる<a class="headerlink" href="#nginxhttp" title="Permalink to this headline">¶</a></h3>
+<p>と言うわけで目標は題の通りになりました．
+デフォルトページを表示して満足するだけですが，↑に時間を取られてしまい，時間がありませんでした．．．</p>
+<p>OSvは様々なハイパーバイザの上で実行できることが知られていますが，ここではKVMを対象にしています．
+KVM環境が構築されていることを前提とします．
+また，実験はubuntu2004で行っています．</p>
+<p>osvのリポジトリをcloneしてきます．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/cloudius-systems/osv.git &amp; cd $_
+</pre></div>
+</div>
+<p>サブモジュールとして，musl(syscallの実装)とサンプルアプリケーションがあるのでそれをcloneします</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git submodule update --init --recursive
+</pre></div>
+</div>
+<p>Unikernelやイメージの構築のためのパッケージ類等をインストールします．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./scripts/setup.py
+</pre></div>
+</div>
+<p>ここで，後々のために一つパッケージをインストールします．
+(実行時にネットワーク設定のためifconfigが必要です)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install net-tools
+</pre></div>
+</div>
+<p>サンプルアプリケーションをビルドします．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./scripts/build image=nginx
+</pre></div>
+</div>
+<p>実行します．ちなみに実行は一番最近ビルドされたイメージを対象として行うため特別指定は必要ありません．
+なお，デフォルトで4vCPU・メモリ2Gです．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./scripts/run.py -nv
+</pre></div>
+</div>
+<p>ここまでできると画像のようになります．
+画像をみるとわかりますが，とにかく爆速で起動していることがわかります．</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>せっかくなのでベンチマークをとってみたけど．．<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>せっかくなのでベンチマークを簡単にとってみました．
+OSvについては↑と同じように実行しました．
+比較対象として，KVM上に通常のVMを立て，そこにデフォルトのnginxサーバを構築し，ベンチマークを取りました．
+OSvと同じ4vCPU・メモリ2Gです．
+ベンチマークはapache bench(ab)を利用し，リクエスト数は200に固定しました．
+同時接続数は20, 50, 100の3通りについて計測しました．
+結果は↓の通りです．
+ちなみに，なんでこんなにしょぼい負荷なのかは結果の後に述べます．</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">同時接続数</th>
+<th class="head">OSv</th>
+<th class="head">通常のVM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>20</td>
+<td>0.039s</td>
+<td>0.011s</td>
+</tr>
+<tr class="row-odd"><td>50</td>
+<td>0.016s</td>
+<td>0.004s</td>
+</tr>
+<tr class="row-even"><td>100</td>
+<td>0.007s</td>
+<td>0.009s</td>
+</tr>
+</tbody>
+</table>
+<p>OSvの方がパフォーマンスがよくなるような結果を期待しましたが，そのような計測結果は得られませんでした．
+と言うか，そもそもこのレベルの負荷だとあまり比較する価値がないですね．．，
+実はOSvですが，これ以上リクエスト数や同時接続数を増やしたりすると，止まってしまったり早い段階でfailed requestが目につくようになってしまうのです，
+と言うわけでこのくらいの負荷レベルしか採用することができませんでした．
+僕の知識は未熟なので，設定等に至らない部分があった可能性は十分にあります．</p>
+</div>
+<div class="section" id="id4">
+<h2>まとめ<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>以上のようにすることで，Unikernelを試してみることができます．
+思うようなベンチマーク結果は得られませんでしたが，上記手順を試してみてくださった方は起動の速さはきっと体感していただけたかと思います．
+Unikernelはまだ新興な技術なので，今回の記事で知ってくださる方がいらっしゃれば嬉しいなと思います．
+何かコメントがございましたら，Twitter(&#64;khwarizmi6514)までお願い致します．</p>
+</div>
+<div class="section" id="id5">
+<h2>参考<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0">https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0</a> 広くまとまった日本語記事</li>
+<li><a class="reference external" href="http://unikernel.org/">http://unikernel.org/</a> unikernel org</li>
+<li><a class="reference external" href="http://osv.io/">http://osv.io/</a> OSv</li>
+<li><a class="reference external" href="https://github.com/cloudius-systems/osv">https://github.com/cloudius-systems/osv</a> OSv git repo</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../documents/tex.html" class="btn btn-neutral float-right" title="Tex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../system_tracing/bpf.html" class="btn btn-neutral float-left" title="BPF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, KAWAHARAsouta
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

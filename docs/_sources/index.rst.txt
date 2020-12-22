@@ -73,6 +73,12 @@ wiki
 
 .. toctree::
   :maxdepth: 1
+  :caption: poems:
+
+  poems/ad_cale_2020
+
+.. toctree::
+  :maxdepth: 1
   :caption: documents:
   
   documents/tex
