@@ -224,3 +224,80 @@ apps
   $ sudo ./scripts/run.py -nv       ### 最近buildされたイメージをrunする． -nv はネットワークのための設定でdefaultネットワークインタフェースを生やしてくれるなんともえらいオプション ちなみにtapn(nは環境依存の整数)としてホストから見える
 
 
+minecraft serverを動かそうとした時のmemo
+-------------------------------------------
+
+apps 内のサンプルアプリケーションで，kernelにおくアプリケーションの設定ファイルとかは多分usr.manifestに書かれてる．
+必要なサブシステムは多分moduleのところとかにあって，必要なものはmodule.pyにrequireとかってしてあって，それを取りにいくと思う．
+こけてるところはca-certificateのところな感じ．
+java?のアプリケーションのいくつかも大体同じようなところでブッコケる．
+
+エラーは
+
+::
+
+	///sudoなしだと
+  Makefile:8: recipe for target 'module' failed
+	make: *** [module] Error 1
+	Traceback (most recent call last):
+		File "scripts/module.py", line 280, in <module>
+			args.func(args)
+		File "scripts/module.py", line 233, in build
+			make_modules(modules, args)
+		File "scripts/module.py", line 124, in make_modules
+			raise Exception('make failed for ' + module.name)
+	Exception: make failed for ca-certificates
+	./scripts/build failed: ( for i in "${args[@]}";
+	do
+			case $i in
+					*=*)
+							export "$i"
+					;;
+			esac;
+	done; export fs_type mode OSV_BUILD_PATH; export ARCH=$arch OSV_BASE=$SRC; scripts/module.py $j_arg build -c "$modules" $usrskel_arg $no_required_arg )
+
+  ///sudoありだと
+  Adding /usr/lib/jvm/java/jre/lib/security/cacerts...
+  terminate called after throwing an instance of 'std::system_error'
+    what():  chmod: No such file or directory
+  Aborted
+  [backtrace]
+  0x00000000404be9b3 <???+1078716851>
+  0x662068637573206e <???+1970479214>
+  qemu-system-x86_64: terminating on signal 2
+  Traceback (most recent call last):
+    File "/home/khwarizmi/git/osv/scripts/upload_manifest.py", line 170, in <module>
+      main()
+    File "/home/khwarizmi/git/osv/scripts/upload_manifest.py", line 160, in main
+      upload(osv, manifest, depends, upload_port)
+    File "/home/khwarizmi/git/osv/scripts/upload_manifest.py", line 107, in upload
+      s.recv(1)
+  KeyboardInterrupt
+  Traceback (most recent call last):
+    File "scripts/run.py", line 615, in <module>
+      main(cmdargs)
+    File "scripts/run.py", line 485, in main
+      start_osv(options)
+    File "scripts/run.py", line 469, in start_osv
+      launchers[options.hypervisor](options)
+    File "scripts/run.py", line 282, in start_osv_qemu
+      ret = subprocess.call(cmdline, env=qemu_env)
+    File "/usr/lib/python3.8/subprocess.py", line 342, in call
+      return p.wait(timeout=timeout)
+    File "/usr/lib/python3.8/subprocess.py", line 1079, in wait
+      return self._wait(timeout=timeout)
+    File "/usr/lib/python3.8/subprocess.py", line 1804, in _wait
+      (pid, sts) = self._try_wait(0)
+    File "/usr/lib/python3.8/subprocess.py", line 1762, in _try_wait
+      (pid, sts) = os.waitpid(self.pid, wait_flags)
+
+jreの証明書?のところら辺の設定とかなのかなとは思ってるけどよくわからん．
+あとこれ
+
+::
+  
+  ag /usr/lib/jvm/java/jre/lib/security/cacerts
+  openjdk8-from-host/module.py
+  39:usr_files.link('/usr/lib/jvm/java/jre/lib/security/cacerts').to('/etc/pki/java/cacerts')
+
+module/openjdk8-from-host/module.pyをちょっと編集してみたりはした．

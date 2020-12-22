@@ -147,6 +147,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#osv">OSv</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id5">やってみる</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apps">apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minecraft-servermemo">minecraft serverを動かそうとした時のmemo</a></li>
 </ul>
 </li>
 </ul>
@@ -431,6 +432,78 @@ $ sudo ./scripts/build image=iperf    ### Could not access KVM kernel module: Pe
 $ sudo ./scripts/run.py -nv       ### 最近buildされたイメージをrunする． -nv はネットワークのための設定でdefaultネットワークインタフェースを生やしてくれるなんともえらいオプション ちなみにtapn(nは環境依存の整数)としてホストから見える
 </pre></div>
 </div>
+</div>
+<div class="section" id="minecraft-servermemo">
+<h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="Permalink to this headline">¶</a></h3>
+<p>apps 内のサンプルアプリケーションで，kernelにおくアプリケーションの設定ファイルとかは多分usr.manifestに書かれてる．
+必要なサブシステムは多分moduleのところとかにあって，必要なものはmodule.pyにrequireとかってしてあって，それを取りにいくと思う．
+こけてるところはca-certificateのところな感じ．
+java?のアプリケーションのいくつかも大体同じようなところでブッコケる．</p>
+<p>エラーは</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>      ///sudoなしだと
+Makefile:8: recipe for target &#39;module&#39; failed
+      make: *** [module] Error 1
+      Traceback (most recent call last):
+              File &quot;scripts/module.py&quot;, line 280, in &lt;module&gt;
+                      args.func(args)
+              File &quot;scripts/module.py&quot;, line 233, in build
+                      make_modules(modules, args)
+              File &quot;scripts/module.py&quot;, line 124, in make_modules
+                      raise Exception(&#39;make failed for &#39; + module.name)
+      Exception: make failed for ca-certificates
+      ./scripts/build failed: ( for i in &quot;${args[@]}&quot;;
+      do
+                      case $i in
+                                      *=*)
+                                                      export &quot;$i&quot;
+                                      ;;
+                      esac;
+      done; export fs_type mode OSV_BUILD_PATH; export ARCH=$arch OSV_BASE=$SRC; scripts/module.py $j_arg build -c &quot;$modules&quot; $usrskel_arg $no_required_arg )
+
+///sudoありだと
+Adding /usr/lib/jvm/java/jre/lib/security/cacerts...
+terminate called after throwing an instance of &#39;std::system_error&#39;
+  what():  chmod: No such file or directory
+Aborted
+[backtrace]
+0x00000000404be9b3 &lt;???+1078716851&gt;
+0x662068637573206e &lt;???+1970479214&gt;
+qemu-system-x86_64: terminating on signal 2
+Traceback (most recent call last):
+  File &quot;/home/khwarizmi/git/osv/scripts/upload_manifest.py&quot;, line 170, in &lt;module&gt;
+    main()
+  File &quot;/home/khwarizmi/git/osv/scripts/upload_manifest.py&quot;, line 160, in main
+    upload(osv, manifest, depends, upload_port)
+  File &quot;/home/khwarizmi/git/osv/scripts/upload_manifest.py&quot;, line 107, in upload
+    s.recv(1)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File &quot;scripts/run.py&quot;, line 615, in &lt;module&gt;
+    main(cmdargs)
+  File &quot;scripts/run.py&quot;, line 485, in main
+    start_osv(options)
+  File &quot;scripts/run.py&quot;, line 469, in start_osv
+    launchers[options.hypervisor](options)
+  File &quot;scripts/run.py&quot;, line 282, in start_osv_qemu
+    ret = subprocess.call(cmdline, env=qemu_env)
+  File &quot;/usr/lib/python3.8/subprocess.py&quot;, line 342, in call
+    return p.wait(timeout=timeout)
+  File &quot;/usr/lib/python3.8/subprocess.py&quot;, line 1079, in wait
+    return self._wait(timeout=timeout)
+  File &quot;/usr/lib/python3.8/subprocess.py&quot;, line 1804, in _wait
+    (pid, sts) = self._try_wait(0)
+  File &quot;/usr/lib/python3.8/subprocess.py&quot;, line 1762, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+</pre></div>
+</div>
+<p>jreの証明書?のところら辺の設定とかなのかなとは思ってるけどよくわからん．
+あとこれ</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ag</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">jvm</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">cacerts</span>
+<span class="n">openjdk8</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">host</span><span class="o">/</span><span class="n">module</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">39</span><span class="p">:</span><span class="n">usr_files</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="s1">&#39;/usr/lib/jvm/java/jre/lib/security/cacerts&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;/etc/pki/java/cacerts&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>module/openjdk8-from-host/module.pyをちょっと編集してみたりはした．</p>
 </div>
 </div>
 </div>
