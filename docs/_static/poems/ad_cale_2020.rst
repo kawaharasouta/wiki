@@ -52,7 +52,7 @@ nginxでhttpサーバを建てる
 
 OSvは様々なハイパーバイザの上で実行できることが知られていますが，ここではKVMを対象にしています．
 KVM環境が構築されていることを前提とします．
-また，実験はubuntu2004で行っています．
+また，実験はubuntu2004(kernel ver:  )で行っています．
 
 osvのリポジトリをcloneしてきます．
 
@@ -60,7 +60,7 @@ osvのリポジトリをcloneしてきます．
 
  $ git clone https://github.com/cloudius-systems/osv.git & cd $_
 
-サブモジュールとして，musl(syscallの実装)とサンプルアプリケーションがあるのでそれをcloneします
+サブモジュールとして，musl(syscallの実装)とサンプルアプリケーションがあるのでそれを持ってきます．
 
 ::
 

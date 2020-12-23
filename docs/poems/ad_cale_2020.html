@@ -283,12 +283,12 @@ minecraftは身近で有名ですから，これが達成できたら良い話�
 デフォルトページを表示して満足するだけですが，↑に時間を取られてしまい，時間がありませんでした．．．</p>
 <p>OSvは様々なハイパーバイザの上で実行できることが知られていますが，ここではKVMを対象にしています．
 KVM環境が構築されていることを前提とします．
-また，実験はubuntu2004で行っています．</p>
+また，実験はubuntu2004(kernel ver:  )で行っています．</p>
 <p>osvのリポジトリをcloneしてきます．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/cloudius-systems/osv.git &amp; cd $_
 </pre></div>
 </div>
-<p>サブモジュールとして，musl(syscallの実装)とサンプルアプリケーションがあるのでそれをcloneします</p>
+<p>サブモジュールとして，musl(syscallの実装)とサンプルアプリケーションがあるのでそれを持ってきます．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ git submodule update --init --recursive
 </pre></div>
 </div>

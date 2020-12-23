@@ -27,11 +27,13 @@ https://mirage.io/wiki/hello-world
 環境
 -----
 
-OS: ubuntu18.04
-kernel: 4.15.0-91-generic
-kvm
-ocaml: 4.05.0
-opam: 2.0.4
+::
+
+  OS: ubuntu18.04
+  kernel: 4.15.0-91-generic
+  kvm
+  ocaml: 4.05.0
+  opam: 2.0.4
 
 手順
 ------
