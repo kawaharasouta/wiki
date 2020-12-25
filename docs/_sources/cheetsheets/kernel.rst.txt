@@ -29,6 +29,17 @@
   モジュール名をmodules.confに書き込み
   $ sudo vim /etc/modules-load.d/modules.conf
 
+デフォルトでロードされるモジュールをロードされなくする
+======================================================
+
+↑と合わせてあとでちゃんとここら辺確認したい．
+
+::
+
+  $ sudo vim /etc/modprobe.d/blacklist.comf
+  + blacklist [mod name]
+  $ sudo update-initramfs -u
+  $ sudo reboot
 
 grubで起動時に選べるカーネルの種類を見る
 ========================================

@@ -99,11 +99,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/syslog.html">syslogについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/capabilities.html">Linux capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -116,30 +125,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html#virtio">virtio関連について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/golang_perf.html">golangでちょっと文字列関連性能計測した時のいろんなメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_command.html">ip command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">カーネル関連tips</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">カーネルバージョン変更</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">起動時にカーネルモジュールがロードされるようにする</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">デフォルトでロードされるモジュールをロードされなくする</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#grub">grubで起動時に選べるカーネルの種類を見る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#kernel-up-target">標準で起動するカーネルを指定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dbgsym">dbgsymパッケージリポジトリ導入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">カーネル再構築</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">便利なカーネルコンフィグ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">カーネル再構築</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">便利なカーネルコンフィグ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#proc-config-gz">起動中に /proc/config.gz でカーネルコンフィグを確認できるようにする．</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -147,7 +166,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPFとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
+</ul>
+<p class="caption"><span class="caption-text">poems:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -247,6 +270,16 @@ $ sudo vim /etc/modules-load.d/modules.conf
 </pre></div>
 </div>
 </div>
+<div class="section" id="id3">
+<h2>デフォルトでロードされるモジュールをロードされなくする<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>↑と合わせてあとでちゃんとここら辺確認したい．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/modprobe.d/blacklist.comf
++ blacklist [mod name]
+$ sudo update-initramfs -u
+$ sudo reboot
+</pre></div>
+</div>
+</div>
 <div class="section" id="grub">
 <h2>grubで起動時に選べるカーネルの種類を見る<a class="headerlink" href="#grub" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo grep menuentry /boot/grub/grub.cfg
@@ -259,7 +292,7 @@ $ sudo vim /etc/modules-load.d/modules.conf
 <p>ちなみにlinux-imageをinstallしたらこれ増える</p>
 </div>
 <div class="section" id="kernel-up-target">
-<span id="id3"></span><h2>標準で起動するカーネルを指定<a class="headerlink" href="#kernel-up-target" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>標準で起動するカーネルを指定<a class="headerlink" href="#kernel-up-target" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
 
   #indexで指定する
@@ -299,8 +332,8 @@ $ sudo apt update
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>カーネル再構築<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>カーネル再構築<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB/%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95">https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB/%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95</a>
 ↑のリンクを参考にした．</p>
 <p>カーネルのソースをダウンロードして展開する．
@@ -349,8 +382,8 @@ archだとmkinitcpioってコマンド叩いてるけどubuntuにはなくて，
 <a class="reference internal" href="#kernel-up-target"><span class="std std-ref">標準で起動するカーネルを指定</span></a>
 再起動するとビルドしたカーネルで動いてます．</p>
 </div>
-<div class="section" id="id5">
-<h2>便利なカーネルコンフィグ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>便利なカーネルコンフィグ<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="proc-config-gz">
 <h3>起動中に /proc/config.gz でカーネルコンフィグを確認できるようにする．<a class="headerlink" href="#proc-config-gz" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ grep IKCONFIG .config
@@ -367,8 +400,8 @@ CONFIG_IKCONFIG_PROC=y
 <p><strong>こんなことしなくても/boot/config-`uname -r`とかで見れるんじゃね?</strong></p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>参考<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>参考<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>ソースコード: <a class="reference external" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
 <p>コードリーディング: <a class="reference external" href="https://elixir.bootlin.com/linux/latest/source">https://elixir.bootlin.com/linux/latest/source</a></p>
 <p>linux kernel の make target: <a class="reference external" href="https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c">https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c</a></p>
