@@ -32,6 +32,7 @@ wiki
   contents/capabilities
   contents/haskell
   contents/XDG
+  contents/ubuntu_desktop
 
 
 .. toctree::

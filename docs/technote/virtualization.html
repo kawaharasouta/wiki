@@ -113,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/capabilities.html">Linux capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -184,6 +185,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
+</ul>
+<p class="caption"><span class="caption-text">poems:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
 </ul>
 <p class="caption"><span class="caption-text">documents:</span></p>
 <ul>
@@ -433,6 +438,9 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 完全仮想化の場合はデータのやりとり(つまりレジスタ操作)の際に必ず逐一VMExitを発生させる必要があったけど，
 共有メモリだからそれがないはず．
 virtqueueはvirtioのキュー構造体．</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/virtio-net.png"><img alt="../_images/virtio-net.png" src="../_images/virtio-net.png" style="width: 307.6px; height: 344.0px;" /></a>
+</div>
 </div>
 <div class="section" id="vhost">
 <h2>vhostとは<a class="headerlink" href="#vhost" title="Permalink to this headline">¶</a></h2>
@@ -442,16 +450,18 @@ virtioはバックエンドにQEMUを用いるが，vhostはカーネル空間�
 vhost-net module enables KVM (QEMU) to offload the servicing of virtio-net devices to the vhost-net kernel module
 そのため，ringプロテクション遷移が少ない．
 とりあえず今の所QEMUを使わないvirtioという風に認識している．
-でこれのネットワークインタフェース実装がvhost-net
-たぶん，vhostはゲストから見るとvirtioとはなんら違いがないんじゃないか．
-ゲストから見たらvirtioって見えてそう．多分virtio_pciが見えてるだろうし．
-↑これはおそらく正しくて今までのvirtioのメカニズムが使われている．</p>
+vhostはゲストから見るとvirtioとはなんら違いがないんじゃないか．
+ゲストから見たらvirtioって見えてそう．多分virtio_pciが見えてるだろうし．</p>
 <p>vhostは、ゲストネットワークトラフィックをカーネル側から直接TUNデバイスに直接渡すことにより、上記のプロセスを加速できます。 このモデルでは、QEMUはvirtqueueの直接制御をカーネルドライバーに渡します。</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/vhost-net.png"><img alt="../_images/vhost-net.png" src="../_images/vhost-net.png" style="width: 426.8px; height: 340.40000000000003px;" /></a>
+</div>
 </div>
 <div class="section" id="vhost-user">
 <h2>vhost-user<a class="headerlink" href="#vhost-user" title="Permalink to this headline">¶</a></h2>
+<p>これ絶対間違ってるので後で調査しなおさないといけない．</p>
 <p>上のvhostのDPDKアプライアンスのための実装としてvhost-userなるものがあるらしい．
-vhostでカーネル空間にあったバックエンドをユーザ空間に持ち出すことにより，ホストでのDPDKの利用可能性を高めたもの．</p>
+vhostでカーネル空間にあったバックエンドをユーザ空間に持ち出すことにより，ホストでのDPDKの利用可能性を高めたもの．??</p>
 <div class="section" id="vhost-user-server-client">
 <h3>vhost-user server と client<a class="headerlink" href="#vhost-user-server-client" title="Permalink to this headline">¶</a></h3>
 <p>DPDK v16.07でvHostユーザークライアントモードが導入され、DPDKの制限に対処しました。これにより、vHostユーザーバックエンド（DPDKを備えたOVSなどのDPDKベースのアプリケーション）がクラッシュまたは再起動した場合、DPDK vHostユーザーポートを備えたVM バックエンドとの接続を確立し、基本的にネットワークの観点からは役に立たないようにします。 vHostユーザークライアントモードはこの問題を解決します。

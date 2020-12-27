@@ -224,8 +224,9 @@ virtio_pciっていうのがなんかPCIデバイスをエミュレートして�
 共有メモリだからそれがないはず．
 virtqueueはvirtioのキュー構造体．
 
-
-
+.. figure:: virtio-net.png
+  :scale: 40%
+  :align: center
 
 
 vhostとは
@@ -237,19 +238,24 @@ virtioはバックエンドにQEMUを用いるが，vhostはカーネル空間�
 vhost-net module enables KVM (QEMU) to offload the servicing of virtio-net devices to the vhost-net kernel module
 そのため，ringプロテクション遷移が少ない．
 とりあえず今の所QEMUを使わないvirtioという風に認識している．
-でこれのネットワークインタフェース実装がvhost-net
-たぶん，vhostはゲストから見るとvirtioとはなんら違いがないんじゃないか．
+vhostはゲストから見るとvirtioとはなんら違いがないんじゃないか．
 ゲストから見たらvirtioって見えてそう．多分virtio_pciが見えてるだろうし．
-↑これはおそらく正しくて今までのvirtioのメカニズムが使われている．
-
 
 vhostは、ゲストネットワークトラフィックをカーネル側から直接TUNデバイスに直接渡すことにより、上記のプロセスを加速できます。 このモデルでは、QEMUはvirtqueueの直接制御をカーネルドライバーに渡します。
+
+.. figure:: vhost-net.png
+  :scale: 40%
+  :align: center
+
 
 vhost-user
 ===========
 
+これ絶対間違ってるので後で調査しなおさないといけない．
+
 上のvhostのDPDKアプライアンスのための実装としてvhost-userなるものがあるらしい．
-vhostでカーネル空間にあったバックエンドをユーザ空間に持ち出すことにより，ホストでのDPDKの利用可能性を高めたもの．
+vhostでカーネル空間にあったバックエンドをユーザ空間に持ち出すことにより，ホストでのDPDKの利用可能性を高めたもの．??
+
 
 vhost-user server と client
 ----------------------------
