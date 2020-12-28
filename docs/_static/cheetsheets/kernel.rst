@@ -212,6 +212,10 @@ grub2の場合
   $ sudo grub2-mkconfig
     or
   $ uodate-grub
+    or
+  $ update-grub2
+
+これによって /etc/grub/grub.cfg が自動生成される．
 
 参考
 ====
