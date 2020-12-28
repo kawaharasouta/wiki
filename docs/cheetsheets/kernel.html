@@ -113,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/capabilities.html">Linux capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -158,7 +159,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#proc-config-gz">起動中に /proc/config.gz でカーネルコンフィグを確認できるようにする．</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">カーネルブートオプション</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">設定</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -401,7 +406,29 @@ CONFIG_IKCONFIG_PROC=y
 </div>
 </div>
 <div class="section" id="id7">
-<h2>参考<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>カーネルブートオプション<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>ブートオプションという呼び方があってるのかわからないんだけど，/proc/cmdline で確認できるやつ．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat /proc/cdmline
+BOOT_IMAGE=/boot/vmlinuz-4.15.0-101-generic root=UUID=f1f76259-f300-4ddf-9e64-4d770bf4b031 ro default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87 kgdboc=ttyS0,115200 console=ttyS0,115200
+</pre></div>
+</div>
+<div class="section" id="id8">
+<h3>設定<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>※grubの場合は/etc/grub/grub.conf を編集する</p>
+<p>grub2の場合</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim /etc/default/grub
+
+$ sudo grub-mkconfig
+  or
+$ sudo grub2-mkconfig
+  or
+$ uodate-grub
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>参考<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>ソースコード: <a class="reference external" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
 <p>コードリーディング: <a class="reference external" href="https://elixir.bootlin.com/linux/latest/source">https://elixir.bootlin.com/linux/latest/source</a></p>
 <p>linux kernel の make target: <a class="reference external" href="https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c">https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c</a></p>

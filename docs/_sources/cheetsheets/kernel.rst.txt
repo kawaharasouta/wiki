@@ -185,6 +185,34 @@ menuconfigだと
 
 **こんなことしなくても/boot/config-`uname -r`とかで見れるんじゃね?**
 
+
+カーネルブートオプション
+==========================
+
+ブートオプションという呼び方があってるのかわからないんだけど，/proc/cmdline で確認できるやつ．
+
+::
+  
+  $ cat /proc/cdmline
+  BOOT_IMAGE=/boot/vmlinuz-4.15.0-101-generic root=UUID=f1f76259-f300-4ddf-9e64-4d770bf4b031 ro default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87 kgdboc=ttyS0,115200 console=ttyS0,115200
+
+設定
+------
+
+※grubの場合は/etc/grub/grub.conf を編集する
+
+grub2の場合
+
+::
+
+  $ vim /etc/default/grub
+
+  $ sudo grub-mkconfig
+    or
+  $ sudo grub2-mkconfig
+    or
+  $ uodate-grub
+
 参考
 ====
 
