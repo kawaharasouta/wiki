@@ -144,18 +144,18 @@
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#virtio">virtio関連について</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id8">virtioの概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vhost">vhostとは</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vhost-user">vhost-user</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#virtio">virtio関連について</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">virtioの概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vhost">vhostとは</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vhost-user">vhost-user</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vhost-user-server-client">vhost-user server と client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virtio-vhost-user">virtio-vhost-user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memo">memo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#virtio-vhost-user">virtio-vhost-user</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#memo">memo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#kvm">kvmのコードのディレクトリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kvm">kvmのコードのディレクトリ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pci-passthrough-iommu-sr-iov">pci passthrough とか iommu とか SR-IOV とか</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iommu">iommuを有効か?</a></li>
 </ul>
 </li>
 </ul>
@@ -427,12 +427,11 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="virtio">
-<h1>virtio関連について<a class="headerlink" href="#virtio" title="Permalink to this headline">¶</a></h1>
+<h2>virtio関連について<a class="headerlink" href="#virtio" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://wiki.libvirt.org/page/Virtio">https://wiki.libvirt.org/page/Virtio</a></p>
 <div class="section" id="id8">
-<h2>virtioの概要<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h3>virtioの概要<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>virtio_pciっていうのがなんかPCIデバイスをエミュレートしてる見たいな立ち回りをする感じ．
 実際のデータやりとりはvirtio ringっていうメモリ領域でやる．これはshared memory空間にいて，
 完全仮想化の場合はデータのやりとり(つまりレジスタ操作)の際に必ず逐一VMExitを発生させる必要があったけど，
@@ -443,7 +442,7 @@ virtqueueはvirtioのキュー構造体．</p>
 </div>
 </div>
 <div class="section" id="vhost">
-<h2>vhostとは<a class="headerlink" href="#vhost" title="Permalink to this headline">¶</a></h2>
+<h3>vhostとは<a class="headerlink" href="#vhost" title="Permalink to this headline">¶</a></h3>
 <p>この文章はかなりの不確実な成分を含んでいるのであとで必ず書き直す．
 virtioと並んでvhostという準仮想ドライバがある．
 virtioはバックエンドにQEMUを用いるが，vhostはカーネル空間にバックエンドが存在する．
@@ -458,10 +457,11 @@ vhostはゲストから見るとvirtioとはなんら違いがないんじゃな
 </div>
 </div>
 <div class="section" id="vhost-user">
-<h2>vhost-user<a class="headerlink" href="#vhost-user" title="Permalink to this headline">¶</a></h2>
+<h3>vhost-user<a class="headerlink" href="#vhost-user" title="Permalink to this headline">¶</a></h3>
 <p>これ絶対間違ってるので後で調査しなおさないといけない．</p>
 <p>上のvhostのDPDKアプライアンスのための実装としてvhost-userなるものがあるらしい．
 vhostでカーネル空間にあったバックエンドをユーザ空間に持ち出すことにより，ホストでのDPDKの利用可能性を高めたもの．??</p>
+</div>
 <div class="section" id="vhost-user-server-client">
 <h3>vhost-user server と client<a class="headerlink" href="#vhost-user-server-client" title="Permalink to this headline">¶</a></h3>
 <p>DPDK v16.07でvHostユーザークライアントモードが導入され、DPDKの制限に対処しました。これにより、vHostユーザーバックエンド（DPDKを備えたOVSなどのDPDKベースのアプリケーション）がクラッシュまたは再起動した場合、DPDK vHostユーザーポートを備えたVM バックエンドとの接続を確立し、基本的にネットワークの観点からは役に立たないようにします。 vHostユーザークライアントモードはこの問題を解決します。
@@ -469,22 +469,23 @@ vhostでカーネル空間にあったバックエンドをユーザ空間に持
 要は，DPDKアプライアンスがvhost-userの主体?になる(clientはQEMUらしい)とそれがクラッシュした時に再現が大変になるから
 serverは別にいてDPDKアプライアンスはclientとしてそれ(serverはQEMU)を利用するような形態にしたということ．</p>
 </div>
-</div>
 <div class="section" id="virtio-vhost-user">
-<h2>virtio-vhost-user<a class="headerlink" href="#virtio-vhost-user" title="Permalink to this headline">¶</a></h2>
+<h3>virtio-vhost-user<a class="headerlink" href="#virtio-vhost-user" title="Permalink to this headline">¶</a></h3>
 <p>なんか，VM間の通信に強いようなやつっぽくて，
 一つのゲストに対してvhostのバックエンドをオフロードしてるっぽくて，VM-VMの通信がホストを介さないでできているような感じのものっぽい．
 <a class="reference external" href="https://wiki.qemu.org/Features/VirtioVhostUser">https://wiki.qemu.org/Features/VirtioVhostUser</a></p>
 </div>
 <div class="section" id="memo">
-<h2>memo<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h2>
+<h3>memo<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>virtioのゲスト側の実装はVMM側の実装とは別れている．
 ゲストマシンはvirtioのドライバを持っていてかつVMM側でvirtioのバックエンドドライバが動いている必要がある．
 なんかvritioだのvhostうんたらだのあるけどゲストはともかくvirtioだと思っておけばいいよってやつ．</li>
 </ul>
+</div>
+</div>
 <div class="section" id="kvm">
-<h3>kvmのコードのディレクトリ<a class="headerlink" href="#kvm" title="Permalink to this headline">¶</a></h3>
+<h2>kvmのコードのディレクトリ<a class="headerlink" href="#kvm" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">virt</span><span class="o">/</span><span class="n">kvm</span><span class="o">/</span> <span class="n">アーキテクチャ非依存コード</span>
 <span class="o">/</span><span class="n">arch</span><span class="o">/*/</span><span class="n">kvm</span><span class="o">/</span> <span class="n">各アーキテクチャ向けコード</span>
 </pre></div>
@@ -492,6 +493,29 @@ serverは別にいてDPDKアプライアンスはclientとしてそれ(serverは
 <p>** x86向けの注意点 **
 x86はIntel-VTとAMD-VTで互換性がないのでそれぞれの依存コードとx86共通のコードがある．
 ここら辺説明分書くよりもそのディレクトリに置いてあるMakefile見た方が早い．/arch/x86/kvm/Makefileみろ．</p>
+</div>
+<div class="section" id="pci-passthrough-iommu-sr-iov">
+<h2>pci passthrough とか iommu とか SR-IOV とか<a class="headerlink" href="#pci-passthrough-iommu-sr-iov" title="Permalink to this headline">¶</a></h2>
+<p>※とりあえずここにメモとか残しておくけど，これらは後でcontentsの方に移す．</p>
+<div class="section" id="iommu">
+<h3>iommuを有効か?<a class="headerlink" href="#iommu" title="Permalink to this headline">¶</a></h3>
+<p>とりあえずいつも通りintel-vtもそうなんだけど，iommuもBIOSで有効かする必要があるかも?
+なんかここら辺情報も僕の実験も雑にやって錯綜してしまっていてよくわからん．</p>
+<p>カーネルロードオプションでiommuを有効か</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
+- GRUB_CMDLINE_LINUX=&quot;&quot;
++ GRUB_CMDLINE_LINUX=&quot;intel_iommu=on&quot;
+$ sudo update-grub2
+$ sudo reboot
+$ dmesg | grep -i iommu
+  [    7.817631] iommu: Adding device 0000:d7:0e.0 to group 69
+  [    7.823123] iommu: Adding device 0000:d7:0e.1 to group 69
+  [    7.828647] iommu: Adding device 0000:d7:0f.0 to group 70
+  [    7.834139] iommu: Adding device 0000:d7:0f.1 to group 70
+  .........
+</pre></div>
+</div>
+<p>とりあえずこんな感じになれば良さげ．</p>
 </div>
 </div>
 </div>

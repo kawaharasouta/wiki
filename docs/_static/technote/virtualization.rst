@@ -209,14 +209,13 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 その１「virtioの概要とVirtio PCI」より引用)
 
 
-=====================
 virtio関連について
 =====================
 
 https://wiki.libvirt.org/page/Virtio
 
 virtioの概要
-==============
+-------------
 
 virtio_pciっていうのがなんかPCIデバイスをエミュレートしてる見たいな立ち回りをする感じ．
 実際のデータやりとりはvirtio ringっていうメモリ領域でやる．これはshared memory空間にいて，
@@ -230,7 +229,7 @@ virtqueueはvirtioのキュー構造体．
 
 
 vhostとは
-==========
+----------
 
 この文章はかなりの不確実な成分を含んでいるのであとで必ず書き直す．
 virtioと並んでvhostという準仮想ドライバがある．
@@ -249,7 +248,7 @@ vhostは、ゲストネットワークトラフィックをカーネル側から
 
 
 vhost-user
-===========
+-----------
 
 これ絶対間違ってるので後で調査しなおさないといけない．
 
@@ -266,14 +265,14 @@ DPDK v16.07でvHostユーザークライアントモードが導入され、DPDK
 serverは別にいてDPDKアプライアンスはclientとしてそれ(serverはQEMU)を利用するような形態にしたということ．
 
 virtio-vhost-user
-==================
+-------------------
 
 なんか，VM間の通信に強いようなやつっぽくて，
 一つのゲストに対してvhostのバックエンドをオフロードしてるっぽくて，VM-VMの通信がホストを介さないでできているような感じのものっぽい．
 https://wiki.qemu.org/Features/VirtioVhostUser
 
 memo
-=========
+-------
 
 - virtioのゲスト側の実装はVMM側の実装とは別れている．
   ゲストマシンはvirtioのドライバを持っていてかつVMM側でvirtioのバックエンドドライバが動いている必要がある．
@@ -281,7 +280,7 @@ memo
 
 
 kvmのコードのディレクトリ
----------------------------
+============================
 
 ::
 
@@ -292,6 +291,32 @@ kvmのコードのディレクトリ
 x86はIntel-VTとAMD-VTで互換性がないのでそれぞれの依存コードとx86共通のコードがある．
 ここら辺説明分書くよりもそのディレクトリに置いてあるMakefile見た方が早い．/arch/x86/kvm/Makefileみろ．
 
+pci passthrough とか iommu とか SR-IOV とか
+=============================================
 
+※とりあえずここにメモとか残しておくけど，これらは後でcontentsの方に移す．
 
+iommuを有効か?
+-----------------
+
+とりあえずいつも通りintel-vtもそうなんだけど，iommuもBIOSで有効かする必要があるかも?
+なんかここら辺情報も僕の実験も雑にやって錯綜してしまっていてよくわからん．
+
+カーネルロードオプションでiommuを有効か
+
+::
+
+  $ sudo vim /etc/default/grub
+  - GRUB_CMDLINE_LINUX=""
+  + GRUB_CMDLINE_LINUX="intel_iommu=on"
+  $ sudo update-grub2
+  $ sudo reboot
+  $ dmesg | grep -i iommu
+    [    7.817631] iommu: Adding device 0000:d7:0e.0 to group 69
+    [    7.823123] iommu: Adding device 0000:d7:0e.1 to group 69
+    [    7.828647] iommu: Adding device 0000:d7:0f.0 to group 70
+    [    7.834139] iommu: Adding device 0000:d7:0f.1 to group 70
+    .........
+
+とりあえずこんな感じになれば良さげ．
 
