@@ -36,12 +36,6 @@ package
   #ubuntu2020 (>=1810?) toriaezu
   $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
 
-これいりそう
-
-::
-
-  $ sudo apt install virtinst         #virt-install
-
 start config
 =============
 ::
