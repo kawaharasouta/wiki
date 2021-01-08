@@ -793,6 +793,9 @@ nestedしたい時
   $ cat /proc/cpuinfo | grep vmx
   ///  なんか出てくればよい
 
+
+http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html
+
 reference
 ===========
 
