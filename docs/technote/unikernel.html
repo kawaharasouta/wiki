@@ -113,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/capabilities.html">Linux capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -127,7 +128,6 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
-<li class="toctree-l1"><a class="reference internal" href="virtualization.html#virtio">virtio関連について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">unikernelについて</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mirageoshelloworld">mirageOSでHelloWorldする</a><ul>
@@ -148,6 +148,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#id5">やってみる</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apps">apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#minecraft-servermemo">minecraft serverを動かそうとした時のmemo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#includeos">includeOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#location">location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependency">dependency</a></li>
 </ul>
 </li>
 </ul>
@@ -506,6 +512,34 @@ Traceback (most recent call last):
 </pre></div>
 </div>
 <p>module/openjdk8-from-host/module.pyをちょっと編集してみたりはした．</p>
+</div>
+</div>
+<div class="section" id="includeos">
+<h2>includeOS<a class="headerlink" href="#includeos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/includeos/IncludeOS">https://github.com/includeos/IncludeOS</a>
+<a class="reference external" href="https://includeos.readthedocs.io/en/latest/Getting-started.html">https://includeos.readthedocs.io/en/latest/Getting-started.html</a></p>
+<div class="section" id="location">
+<h3>location<a class="headerlink" href="#location" title="Permalink to this headline">¶</a></h3>
+<p>デフォルトのプロジェクトpathは /usr/local/includeos だけど↓で設定．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ echo export INCLUDEOS_PREFIX=&#39;$HOME&#39;/includeos &gt;&gt; .bashrc
+$ echo export PATH=&#39;$PATH&#39;:&#39;$INCLUDEOS_PREFIX&#39;/bin &gt;&gt; $HOME/.bashrc
+</pre></div>
+</div>
+</div>
+<div class="section" id="install">
+<h3>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="dependency">
+<h3>dependency<a class="headerlink" href="#dependency" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The conan package manager (1.13.1 or newer)    <a class="reference external" href="https://docs.conan.io/en/latest/installation.html">https://docs.conan.io/en/latest/installation.html</a></li>
+<li>cmake, make, nasm (x86/x86_64 only)</li>
+<li>clang, or alternatively gcc on linux. Prebuilt packages are available for clang 6.0 and gcc 7.3.</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install cmake nasm build-essential
+</pre></div>
+</div>
+<p>ちょっとconanがわからんかったのでいったんやめとく</p>
 </div>
 </div>
 </div>

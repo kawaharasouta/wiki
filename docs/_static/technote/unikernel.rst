@@ -303,3 +303,38 @@ jreの証明書?のところら辺の設定とかなのかなとは思ってる�
   39:usr_files.link('/usr/lib/jvm/java/jre/lib/security/cacerts').to('/etc/pki/java/cacerts')
 
 module/openjdk8-from-host/module.pyをちょっと編集してみたりはした．
+
+
+
+includeOS
+=============
+
+https://github.com/includeos/IncludeOS
+https://includeos.readthedocs.io/en/latest/Getting-started.html
+
+location
+-------------
+
+デフォルトのプロジェクトpathは /usr/local/includeos だけど↓で設定．
+
+::
+
+  $ echo export INCLUDEOS_PREFIX='$HOME'/includeos >> .bashrc
+  $ echo export PATH='$PATH':'$INCLUDEOS_PREFIX'/bin >> $HOME/.bashrc
+
+install
+---------
+
+dependency
+----------------
+
+- The conan package manager (1.13.1 or newer)    https://docs.conan.io/en/latest/installation.html
+- cmake, make, nasm (x86/x86_64 only)
+- clang, or alternatively gcc on linux. Prebuilt packages are available for clang 6.0 and gcc 7.3.
+
+::
+
+  $ sudo apt install cmake nasm build-essential
+
+
+ちょっとconanがわからんかったのでいったんやめとく
