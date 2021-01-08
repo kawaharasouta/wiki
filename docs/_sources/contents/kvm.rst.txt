@@ -23,8 +23,16 @@ BIOSでIntel-VT無効になっていても，KVMはQEMUで頑張ってVMを動�
 https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82
 
 
-
 ubuntu_kvm_installation_
+
+ダメな例だったらやること
+
+::
+
+  ### とりあえずBIOSで有効にしてくる
+  $ lsmod | grep kvm
+  kvm と kvm_intel がなかったら
+  $ sudo modprobe -r kvm_intel      // kvm も一緒にロードされる
 
 
 package
@@ -192,6 +200,8 @@ ISOをマウントしてもできるはず(manにはそう書いてある)なん
 
   #isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
   $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
+  ####  なんか↑notfoundしたので (20.04がなくて20.04.1だけになってた)
+  $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso
   $ sudo virt-install \
   --connect=qemu:///system \
   --name ubuntu1 \
@@ -755,6 +765,33 @@ https://qiita.com/nouphet/items/fea026c03ca86ec54111
 
 元々LVM環境が用意できてない場合のやつあったけどうまく行かなかったやつ．
 https://gist.github.com/koudaiii/bfcaa6941bd99d688ade
+
+nestedしたい時
+=================
+
+ホストで
+
+::
+
+  $ cat /sys/module/kvm_intel/parameters/nested
+  /// 1 か Y ならOK    0 か N だったら↓
+  $ sudo su 
+  # sudo cat << EOF > /etc/modprobe.d/kvm-nested.conf       ///名前はなんでもいい
+  > options kvm_intel nested=1
+  > EOF
+  $ sudo modprobe -r kvm_intel
+
+  /// ゲストの設定を書き直す
+  $ sudo virsh edit [vm]
+  /////// cpu のところに追加する
+  + <feature policy='require' name='vmx'/>
+
+ゲストで確認
+
+::
+
+  $ cat /proc/cpuinfo | grep vmx
+  ///  なんか出てくればよい
 
 reference
 ===========

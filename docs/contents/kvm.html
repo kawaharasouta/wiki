@@ -123,6 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#autostart-setting">autostart setting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#s411">S411の環境を作った時のメモやつ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#disk">disk拡張する時の話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nested">nestedしたい時</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qemu">QEMUを素で触ってみたいやつ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
@@ -286,6 +287,13 @@
 </div>
 <p><a class="reference external" href="https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82">https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82</a></p>
 <p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation">ubuntu_kvm_installation</a></p>
+<p>ダメな例だったらやること</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>### とりあえずBIOSで有効にしてくる
+$ lsmod | grep kvm
+kvm と kvm_intel がなかったら
+$ sudo modprobe -r kvm_intel      // kvm も一緒にロードされる
+</pre></div>
+</div>
 </div>
 <div class="section" id="package">
 <h2>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
@@ -444,6 +452,8 @@ ISOをwgetしてやる方法を↓に書いとく．ちなみに詳細?は↑の
 ISOをマウントしてもできるはず(manにはそう書いてある)なんだけど，マウントした場合だとinstall中にmount errorみたいなのが起きてダメだったんだよね．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
+####  なんか↑notfoundしたので (20.04がなくて20.04.1だけになってた)
+$ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso
 $ sudo virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
@@ -964,6 +974,29 @@ The filesystem on /dev/vgubuntu2004/root is now 106572800 (4k) blocks long.
 <p><a class="reference external" href="https://qiita.com/nouphet/items/fea026c03ca86ec54111">https://qiita.com/nouphet/items/fea026c03ca86ec54111</a></p>
 <p>元々LVM環境が用意できてない場合のやつあったけどうまく行かなかったやつ．
 <a class="reference external" href="https://gist.github.com/koudaiii/bfcaa6941bd99d688ade">https://gist.github.com/koudaiii/bfcaa6941bd99d688ade</a></p>
+</div>
+<div class="section" id="nested">
+<h2>nestedしたい時<a class="headerlink" href="#nested" title="Permalink to this headline">¶</a></h2>
+<p>ホストで</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat /sys/module/kvm_intel/parameters/nested
+/// 1 か Y ならOK    0 か N だったら↓
+$ sudo su
+# sudo cat &lt;&lt; EOF &gt; /etc/modprobe.d/kvm-nested.conf       ///名前はなんでもいい
+&gt; options kvm_intel nested=1
+&gt; EOF
+$ sudo modprobe -r kvm_intel
+
+/// ゲストの設定を書き直す
+$ sudo virsh edit [vm]
+/////// cpu のところに追加する
++ &lt;feature policy=&#39;require&#39; name=&#39;vmx&#39;/&gt;
+</pre></div>
+</div>
+<p>ゲストで確認</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat /proc/cpuinfo | grep vmx
+///  なんか出てくればよい
+</pre></div>
+</div>
 </div>
 <div class="section" id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
