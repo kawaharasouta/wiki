@@ -299,8 +299,18 @@ $ sudo modprobe -r kvm_intel      // kvm も一緒にロードされる
 <h2>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
-#ubuntu2020 (&gt;=1810?) toriaezu
+#ubuntu2004 (&gt;=1810?) toriaezu
 $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
+</pre></div>
+</div>
+<p>ubuntu2004での変更点とか?
+<a class="reference external" href="https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja">https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja</a> の libvirt のところみる</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Ubuntu 18.04 において、単体のモノリシックなパッケージであったlibvirt-binから、以下の3つのメインコンポーネントに分割されました:
+libvirt-daemon-system - 設定とsystemdのサービスファイル群によるデーモンのシステム統合（これは、古いlibvirt-bin最も似ているパッケージです）
+libvirt-clients - virshのようなlibvirtに関連したcliツール群
+libvirt-daemon - サービス群や設定を除いたlibvirtデーモンのみ
+同様に、めったに使用されずサポートが少ないvirtualboxやxenコントロールなどのサブ機能、一般的でないストレージオプションが、さまざまなlibvirt-daemon-driver-*パッケージに分割されました。 これにより、インストール時の専有領域とインストール時の大部分のアクティブコードを削減できます。
+パッケージとプロジェクトには十分な移行時間があったため、libvirt-daemon-system + libvirt-clientsを取り込む空の互換性パッケージであるlibvirt-binがついに削除されました。古い名前を参照しているスクリプトまたはサードパーティのコンポーネントがある場合は、上記のリストを使用して最も新しいパッケージを選択してください。
 </pre></div>
 </div>
 </div>

@@ -14,6 +14,7 @@ wiki
 
   contents/dpdk
   contents/kvm
+  contents/xen
   contents/vagrant
   contents/docker
   contents/ssh_config
