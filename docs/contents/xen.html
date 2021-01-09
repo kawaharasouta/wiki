@@ -44,7 +44,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vagrant" href="vagrant.html" />
+    <link rel="prev" title="kvm" href="kvm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,9 +91,13 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">xen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ubuntu2004xen">ubuntu2004でxen環境構築</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
@@ -261,6 +267,11 @@ $ sudo virsh uri                                        /// xen:///system があ
 $ sudo virsh --connect=xen:///system                    /// 繋がるか確認しとく
 </pre></div>
 </div>
+<p>参照</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.osarusystem.com/misc/xen_dom0_create.html">https://www.osarusystem.com/misc/xen_dom0_create.html</a></li>
+<li><a class="reference external" href="https://think-t.hatenablog.com/entry/20121013/p1">https://think-t.hatenablog.com/entry/20121013/p1</a></li>
+</ul>
 </div>
 </div>
 
@@ -269,6 +280,15 @@ $ sudo virsh --connect=xen:///system                    /// 繋がるか確認�
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vagrant.html" class="btn btn-neutral float-right" title="vagrant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kvm.html" class="btn btn-neutral float-left" title="kvm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

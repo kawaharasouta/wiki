@@ -34,3 +34,23 @@ ubuntu2004でxen環境構築
   $ sudo systemctl restart libvirtd
   $ sudo virsh uri                                        /// xen:///system があるかどうか確認しとく
   $ sudo virsh --connect=xen:///system                    /// 繋がるか確認しとく
+
+
+
+
+
+
+
+参照
+
+- https://www.osarusystem.com/misc/xen_dom0_create.html
+- https://think-t.hatenablog.com/entry/20121013/p1
+
+
+
+
+
+
+
+
+
