@@ -167,6 +167,8 @@ systemctlコマンド
   kill, 対象のUnitに対してシグナルを送る．デフォルトはSIGTERM(killコマンドで出るシグナル)． --signal= で指定可能．
 
 
+https://qiita.com/sinsengumi/items/24d726ec6c761fc75cc9
+
 ===================
 bootに関するまとめ
 ===================

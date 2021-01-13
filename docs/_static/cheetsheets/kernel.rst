@@ -217,6 +217,8 @@ grub2の場合
 
 これによって /etc/grub/grub.cfg が自動生成される．
 
+https://ac-as.net/linux-kernel-boot-options/
+
 参考
 ====
 

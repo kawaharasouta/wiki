@@ -395,6 +395,45 @@ virtio
     <virtualport type='openvswitch'/>
   </interface>
 
+PCI passthrough
+=================
+
+BIOSでIOMMU拡張を有効化する．
+なんかよくわからんけど「Intel VT-d」「I/O Virtualization Technology」とからへん?
+
+::
+
+  ### ブートオプションでiommuを有効化
+  $ sudo vim /etc/default/grub
+  - GRUB_CMDLINE_LINUX=
+  + GRUB_CMDLINE_LINUX="intel_iommu=on"
+
+  ### iommuグループの確認??  グループ単位でしかpassthroughできないみたいなんだけど，VMに渡すときは普通にアドレスで指定するからよくわからんけど
+  $ vim iommu.sh
+  #!/bin/bash
+  shopt -s nullglob
+  for d in /sys/kernel/iommu_groups/*/devices/*; do
+      n=${d#*/iommu_groups/*}; n=${n%%/*}
+      printf 'IOMMU Group %s ' "$n"
+      lspci -nns "${d##*/}"
+  done;
+  $ bash iommu.sh
+
+  ### 適当に対象のデバイスのアドレスを確認しとく
+  ### なんかGPUの場合とかゲストがwindowsの場合とか少し追加でやることあるらしいけど今はNICだけなので後で調べる
+
+  ### 適当に編集する．
+  $ sudo virsh edit [vm]
+  + <hostdev mode='subsystem' type='pci' managed='yes'>
+  +   <source>
+  +     <address domain='0' bus='2' slot='0' function='0'/>           // 02:00.0 の場合
+  +   </source>
+  + </hostdev>
+
+
+これで実行したらホストからデバイスが見えなくなってゲストに見えるようになってる．
+VMを停止(shutdown)したらデバイスは帰ってきた．
+
 SR-IOV
 ==========
 
