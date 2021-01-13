@@ -94,6 +94,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/xen.html">xen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
@@ -438,6 +439,7 @@ $ sudo ./scripts/setup.py             ### 必要なパッケージ類とかイ�
 ////// とりあえずiperfしてみたい
 $ sudo ./scripts/build image=iperf    ### Could not access KVM kernel module: Permission denied にならないユーザならsudoいらない． (usermod -aG kvm &lt;user name&gt;)
 $ sudo ./scripts/run.py -nv       ### 最近buildされたイメージをrunする． -nv はネットワークのための設定でdefaultネットワークインタフェースを生やしてくれるなんともえらいオプション ちなみにtapn(nは環境依存の整数)としてホストから見える
+ctrl A + X で抜ける
 </pre></div>
 </div>
 </div>

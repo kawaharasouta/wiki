@@ -224,6 +224,7 @@ apps
   ////// とりあえずiperfしてみたい
   $ sudo ./scripts/build image=iperf    ### Could not access KVM kernel module: Permission denied にならないユーザならsudoいらない． (usermod -aG kvm <user name>)
   $ sudo ./scripts/run.py -nv       ### 最近buildされたイメージをrunする． -nv はネットワークのための設定でdefaultネットワークインタフェースを生やしてくれるなんともえらいオプション ちなみにtapn(nは環境依存の整数)としてホストから見える
+  ctrl A + X で抜ける
 
 
 minecraft serverを動かそうとした時のmemo
