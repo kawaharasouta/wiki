@@ -434,6 +434,14 @@ BIOSでIOMMU拡張を有効化する．
 これで実行したらホストからデバイスが見えなくなってゲストに見えるようになってる．
 VMを停止(shutdown)したらデバイスは帰ってきた．
 
+http://kt-hiro.hatenablog.com/entry/20150616/1434434879
+
+https://www.nexia.jp/server/1802/
+
+http://uramocha02.blogspot.com/2017/01/pciiommu.html
+
+
+
 SR-IOV
 ==========
 
