@@ -226,6 +226,7 @@ apps
   $ sudo ./scripts/run.py -nv       ### 最近buildされたイメージをrunする． -nv はネットワークのための設定でdefaultネットワークインタフェースを生やしてくれるなんともえらいオプション ちなみにtapn(nは環境依存の整数)としてホストから見える
   ctrl A + X で抜ける
 
+ちなみにビルドした後のイメージの場所は /home/khwarizmi/git/osv/build/last/usr.img 
 
 minecraft serverを動かそうとした時のmemo
 -------------------------------------------
