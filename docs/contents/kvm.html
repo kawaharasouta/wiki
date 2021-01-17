@@ -117,7 +117,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#add-nic">add nic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pci-passthrough">PCI passthrough</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sr-iov">SR-IOV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sr-iov-single-root-i-o-virtualization">SR-IOV (Single Root I/O Virtualization)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">接続方法とかに関して</a></li>
@@ -662,14 +662,14 @@ VMを停止(shutdown)したらデバイスは帰ってきた．</p>
 <p><a class="reference external" href="https://www.nexia.jp/server/1802/">https://www.nexia.jp/server/1802/</a></p>
 <p><a class="reference external" href="http://uramocha02.blogspot.com/2017/01/pciiommu.html">http://uramocha02.blogspot.com/2017/01/pciiommu.html</a></p>
 </div>
-<div class="section" id="sr-iov">
-<h2>SR-IOV<a class="headerlink" href="#sr-iov" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
-+ GRUB_CMDLINE_LINUX=&quot;intel_iommu=on&quot;
-$ sudo update-grub2
+<div class="section" id="sr-iov-single-root-i-o-virtualization">
+<h2>SR-IOV (Single Root I/O Virtualization)<a class="headerlink" href="#sr-iov-single-root-i-o-virtualization" title="Permalink to this headline">¶</a></h2>
+<p>仕様が書いてある? <a class="reference external" href="https://pcisig.com/">https://pcisig.com/</a></p>
+<p>利用可能なintel nic: <a class="reference external" href="https://www.intel.co.jp/content/www/jp/ja/support/articles/000005722/network-and-io/ethernet-products.html">https://www.intel.co.jp/content/www/jp/ja/support/articles/000005722/network-and-io/ethernet-products.html</a></p>
+<p>とりあえずpci-passthroughできる環境にしておく．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ちょっと後で</span>
 </pre></div>
 </div>
-<p>wakarann</p>
 </div>
 <div class="section" id="ubuntu-image-download">
 <h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="Permalink to this headline">¶</a></h2>

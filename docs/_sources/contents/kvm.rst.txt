@@ -442,16 +442,20 @@ http://uramocha02.blogspot.com/2017/01/pciiommu.html
 
 
 
-SR-IOV
-==========
+SR-IOV (Single Root I/O Virtualization)
+==========================================
+
+仕様が書いてある? https://pcisig.com/
+
+利用可能なintel nic: https://www.intel.co.jp/content/www/jp/ja/support/articles/000005722/network-and-io/ethernet-products.html
+
+とりあえずpci-passthroughできる環境にしておく．
 
 ::
 
-  $ sudo vim /etc/default/grub
-  + GRUB_CMDLINE_LINUX="intel_iommu=on"
-  $ sudo update-grub2
+  ちょっと後で
 
-wakarann
+
 
 ubuntu image download
 =========================
