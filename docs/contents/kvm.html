@@ -667,7 +667,11 @@ VMを停止(shutdown)したらデバイスは帰ってきた．</p>
 <p>仕様が書いてある? <a class="reference external" href="https://pcisig.com/">https://pcisig.com/</a></p>
 <p>利用可能なintel nic: <a class="reference external" href="https://www.intel.co.jp/content/www/jp/ja/support/articles/000005722/network-and-io/ethernet-products.html">https://www.intel.co.jp/content/www/jp/ja/support/articles/000005722/network-and-io/ethernet-products.html</a></p>
 <p>とりあえずpci-passthroughできる環境にしておく．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ちょっと後で</span>
+<p>とりあえずmodprobeし直してやる方法(/etc/modrobe.d/ に構成ファイルおいとくのが本当はいいのだけれどまだ試してないので後で)
+そして，X540-t2(と言うかixgbeなのだけれど)の場合．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo modprobe -r ixgbe
+$ sudo modprobe ixgbe max_vfs=16        // 最大63だと思う
+$ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生えるのでホストでは外しとく
 </pre></div>
 </div>
 </div>

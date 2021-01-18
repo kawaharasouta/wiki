@@ -451,10 +451,14 @@ SR-IOV (Single Root I/O Virtualization)
 
 とりあえずpci-passthroughできる環境にしておく．
 
+とりあえずmodprobeし直してやる方法(/etc/modrobe.d/ に構成ファイルおいとくのが本当はいいのだけれどまだ試してないので後で)
+そして，X540-t2(と言うかixgbeなのだけれど)の場合．
+
 ::
 
-  ちょっと後で
-
+  $ sudo modprobe -r ixgbe
+  $ sudo modprobe ixgbe max_vfs=16        // 最大63だと思う
+  $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生えるのでホストでは外しとく
 
 
 ubuntu image download
