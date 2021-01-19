@@ -472,6 +472,9 @@ $ sudo ./scripts/run.py sudo ./scripts/run.py -nv --novnc --nogdb
 </pre></div>
 </div>
 <p>ちなみに，1つ目のイメージはちゃんとmacアドレスを指定して起動しないとビルドが通らなくなる．</p>
+<p>-b [bridge] で接続するブリッジを指定できるけど，dhcpいないとアドレス振られない．
+もちろん普通にkvmのやつでよい．て言うかkvmの(と言うかlibvirtの?)dhcpってどこでやってるんだろうね．
+natはiptablesだってよく聞くけど．</p>
 </div>
 <div class="section" id="minecraft-servermemo">
 <h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="Permalink to this headline">¶</a></h3>
