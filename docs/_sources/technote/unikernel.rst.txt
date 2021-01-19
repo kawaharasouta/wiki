@@ -252,12 +252,12 @@ module.py のところに起動時のコマンドみたいなのがあるから�
 ::
 
   /// とりあえずイメージをどっかにmvする．デフォルトにおいておくと違うイメージを動かす際にビルドし直したら前のイメージが消えちゃうのでね．
-  $ sudo ./script/build image=iperf
+  $ sudo ./script/build -j$(nproc) image=iperf
   $ sudo mv ./build/last/usr.img ./build/last/iperf-server.img
   /// とりあえず1個目起動するんだけど，macアドレスを変えて起動しとく
   $ sudo ./scripts/run.py -i ./build/last/iperf-server.img -nv --mac 52:54:00:12:34:57．
   /// もう一個のイメージをビルドして起動する． vncとgdbはオフにしないといけない．
-  $ sudo ./scripts/build image=iperf-client
+  $ sudo ./scripts/build -j$(nproc) image=iperf-client
   $ sudo ./scripts/run.py sudo ./scripts/run.py -nv --novnc --nogdb
   
 ちなみに，1つ目のイメージはちゃんとmacアドレスを指定して起動しないとビルドが通らなくなる．
