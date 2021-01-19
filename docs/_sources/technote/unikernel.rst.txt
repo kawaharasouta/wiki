@@ -228,6 +228,41 @@ apps
 
 ちなみにビルドした後のイメージの場所は /home/khwarizmi/git/osv/build/last/usr.img 
 
+サンプル以外の動作(と言うかアプリと本来はすべきだけどまだそこまでしてない)をさせる時
+----------------------------------------------------------------------------------------
+
+module.py のところに起動時のコマンドみたいなのがあるからそこいじる．
+例えばiperfをclientにしたい時．
+
+::
+
+  $ cp -f ./apps/iperf/ ./apps/iperf-client/
+  $ vim ./apps/iperf-client/module.py
+  default = api.run('*************')          /// *****のところがコマンドなのでそこをiperf -c ***.***~~~ とかにすればいい．
+
+ちなみにusr.manifstにファイルの配置とかが書いてある．
+
+複数台動かした時のメモ
+-------------------------
+
+とりあえずここではiperf server と client を動かしてみることにする．
+↑のclientはすでに作ってあるとする．
+
+
+::
+
+  /// とりあえずイメージをどっかにmvする．デフォルトにおいておくと違うイメージを動かす際にビルドし直したら前のイメージが消えちゃうのでね．
+  $ sudo ./script/build image=iperf
+  $ sudo mv ./build/last/usr.img ./build/last/iperf-server.img
+  /// とりあえず1個目起動するんだけど，macアドレスを変えて起動しとく
+  $ sudo ./scripts/run.py -i ./build/last/iperf-server.img -nv --mac 52:54:00:12:34:57．
+  /// もう一個のイメージをビルドして起動する． vncとgdbはオフにしないといけない．
+  $ sudo ./scripts/build image=iperf-client
+  $ sudo ./scripts/run.py sudo ./scripts/run.py -nv --novnc --nogdb
+  
+ちなみに，1つ目のイメージはちゃんとmacアドレスを指定して起動しないとビルドが通らなくなる．
+
+
 minecraft serverを動かそうとした時のmemo
 -------------------------------------------
 
