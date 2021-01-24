@@ -266,6 +266,17 @@ module.py のところに起動時のコマンドみたいなのがあるから�
 もちろん普通にkvmのやつでよい．て言うかkvmの(と言うかlibvirtの?)dhcpってどこでやってるんだろうね．
 natはiptablesだってよく聞くけど．
 
+virsh で管理させる
+----------------------
+
+ビルドして出てくるimgを任意の場所に保存して，xmlファイルのsourceのところを合わせて変更すればいいだけ．
+ちなみにホスト名はosvで，net-dhcpとか見たらosvって出てくる．
+
+::
+
+  - <source file='/etc/libvirt/qemu/~~~~~~.img'/>
+  + <source file='/home/khwarizmi/git/osv/build/last/~~~~~~.img'/>
+
 minecraft serverを動かそうとした時のmemo
 -------------------------------------------
 

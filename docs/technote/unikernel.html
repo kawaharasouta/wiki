@@ -150,6 +150,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#apps">apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">サンプル以外の動作(と言うかアプリと本来はすべきだけどまだそこまでしてない)をさせる時</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">複数台動かした時のメモ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virsh">virsh で管理させる</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#minecraft-servermemo">minecraft serverを動かそうとした時のmemo</a></li>
 </ul>
 </li>
@@ -475,6 +476,15 @@ $ sudo ./scripts/run.py sudo ./scripts/run.py -nv --novnc --nogdb
 <p>-b [bridge] で接続するブリッジを指定できるけど，dhcpいないとアドレス振られない．
 もちろん普通にkvmのやつでよい．て言うかkvmの(と言うかlibvirtの?)dhcpってどこでやってるんだろうね．
 natはiptablesだってよく聞くけど．</p>
+</div>
+<div class="section" id="virsh">
+<h3>virsh で管理させる<a class="headerlink" href="#virsh" title="Permalink to this headline">¶</a></h3>
+<p>ビルドして出てくるimgを任意の場所に保存して，xmlファイルのsourceのところを合わせて変更すればいいだけ．
+ちなみにホスト名はosvで，net-dhcpとか見たらosvって出てくる．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/etc/libvirt/qemu/~~~~~~.img&#39;</span><span class="o">/&gt;</span>
+<span class="o">+</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/home/khwarizmi/git/osv/build/last/~~~~~~.img&#39;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="minecraft-servermemo">
 <h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="Permalink to this headline">¶</a></h3>
