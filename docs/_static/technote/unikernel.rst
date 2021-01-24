@@ -277,6 +277,59 @@ virsh で管理させる
   - <source file='/etc/libvirt/qemu/~~~~~~.img'/>
   + <source file='/home/khwarizmi/git/osv/build/last/~~~~~~.img'/>
 
+capstan でやってみる
+----------------------
+
+osvを簡単に動かすためのCUIツール
+なんかlibvirtというかvirshと言うかくらいの感じある．
+
+rep: https://github.com/cloudius-systems/capstan
+
+using capstan wiki: https://github.com/cloudius-systems/osv/wiki/Build-and-run-apps-on-OSv-using-Capstan
+
+install
+`````````
+
+installガイド: https://github.com/cloudius-systems/capstan/blob/master/Documentation/Installation.md
+
+go >= 1.13
+
+::
+
+  $ sudo apt install qemu-system-x86 qemu-utils
+  $ git clone https://github.com/cloudius-systems/capstan.git & cd $_
+  $ go install
+  $ capstan --help
+  
+build & run
+`````````````
+
+example
+
+::
+  
+  $ mkdir -p apps/java-example & cd $_
+  $ capstan package init \
+    --name "java-example" \
+    --title "Java Example" \
+    --author "Anonymous" \
+    --version "1.0" \
+    --require "osv.openjdk10-java-base" \
+    --require "osv.run-java"
+  $ cat meta/package.yaml
+    name: java-example
+    title: Java Example
+    author: Anonymous
+    version: "1.0"
+    require:
+    - osv.openjdk10-java-base
+    - osv.run-java
+    created: "2021-01-24T14:32:16Z"
+
+  /// ここでアプリケーションファイルを追加する? 
+
+
+
 minecraft serverを動かそうとした時のmemo
 -------------------------------------------
 

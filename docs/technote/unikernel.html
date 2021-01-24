@@ -151,12 +151,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#id6">サンプル以外の動作(と言うかアプリと本来はすべきだけどまだそこまでしてない)をさせる時</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">複数台動かした時のメモ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#virsh">virsh で管理させる</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capstan">capstan でやってみる</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-run">build &amp; run</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#minecraft-servermemo">minecraft serverを動かそうとした時のmemo</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#includeos">includeOS</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#location">location</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install">install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">install</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dependency">dependency</a></li>
 </ul>
 </li>
@@ -486,6 +491,49 @@ natはiptablesだってよく聞くけど．</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="capstan">
+<h3>capstan でやってみる<a class="headerlink" href="#capstan" title="Permalink to this headline">¶</a></h3>
+<p>osvを簡単に動かすためのCUIツール
+なんかlibvirtというかvirshと言うかくらいの感じある．</p>
+<p>rep: <a class="reference external" href="https://github.com/cloudius-systems/capstan">https://github.com/cloudius-systems/capstan</a></p>
+<p>using capstan wiki: <a class="reference external" href="https://github.com/cloudius-systems/osv/wiki/Build-and-run-apps-on-OSv-using-Capstan">https://github.com/cloudius-systems/osv/wiki/Build-and-run-apps-on-OSv-using-Capstan</a></p>
+<div class="section" id="install">
+<h4>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h4>
+<p>installガイド: <a class="reference external" href="https://github.com/cloudius-systems/capstan/blob/master/Documentation/Installation.md">https://github.com/cloudius-systems/capstan/blob/master/Documentation/Installation.md</a></p>
+<p>go &gt;= 1.13</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-system-x86 qemu-utils
+$ git clone https://github.com/cloudius-systems/capstan.git &amp; cd $_
+$ go install
+$ capstan --help
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-run">
+<h4>build &amp; run<a class="headerlink" href="#build-run" title="Permalink to this headline">¶</a></h4>
+<p>example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir -p apps/java-example &amp; cd $_
+$ capstan package init \
+  --name &quot;java-example&quot; \
+  --title &quot;Java Example&quot; \
+  --author &quot;Anonymous&quot; \
+  --version &quot;1.0&quot; \
+  --require &quot;osv.openjdk10-java-base&quot; \
+  --require &quot;osv.run-java&quot;
+$ cat meta/package.yaml
+  name: java-example
+  title: Java Example
+  author: Anonymous
+  version: &quot;1.0&quot;
+  require:
+  - osv.openjdk10-java-base
+  - osv.run-java
+  created: &quot;2021-01-24T14:32:16Z&quot;
+
+/// ここでアプリケーションファイルを追加する?
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="minecraft-servermemo">
 <h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="Permalink to this headline">¶</a></h3>
 <p>apps 内のサンプルアプリケーションで，kernelにおくアプリケーションの設定ファイルとかは多分usr.manifestに書かれてる．
@@ -571,8 +619,8 @@ $ echo export PATH=&#39;$PATH&#39;:&#39;$INCLUDEOS_PREFIX&#39;/bin &gt;&gt; $HOM
 </pre></div>
 </div>
 </div>
-<div class="section" id="install">
-<h3>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>install<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="dependency">
 <h3>dependency<a class="headerlink" href="#dependency" title="Permalink to this headline">¶</a></h3>
