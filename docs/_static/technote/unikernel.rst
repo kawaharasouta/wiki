@@ -327,8 +327,13 @@ example
     created: "2021-01-24T14:32:16Z"
 
   /// ここでアプリケーションファイルを追加する? 
-
-
+  /// とりあえず雑なhelloworld作ってjarにして持ってきたけどこれであってるんか知らん．
+  $ cp 
+  /// なんかカーネルイメージとくっつけたりするんか．
+  /// このキャプスタンコマンドは meta/package.yaml とオプションの meta/run.yaml ファイル(詳細はこちら)を読み込んで、ローカルファイルシステム上に不足しているパッケージを OSv Github レポや S3 バケットから引き出します      らしいぜ．
+  $ capstan package compose --pull-missing java-example
+  /// これで実行できるはずなんだけどなんかわからんjavaの部分が多分ダメ．
+  $ capstan run java-example -p qemu --boot default
 
 minecraft serverを動かそうとした時のmemo
 -------------------------------------------
