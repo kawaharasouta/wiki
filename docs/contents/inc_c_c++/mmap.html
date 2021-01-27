@@ -109,6 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="pthread.html">pthread</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">mmapについて</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#man">man</a></li>
 </ul>
 </li>
 </ul>
@@ -303,6 +304,14 @@ mmap( )を使用する際に留意すべき点がいくつかあります。</p>
 <p>これらの理由から、mmap( )の利点は、マップされたファイルが大きい場合（したがって、無駄なスペースがマッピング全体のわずかな割合である場合）、またはマップされたファイルの合計サイズが均等に割り切れる場合に最も大きく実現されますページサイズによって（したがって、無駄なスペースはありません）。</p>
 <p><strong>pipeとの比較についても書く必要がありそう</strong></p>
 <p>aaaaaaaaaaaaaaaaaa</p>
+</div>
+<div class="section" id="man">
+<h2>man<a class="headerlink" href="#man" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include&lt;sys/mman.h&gt;</span>
+<span class="n">void</span> <span class="o">*</span><span class="n">mmap</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">length</span><span class="p">,</span> <span class="nb">int</span> <span class="n">prot</span><span class="p">,</span> <span class="nb">int</span> <span class="n">flags</span><span class="p">,</span> <span class="nb">int</span> <span class="n">fd</span><span class="p">,</span> <span class="n">off_t</span> <span class="n">offset</span><span class="p">);</span>
+<span class="nb">int</span> <span class="n">munmap</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 </div>
 
