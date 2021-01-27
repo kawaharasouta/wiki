@@ -14,3 +14,4 @@ c, c++
   inc_c_c++/segv
   inc_c_c++/os
   inc_c_c++/pthread
+  inc_c_c++/mmap
