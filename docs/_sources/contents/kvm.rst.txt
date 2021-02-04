@@ -426,7 +426,7 @@ BIOSでIOMMU拡張を有効化する．
   $ sudo virsh edit [vm]
   + <hostdev mode='subsystem' type='pci' managed='yes'>
   +   <source>
-  +     <address domain='0' bus='2' slot='0' function='0'/>           // 02:00.0 の場合
+  +     <address domain='0x00' bus='0x5e' slot='0x10' function='0x00'/>           // 5e:10.0 の場合
   +   </source>
   + </hostdev>
 
@@ -459,6 +459,8 @@ SR-IOV (Single Root I/O Virtualization)
   $ sudo modprobe -r ixgbe
   $ sudo modprobe ixgbe max_vfs=16        // 最大63だと思う
   $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生えるのでホストでは外しとく
+
+ちなみに，vfの元になってるインタフェースがちゃんとUPしてないとvfはUPしないでnetlink error出る．
 
 
 ubuntu image download
