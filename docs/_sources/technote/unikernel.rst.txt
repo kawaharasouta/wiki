@@ -13,6 +13,7 @@ SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみ
 
 unikernalの情報
 https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0
+https://proc-cpuinfo.fixstars.com/2020/03/unikernel/
 
 
 mirageOSでHelloWorldする
@@ -241,6 +242,9 @@ module.py のところに起動時のコマンドみたいなのがあるから�
   default = api.run('*************')          /// *****のところがコマンドなのでそこをiperf -c ***.***~~~ とかにすればいい．
 
 ちなみにusr.manifstにファイルの配置とかが書いてある．
+
+
+これ，起動時に-eでコマンド変えられるからmodule.pyいじる必要なさげ．
 
 複数台動かした時のメモ
 -------------------------

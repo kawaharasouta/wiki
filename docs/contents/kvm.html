@@ -674,7 +674,9 @@ $ sudo modprobe ixgbe max_vfs=16        // 最大63だと思う
 $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生えるのでホストでは外しとく
 </pre></div>
 </div>
-<p>ちなみに，vfの元になってるインタフェースがちゃんとUPしてないとvfはUPしないでnetlink error出る．</p>
+<p>ちなみに，vfの元になってるインタフェースがちゃんとUPしてないとvfはUPしないでnetlink error出る．
+ナンバリングはまだよくわからんけどどうもジグザグっぽい?
+それから，同じ物理IFのvf同士はlinkはつながってない感じある．</p>
 </div>
 <div class="section" id="ubuntu-image-download">
 <h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="Permalink to this headline">¶</a></h2>

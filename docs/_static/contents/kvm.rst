@@ -461,6 +461,8 @@ SR-IOV (Single Root I/O Virtualization)
   $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生えるのでホストでは外しとく
 
 ちなみに，vfの元になってるインタフェースがちゃんとUPしてないとvfはUPしないでnetlink error出る．
+ナンバリングはまだよくわからんけどどうもジグザグっぽい?
+それから，同じ物理IFのvf同士はlinkはつながってない感じある．
 
 
 ubuntu image download

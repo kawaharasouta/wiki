@@ -276,7 +276,8 @@ SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみ
 そこで，アプリケーションのための小さな専用カーネルを用意してその上でアプリケーションを動かす．</p>
 <p>参考</p>
 <p>unikernalの情報
-<a class="reference external" href="https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0">https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0</a></p>
+<a class="reference external" href="https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0">https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0</a>
+<a class="reference external" href="https://proc-cpuinfo.fixstars.com/2020/03/unikernel/">https://proc-cpuinfo.fixstars.com/2020/03/unikernel/</a></p>
 <div class="section" id="mirageoshelloworld">
 <h2>mirageOSでHelloWorldする<a class="headerlink" href="#mirageoshelloworld" title="Permalink to this headline">¶</a></h2>
 <p>インストール
@@ -462,6 +463,7 @@ default = api.run(&#39;*************&#39;)          /// *****のところがコ�
 </pre></div>
 </div>
 <p>ちなみにusr.manifstにファイルの配置とかが書いてある．</p>
+<p>これ，起動時に-eでコマンド変えられるからmodule.pyいじる必要なさげ．</p>
 </div>
 <div class="section" id="id7">
 <h3>複数台動かした時のメモ<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
