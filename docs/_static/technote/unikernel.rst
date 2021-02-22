@@ -207,6 +207,9 @@ https://qiita.com/t-imada/items/6ee299653ac063532b4f
 OSv
 =====
 
+2014年のアドベントカレンダー: https://qiita.com/advent-calendar/2014/osv
+いろいろ記事あるからあとで参照したい．capstanの使い方とか．
+
 やってみる
 -----------
 
