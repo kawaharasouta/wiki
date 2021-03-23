@@ -1,0 +1,20 @@
+kvm api でいろいろするやつ
+==============================
+
+参考
+http://yuma.ohgami.jp/Identeki-MBR/01_hello.html
+
+初歩的な機能を出力だけのROMを用意してやってみる
+==================================================
+
+::
+
+  ### とりあえず/dev/kvmをopenする． 当然kvm的な操作はここにioctlすることになる．
+  int kvmfd = open("/dev/kvm", O_RDWR);
+
+  ### VMを作成する．(VMのメモリのやつとかそこらへんができるんだと思う．←←←調べ直して書き直す)
+  int vmfd = ioctl(kvmfd, KVM_CREATE_VM, 0);
+
+  
+
+
