@@ -56,6 +56,7 @@ wiki
   technote/golang_perf
   technote/virsh_source
   technote/kvm_api
+  technote/make_kernel
 
 .. toctree::
   :maxdepth: 1
