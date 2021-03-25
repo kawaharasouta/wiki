@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'wiki'
-copyright = '2019, KAWAHARAsouta'
+copyright = '2021, KAWAHARAsouta'
 author = 'KAWAHARAsouta(@khwarizmi6514)'
 
 
