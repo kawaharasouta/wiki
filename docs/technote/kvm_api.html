@@ -139,8 +139,10 @@
 <li class="toctree-l1"><a class="reference internal" href="standard.html">規格とか思想とか</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang_perf.html">golangでちょっと文字列関連性能計測した時のいろんなメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">kvm api でいろいろするやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#rom">初歩的な機能を出力だけのROMを用意してやってみる</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kvm api でいろいろするやつ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rom">初歩的な機能を出力だけのROMを用意してやってみる</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="make_kernel.html">自作カーネル的なそう言う話</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -242,9 +244,8 @@
 <a class="reference external" href="https://github.com/torvalds/linux/blob/2861952/Documentation/virtual/kvm/api.txt">https://github.com/torvalds/linux/blob/2861952/Documentation/virtual/kvm/api.txt</a></p>
 <p>kvmを使ってみるやつ:
 <a class="reference external" href="http://yuma.ohgami.jp/Identeki-MBR/01_hello.html">http://yuma.ohgami.jp/Identeki-MBR/01_hello.html</a></p>
-</div>
 <div class="section" id="rom">
-<h1>初歩的な機能を出力だけのROMを用意してやってみる<a class="headerlink" href="#rom" title="Permalink to this headline">¶</a></h1>
+<h2>初歩的な機能を出力だけのROMを用意してやってみる<a class="headerlink" href="#rom" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>### とりあえず/dev/kvmをopenする． 当然kvm的な操作はここにioctlすることになる．
 int kvmfd = open(&quot;/dev/kvm&quot;, O_RDWR);
 
@@ -314,6 +315,7 @@ while (is_running) {
 <p>とりあえずこれでromがちゃんとしていれば雑に動くVMが立てられるはず．
 あとは割り込みコントローラとかタイマとか追加して，romがちゃんとBIOSとかになってて，
 あとRAMもしっかり追加してやらないといけない．</p>
+</div>
 </div>
 
 
