@@ -3,7 +3,10 @@ kvm api でいろいろするやつ
 
 参考:
 
-kvmを使ってみるやつ
+公式のAPIに関してのドキュメント: 
+https://github.com/torvalds/linux/blob/2861952/Documentation/virtual/kvm/api.txt
+
+kvmを使ってみるやつ: 
 http://yuma.ohgami.jp/Identeki-MBR/01_hello.html
 
 初歩的な機能を出力だけのROMを用意してやってみる
