@@ -4,6 +4,7 @@ kvm api でいろいろするやつ
 参考:
 
 公式のAPIに関してのドキュメント: 
+https://www.kernel.org/doc/html/latest/virt/kvm/api.html
 https://github.com/torvalds/linux/blob/2861952/Documentation/virtual/kvm/api.txt
 
 kvmを使ってみるやつ: 
