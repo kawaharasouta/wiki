@@ -110,6 +110,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">コアダンプ機能を有効化</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">デバッグファイル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id4">コマンド</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">自分がコンパイルしていないライブラリに潜りたい</a></li>
 </ul>
 </li>
 </ul>
@@ -270,7 +271,8 @@
 </pre></div>
 </div>
 <p>とかしておく</p>
-<p>ちなみになんだけど -g3 にした方がマクロ見れたりあと多分他にもいいことありそうなのでそっちの方が良さげ．</p>
+<p>ちなみになんだけど -g3 にした方がマクロ見れたりあと多分他にもいいことありそうなのでそっちの方が良さげ．
+<a class="reference external" href="https://kohchi.hatenablog.com/entry/20141124/1416790642">https://kohchi.hatenablog.com/entry/20141124/1416790642</a></p>
 </div>
 <div class="section" id="id2">
 <h3>コアダンプ機能を有効化<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -300,6 +302,15 @@ core
 <span class="n">p</span> <span class="p">(</span><span class="n">ポインタ</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="id5">
+<h3>自分がコンパイルしていないライブラリに潜りたい<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>普通はライブラリ関数的なのはnextで潜らずに飛ばしてっちゃうんだけど，
+stepしてその中も見たいよみたいな場合．</p>
+<p>あとで自分で書き直す．
+参考
+<a class="reference external" href="https://stackoverflow.com/questions/48278881/gdb-complaining-about-missing-raise-c">https://stackoverflow.com/questions/48278881/gdb-complaining-about-missing-raise-c</a>
+<a class="reference external" href="https://doss.eidos.ic.i.u-tokyo.ac.jp/html/gdb_step_into_libraries.html">https://doss.eidos.ic.i.u-tokyo.ac.jp/html/gdb_step_into_libraries.html</a></p>
 </div>
 </div>
 </div>
