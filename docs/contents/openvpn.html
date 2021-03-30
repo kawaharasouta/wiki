@@ -109,6 +109,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#easy-install">easy install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vpn">vpnサーバのローカルネットワークにアクセスするための設定とか</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">クライアント</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu">ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac">mac</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
@@ -301,6 +306,26 @@ $ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [ローカルネットワ�
 <a class="reference external" href="https://centossrv.com/openvpn.shtml">https://centossrv.com/openvpn.shtml</a>
 <a class="reference external" href="https://teratail.com/questions/140736">https://teratail.com/questions/140736</a>
 <a class="reference external" href="https://www.4web8.com/1171.html">https://www.4web8.com/1171.html</a></p>
+</div>
+<div class="section" id="id1">
+<h2>クライアント<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ubuntu">
+<h3>ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>CUI</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install network-manager-openvpn
+$ sudo openvpn --config [path to ovpn file]
+</pre></div>
+</div>
+<p>GUI</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install network-manager-openvpn-gnome
+</pre></div>
+</div>
+<p>あとは適当にGUIでやる．</p>
+</div>
+<div class="section" id="mac">
+<h3>mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h3>
+<p>tunnelblickにovpn食わせて雑にやる．</p>
+</div>
 </div>
 </div>
 

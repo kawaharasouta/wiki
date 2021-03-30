@@ -81,3 +81,36 @@ vpnネットワークへのルーティング情報を足しとく．
 https://centossrv.com/openvpn.shtml
 https://teratail.com/questions/140736
 https://www.4web8.com/1171.html
+
+
+クライアント
+===============
+
+ubuntu
+--------
+
+CUI
+
+::
+
+  $ sudo apt install network-manager-openvpn
+  $ sudo openvpn --config [path to ovpn file]
+
+
+GUI
+
+::
+
+  $ sudo apt install network-manager-openvpn-gnome
+
+あとは適当にGUIでやる．
+
+mac
+-----
+
+tunnelblickにovpn食わせて雑にやる．
+
+
+
+
+
