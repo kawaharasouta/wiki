@@ -249,7 +249,9 @@
 <div class="section" id="gpu-nvidia">
 <h2>GPU(nvidia)のドライバ<a class="headerlink" href="#gpu-nvidia" title="Permalink to this headline">¶</a></h2>
 <p>とりあえず↓を見てやるとよい．あとでここ書き直す．
-<a class="reference external" href="http://urusulambda.com/2018/04/14/ubuntu%E3%81%A7nvidia-driver%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%9F%E3%82%89nouveau%E6%AD%A2%E3%82%81%E3%82%8D%E3%81%A3%E3%81%A6%E8%A8%80%E3%82%8F%E3%82%8C/">http://urusulambda.com/2018/04/14/ubuntu%E3%81%A7nvidia-driver%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%9F%E3%82%89nouveau%E6%AD%A2%E3%82%81%E3%82%8D%E3%81%A3%E3%81%A6%E8%A8%80%E3%82%8F%E3%82%8C/</a></p>
+<a class="reference external" href="http://urusulambda.com/2018/04/14/ubuntu%E3%81%A7nvidia-driver%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%9F%E3%82%89nouveau%E6%AD%A2%E3%82%81%E3%82%8D%E3%81%A3%E3%81%A6%E8%A8%80%E3%82%8F%E3%82%8C/">http://urusulambda.com/2018/04/14/ubuntu%E3%81%A7nvidia-driver%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%9F%E3%82%89nouveau%E6%AD%A2%E3%82%81%E3%82%8D%E3%81%A3%E3%81%A6%E8%A8%80%E3%82%8F%E3%82%8C/</a>
+<a class="reference external" href="https://qiita.com/kkk627/items/9ab959421804341f215e">https://qiita.com/kkk627/items/9ab959421804341f215e</a>
+それから，別のバージョンのドライバを持ってて更新したとかの時に，最後の質問にyesと答えないと自動起動設定が為されなかったりするので注意．</p>
 <p>lightdm を disable(自動起動をoff) した場合，is-enabledで見るとstaticとなっていて，もう一度自動起動させようとenableとかreenableとかしても自動起動できなくなる．
 ここら辺は依存関係が云々とかの話なんだけど，詳しい話はまた今度調べよう．
 結論としては↓のようにすると元に戻る．</p>
