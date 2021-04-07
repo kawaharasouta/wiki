@@ -17,6 +17,7 @@ ubuntu desktop
 - アクティブな状態で押すとウィンドウが消えてくれる．
 - なんか広い範囲(freeBSDとか使いたみあるし)で使えるといい
 くらいなものか．．．
+※ホットキーに関しては別の手段をとることにした．restに打ち消し線がないから消せないよ※
 
 Tilix: 
 今使ってるやつ．て言うか標準で載ってたやつを雑に使ってる．
@@ -28,6 +29,57 @@ Guake(Quake?):
 最初気持ち悪かったけど，割といつも使う定位置の右から生えるようにしたらそんなに悪くない感じもあったりする．
 ホットキー的なものはあったけど，サブディスプレイでやるとターミナルがディスプレイを飛び越えてついてくるのがいまいち．
 これ入れるとF12常にこいつが食って何かと干渉しそう．
+
+ホットキーについて
+=====================
+
+jumpappとxbindkeysを用いて実現することにした．
+最初はxdotoolとxbindkeysを使おうとしてたのでそこら辺も含めて．
+
+xdotool
+-----------
+
+fake input frome mouse and keyboard と windows manager 的なことができるやーつ
+https://github.com/jordansissel/xdotool
+https://www.semicomplete.com/projects/xdotool/
+ちらっとソースコード見た感じわかりやすかった(ただトップディレクトリにファイルが散らばっていて見づらいのでそこだけ注意)
+
+これを利用してwindowをアクティブにしたりみたいなことをする．
+
+xbindkeys
+-----------
+
+Xbindkeys はコマンドをキーボードの特定のキーやキーの組み合わせに結びつけることができるプログラムです。Xbindkeys はマルチメディアキーを処理できます。ウィンドウマネージャやデスクトップ環境に依存しないので手軽に使うことが可能です。とのことです．
+https://wiki.archlinux.jp/index.php/Xbindkeys
+
+とりあえずコマンドにショートカットキーをくくりつけるらしい．
+
+jumpapp
+---------
+
+https://github.com/mkropat/jumpapp
+The idea is simple — bind a key for any given application that will:
+
+- launch the application, if it's not already running, or
+- focus the application's window, if it is running
+
+と言うことでダイレクトに使いたい機能だけがあるアプリケーションだったので使う．
+正直，アクティベートな時に押したら非表示になるみたいな機能があったら最高だった．
+
+jumpappとxbindkeysの設定とかとか
+-------------------------------------
+
+::
+
+  $ sudo apt install xbindkeys pandoc
+  $ git clone https://github.com/mkropat/jumpapp && cd $_
+  $ make && sudo make install                    // なんかここら辺ちょいこけあったりしたのであとで確認しよう．
+  $ xbindkeys -d > ~/.xbindkeysrc
+  $ vim ~/.xbindkeysrc
+  + "jumpapp tilix"
+  +   Control + i
+  $ xbindkeys
+
 
 
 そもそもxwindowとかgnomeとかについて
@@ -56,6 +108,18 @@ lightdm を disable(自動起動をoff) した場合，is-enabledで見るとsta
 参考:
 https://forum.odroid.com/viewtopic.php?t=34109
 https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+
+AppImageとかいうパッケージ?の話
+==================================
+
+stationをubuntuにもインストールしようとした時，形式がAppImageとか言うものだったのでそれのメモ．
+それ自体が実行ファイルとなってアプリケーションが実行できるもので，割といろんなプラットフォームで動作するんだとか．
+あとはAppImageLauncherというものがあるらしい．
+
+https://www.virment.com/how-to-use-appimage-linux/
+https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion
+
+と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．
 
 他のいろんな設定の話
 =====================

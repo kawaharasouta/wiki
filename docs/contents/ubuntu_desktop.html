@@ -116,9 +116,17 @@
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ubuntu desktop</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">ターミナルをどうするか問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ホットキーについて</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#xdotool">xdotool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xbindkeys">xbindkeys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jumpapp">jumpapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jumpappxbindkeys">jumpappとxbindkeysの設定とかとか</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#xwindowgnome">そもそもxwindowとかgnomeとかについて</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gpu-nvidia">GPU(nvidia)のドライバ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">他のいろんな設定の話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appimage">AppImageとかいうパッケージ?の話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">他のいろんな設定の話</a></li>
 </ul>
 </li>
 </ul>
@@ -253,7 +261,8 @@
 - ホットキーを押すと今開いてるwindowsに飛んでいってアクティブになる．
 - アクティブな状態で押すとウィンドウが消えてくれる．
 - なんか広い範囲(freeBSDとか使いたみあるし)で使えるといい
-くらいなものか．．．</p>
+くらいなものか．．．
+※ホットキーに関しては別の手段をとることにした．restに打ち消し線がないから消せないよ※</p>
 <p>Tilix:
 今使ってるやつ．て言うか標準で載ってたやつを雑に使ってる．
 使い心地は悪くないけどどうもホットキーは設定できなそう? openキーならあるけど． 評判は悪くない．
@@ -263,6 +272,49 @@
 最初気持ち悪かったけど，割といつも使う定位置の右から生えるようにしたらそんなに悪くない感じもあったりする．
 ホットキー的なものはあったけど，サブディスプレイでやるとターミナルがディスプレイを飛び越えてついてくるのがいまいち．
 これ入れるとF12常にこいつが食って何かと干渉しそう．</p>
+</div>
+<div class="section" id="id2">
+<h2>ホットキーについて<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>jumpappとxbindkeysを用いて実現することにした．
+最初はxdotoolとxbindkeysを使おうとしてたのでそこら辺も含めて．</p>
+<div class="section" id="xdotool">
+<h3>xdotool<a class="headerlink" href="#xdotool" title="Permalink to this headline">¶</a></h3>
+<p>fake input frome mouse and keyboard と windows manager 的なことができるやーつ
+<a class="reference external" href="https://github.com/jordansissel/xdotool">https://github.com/jordansissel/xdotool</a>
+<a class="reference external" href="https://www.semicomplete.com/projects/xdotool/">https://www.semicomplete.com/projects/xdotool/</a>
+ちらっとソースコード見た感じわかりやすかった(ただトップディレクトリにファイルが散らばっていて見づらいのでそこだけ注意)</p>
+<p>これを利用してwindowをアクティブにしたりみたいなことをする．</p>
+</div>
+<div class="section" id="xbindkeys">
+<h3>xbindkeys<a class="headerlink" href="#xbindkeys" title="Permalink to this headline">¶</a></h3>
+<p>Xbindkeys はコマンドをキーボードの特定のキーやキーの組み合わせに結びつけることができるプログラムです。Xbindkeys はマルチメディアキーを処理できます。ウィンドウマネージャやデスクトップ環境に依存しないので手軽に使うことが可能です。とのことです．
+<a class="reference external" href="https://wiki.archlinux.jp/index.php/Xbindkeys">https://wiki.archlinux.jp/index.php/Xbindkeys</a></p>
+<p>とりあえずコマンドにショートカットキーをくくりつけるらしい．</p>
+</div>
+<div class="section" id="jumpapp">
+<h3>jumpapp<a class="headerlink" href="#jumpapp" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/mkropat/jumpapp">https://github.com/mkropat/jumpapp</a>
+The idea is simple — bind a key for any given application that will:</p>
+<ul class="simple">
+<li>launch the application, if it's not already running, or</li>
+<li>focus the application's window, if it is running</li>
+</ul>
+<p>と言うことでダイレクトに使いたい機能だけがあるアプリケーションだったので使う．
+正直，アクティベートな時に押したら非表示になるみたいな機能があったら最高だった．</p>
+</div>
+<div class="section" id="jumpappxbindkeys">
+<h3>jumpappとxbindkeysの設定とかとか<a class="headerlink" href="#jumpappxbindkeys" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install xbindkeys pandoc
+$ git clone https://github.com/mkropat/jumpapp &amp;&amp; cd $_
+$ make &amp;&amp; sudo make install                    // なんかここら辺ちょいこけあったりしたのであとで確認しよう．
+$ xbindkeys -d &gt; ~/.xbindkeysrc
+$ vim ~/.xbindkeysrc
++ &quot;jumpapp tilix&quot;
++   Control + i
+$ xbindkeys
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="xwindowgnome">
 <h2>そもそもxwindowとかgnomeとかについて<a class="headerlink" href="#xwindowgnome" title="Permalink to this headline">¶</a></h2>
@@ -285,8 +337,17 @@
 <a class="reference external" href="https://forum.odroid.com/viewtopic.php?t=34109">https://forum.odroid.com/viewtopic.php?t=34109</a>
 <a class="reference external" href="https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/">https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/</a></p>
 </div>
-<div class="section" id="id2">
-<h2>他のいろんな設定の話<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="appimage">
+<h2>AppImageとかいうパッケージ?の話<a class="headerlink" href="#appimage" title="Permalink to this headline">¶</a></h2>
+<p>stationをubuntuにもインストールしようとした時，形式がAppImageとか言うものだったのでそれのメモ．
+それ自体が実行ファイルとなってアプリケーションが実行できるもので，割といろんなプラットフォームで動作するんだとか．
+あとはAppImageLauncherというものがあるらしい．</p>
+<p><a class="reference external" href="https://www.virment.com/how-to-use-appimage-linux/">https://www.virment.com/how-to-use-appimage-linux/</a>
+<a class="reference external" href="https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion">https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion</a></p>
+<p>と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．</p>
+</div>
+<div class="section" id="id3">
+<h2>他のいろんな設定の話<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>設定に関していろんなものが詰まったところ</p>
 <p><a class="reference external" href="https://sicklylife.jp/ubuntu/2004/settings.html">https://sicklylife.jp/ubuntu/2004/settings.html</a></p>
 <p><a class="reference external" href="https://sicklylife.hatenablog.com/entry/2019/01/04/200538">https://sicklylife.hatenablog.com/entry/2019/01/04/200538</a></p>
