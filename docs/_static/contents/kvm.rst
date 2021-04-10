@@ -115,6 +115,8 @@ serial
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
 
+  /////// centos8のlocationは http://ftp.iij.ad.jp/pub/linux/centos/8/BaseOS/x86_64/os/
+
   # fedora 24までしかなかったけどとりあえず通ったっぽい．
   # 他のミラーサイトみて install tree? installable distribution image? あること探した方がいいかも
   $ sudo virt-install \ 

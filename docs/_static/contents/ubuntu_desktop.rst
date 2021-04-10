@@ -45,6 +45,8 @@ https://www.semicomplete.com/projects/xdotool/
 ちらっとソースコード見た感じわかりやすかった(ただトップディレクトリにファイルが散らばっていて見づらいのでそこだけ注意)
 
 これを利用してwindowをアクティブにしたりみたいなことをする．
+んだけどなんか動作怪しいところありそう? 仕様がよくわかってないからかも知らん．
+https://github.com/jordansissel/xdotool/issues/220
 
 xbindkeys
 -----------
@@ -112,7 +114,7 @@ https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 AppImageとかいうパッケージ?の話
 ==================================
 
-stationをubuntuにもインストールしようとした時，形式がAppImageとか言うものだったのでそれのメモ．
+stationをubuntuにもインストールしようとした時，形式がAppImageとか言うものだったのでそれのメモ．(biscuitもそうだったわ．GUI割とこの形式多いんかね)
 それ自体が実行ファイルとなってアプリケーションが実行できるもので，割といろんなプラットフォームで動作するんだとか．
 あとはAppImageLauncherというものがあるらしい．
 
