@@ -116,6 +116,7 @@ serial
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
 
   /////// centos8のlocationは http://ftp.iij.ad.jp/pub/linux/centos/8/BaseOS/x86_64/os/
+  /////// centos8のtextモードのインストールでなんかユーザ作成しても反映されず，グループだけ残ってしまってて厄介だったんだけども
 
   # fedora 24までしかなかったけどとりあえず通ったっぽい．
   # 他のミラーサイトみて install tree? installable distribution image? あること探した方がいいかも
@@ -256,6 +257,20 @@ vnc
     --graphics vnc,port=5900,listen=0.0.0.0,keymap=us,password=passwd \
     --network bridge:virbr0 \
     --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso 
+
+console接続について
+======================
+
+環境というかOSによってインストール後もそのままconsole接続できるやつとできないやつがいる．
+ちなみに今確認しできているのだと
+
+::
+ 
+  できる: centos8
+  できない: ubuntu2004 ubuntu1804
+
+多分これはextraargsで渡したカーネルオプションがそのまま使われているかインストール後初期化されてるかみたいなそう言う話だとは思う．
+できない奴らは↓をやっておくと幸せになれる．
 
 clone
 =========

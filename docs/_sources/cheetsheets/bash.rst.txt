@@ -12,6 +12,8 @@ add user
   $ sudo useradd -m -G users,sudo -s /bin/bash [username]
   $ sudo passwd [username]
 
+CentOSとかだとグループはsudoじゃなくてwheel
+
 
 change hostname 
 =================

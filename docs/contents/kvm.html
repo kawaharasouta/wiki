@@ -103,6 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#vnc">vnc</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#console">console接続について</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clone">clone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delete-vm">delete vm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-memory-size">change memory size</a></li>
@@ -375,6 +376,7 @@ $ sudo virt-install \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 
 /////// centos8のlocationは http://ftp.iij.ad.jp/pub/linux/centos/8/BaseOS/x86_64/os/
+/////// centos8のtextモードのインストールでなんかユーザ作成しても反映されず，グループだけ残ってしまってて厄介だったんだけども
 
 # fedora 24までしかなかったけどとりあえず通ったっぽい．
 # 他のミラーサイトみて install tree? installable distribution image? あること探した方がいいかも
@@ -508,6 +510,17 @@ $ sudo virt-install \
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="console">
+<h2>console接続について<a class="headerlink" href="#console" title="Permalink to this headline">¶</a></h2>
+<p>環境というかOSによってインストール後もそのままconsole接続できるやつとできないやつがいる．
+ちなみに今確認しできているのだと</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">できる</span><span class="p">:</span> <span class="n">centos8</span>
+<span class="n">できない</span><span class="p">:</span> <span class="n">ubuntu2004</span> <span class="n">ubuntu1804</span>
+</pre></div>
+</div>
+<p>多分これはextraargsで渡したカーネルオプションがそのまま使われているかインストール後初期化されてるかみたいなそう言う話だとは思う．
+できない奴らは↓をやっておくと幸せになれる．</p>
 </div>
 <div class="section" id="clone">
 <h2>clone<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h2>
