@@ -34,6 +34,7 @@ wiki
   contents/haskell
   contents/XDG
   contents/ubuntu_desktop
+  contents/package
 
 
 .. toctree::
