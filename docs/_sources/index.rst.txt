@@ -49,7 +49,6 @@ wiki
   technote/unikernel
   technote/cs
   technote/tuntap
-  technote/auth
   technote/cpu
   technote/fpga
   technote/standard
@@ -57,6 +56,8 @@ wiki
   technote/virsh_source
   technote/kvm_api
   technote/make_kernel
+  technote/auth
+  technote/linux_security
 
 .. toctree::
   :maxdepth: 1
