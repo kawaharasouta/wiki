@@ -44,7 +44,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="prev" title="ubuntu desktop" href="ubuntu_desktop.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,7 +91,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xen.html">xen</a></li>
@@ -113,6 +115,18 @@
 <li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">パッケージ管理ツールに関して</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#aptdebian-debian">APT及びdebianパッケージ(debian系)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#yumdnfrpm-redhat">YUM・DNF及びRPMパッケージ(RedHat系)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">パッケージ開発とかのためのパッケージ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#srpm">ソースコード(SRPM)をダウンロードしてビルドする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#neovim">neovimのパッケージを自作してリポジトリまで自作する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">パッケージを署名する</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -284,6 +298,28 @@ $ ls ~/rpmbuild/RPMS/                                    ### specファイルに
 <h3>neovimのパッケージを自作してリポジトリまで自作する<a class="headerlink" href="#neovim" title="Permalink to this headline">¶</a></h3>
 <p>epelからインストールできるneovimはv3.8でバージョンが低いので，v4.4くらいのパッケージを自作してみる．</p>
 </div>
+<div class="section" id="id4">
+<h3>パッケージを署名する<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>### キーペアの作成と設定とか
+$ gpg --gen-key                                         ### 鍵作成．名前とかメールアドレスとか入れる ~/.gnupg ファイルの中にできる
+$ gpg --list-keys                                       ### 鍵が表示される
+$ gpg --export -a &#39;[キーペアの名前]&#39; &gt; ~/rpm-key        ### 公開鍵をexportする
+$ sudo rpm --import ~/rpm-key                           ### 公開鍵をシステムにimportする
+$ sudo rpm -q gpg-pubkey -qf &#39;%{summary}\n&#39;             ### 登録してある公開鍵のlistを取得する BaseOSのキーとかepelのキーとかもあると思う
+                                                        ### これとペアの秘密鍵で署名されたパッケージを信頼することになるので注意
+$ echo &quot;%_gpg_name [キーペアの名前]&quot; &gt; ~/.rpmmacros     ### rpmマクロファイルに自身が作成するrpmパッケージに利用するキーペアの名前を設定する
+
+### ビルドしたrpmパッケージに署名をする．
+$ rpm --addsign ~/rpmbuild/RPMS/*/*.rpm                 ### 署名する 署名はrpmマクロに登録されている鍵で行われる
+$ rpm --checksig [path to rpm]                          ### 確認
+
+### リポジトリの署名検証をONにする．
+$ sudo vim /etc/yum.repos.d/[reponame].repo             ### このレポジトリからインストールする時に署名のチェックがされるようにする
+- gpgcheck=0
++ gpgcheck=1
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -292,6 +328,15 @@ $ ls ~/rpmbuild/RPMS/                                    ### specファイルに
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ubuntu_desktop.html" class="btn btn-neutral float-left" title="ubuntu desktop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

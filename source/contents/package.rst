@@ -72,4 +72,28 @@ epelからインストールできるneovimはv3.8でバージョンが低いの
 
 
 
+パッケージを署名する
+----------------------
+
+::
+
+  ### キーペアの作成と設定とか
+  $ gpg --gen-key                                         ### 鍵作成．名前とかメールアドレスとか入れる ~/.gnupg ファイルの中にできる
+  $ gpg --list-keys                                       ### 鍵が表示される
+  $ gpg --export -a '[キーペアの名前]' > ~/rpm-key        ### 公開鍵をexportする
+  $ sudo rpm --import ~/rpm-key                           ### 公開鍵をシステムにimportする
+  $ sudo rpm -q gpg-pubkey -qf '%{summary}\n'             ### 登録してある公開鍵のlistを取得する BaseOSのキーとかepelのキーとかもあると思う
+                                                          ### これとペアの秘密鍵で署名されたパッケージを信頼することになるので注意
+  $ echo "%_gpg_name [キーペアの名前]" > ~/.rpmmacros     ### rpmマクロファイルに自身が作成するrpmパッケージに利用するキーペアの名前を設定する
+
+  ### ビルドしたrpmパッケージに署名をする．
+  $ rpm --addsign ~/rpmbuild/RPMS/*/*.rpm                 ### 署名する 署名はrpmマクロに登録されている鍵で行われる
+  $ rpm --checksig [path to rpm]                          ### 確認
+
+  ### リポジトリの署名検証をONにする．
+  $ sudo vim /etc/yum.repos.d/[reponame].repo             ### このレポジトリからインストールする時に署名のチェックがされるようにする
+  - gpgcheck=0
+  + gpgcheck=1
+
+
 
