@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="next" title="パッケージ管理ツールに関して" href="package.html" />
     <link rel="prev" title="XDG Base Directry" href="XDG.html" /> 
 </head>
 
@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
@@ -115,8 +116,9 @@
 <li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ubuntu desktop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">ターミナルをどうするか問題</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">ホットキーについて</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">フレーバーについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ターミナルをどうするか問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">ホットキーについて</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#xdotool">xdotool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xbindkeys">xbindkeys</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jumpapp">jumpapp</a></li>
@@ -126,9 +128,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#xwindowgnome">そもそもxwindowとかgnomeとかについて</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gpu-nvidia">GPU(nvidia)のドライバ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#appimage">AppImageとかいうパッケージ?の話</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">他のいろんな設定の話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">他のいろんな設定の話</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -147,7 +150,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
@@ -155,6 +157,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kvm_api.html">kvm api でいろいろするやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -251,16 +255,39 @@
   <div class="section" id="ubuntu-desktop">
 <h1>ubuntu desktop<a class="headerlink" href="#ubuntu-desktop" title="Permalink to this headline">¶</a></h1>
 <p>そのうちubuntu(じゃなくてもいいけどlinux類にはしたい)にしようと思ってるからちょいちょいメモする．
-とりあえず僕の今の環境はKubuntuかXubuntuかLubuntuかもしくは何かのubuntuフレーバーの2004だったと思うけど忘れた．
-なんかinput sourceがバグり散らかしてない?</p>
+ubuntu2004でフレーバーはひとまずBudgieをデフォルトにしてるらしいけど．．．
+オシャンではあるけどキーボード設定がちょい掴みづらくて焦った．</p>
 <div class="section" id="id1">
-<h2>ターミナルをどうするか問題<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>フレーバーについて<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>フレーバーは基本的にはデスクトップ環境のためのもので，かなり柔軟に自由にインストールやアンインストールをすることができる．
+システムのログイン時にフレーバーを選択し切り替えることが可能．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install [flavor]
+
+### フレーバーの名前は次の通り
+デフォルト:   ubuntu-desktop
+バッジー:     budgie-desktop
+Kubuntu:      kubuntu-desktop
+Kylin:        ubuntukylin-desktop
+Lubuntu:      lubuntu-desktop
+MATE:         mate-desktop
+Xubuntu:      xubuntu-desktop
+Studio:       ubuntustudio-desktop
+
+### 消したかったら普通に
+$ sudo apt remove --purge [flavor]        ### 結構でかいし --purge しとくのが無難かも
+</pre></div>
+</div>
+<p>ただしこの中でubuntu studioに関しては結構注意した方がいいらしい? よくわからないけど．
+クリエイター向けで音楽とか動画とかとかようのソフトウェアをたくさんインストールしちゃうとかそう言う感じではなかろうかとは思ってるけど試してない．</p>
+</div>
+<div class="section" id="id2">
+<h2>ターミナルをどうするか問題<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>とりあえず今のところmacではiterm2を使っていて，そんなにカスタマイズしてないので，
 用件としては
 - ホットキーが今iterm2と同じ感じがいい
 - ホットキーを押すと今開いてるwindowsに飛んでいってアクティブになる．
 - アクティブな状態で押すとウィンドウが消えてくれる．
-- なんか広い範囲(freeBSDとか使いたみあるし)で使えるといい
+- なんか広い範囲(他のLinuxでの用途と，freeBSDとか使いたみあるし)で使えるといい
 くらいなものか．．．
 ※ホットキーに関しては別の手段をとることにした．restに打ち消し線がないから消せないよ※</p>
 <p>Tilix:
@@ -273,8 +300,8 @@
 ホットキー的なものはあったけど，サブディスプレイでやるとターミナルがディスプレイを飛び越えてついてくるのがいまいち．
 これ入れるとF12常にこいつが食って何かと干渉しそう．</p>
 </div>
-<div class="section" id="id2">
-<h2>ホットキーについて<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>ホットキーについて<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>jumpappとxbindkeysを用いて実現することにした．
 最初はxdotoolとxbindkeysを使おうとしてたのでそこら辺も含めて．</p>
 <div class="section" id="xdotool">
@@ -302,7 +329,7 @@ The idea is simple — bind a key for any given application that will:</p>
 <li>focus the application's window, if it is running</li>
 </ul>
 <p>と言うことでダイレクトに使いたい機能だけがあるアプリケーションだったので使う．
-正直，アクティベートな時に押したら非表示になるみたいな機能があったら最高だった．</p>
+正直，アクティブな時に押したら非表示になるみたいな機能があったら最高だった．</p>
 </div>
 <div class="section" id="jumpappxbindkeys">
 <h3>jumpappとxbindkeysの設定とかとか<a class="headerlink" href="#jumpappxbindkeys" title="Permalink to this headline">¶</a></h3>
@@ -342,14 +369,15 @@ $ xbindkeys
 <div class="section" id="appimage">
 <h2>AppImageとかいうパッケージ?の話<a class="headerlink" href="#appimage" title="Permalink to this headline">¶</a></h2>
 <p>stationをubuntuにもインストールしようとした時，形式がAppImageとか言うものだったのでそれのメモ．(biscuitもそうだったわ．GUI割とこの形式多いんかね)
+(Neovimもこの形式あってびっくりしたよ．割といろいろこれに対応してきているらしい)
 それ自体が実行ファイルとなってアプリケーションが実行できるもので，割といろんなプラットフォームで動作するんだとか．
 あとはAppImageLauncherというものがあるらしい．</p>
 <p><a class="reference external" href="https://www.virment.com/how-to-use-appimage-linux/">https://www.virment.com/how-to-use-appimage-linux/</a>
 <a class="reference external" href="https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion">https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion</a></p>
 <p>と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．</p>
 </div>
-<div class="section" id="id3">
-<h2>他のいろんな設定の話<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>他のいろんな設定の話<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>設定に関していろんなものが詰まったところ</p>
 <p><a class="reference external" href="https://sicklylife.jp/ubuntu/2004/settings.html">https://sicklylife.jp/ubuntu/2004/settings.html</a></p>
 <p><a class="reference external" href="https://sicklylife.hatenablog.com/entry/2019/01/04/200538">https://sicklylife.hatenablog.com/entry/2019/01/04/200538</a></p>
@@ -364,7 +392,7 @@ $ xbindkeys
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="package.html" class="btn btn-neutral float-right" title="パッケージ管理ツールに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="XDG.html" class="btn btn-neutral float-left" title="XDG Base Directry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

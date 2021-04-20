@@ -3,9 +3,34 @@ ubuntu desktop
 =================
 
 そのうちubuntu(じゃなくてもいいけどlinux類にはしたい)にしようと思ってるからちょいちょいメモする．
-とりあえず僕の今の環境はKubuntuかXubuntuかLubuntuかもしくは何かのubuntuフレーバーの2004だったと思うけど忘れた．
-なんかinput sourceがバグり散らかしてない?
+ubuntu2004でフレーバーはひとまずBudgieをデフォルトにしてるらしいけど．．．
+オシャンではあるけどキーボード設定がちょい掴みづらくて焦った．
 
+フレーバーについて
+======================
+
+フレーバーは基本的にはデスクトップ環境のためのもので，かなり柔軟に自由にインストールやアンインストールをすることができる．
+システムのログイン時にフレーバーを選択し切り替えることが可能．
+
+::
+
+  $ sudo apt install [flavor]
+
+  ### フレーバーの名前は次の通り
+  デフォルト:   ubuntu-desktop
+  バッジー:     budgie-desktop
+  Kubuntu:      kubuntu-desktop
+  Kylin:        ubuntukylin-desktop
+  Lubuntu:      lubuntu-desktop
+  MATE:         mate-desktop
+  Xubuntu:      xubuntu-desktop
+  Studio:       ubuntustudio-desktop
+
+  ### 消したかったら普通に
+  $ sudo apt remove --purge [flavor]        ### 結構でかいし --purge しとくのが無難かも
+
+ただしこの中でubuntu studioに関しては結構注意した方がいいらしい? よくわからないけど．
+クリエイター向けで音楽とか動画とかとかようのソフトウェアをたくさんインストールしちゃうとかそう言う感じではなかろうかとは思ってるけど試してない．
 
 ターミナルをどうするか問題
 ============================
@@ -15,7 +40,7 @@ ubuntu desktop
 - ホットキーが今iterm2と同じ感じがいい
 - ホットキーを押すと今開いてるwindowsに飛んでいってアクティブになる．
 - アクティブな状態で押すとウィンドウが消えてくれる．
-- なんか広い範囲(freeBSDとか使いたみあるし)で使えるといい
+- なんか広い範囲(他のLinuxでの用途と，freeBSDとか使いたみあるし)で使えるといい
 くらいなものか．．．
 ※ホットキーに関しては別の手段をとることにした．restに打ち消し線がないから消せないよ※
 
@@ -66,7 +91,7 @@ The idea is simple — bind a key for any given application that will:
 - focus the application's window, if it is running
 
 と言うことでダイレクトに使いたい機能だけがあるアプリケーションだったので使う．
-正直，アクティベートな時に押したら非表示になるみたいな機能があったら最高だった．
+正直，アクティブな時に押したら非表示になるみたいな機能があったら最高だった．
 
 jumpappとxbindkeysの設定とかとか
 -------------------------------------
@@ -81,7 +106,6 @@ jumpappとxbindkeysの設定とかとか
   + "jumpapp tilix"
   +   Control + i
   $ xbindkeys
-
 
 
 そもそもxwindowとかgnomeとかについて
@@ -115,6 +139,7 @@ AppImageとかいうパッケージ?の話
 ==================================
 
 stationをubuntuにもインストールしようとした時，形式がAppImageとか言うものだったのでそれのメモ．(biscuitもそうだったわ．GUI割とこの形式多いんかね)
+(Neovimもこの形式あってびっくりしたよ．割といろいろこれに対応してきているらしい)
 それ自体が実行ファイルとなってアプリケーションが実行できるもので，割といろんなプラットフォームで動作するんだとか．
 あとはAppImageLauncherというものがあるらしい．
 
