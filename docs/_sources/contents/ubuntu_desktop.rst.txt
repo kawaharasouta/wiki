@@ -11,6 +11,7 @@ ubuntu2004でフレーバーはひとまずBudgieをデフォルトにしてる�
 
 フレーバーは基本的にはデスクトップ環境のためのもので，かなり柔軟に自由にインストールやアンインストールをすることができる．
 システムのログイン時にフレーバーを選択し切り替えることが可能．
+https://www.it-mure.jp.net/ja/software-installation/ubuntu%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E3%82%92%E5%88%A5%E3%81%AE%E3%83%95%E3%83%AC%E3%83%BC%E3%83%90%E3%83%BC%EF%BC%88kubuntu%E3%81%AA%E3%81%A9%EF%BC%89%E3%81%AB%E5%A4%89%E6%9B%B4%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%81%8B%EF%BC%9F/961517186/
 
 ::
 
@@ -29,8 +30,68 @@ ubuntu2004でフレーバーはひとまずBudgieをデフォルトにしてる�
   ### 消したかったら普通に
   $ sudo apt remove --purge [flavor]        ### 結構でかいし --purge しとくのが無難かも
 
+https://ubuntu.com/download/flavours
 ただしこの中でubuntu studioに関しては結構注意した方がいいらしい? よくわからないけど．
 クリエイター向けで音楽とか動画とかとかようのソフトウェアをたくさんインストールしちゃうとかそう言う感じではなかろうかとは思ってるけど試してない．
+
+日本語入力やIBusやcapslockの話
+================================
+
+capslockをctrlにする
+----------------------
+
+xorgの設定ファイルを編集する
+
+::
+
+  $ sudo vim /etc/default/keyboard
+
+  - XKBOPTIONS=""
+  + XKBOPTIONS="ctrl:nocaps"
+
+  $ sudo systemctl restart console-setup
+
+console-setupのリスタートで反映されると言う情報もあるんだけど再起動しないとダメだったけど．
+
+
+capsとctrlのところがイカれて1マシン潰した話
+----------------------------------------------
+
+題の通りで，突然イカれてどうしようもなくなった．
+フレーザーを追加してGUI環境をいじいじしていたのでその辺がよくなかったのかもしれない．
+変更のためにいろいろ試した時のurlを下に並べておく．
+
+
+
+
+日本語入力について
+---------------------
+
+mozcがいなかった場合はインストールする(基本いるはず)．
+
+::
+
+  $ sudo apt install ibus-mozc mozc-utils-gui
+
+GUIでmozc settingからmozcの設定をしておく(ctrl+spaceとか)．
+
+GUIでsettingからRegion & Language で Input Sources にmozc を加えておく．できればデフォで入ってるやつよりも上にしておく．
+
+IBusが何とかかんとか
+-------------------------
+
+普段デスクトップの右上にキーボードの(IBusの?)インジケータが見えているのにそれが見えなかったり，
+日本語入力がおかしくなったり．
+そう言うのがいろいろあるらしいけど，
+IBusを再起動とか，このあとあげるリンクの対処とかをすると直るとか
+僕がインジケータ見えなくなったときは，inputsourceにmozcを入れ直したら直ったりもした．
+よくわかんないね．
+
+https://sites.google.com/site/zoom2writej/ubuntu/ibus
+https://lists.ubuntu.com/archives/ubuntu-jp/2012-April/004116.html
+https://forums.ubuntulinux.jp/viewtopic.php?id=13768
+https://pinehead.at.webry.info/201704/article_1.html
+
 
 ターミナルをどうするか問題
 ============================
