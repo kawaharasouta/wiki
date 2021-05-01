@@ -4,6 +4,33 @@ ubuntu desktop
 
 そのうちubuntu(じゃなくてもいいけどlinux類にはしたい)にしようと思ってるからちょいちょいメモする．
 
+Ubuntu MATE インストール時にやること
+=======================================
+
+caps ctrlの設定
+------------------
+
+  /etc/default/keyboardを書き換えるいつもの方法でやったけど正直 Mate Tweak からやった方がいい感じしたよね．．
+
+言語と日本語入力の設定
+--------------------------
+
+初手ibusがいないらしいのでinstallする．ちなみにmozcは最初からいる．
+
+::
+
+  $ sudo apt install ibus-mozc
+
+Language Supports から，Reagional Formats で英語表記にしておく．
+
+再起動
+
+IBus Preference を開く
+Input Method にjapanese-mozcを追加して，できれば一番上にしたり一つにしたりしておく．
+また，mozcの設定でZenkaku/hankakuをctrl spaceに設定し直しておく．
+なんかMateは元からctrl spaceが何かに紐づいている気もする．
+
+
 メモメモメモ
 ================
 

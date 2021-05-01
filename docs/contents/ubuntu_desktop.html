@@ -116,17 +116,22 @@
 <li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ubuntu desktop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">メモメモメモ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">フレーバーについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ubuntu-mate">Ubuntu MATE インストール時にやること</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#caps-ctrl">caps ctrlの設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">言語と日本語入力の設定</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">メモメモメモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">フレーバーについて</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ibuscapslock">日本語入力やIBusやcapslockの話</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#capslockctrl">capslockをctrlにする</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#capsctrl1">capsとctrlのところがイカれて1マシン潰した話</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">日本語入力について</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">日本語入力について</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ibus">IBusが何とかかんとか</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">ターミナルをどうするか問題</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">ホットキーについて</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">ターミナルをどうするか問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">ホットキーについて</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#xdotool">xdotool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xbindkeys">xbindkeys</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#jumpapp">jumpapp</a></li>
@@ -136,7 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#xwindowgnome">そもそもxwindowとかgnomeとかについて</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gpu-nvidia">GPU(nvidia)のドライバ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#appimage">AppImageとかいうパッケージ?の話</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">他のいろんな設定の話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">他のいろんな設定の話</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
@@ -263,8 +268,29 @@
   <div class="section" id="ubuntu-desktop">
 <h1>ubuntu desktop<a class="headerlink" href="#ubuntu-desktop" title="Permalink to this headline">¶</a></h1>
 <p>そのうちubuntu(じゃなくてもいいけどlinux類にはしたい)にしようと思ってるからちょいちょいメモする．</p>
+<div class="section" id="ubuntu-mate">
+<h2>Ubuntu MATE インストール時にやること<a class="headerlink" href="#ubuntu-mate" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="caps-ctrl">
+<h3>caps ctrlの設定<a class="headerlink" href="#caps-ctrl" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>/etc/default/keyboardを書き換えるいつもの方法でやったけど正直 Mate Tweak からやった方がいい感じしたよね．．</div></blockquote>
+</div>
 <div class="section" id="id1">
-<h2>メモメモメモ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h3>言語と日本語入力の設定<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>初手ibusがいないらしいのでinstallする．ちなみにmozcは最初からいる．</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install ibus-mozc
+</pre></div>
+</div>
+<p>Language Supports から，Reagional Formats で英語表記にしておく．</p>
+<p>再起動</p>
+<p>IBus Preference を開く
+Input Method にjapanese-mozcを追加して，できれば一番上にしたり一つにしたりしておく．
+また，mozcの設定でZenkaku/hankakuをctrl spaceに設定し直しておく．
+なんかMateは元からctrl spaceが何かに紐づいている気もする．</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>メモメモメモ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>普通にubuntu desktopをインストールしたあと，budgie-desktopをインストールしてそっちで入ったらctrlがcapsになってた．
 ubuntu desktopで入ったら普通だった．
 なんか/etc/default/keyboardみたらなんか書き換わってるんだよね．
@@ -274,8 +300,8 @@ ubuntu desktopで入ったら普通だった．
 と言うわけなので雑にフレーバーをぽこぽこインストールしてみたりするのは止めようと思う．最初は動いててもいつかどこかでガタがきそうな気がしてる．
 で，もしどうしても複数のフレーバーを共存させたいんだったらひとまずベースをubuntu-desktopでインストールしておくのが多分いい気がする．</p>
 </div>
-<div class="section" id="id2">
-<h2>フレーバーについて<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>フレーバーについて<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>フレーバーは基本的にはデスクトップ環境のためのもので，かなり柔軟に自由にインストールやアンインストールをすることができる．
 システムのログイン時にフレーバーを選択し切り替えることが可能．
 <a class="reference external" href="https://www.it-mure.jp.net/ja/software-installation/ubuntu%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E3%82%92%E5%88%A5%E3%81%AE%E3%83%95%E3%83%AC%E3%83%BC%E3%83%90%E3%83%BC%EF%BC%88kubuntu%E3%81%AA%E3%81%A9%EF%BC%89%E3%81%AB%E5%A4%89%E6%9B%B4%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%81%8B%EF%BC%9F/961517186/">https://www.it-mure.jp.net/ja/software-installation/ubuntu%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E3%82%92%E5%88%A5%E3%81%AE%E3%83%95%E3%83%AC%E3%83%BC%E3%83%90%E3%83%BC%EF%BC%88kubuntu%E3%81%AA%E3%81%A9%EF%BC%89%E3%81%AB%E5%A4%89%E6%9B%B4%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%81%8B%EF%BC%9F/961517186/</a></p>
@@ -321,8 +347,8 @@ $ sudo systemctl restart console-setup
 フレーザーを追加してGUI環境をいじいじしていたのでその辺がよくなかったのかもしれない．
 変更のためにいろいろ試した時のurlを下に並べておく．</p>
 </div>
-<div class="section" id="id3">
-<h3>日本語入力について<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>日本語入力について<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>mozcがいなかった場合はインストールする(基本いるはず)．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install ibus-mozc mozc-utils-gui
 </pre></div>
@@ -344,8 +370,8 @@ IBusを再起動とか，このあとあげるリンクの対処とかをする�
 <a class="reference external" href="https://pinehead.at.webry.info/201704/article_1.html">https://pinehead.at.webry.info/201704/article_1.html</a></p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>ターミナルをどうするか問題<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>ターミナルをどうするか問題<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>とりあえず今のところmacではiterm2を使っていて，そんなにカスタマイズしてないので，
 用件としては
 - ホットキーが今iterm2と同じ感じがいい
@@ -364,8 +390,8 @@ IBusを再起動とか，このあとあげるリンクの対処とかをする�
 ホットキー的なものはあったけど，サブディスプレイでやるとターミナルがディスプレイを飛び越えてついてくるのがいまいち．
 これ入れるとF12常にこいつが食って何かと干渉しそう．</p>
 </div>
-<div class="section" id="id5">
-<h2>ホットキーについて<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>ホットキーについて<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>jumpappとxbindkeysを用いて実現することにした．
 最初はxdotoolとxbindkeysを使おうとしてたのでそこら辺も含めて．</p>
 <div class="section" id="xdotool">
@@ -440,8 +466,8 @@ $ xbindkeys
 <a class="reference external" href="https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion">https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion</a></p>
 <p>と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．</p>
 </div>
-<div class="section" id="id6">
-<h2>他のいろんな設定の話<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>他のいろんな設定の話<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>設定に関していろんなものが詰まったところ</p>
 <p><a class="reference external" href="https://sicklylife.jp/ubuntu/2004/settings.html">https://sicklylife.jp/ubuntu/2004/settings.html</a></p>
 <p><a class="reference external" href="https://sicklylife.hatenablog.com/entry/2019/01/04/200538">https://sicklylife.hatenablog.com/entry/2019/01/04/200538</a></p>
