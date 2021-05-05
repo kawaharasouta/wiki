@@ -7,6 +7,19 @@ ubuntu desktop
 Ubuntu MATE インストール時にやること
 =======================================
 
+とりあえずwelcomeでちょいちょいしとく
+----------------------------------------
+
+https://www.linux-setting.tokyo/2020/08/ubuntu-mate-20041-windowsnap.html
+
+やることとして，
+- 必要であればドライバ類とか
+- ブラウザ(chrome)を追加してデフォルトにしておく
+- desktopレイアウトをpantheonにして，パネルにGlobal Application Menu を入れておく
+- 配色を変える
+
+とひとまずこれくらいか．
+
 caps ctrlの設定
 ------------------
 
