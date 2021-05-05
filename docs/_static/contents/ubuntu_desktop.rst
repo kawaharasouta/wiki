@@ -196,9 +196,12 @@ The idea is simple — bind a key for any given application that will:
 jumpappとxbindkeysの設定とかとか
 -------------------------------------
 
+※xbindkeysの使用についてだけど，もしかしたら普通にデスクトップの標準機能のshotcut設定を使った方が良さげな気がしてきた．
+
 ::
 
   $ sudo apt install xbindkeys pandoc
+  $ sudo apt install wmctrl                      // mateに入れた時に怒られた
   $ git clone https://github.com/mkropat/jumpapp && cd $_
   $ make && sudo make install                    // なんかここら辺ちょいこけあったりしたのであとで確認しよう．
   $ xbindkeys -d > ~/.xbindkeysrc

@@ -423,7 +423,9 @@ The idea is simple — bind a key for any given application that will:</p>
 </div>
 <div class="section" id="jumpappxbindkeys">
 <h3>jumpappとxbindkeysの設定とかとか<a class="headerlink" href="#jumpappxbindkeys" title="Permalink to this headline">¶</a></h3>
+<p>※xbindkeysの使用についてだけど，もしかしたら普通にデスクトップの標準機能のshotcut設定を使った方が良さげな気がしてきた．</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install xbindkeys pandoc
+$ sudo apt install wmctrl                      // mateに入れた時に怒られた
 $ git clone https://github.com/mkropat/jumpapp &amp;&amp; cd $_
 $ make &amp;&amp; sudo make install                    // なんかここら辺ちょいこけあったりしたのであとで確認しよう．
 $ xbindkeys -d &gt; ~/.xbindkeysrc
