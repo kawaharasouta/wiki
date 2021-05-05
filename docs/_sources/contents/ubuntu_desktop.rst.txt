@@ -149,6 +149,11 @@ Tilix:
 使い心地は悪くないけどどうもホットキーは設定できなそう? openキーならあるけど． 評判は悪くない．
 ヘッダの図体がでかい(小さくできそう)
 
+特にタブバーを小さくする方法について
+https://endy-tech.hatenablog.jp/entry/tilix
+他の設定とか
+https://fe-notes.work/posts/20200106_tilix/
+
 Guake(Quake?):
 トップダウンターミナルと言うらしい．それなん?と思ったけど使ってみたらわかった．デスクトップの上からニョキッと生えてくる．
 最初気持ち悪かったけど，割といつも使う定位置の右から生えるようにしたらそんなに悪くない感じもあったりする．
@@ -204,7 +209,7 @@ jumpappとxbindkeysの設定とかとか
   $ sudo apt install wmctrl                      // mateに入れた時に怒られた
   $ git clone https://github.com/mkropat/jumpapp && cd $_
   $ make && sudo make install                    // なんかここら辺ちょいこけあったりしたのであとで確認しよう．
-  $ xbindkeys -d > ~/.xbindkeysrc
+  $ xbindkeys -d > ~/.xbindkeysrc                // このあとのバインドはデスクトップの標準のshortbut設定でやるべき
   $ vim ~/.xbindkeysrc
   + "jumpapp tilix"
   +   Control + i

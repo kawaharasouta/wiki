@@ -384,6 +384,10 @@ IBusを再起動とか，このあとあげるリンクの対処とかをする�
 今使ってるやつ．て言うか標準で載ってたやつを雑に使ってる．
 使い心地は悪くないけどどうもホットキーは設定できなそう? openキーならあるけど． 評判は悪くない．
 ヘッダの図体がでかい(小さくできそう)</p>
+<p>特にタブバーを小さくする方法について
+<a class="reference external" href="https://endy-tech.hatenablog.jp/entry/tilix">https://endy-tech.hatenablog.jp/entry/tilix</a>
+他の設定とか
+<a class="reference external" href="https://fe-notes.work/posts/20200106_tilix/">https://fe-notes.work/posts/20200106_tilix/</a></p>
 <p>Guake(Quake?):
 トップダウンターミナルと言うらしい．それなん?と思ったけど使ってみたらわかった．デスクトップの上からニョキッと生えてくる．
 最初気持ち悪かったけど，割といつも使う定位置の右から生えるようにしたらそんなに悪くない感じもあったりする．
@@ -428,7 +432,7 @@ The idea is simple — bind a key for any given application that will:</p>
 $ sudo apt install wmctrl                      // mateに入れた時に怒られた
 $ git clone https://github.com/mkropat/jumpapp &amp;&amp; cd $_
 $ make &amp;&amp; sudo make install                    // なんかここら辺ちょいこけあったりしたのであとで確認しよう．
-$ xbindkeys -d &gt; ~/.xbindkeysrc
+$ xbindkeys -d &gt; ~/.xbindkeysrc                // このあとのバインドはデスクトップの標準のshortbut設定でやるべき
 $ vim ~/.xbindkeysrc
 + &quot;jumpapp tilix&quot;
 +   Control + i
