@@ -60,6 +60,7 @@ wiki
   technote/make_kernel
   technote/auth
   technote/linux_security
+  technote/em_linux
 
 .. toctree::
   :maxdepth: 1
