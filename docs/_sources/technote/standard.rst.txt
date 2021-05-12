@@ -34,6 +34,24 @@ https://ja.wikipedia.org/wiki/Single_UNIX_Specification
 http://www.unix.org/version4
 
 
+Linux Standard Base(LSB)
+==============================
+
+Linuxディストリの共通仕様を定めたもの
+とりあえず↓のリンクみた方が早い．
+
+https://wiki.linuxfoundation.org/lsb/start
+
+Filesystem Hierarchy Standard(FHS)
+=====================================
+
+↑のLSBの一部で，ファイルシステムの階層に関しての仕様．
+これもリンクをみたり，なんならこれについては日本語記事結構多いからそれみた方が早いのはある．
+
+https://wiki.linuxfoundation.org/lsb/fhs-30
+https://www.kangetsu121.work/entry/2019/10/29/015616
+
+
 ユニケージ開発手法
 ======================
 
