@@ -279,5 +279,36 @@ https://sicklylife.jp/ubuntu/2004/settings.html
 https://sicklylife.hatenablog.com/entry/2019/01/04/200538
 
 
+音声入力出力とかとかそこらへんについて
+===========================================
+
+Ubuntuと言うかLinuxはと言う話らしいけど
+ALSA と PulseAudio の二つによって基本的な制御がなされているらしい．
+
+https://qiita.com/propella/items/4699eda71cd742cba8d3
+https://mickey-happygolucky.hatenablog.com/entry/2015/04/04/105512
+https://mickey-happygolucky.hatenablog.com/entry/2019/08/30/125038
+
+ALSA (Advance Linux Sound Architecture)
+--------------------------------------------
+
+サウンドデバイスを統一的に操作するための仕組み．
+あるアプリがALSA経由でサウンドデバイスを操作している間，他のアプリからそのデバイスを使用することはできない．
+基本的にはアプリケーションはALSAを直接は操作せず，PulseAudioを使う．
+ちなみにこいつはカーネルコンポーネントで，カーネルランドで動作するらしいけどよくわかってない．
+
+PulseAudio
+-------------
+
+複数のアプリケーションが同時にサウンドデバイスを使うための仕組み．
+基本的にアプリケーションはこちらを叩くことになっているが，ALSAを直接叩くアプリケーションが存在し，どうも複雑化の原因になっているらしい，
+サウンドサーバと呼ばれるものらしい．
+GNOMEやKDEなどのデスクトップ環境で一般的に使われているものらしい．
+(言わんとすることは，ALSAはカーネルコンポーネントだけどこっちはそうじゃないよってこと)
+
+
+
+
+
 
 

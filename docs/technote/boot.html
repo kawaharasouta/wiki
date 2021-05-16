@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
@@ -115,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/package.html">パッケージ管理ツールに関して</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -145,7 +147,6 @@
 <li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standard.html">規格とか思想とか</a></li>
@@ -153,6 +154,9 @@
 <li class="toctree-l1"><a class="reference internal" href="virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm_api.html">kvm api でいろいろするやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -440,7 +444,7 @@ FAT系のパーティションを自力で検出、のちにGPTをロードしOS
 <li>モジュールのロード後，/sbin/init(systemd)が起動する．</li>
 <li>default.targetというUnitが処理される．</li>
 <li>システムの用途に適した(登録された?)ターゲットが処理される．</li>
-<li>ログイン受付開始(多分initがlogin(1)プロセスを作るんだと思うんだ)</li>
+<li>ログイン受付開始(まずinitがgettyプロセスを作ってそこからgettyがlogin(1)にexecで良いはず．ちなみに login: のプロンプト表示まで?はgettyらしい?このへんちょい怪しい)</li>
 </ol>
 </div>
 <div class="section" id="vmlinuzinitrd-img">

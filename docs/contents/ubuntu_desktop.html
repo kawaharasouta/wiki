@@ -143,6 +143,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#gpu-nvidia">GPU(nvidia)のドライバ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#appimage">AppImageとかいうパッケージ?の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">他のいろんな設定の話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">音声入力出力とかとかそこらへんについて</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alsa-advance-linux-sound-architecture">ALSA (Advance Linux Sound Architecture)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pulseaudio">PulseAudio</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
@@ -173,6 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -488,6 +494,29 @@ $ xbindkeys
 <p>設定に関していろんなものが詰まったところ</p>
 <p><a class="reference external" href="https://sicklylife.jp/ubuntu/2004/settings.html">https://sicklylife.jp/ubuntu/2004/settings.html</a></p>
 <p><a class="reference external" href="https://sicklylife.hatenablog.com/entry/2019/01/04/200538">https://sicklylife.hatenablog.com/entry/2019/01/04/200538</a></p>
+</div>
+<div class="section" id="id8">
+<h2>音声入力出力とかとかそこらへんについて<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>Ubuntuと言うかLinuxはと言う話らしいけど
+ALSA と PulseAudio の二つによって基本的な制御がなされているらしい．</p>
+<p><a class="reference external" href="https://qiita.com/propella/items/4699eda71cd742cba8d3">https://qiita.com/propella/items/4699eda71cd742cba8d3</a>
+<a class="reference external" href="https://mickey-happygolucky.hatenablog.com/entry/2015/04/04/105512">https://mickey-happygolucky.hatenablog.com/entry/2015/04/04/105512</a>
+<a class="reference external" href="https://mickey-happygolucky.hatenablog.com/entry/2019/08/30/125038">https://mickey-happygolucky.hatenablog.com/entry/2019/08/30/125038</a></p>
+<div class="section" id="alsa-advance-linux-sound-architecture">
+<h3>ALSA (Advance Linux Sound Architecture)<a class="headerlink" href="#alsa-advance-linux-sound-architecture" title="Permalink to this headline">¶</a></h3>
+<p>サウンドデバイスを統一的に操作するための仕組み．
+あるアプリがALSA経由でサウンドデバイスを操作している間，他のアプリからそのデバイスを使用することはできない．
+基本的にはアプリケーションはALSAを直接は操作せず，PulseAudioを使う．
+ちなみにこいつはカーネルコンポーネントで，カーネルランドで動作するらしいけどよくわかってない．</p>
+</div>
+<div class="section" id="pulseaudio">
+<h3>PulseAudio<a class="headerlink" href="#pulseaudio" title="Permalink to this headline">¶</a></h3>
+<p>複数のアプリケーションが同時にサウンドデバイスを使うための仕組み．
+基本的にアプリケーションはこちらを叩くことになっているが，ALSAを直接叩くアプリケーションが存在し，どうも複雑化の原因になっているらしい，
+サウンドサーバと呼ばれるものらしい．
+GNOMEやKDEなどのデスクトップ環境で一般的に使われているものらしい．
+(言わんとすることは，ALSAはカーネルコンポーネントだけどこっちはそうじゃないよってこと)</p>
+</div>
 </div>
 </div>
 
