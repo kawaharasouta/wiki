@@ -17,6 +17,8 @@ install (ubuntu)
   $ sudo apt update && sudo apt install -y docker-ce
   $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマンドを実行させるため．このあと再起動必要．
 
+公式
+https://docs.docker.com/engine/install/ubuntu/
 もっとも簡単なdocker公式セットアップ?
 https://qiita.com/zembutsu/items/bedb18e1061303e217b8
 

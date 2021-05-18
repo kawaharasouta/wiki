@@ -110,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
@@ -120,6 +121,7 @@
 <li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -138,7 +140,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
@@ -146,6 +147,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kvm_api.html">kvm api でいろいろするやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -253,7 +257,9 @@ $ sudo apt update &amp;&amp; sudo apt install -y docker-ce
 $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマンドを実行させるため．このあと再起動必要．
 </pre></div>
 </div>
-<p>もっとも簡単なdocker公式セットアップ?
+<p>公式
+<a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a>
+もっとも簡単なdocker公式セットアップ?
 <a class="reference external" href="https://qiita.com/zembutsu/items/bedb18e1061303e217b8">https://qiita.com/zembutsu/items/bedb18e1061303e217b8</a></p>
 </div>
 <div class="section" id="commands">
