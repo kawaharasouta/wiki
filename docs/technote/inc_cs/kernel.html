@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/autotools.html">autotools</a></li>
@@ -115,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contents/haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/package.html">パッケージ管理ツールに関して</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -138,12 +140,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#id3">パフォーマンスに関する考察</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linuxのプロセスのメモリ空間とかについてのメモ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">マルチプロセスとマルチスレッドに関して</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tuntap.html">TUN/TAPの調査</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../standard.html">規格とか思想とか</a></li>
@@ -151,6 +154,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../kvm_api.html">kvm api でいろいろするやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -254,7 +260,7 @@
 基本的な思想は理解できているものとするので省く．</p>
 <div class="section" id="id3">
 <h3>パフォーマンスに関する考察<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-left" id="id4">
+<div class="figure align-left" id="id5">
 <a class="reference internal image-reference" href="../../_images/OS-structure.svg"><img alt="../../_images/OS-structure.svg" src="../../_images/OS-structure.svg" /></a>
 <p class="caption"><span class="caption-text">マイクロカーネルとモノリシックカーネルの設計(<a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/6/67/OS-structure.svg">https://upload.wikimedia.org/wikipedia/commons/6/67/OS-structure.svg</a>)</span></p>
 </div>
@@ -263,6 +269,29 @@
 それらの動作の際には必ずカーネル空間とユーザ空間の移動が発生する．
 デバイスドライバもネットワークスタックもユーザ空間にあるのでこれらの動作には必ず大きなボトルネックがついて回る事になる．</p>
 </div>
+</div>
+<div class="section" id="linux">
+<h2>Linuxのプロセスのメモリ空間とかについてのメモ<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p>オブジェクトファイルが一緒だったら実は仮想メモリ空間に当てられてる物理メモリ空間は一緒．
+glibcもしかり．
+それらは多分mmapされてると思ってほぼ良い． SHAREDで．ただ，デバッグ情報は通常の実行にはマップされないらしいから，素直にmmapされてるわけでは多分なさそう．
+コード部のところ(と言うか実際のオブジェクトファイル a.out とかには実はハンドラみたいなもの(先生がなんて読んでいたか忘れてしまった)がくっついている．
+そこに呼び出しがあったあと，実物(__関数名みたいな奴ら)を叩きにいく．
+いろんな意味があるけど，一つはLDPRELOADみたいなやつのため(標準ライブラリの関数とかを自作のものに一時差し替えたりするやつ)
+もう一つはglibcめっちゃでかいから全部一気にメモリにロードするのは邪魔なため．
+他にも理由ありそうだけど，今わかったのはこの二つ．
+オンデマンドローディングとかいうやつ?
+ちなみにこのオンデマンドローディングみたいなのはUnixの?Linuxの?思想的には全くもってやってはならないことらしい．
+よく考えればそれはそうで，コード部のジャンプ先を実行時に書き換えるなんて何かの間違いでとんでもないところに飛んだら大変なことになる．
+ただパフォーマンスのためにglibcは?なのかgccは?なのかわかんないけどそれをしているらしい．</p>
+</div>
+<div class="section" id="id4">
+<h2>マルチプロセスとマルチスレッドに関して<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>基本的な差異は理解していて，おおよその違いはそこから容易に想像が可能であるためその部分に関しての記述はめんどくさいので避ける．
+そういえばセマフォはどうなってるのか聞き忘れたのでタイミングがあったら聞きたい．
+flockみたいなのとpthreadで使うmutexがあるけど，
+mutexはユーザメモリ空間の変数でしかないので高速で，システムコールを伴わないのでユーザ空間とカーネル空間のコンテキストスイッチもない．
+flockはファイルシステムのメタデータ的な場所にあってそれを扱ってるらしい．</p>
 </div>
 </div>
 
