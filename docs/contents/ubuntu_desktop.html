@@ -142,8 +142,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#xwindowgnome">そもそもxwindowとかgnomeとかについて</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gpu-nvidia">GPU(nvidia)のドライバ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#appimage">AppImageとかいうパッケージ?の話</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">他のいろんな設定の話</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">音声入力出力とかとかそこらへんについて</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id7">AppImageの流れで調べたこととかいろいろメモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">他のいろんな設定の話</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">音声入力出力とかとかそこらへんについて</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#alsa-advance-linux-sound-architecture">ALSA (Advance Linux Sound Architecture)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pulseaudio">PulseAudio</a></li>
 </ul>
@@ -490,13 +491,55 @@ $ xbindkeys
 <p>と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．</p>
 </div>
 <div class="section" id="id7">
-<h2>他のいろんな設定の話<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>AppImageの流れで調べたこととかいろいろメモ<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>多分appimageの公式: <a class="reference external" href="https://appimage.org/">https://appimage.org/</a></p>
+<p>AppImage は企画とかフォーマットの類である．これは AppimageKit(<a class="reference external" href="https://github.com/AppImage/AppImageKit">https://github.com/AppImage/AppImageKit</a>)を見ると実装がわかる．</p>
+<p>ひとまず概要とかについて</p>
+<p>Appimageを端的に説明すると以下．
+- 広いLinuxベースのオペレーティングシステムで動作する．
+- 依存関係が一つのバイナリに含まれている．(システムに追加のパッケージを(おそらく原則的にだと思うけど)必要とせず，appimageバイナリだけで動く))
+- その他システムに変更を加えない(sudoがいらない)</p>
+<p>They’re a trade-off between a simple user experience and resulting file size.
+ファイルサイズとユーザエクスペリエンスの間にトレードオフがある．
+(あんま詳しくないユーザでも使えるようにしたいよとかそっち側の考え方ですよといってる)</p>
+<p>開発が進むと，デスクトップ統合(<a class="reference external" href="https://docs.appimage.org/user-guide/run-appimages.html#ref-desktop-integration">https://docs.appimage.org/user-guide/run-appimages.html#ref-desktop-integration</a>)
+とか，AppImageのメタ情報からの自動アップデート(<a class="reference external" href="https://docs.appimage.org/introduction/software-overview.html#ref-appimageupdate">https://docs.appimage.org/introduction/software-overview.html#ref-appimageupdate</a>)
+とかそう言う機能がいろいろついてきた．</p>
+<p>ちなみにAppImageはAppDir(<a class="reference external" href="https://docs.appimage.org/reference/appdir.html#ref-appdir">https://docs.appimage.org/reference/appdir.html#ref-appdir</a>) とか言うのを記述というか，
+AppDirという形式のディレクトリを必要として構築するらしいよ．</p>
+<p>AppImage(もしくはAppImageKit)のコンポーネントについて
+-runtime
+ランタイムとは，実行形式のヘッダのこと．AppImageが実行されるとまずはこの部分が実行され，動作用のファイルシステムがマウントされ(多分chrootとかされて)，
+payload application(すなわちアプリケーション本体のこと)が動作する．これが終わるとファイルシステムはアンマウントされる．
+-appimagetool
+AppDirからAppImageを作成するツール．
+-AppRun
+AppDir内のエントリポイントを提供するファイル
+アプリケーションがリロケータブルであればシンボリックリンクでも良い?
+なんか今はlinuxdeploy(<a class="reference external" href="https://github.com/linuxdeploy/linuxdeploy">https://github.com/linuxdeploy/linuxdeploy</a>)と言うのを使うとか? 昔のものはAppRun.cを使っているらしいよ?
+-Helper
+機能検証のツール?
+よくわからんけどNormally there is no need to use this directly, this is mainly for debugging for AppImage developers. って感じらしいので割愛．
+-AppImageUpdate
+AppImageのメタデータから自動アップデートするやつ．
+次の2つのツールで構成されているらしいよ．</p>
+<blockquote>
+<div>-appimageupdatetool
+アップデート自体やアップデート情報を扱うためのCUIツール．フル機能
+-AppImageUpdate
+UIです．Qtって言うので作られているらしいよ．</div></blockquote>
+<p>-AppImaged
+デスクトップ統合のためのデーモンっすね．</p>
+<p><a class="reference external" href="https://itsfoss.com/use-appimage-linux/">https://itsfoss.com/use-appimage-linux/</a></p>
+</div>
+<div class="section" id="id8">
+<h2>他のいろんな設定の話<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>設定に関していろんなものが詰まったところ</p>
 <p><a class="reference external" href="https://sicklylife.jp/ubuntu/2004/settings.html">https://sicklylife.jp/ubuntu/2004/settings.html</a></p>
 <p><a class="reference external" href="https://sicklylife.hatenablog.com/entry/2019/01/04/200538">https://sicklylife.hatenablog.com/entry/2019/01/04/200538</a></p>
 </div>
-<div class="section" id="id8">
-<h2>音声入力出力とかとかそこらへんについて<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>音声入力出力とかとかそこらへんについて<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>Ubuntuと言うかLinuxはと言う話らしいけど
 ALSA と PulseAudio の二つによって基本的な制御がなされているらしい．</p>
 <p><a class="reference external" href="https://qiita.com/propella/items/4699eda71cd742cba8d3">https://qiita.com/propella/items/4699eda71cd742cba8d3</a>

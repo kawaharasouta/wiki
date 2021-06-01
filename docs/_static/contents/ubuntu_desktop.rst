@@ -269,6 +269,60 @@ https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-apl
 
 と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．
 
+AppImageの流れで調べたこととかいろいろメモ
+=============================================
+
+多分appimageの公式: https://appimage.org/
+
+AppImage は企画とかフォーマットの類である．これは AppimageKit(https://github.com/AppImage/AppImageKit)を見ると実装がわかる．
+
+ひとまず概要とかについて
+
+Appimageを端的に説明すると以下．
+- 広いLinuxベースのオペレーティングシステムで動作する．
+- 依存関係が一つのバイナリに含まれている．(システムに追加のパッケージを(おそらく原則的にだと思うけど)必要とせず，appimageバイナリだけで動く))
+- その他システムに変更を加えない(sudoがいらない) 
+
+They’re a trade-off between a simple user experience and resulting file size.
+ファイルサイズとユーザエクスペリエンスの間にトレードオフがある．
+(あんま詳しくないユーザでも使えるようにしたいよとかそっち側の考え方ですよといってる)
+
+開発が進むと，デスクトップ統合(https://docs.appimage.org/user-guide/run-appimages.html#ref-desktop-integration)
+とか，AppImageのメタ情報からの自動アップデート(https://docs.appimage.org/introduction/software-overview.html#ref-appimageupdate)
+とかそう言う機能がいろいろついてきた．
+
+ちなみにAppImageはAppDir(https://docs.appimage.org/reference/appdir.html#ref-appdir) とか言うのを記述というか，
+AppDirという形式のディレクトリを必要として構築するらしいよ．
+
+AppImage(もしくはAppImageKit)のコンポーネントについて
+-runtime
+ランタイムとは，実行形式のヘッダのこと．AppImageが実行されるとまずはこの部分が実行され，動作用のファイルシステムがマウントされ(多分chrootとかされて)，
+payload application(すなわちアプリケーション本体のこと)が動作する．これが終わるとファイルシステムはアンマウントされる．
+-appimagetool
+AppDirからAppImageを作成するツール． 
+-AppRun
+AppDir内のエントリポイントを提供するファイル
+アプリケーションがリロケータブルであればシンボリックリンクでも良い?
+なんか今はlinuxdeploy(https://github.com/linuxdeploy/linuxdeploy)と言うのを使うとか? 昔のものはAppRun.cを使っているらしいよ?
+-Helper
+機能検証のツール?
+よくわからんけどNormally there is no need to use this directly, this is mainly for debugging for AppImage developers. って感じらしいので割愛．
+-AppImageUpdate
+AppImageのメタデータから自動アップデートするやつ．
+次の2つのツールで構成されているらしいよ．
+
+  -appimageupdatetool
+  アップデート自体やアップデート情報を扱うためのCUIツール．フル機能
+  -AppImageUpdate
+  UIです．Qtって言うので作られているらしいよ．
+
+-AppImaged
+デスクトップ統合のためのデーモンっすね．
+
+
+
+https://itsfoss.com/use-appimage-linux/
+
 他のいろんな設定の話
 =====================
 

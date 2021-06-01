@@ -51,6 +51,9 @@ Filesystem Hierarchy Standard(FHS)
 https://wiki.linuxfoundation.org/lsb/fhs-30
 https://www.kangetsu121.work/entry/2019/10/29/015616
 
+/sys/class/ 周辺デバイスについて
+          - net/ networkデバイス(と言うかネットワークインタフェースについて) 例えばここから eth0/carrier とかみたらリンク状態がみれたりとかする．
+
 
 
 ANCI C 及びその他のC規格(C80, C90, C11とか)について
