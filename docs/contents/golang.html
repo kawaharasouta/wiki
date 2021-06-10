@@ -1,52 +1,49 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>golang &mdash; wiki  documentation</title>
+  <title>golang &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="OCamlについてとりあえずメモ" href="ocaml.html" />
-    <link rel="prev" title="mmapについて" href="inc_c_c++/mmap.html" /> 
+    <link rel="prev" title="mmapについて" href="inc_c_c%2B%2B/mmap.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">golang</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World</a></li>
@@ -125,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
@@ -135,6 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -153,7 +153,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
@@ -161,6 +160,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kvm_api.html">kvm api でいろいろするやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -195,6 +197,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -229,18 +232,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>golang</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/contents/golang.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -255,11 +260,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="golang">
-<h1>golang<a class="headerlink" href="#golang" title="Permalink to this headline">¶</a></h1>
+<h1>golang<a class="headerlink" href="#golang" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="install">
-<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<h2>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ここ見た方がいいかも <a class="reference external" href="https://golang.org/doc/install">https://golang.org/doc/install</a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># linux
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># linux
 $ wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz     // バージョンは随時最新のを↑で確認しろ
 $ sudo tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz
 # mac
@@ -270,52 +275,52 @@ $ export PATH=$PATH:/usr/local/go/bin                 # go installしたとき�
 $ export GOPATH=$HOME/go                              # ワーキングディレクトのパス
 </pre></div>
 </div>
-<p>※複数バージョンの管理はいろいろあるらしいけど，とりあえず <a class="reference internal" href="inc_c_c++/version_management.html"><span class="doc">update-alternativesによる複数バージョン管理</span></a> みたいな感じにするのが良さげな気がする．</p>
+<p>※複数バージョンの管理はいろいろあるらしいけど，とりあえず <a class="reference internal" href="inc_c_c%2B%2B/version_management.html"><span class="doc">update-alternativesによる複数バージョン管理</span></a> みたいな感じにするのが良さげな気がする．</p>
 </div>
 <div class="section" id="hello-world">
-<h2>Hello, World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ go get gopl.io/ch1/helloworld
+<h2>Hello, World<a class="headerlink" href="#hello-world" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go get gopl.io/ch1/helloworld
 $ $GOPATH/bin/helloworld
 </pre></div>
 </div>
 </div>
 <div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ go get github.com/veandco/go-sdl2-examples/examples
+<h2>Examples<a class="headerlink" href="#examples" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go get github.com/veandco/go-sdl2-examples/examples
 </pre></div>
 </div>
 </div>
 <div class="section" id="cmd">
-<h2>cmd<a class="headerlink" href="#cmd" title="Permalink to this headline">¶</a></h2>
+<h2>cmd<a class="headerlink" href="#cmd" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><strong>go</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ go run test.go      #即時実行
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go run test.go      #即時実行
 $ go build test.go    #コンパイル
 $ go fmt test.go      #フォーマット整形
 </pre></div>
 </div>
 <p><strong>godoc</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ godoc fmt           #パッケージのドキュメントを見る
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ godoc fmt           #パッケージのドキュメントを見る
 $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブラウザからドキュメント確認する
 </pre></div>
 </div>
 </div>
 <div class="section" id="go-mod">
-<h2>go modと開発の始め(進め)方に関して<a class="headerlink" href="#go-mod" title="Permalink to this headline">¶</a></h2>
+<h2>go modと開発の始め(進め)方に関して<a class="headerlink" href="#go-mod" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>依存モジュールの管理ツールで
 なんかよくわからんけど，とりあえず開発のときに↓のようにしておくとうまいことやってくれる?
 正直よくわからんマジでよくわからんgo getとどう使ったらいいのかとかよくわからんしわからん．</p>
 <ul class="simple">
-<li>go mod init で、初期化する</li>
-<li>go buildなどのビルドコマンドで、依存モジュールを自動インストールする</li>
-<li>go list -m all で、現在の依存モジュールを表示する</li>
-<li>go get で、依存モジュールの追加やバージョンアップを行う</li>
-<li>go mod tidy で、使われていない依存モジュールを削除する</li>
+<li><p>go mod init で、初期化する</p></li>
+<li><p>go buildなどのビルドコマンドで、依存モジュールを自動インストールする</p></li>
+<li><p>go list -m all で、現在の依存モジュールを表示する</p></li>
+<li><p>go get で、依存モジュールの追加やバージョンアップを行う</p></li>
+<li><p>go mod tidy で、使われていない依存モジュールを削除する</p></li>
 </ul>
 <p><a class="reference external" href="https://qiita.com/uchiko/items/64fb3020dd64cf211d4e">https://qiita.com/uchiko/items/64fb3020dd64cf211d4e</a>
 <a class="reference external" href="https://qiita.com/propella/items/e49bccc88f3cc2407745">https://qiita.com/propella/items/e49bccc88f3cc2407745</a></p>
 </div>
 <div class="section" id="id1">
-<h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>参考<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>本家: <a class="reference external" href="https://golang.org/">https://golang.org/</a>
 チュートリアル的な: <a class="reference external" href="http://golang.jp/go_tutorial">http://golang.jp/go_tutorial</a>  本家の日本語約で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．
 とりあえず日本語の入門記事の一つ: <a class="reference external" href="http://gihyo.jp/dev/feature/01/go_4beginners">http://gihyo.jp/dev/feature/01/go_4beginners</a>
@@ -324,65 +329,65 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 <p>☆つまづきポイントFAQ(これめっちゃいい感じ): <a class="reference external" href="https://future-architect.github.io/articles/20190713/">https://future-architect.github.io/articles/20190713/</a></p>
 </div>
 <div class="section" id="id2">
-<h2>条件分岐コンパイル<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>条件分岐コンパイル<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Cとかで #ifdef でやるような条件コンパイルやる方法
 参考: <a class="reference external" href="https://qiita.com/yamasaki-masahide/items/8e5d59467dcf67d9b0be">https://qiita.com/yamasaki-masahide/items/8e5d59467dcf67d9b0be</a></p>
 </div>
 <div class="section" id="sdl2">
-<h2>SDL2<a class="headerlink" href="#sdl2" title="Permalink to this headline">¶</a></h2>
+<h2>SDL2<a class="headerlink" href="#sdl2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><a class="reference external" href="https://www.libsdl.org/">https://www.libsdl.org/</a>
 <a class="reference external" href="https://wiki.libsdl.org/">https://wiki.libsdl.org/</a>
 <a class="reference external" href="https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants">https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants</a>
 <a class="reference external" href="https://github.com/veandco/go-sdl2">https://github.com/veandco/go-sdl2</a></p>
 <div class="section" id="id3">
-<h3>install<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ go get -v github.com/veandco/go-sdl2/{sdl,img,mix,ttf}
+<h3>install<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go get -v github.com/veandco/go-sdl2/{sdl,img,mix,ttf}
 </pre></div>
 </div>
 </div>
 <div class="section" id="sample">
-<h3>sample<a class="headerlink" href="#sample" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ go get github.com/veandco/go-sdl2-examples/examples
+<h3>sample<a class="headerlink" href="#sample" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go get github.com/veandco/go-sdl2-examples/examples
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="struct-interface">
-<h2>struct と interface<a class="headerlink" href="#struct-interface" title="Permalink to this headline">¶</a></h2>
+<h2>struct と interface<a class="headerlink" href="#struct-interface" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>なんか構造体のそれっぽいことを書く．</p>
 </div>
 <div class="section" id="id4">
-<h2>型を確認する<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%T&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<h2>型を確認する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%T&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 <span class="n">または</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="function-method">
-<h2>function と method<a class="headerlink" href="#function-method" title="Permalink to this headline">¶</a></h2>
+<h2>function と method<a class="headerlink" href="#function-method" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>go言語にはfunctionとmethodとかいう関数の概念があるらしい．</p>
 <p>以下の構造体が宣言されていたとする．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Receiver</span> <span class="n">struct</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">Receiver</span> <span class="n">struct</span> <span class="p">{</span>
   <span class="nb">int</span> <span class="n">num</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>functionの例</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">Function</span><span class="p">(</span><span class="n">r</span> <span class="n">Receiver</span><span class="p">)</span> <span class="nb">int</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">Function</span><span class="p">(</span><span class="n">r</span> <span class="n">Receiver</span><span class="p">)</span> <span class="nb">int</span> <span class="p">{</span>
   <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">num</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>methodの例
 関数名の前にレシーバ(構造体とか)が入る</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="p">(</span><span class="n">r</span> <span class="n">Receiver</span><span class="p">)</span> <span class="n">Method</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="p">(</span><span class="n">r</span> <span class="n">Receiver</span><span class="p">)</span> <span class="n">Method</span><span class="p">()</span> <span class="nb">int</span> <span class="p">{</span>
   <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">num</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>使い方の違い</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="p">:</span><span class="o">=</span> <span class="n">Receiver</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">:=</span> <span class="n">Receiver</span> <span class="p">{</span>
   <span class="n">num</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
 <span class="p">}</span>
 
@@ -394,16 +399,16 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 これでオブジェクト思考的なところを担保してるっぽい．</p>
 </div>
 <div class="section" id="id5">
-<h2>バイナリ処理<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>バイナリ処理<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>あとでメモる</p>
 <p>参照: <a class="reference external" href="https://qiita.com/Jxck_/items/c64d9ae0e910762eab37">binary</a></p>
 </div>
 <div class="section" id="imported-and-not-used">
-<h2>imported and not used<a class="headerlink" href="#imported-and-not-used" title="Permalink to this headline">¶</a></h2>
+<h2>imported and not used<a class="headerlink" href="#imported-and-not-used" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><a class="reference external" href="https://ksakiyama134.hatenadiary.org/entry/20140309/1394378735">https://ksakiyama134.hatenadiary.org/entry/20140309/1394378735</a></p>
 </div>
 <div class="section" id="id6">
-<h2>リンク<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>リンク<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><a class="reference external" href="https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1">https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1</a></p>
 </div>
 </div>
@@ -413,29 +418,29 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="ocaml.html" class="btn btn-neutral float-right" title="OCamlについてとりあえずメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="inc_c_c++/mmap.html" class="btn btn-neutral float-left" title="mmapについて" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="ocaml.html" class="btn btn-neutral float-right" title="OCamlについてとりあえずメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="inc_c_c%2B%2B/mmap.html" class="btn btn-neutral float-left" title="mmapについて" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -443,7 +448,6 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

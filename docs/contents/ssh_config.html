@@ -1,51 +1,48 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ssh_config &mdash; wiki  documentation</title>
+  <title>ssh_config &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="c, c++" href="c_c++.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="c, c++" href="c_c%2B%2B.html" />
     <link rel="prev" title="Docker" href="docker.html" /> 
 </head>
 
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -113,13 +111,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#known-hosts-duplication">known hosts duplication</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
@@ -130,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -148,7 +148,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
@@ -156,6 +155,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/kvm_api.html">kvm api でいろいろするやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -190,6 +192,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -224,18 +227,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>ssh_config</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/contents/ssh_config.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -250,29 +255,29 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ssh-config">
-<h1>ssh_config<a class="headerlink" href="#ssh-config" title="Permalink to this headline">¶</a></h1>
+<h1>ssh_config<a class="headerlink" href="#ssh-config" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>configの書き方のドキュメント:
 <a class="reference external" href="https://www.ssh.com/ssh/config/">https://www.ssh.com/ssh/config/</a></p>
 <div class="section" id="ssh-keygen">
-<h2>ssh_keygen<a class="headerlink" href="#ssh-keygen" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -t rsa -b 4096 -C &quot;kawahara6514@gmail.com&quot;     // -Cオプションの引数が鍵の識別子になるからわかるようにする．
+<h2>ssh_keygen<a class="headerlink" href="#ssh-keygen" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh-keygen -t rsa -b 4096 -C &quot;kawahara6514@gmail.com&quot;     // -Cオプションの引数が鍵の識別子になるからわかるようにする．
 Enter file in which to save the key (/Users/khwarizmi/.ssh/id_rsa): &lt;path to key&gt;
 Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend no passphrase.
 </pre></div>
 </div>
 </div>
 <div class="section" id="gihub-setting">
-<h2>gihub setting<a class="headerlink" href="#gihub-setting" title="Permalink to this headline">¶</a></h2>
+<h2>gihub setting<a class="headerlink" href="#gihub-setting" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>accsess <a class="reference external" href="https://github.com/settings/keys">github_keys</a></p>
 <div class="section" id="copy-public-key">
-<h3>copy public key<a class="headerlink" href="#copy-public-key" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat &lt;path to public key&gt; | pbcopy
+<h3>copy public key<a class="headerlink" href="#copy-public-key" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat &lt;path to public key&gt; | pbcopy
 </pre></div>
 </div>
 </div>
 <div class="section" id="config-for-git">
-<h3>config for git<a class="headerlink" href="#config-for-git" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">github</span>
+<h3>config for git<a class="headerlink" href="#config-for-git" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">github</span>
   <span class="n">HostName</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span>
   <span class="n">User</span> <span class="n">git</span>
 </pre></div>
@@ -280,16 +285,16 @@ Enter passphrase (empty for no passphrase): &lt;passphrase&gt; ※ i recommend n
 </div>
 </div>
 <div class="section" id="ssh-agent-forward">
-<h2>ssh-agent とか Forward の設定<a class="headerlink" href="#ssh-agent-forward" title="Permalink to this headline">¶</a></h2>
+<h2>ssh-agent とか Forward の設定<a class="headerlink" href="#ssh-agent-forward" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id1">
-<h3>ローカルの設定<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>ローカルの設定<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ssh-agent に鍵を設定する</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-add -K [path to secretkey]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh-add -K [path to secretkey]
 $ ssh-add -l  // 確認
 </pre></div>
 </div>
 <p>configを書き換える</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.ssh/config
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim ~/.ssh/config
 (ssh-agentを利用したいホストのところに)
 + ForwardAgent yes
 </pre></div>
@@ -297,26 +302,26 @@ $ ssh-add -l  // 確認
 </div>
 </div>
 <div class="section" id="id2">
-<h2>踏み台設定<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.ssh/config
+<h2>踏み台設定<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim ~/.ssh/config
 (踏み台を経由してsshしたいホストのところに追加する)
 + ProxyCommand ssh [踏み台にしたいホスト] -W %h:%p
 </pre></div>
 </div>
 </div>
 <div class="section" id="ssh-host-key">
-<h2>ssh host key<a class="headerlink" href="#ssh-host-key" title="Permalink to this headline">¶</a></h2>
+<h2>ssh host key<a class="headerlink" href="#ssh-host-key" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ホストキーがなくてsshd動かなかったりする時があるんだ．
 sudoいるかも．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -A
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh-keygen -A
 </pre></div>
 </div>
 </div>
 <div class="section" id="known-hosts-duplication">
-<h2>known hosts duplication<a class="headerlink" href="#known-hosts-duplication" title="Permalink to this headline">¶</a></h2>
+<h2>known hosts duplication<a class="headerlink" href="#known-hosts-duplication" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>known hostsに重複が出ちゃった時のやつ．
 今までvimで開いて該当行削除してたけど，お便利なコマンド</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh-keygen -R [hostname]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh-keygen -R [hostname]
 </pre></div>
 </div>
 </div>
@@ -327,29 +332,29 @@ sudoいるかも．</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="c_c++.html" class="btn btn-neutral float-right" title="c, c++" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="docker.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="c_c%2B%2B.html" class="btn btn-neutral float-right" title="c, c++" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="docker.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -357,7 +362,6 @@ sudoいるかも．</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

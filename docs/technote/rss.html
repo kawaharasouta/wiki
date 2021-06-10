@@ -1,52 +1,49 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>linuxのRSSに関して &mdash; wiki  documentation</title>
+  <title>linuxのRSSに関して &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="NICの割り込みについて" href="interrupt.html" />
-    <link rel="prev" title="ubuntu desktop" href="../contents/ubuntu_desktop.html" /> 
+    <link rel="prev" title="パッケージ管理ツールに関して" href="../contents/package.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,13 +96,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
@@ -115,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/haskell.html">haskell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/package.html">パッケージ管理ツールに関して</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul class="current">
@@ -138,7 +138,6 @@
 <li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standard.html">規格とか思想とか</a></li>
@@ -146,6 +145,9 @@
 <li class="toctree-l1"><a class="reference internal" href="virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kvm_api.html">kvm api でいろいろするやつ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -180,6 +182,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -214,18 +217,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>linuxのRSSに関して</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/technote/rss.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -240,9 +245,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="linuxrss">
-<h1>linuxのRSSに関して<a class="headerlink" href="#linuxrss" title="Permalink to this headline">¶</a></h1>
+<h1>linuxのRSSに関して<a class="headerlink" href="#linuxrss" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
-<h2>linuxはデフォでどのようにRSSを行なっているか．<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>linuxはデフォでどのようにRSSを行なっているか．<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>linuxでは，割り込みの区別にirq番号と言うものを使っている．
 irqとは，I/O APICを経由するPCIデバイスの割り込みが上がってくる物理的な割り込み線もしくはそこから上がってくる割り込み要求信号のことで，のことで
 現在のMSI・MIS-X割り込みでは使われていないが，おそらく歴史的経緯からlinuxで割り込みの区別をするのにirq番号とか言うものが使われている．
@@ -254,7 +259,7 @@ irqとは，I/O APICを経由するPCIデバイスの割り込みが上がって
 さてこのirqであるが，ここから上がってきた割り込みがどのコアによって処理されるかはどのように決まっているのだろうか．
 それは /proc/irq/{irq_num}/smp_affinity に設定されている．
 試しにこれファイルの中身を見て見ると,</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="p">,</span><span class="mi">00000002</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="p">,</span><span class="mi">00000002</span>
 </pre></div>
 </div>
 <p>のような内容になっている．これは割り込み先のCPUのビットマスクである．
@@ -264,20 +269,20 @@ irqとは，I/O APICを経由するPCIデバイスの割り込みが上がって
 割り込みが複数のCPUに分散されRSSにより負荷分散ができているということになる．</p>
 </div>
 <div class="section" id="id2">
-<h2>linuxで明示的にRSSで使うコア数を制限する<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>linuxで明示的にRSSで使うコア数を制限する<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>RSSの試験の時にコア数を制限して計測をする方法を記載する．</p>
 <p>レポート書く時に一緒にかくう〜〜〜〜</p>
 </div>
 <div class="section" id="reference">
-<h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="https://sfujiwara.hatenablog.com/entry/20121221/1356084456">irqbalance</a></li>
-<li><a class="reference external" href="https://diary.atzm.org/20111027.html">ビットマスクと割り込み</a></li>
-<li><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-configuration_tools#sect-Red_Hat_Enterprise_Linux-Performance_Tuning_Guide-Configuration_tools-Configuring_Receive_Side_Scaling_RSS">ethtool queueとか</a></li>
-<li><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rss">RSS無効化なんかもう一個</a></li>
-<li><a class="reference external" href="https://stackoverflow.com/questions/23730268/ixgbe-setting-the-number-of-rx-tx-queues">モジュールパラメータ1</a></li>
-<li><a class="reference external" href="https://www.nic.ad.jp/ja/materials/iw/2011/proceedings/s09/s09-01.pdf">モジュールパラメータ2</a></li>
+<li><p><a class="reference external" href="https://sfujiwara.hatenablog.com/entry/20121221/1356084456">irqbalance</a></p></li>
+<li><p><a class="reference external" href="https://diary.atzm.org/20111027.html">ビットマスクと割り込み</a></p></li>
+<li><p><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-configuration_tools#sect-Red_Hat_Enterprise_Linux-Performance_Tuning_Guide-Configuration_tools-Configuring_Receive_Side_Scaling_RSS">ethtool queueとか</a></p></li>
+<li><p><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rss">RSS無効化なんかもう一個</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/23730268/ixgbe-setting-the-number-of-rx-tx-queues">モジュールパラメータ1</a></p></li>
+<li><p><a class="reference external" href="https://www.nic.ad.jp/ja/materials/iw/2011/proceedings/s09/s09-01.pdf">モジュールパラメータ2</a></p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -288,29 +293,29 @@ irqとは，I/O APICを経由するPCIデバイスの割り込みが上がって
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="interrupt.html" class="btn btn-neutral float-right" title="NICの割り込みについて" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../contents/ubuntu_desktop.html" class="btn btn-neutral float-left" title="ubuntu desktop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="interrupt.html" class="btn btn-neutral float-right" title="NICの割り込みについて" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../contents/package.html" class="btn btn-neutral float-left" title="パッケージ管理ツールに関して" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -318,7 +323,6 @@ irqとは，I/O APICを経由するPCIデバイスの割り込みが上がって
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

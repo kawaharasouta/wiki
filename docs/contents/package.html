@@ -1,50 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>パッケージ管理ツールに関して &mdash; wiki  documentation</title>
+  <title>パッケージ管理ツールに関して &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
     <link rel="prev" title="ubuntu desktop" href="ubuntu_desktop.html" /> 
 </head>
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,13 +96,14 @@
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
@@ -154,6 +153,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -188,6 +188,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -222,18 +223,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>パッケージ管理ツールに関して</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/contents/package.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -248,32 +251,32 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>パッケージ管理ツールに関して<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>パッケージ管理ツールに関して<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>ちょっと歴史的な話も入りそうだし，一部technoteに写した方が良いのではないかと言う話がある．</p>
 <div class="section" id="aptdebian-debian">
-<h2>APT及びdebianパッケージ(debian系)<a class="headerlink" href="#aptdebian-debian" title="Permalink to this headline">¶</a></h2>
+<h2>APT及びdebianパッケージ(debian系)<a class="headerlink" href="#aptdebian-debian" title="このヘッドラインへのパーマリンク">¶</a></h2>
 </div>
 <div class="section" id="yumdnfrpm-redhat">
-<h2>YUM・DNF及びRPMパッケージ(RedHat系)<a class="headerlink" href="#yumdnfrpm-redhat" title="Permalink to this headline">¶</a></h2>
+<h2>YUM・DNF及びRPMパッケージ(RedHat系)<a class="headerlink" href="#yumdnfrpm-redhat" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id2">
-<h3>概要<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="id3">
-<h3>パッケージ開発とかのためのパッケージ<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dnf install @development @rpm-development-tools
+<h3>パッケージ開発とかのためのパッケージ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install @development @rpm-development-tools
 </pre></div>
 </div>
 </div>
 <div class="section" id="srpm">
-<h3>ソースコード(SRPM)をダウンロードしてビルドする<a class="headerlink" href="#srpm" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ dnf download --source [package]
+<h3>ソースコード(SRPM)をダウンロードしてビルドする<a class="headerlink" href="#srpm" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dnf download --source [package]
 $ rpm -i [落ちてきたrpm]
 </pre></div>
 </div>
 <p>ここでホームディレクトリを見ると rpmbuild というディレクトリができていてそこに展開されている．
 ここで rpmbuild --showrc | grep topdir してみるとrpmbuildの時のディレクトリ構成みたいなものが見える．
 真面目にrpmパッケージの開発を複数するときはこういうのをちゃんと理解してやる必要がありそう．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ rpmbuild --showrc | grep topdir
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rpmbuild --showrc | grep topdir
 -13: _builddir  %{_topdir}/BUILD
 -13: _buildrootdir      %{_topdir}/BUILDROOT
 -13: _rpmdir    %{_topdir}/RPMS
@@ -295,12 +298,12 @@ $ ls ~/rpmbuild/RPMS/                                    ### specファイルに
 </div>
 </div>
 <div class="section" id="neovim">
-<h3>neovimのパッケージを自作してリポジトリまで自作する<a class="headerlink" href="#neovim" title="Permalink to this headline">¶</a></h3>
+<h3>neovimのパッケージを自作してリポジトリまで自作する<a class="headerlink" href="#neovim" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>epelからインストールできるneovimはv3.8でバージョンが低いので，v4.4くらいのパッケージを自作してみる．</p>
 </div>
 <div class="section" id="id4">
-<h3>パッケージを署名する<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>### キーペアの作成と設定とか
+<h3>パッケージを署名する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### キーペアの作成と設定とか
 $ gpg --gen-key                                         ### 鍵作成．名前とかメールアドレスとか入れる ~/.gnupg ファイルの中にできる
 $ gpg --list-keys                                       ### 鍵が表示される
 $ gpg --export -a &#39;[キーペアの名前]&#39; &gt; ~/rpm-key        ### 公開鍵をexportする
@@ -328,29 +331,29 @@ $ sudo vim /etc/yum.repos.d/[reponame].repo             ### このレポジト�
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="ubuntu_desktop.html" class="btn btn-neutral float-left" title="ubuntu desktop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ubuntu_desktop.html" class="btn btn-neutral float-left" title="ubuntu desktop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -358,7 +361,6 @@ $ sudo vim /etc/yum.repos.d/[reponame].repo             ### このレポジト�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

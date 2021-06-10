@@ -21,4 +21,4 @@ help:
 
 docs: 
 	@$(SPHINXBUILD) -b html $(SOURCEDIR) "docs" $(SPHINXOPTS) $(0)
-	@cp -r ./docs/* /var/www/html/
+#	@cp -r ./docs/* /var/www/html/

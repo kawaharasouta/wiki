@@ -42,5 +42,13 @@ commands
 images
 ========
 
-# ソースコード眺めるやつのdockerコンテナらしいぞ! hayakawa-sanしゅごい!
+elixir(コードを見やすく表示するやつ)のコンテナ
 https://hub.docker.com/r/yutarohayakawa/elixir/
+
+::
+
+  $ mkdir ~/projects
+  $ docker run --name elixir -p 8090:80 -v ~/projects:/usr/local/elixir/http/projects -d yutarohayakawa/elixir
+  $ docker exec elixir ./add_project -r https://github.com/nginx/nginx -n nginx
+
+
