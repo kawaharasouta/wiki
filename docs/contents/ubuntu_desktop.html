@@ -137,10 +137,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#jumpappxbindkeys">jumpappとxbindkeysの設定とかとか</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#wifi">wifiドライバについて</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#macbook">Macbookの場合</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#xwindowgnome">そもそもxwindowとかgnomeとかについて</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gpu-nvidia">GPU(nvidia)のドライバ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#appimage">AppImageとかいうパッケージ?の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">AppImageの流れで調べたこととかいろいろメモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appimagelauncher">AppimageLauncherの挙動について</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id8">他のいろんな設定の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">音声入力出力とかとかそこらへんについて</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#alsa-advance-linux-sound-architecture">ALSA (Advance Linux Sound Architecture)</a></li>
@@ -276,7 +281,7 @@
             
   <div class="section" id="ubuntu-desktop">
 <h1>ubuntu desktop<a class="headerlink" href="#ubuntu-desktop" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>そのうちubuntu(じゃなくてもいいけどlinux類にはしたい)にしようと思ってるからちょいちょいメモする．</p>
+<p>現在のメイン機がubuntu系なのでね．</p>
 <div class="section" id="ubuntu-mate">
 <h2>Ubuntu MATE インストール時にやること<a class="headerlink" href="#ubuntu-mate" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="welcome">
@@ -461,6 +466,16 @@ $ xbindkeys
 </div>
 </div>
 </div>
+<div class="section" id="wifi">
+<h2>wifiドライバについて<a class="headerlink" href="#wifi" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="macbook">
+<h3>Macbookの場合<a class="headerlink" href="#macbook" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>なんか自分の古い(early 2015)のだと普通にドライバインストールで大丈夫だった．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install bcmwl-kernel-source
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="xwindowgnome">
 <h2>そもそもxwindowとかgnomeとかについて<a class="headerlink" href="#xwindowgnome" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>なんかあとで</p>
@@ -490,7 +505,6 @@ $ xbindkeys
 あとはAppImageLauncherというものがあるらしい．</p>
 <p><a class="reference external" href="https://www.virment.com/how-to-use-appimage-linux/">https://www.virment.com/how-to-use-appimage-linux/</a>
 <a class="reference external" href="https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion">https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion</a></p>
-<p>と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．</p>
 </div>
 <div class="section" id="id7">
 <h2>AppImageの流れで調べたこととかいろいろメモ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -534,6 +548,15 @@ UIです．Qtって言うので作られているらしいよ．</p>
 <p>-AppImaged
 デスクトップ統合のためのデーモンっすね．</p>
 <p><a class="reference external" href="https://itsfoss.com/use-appimage-linux/">https://itsfoss.com/use-appimage-linux/</a></p>
+</div>
+<div class="section" id="appimagelauncher">
+<h2>AppimageLauncherの挙動について<a class="headerlink" href="#appimagelauncher" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Mateだと統合したあとでも起動したあとdock(Plank)でアイコンはもちろん名前すらうまく出なかった．
+GNOMEだとアイコンは出ないけど名前はちゃんと出た．
+デスクトップ環境で若干の差異はありそう．なんかそんなこと書いてあるのを見たような気がしなくもない．
+どちらもdockに常駐させることはできなかった．
+だが，このappimageの奴らは，~/.local/usr/application/ の下にデスクトップエントリを持ってるんだけど，
+これを /usr/share/application/ の下にコピーしてやるとdockにちゃんとアイコンも名前も出るし，常駐もできるようになった．</p>
 </div>
 <div class="section" id="id8">
 <h2>他のいろんな設定の話<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>

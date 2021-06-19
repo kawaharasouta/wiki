@@ -2,7 +2,7 @@
 ubuntu desktop
 =================
 
-そのうちubuntu(じゃなくてもいいけどlinux類にはしたい)にしようと思ってるからちょいちょいメモする．
+現在のメイン機がubuntu系なのでね．
 
 Ubuntu MATE インストール時にやること
 =======================================
@@ -229,6 +229,19 @@ jumpappとxbindkeysの設定とかとか
   $ xbindkeys
 
 
+wifiドライバについて
+===========================
+
+Macbookの場合
+------------------
+
+なんか自分の古い(early 2015)のだと普通にドライバインストールで大丈夫だった．
+
+::
+
+  $ sudo apt install bcmwl-kernel-source
+
+
 そもそもxwindowとかgnomeとかについて
 ======================================
 
@@ -266,8 +279,6 @@ stationをubuntuにもインストールしようとした時，形式がAppImag
 
 https://www.virment.com/how-to-use-appimage-linux/
 https://blog.desdelinux.net/ja/appimagelauncher-ejecuta-e-integra-facilmente-aplicaciones-en-appimage/#Eliminar_o_actualizar_la_aplicacion
-
-と言うかstationは配布方法がgoogledriveになっててクソなんじゃ．．．
 
 AppImageの流れで調べたこととかいろいろメモ
 =============================================
@@ -319,9 +330,20 @@ AppImageのメタデータから自動アップデートするやつ．
 -AppImaged
 デスクトップ統合のためのデーモンっすね．
 
-
-
 https://itsfoss.com/use-appimage-linux/
+
+AppimageLauncherの挙動について
+==================================
+
+Mateだと統合したあとでも起動したあとdock(Plank)でアイコンはもちろん名前すらうまく出なかった．
+GNOMEだとアイコンは出ないけど名前はちゃんと出た．
+デスクトップ環境で若干の差異はありそう．なんかそんなこと書いてあるのを見たような気がしなくもない．
+どちらもdockに常駐させることはできなかった．
+だが，このappimageの奴らは，~/.local/usr/application/ の下にデスクトップエントリを持ってるんだけど，
+これを /usr/share/application/ の下にコピーしてやるとdockにちゃんとアイコンも名前も出るし，常駐もできるようになった．
+
+
+
 
 他のいろんな設定の話
 =====================
