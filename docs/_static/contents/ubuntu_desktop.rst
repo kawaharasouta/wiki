@@ -342,7 +342,14 @@ GNOMEだとアイコンは出ないけど名前はちゃんと出た．
 だが，このappimageの奴らは，~/.local/usr/application/ の下にデスクトップエントリを持ってるんだけど，
 これを /usr/share/application/ の下にコピーしてやるとdockにちゃんとアイコンも名前も出るし，常駐もできるようになった．
 
+↑を一度確認したんだけど，どうもアプリケーションが悪いだけかも?
+Biscuitだとなんかほんとよくわからんのだけど，Ramboxだとそれなりにちゃんと動くとかがある．
+あと，GNOMEとMATEでこの手のデスクトップエントリの場所が一応違うとかの記述もあったりするんだが，
+結局RamboxではMATEでも~/.local/usr/application/で普通に動いたりもしてるのでよくわからん．
 
+デスクトップエントリについて: https://lambdalisue.hatenablog.com/entry/2013/09/28/015515
+
+freedesktop.org を一度ちゃんと読んだほうがいい気がするんだ．
 
 
 他のいろんな設定の話
