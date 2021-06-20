@@ -350,6 +350,11 @@ Biscuitだとなんかほんとよくわからんのだけど，Ramboxだとそ�
 デスクトップエントリについて: https://lambdalisue.hatenablog.com/entry/2013/09/28/015515
 
 freedesktop.org を一度ちゃんと読んだほうがいい気がするんだ．
+https://www.freedesktop.org/wiki/
+
+https://docs.oracle.com/cd/E19957-01/817-6000/6mldto81l/index.html
+https://wiki.archlinux.jp/index.php/%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA
+https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html
 
 
 他のいろんな設定の話
