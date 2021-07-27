@@ -1,52 +1,49 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Linux From Scratch メモ &mdash; wiki  documentation</title>
+  <title>Linux From Scratch メモ &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
-    <link rel="prev" title="組み込みLinux開発の時のメモ" href="em_linux.html" /> 
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="組み込みLinux開発の時のメモ" href="em_linux.html" />
+    <link rel="prev" title="Linuxのセキュリティモジュールについて" href="linux_security.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -144,13 +142,13 @@
 <li class="toctree-l1"><a class="reference internal" href="make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_security.html">Linuxのセキュリティモジュールについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Linux From Scratch メモ</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#envs">envs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lfs">LFS用パーティションの作成や環境準備</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">LFS用パーティションの作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">パッケージとパッチの取得</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -185,6 +183,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -219,18 +218,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Linux From Scratch メモ</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/technote/linux_from_scratch.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -245,19 +246,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="linux-from-scratch">
-<h1>Linux From Scratch メモ<a class="headerlink" href="#linux-from-scratch" title="Permalink to this headline">¶</a></h1>
+<h1>Linux From Scratch メモ<a class="headerlink" href="#linux-from-scratch" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p><a class="reference external" href="https://www.linuxfromscratch.org/">https://www.linuxfromscratch.org/</a>
 <a class="reference external" href="http://lfsbookja.osdn.jp/">http://lfsbookja.osdn.jp/</a></p>
 <div class="section" id="envs">
-<h2>envs<a class="headerlink" href="#envs" title="Permalink to this headline">¶</a></h2>
+<h2>envs<a class="headerlink" href="#envs" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>OS: ubuntu2004
-kernel: 5.8.0-43-generic</p>
+kernel: 5.8.0-43-generic
+LFS version: 10.1</p>
 </div>
 <div class="section" id="lfs">
-<h2>LFS用パーティションの作成や環境準備<a class="headerlink" href="#lfs" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="id1">
-<h2>LFS用パーティションの作成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>LFS用パーティションの作成や環境準備<a class="headerlink" href="#lfs" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>LFS用のパーティションを作成する．
 ubuntu2004の場合，インストール済みのシステムの上でインストーラーから既存パーティションの変更ができたため，
 それによりすでにあるパーティションの一部をLFS用のパーティションとして切り出した．</p>
@@ -266,6 +265,51 @@ ubuntu2004の場合，インストール済みのシステムの上でインス�
 - fdisk等の古来の方法で既存のシステムからパーティションを切り出す? (できるのかよくわからない)
 - 新しいディスクを用意してそれにLFS用のパーティションを作成する．
 等々がありそう．</p>
+<p>またこのパーティション作成の際に今回はext4にフォーマットしてしまっていたが，
+これがされない場合は以下のように手動でおこなう．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mkfs -v -t ext4 /dev/[dev name]
+</pre></div>
+</div>
+<p>また，このパーティションを/mnt/lfsにマウントするので</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir -p /mnt/lfs      (マウントポイント先に作っとくの一応かいとく)
+$ sudo mount /dev/[dev name] /mnt/lfs
+</pre></div>
+</div>
+<p>とかのようにする．
+例えば今回の場合は</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//! 作成したパーティション
+$ sudo fdisk -l
+  ...
+  Device            Start      End  Sectors  Size Type
+  /dev/nvme0n1p1      256   131327   131072  512M EFI System
+  /dev/nvme0n1p2   131328 17221171 17089844 65.2G Linux filesystem
+  /dev/nvme0n1p3 17221376 26986751  9765376 37.3G Linux filesystem     ←これ
+  ...
+
+//! 該当パーティションのUUIDを確認
+$ sudo blkid /dev/nvme0n1p3
+UUIDをコピる．
+
+//! 起動時にこれが /mnt/lfs にマウントされるよう設定
+$ sudo vim /etc/fstab
+  + UUID=[ここにUUIDをコピー] /mnt/lfs  ext4  defaults  0 0
+</pre></div>
+</div>
+<p>とした．</p>
+<p>また，swapパーティションは既存のため新たに作成していない．</p>
+<p>/mnt/lfs を $LFS としてセットしておく．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim ~/.bashrc
+  + export LFS=/mnt/lfs
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>パッケージとパッチの取得<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>まず基本的にhttp://lfsbookja.osdn.jp/10.1-ja/chapter03/introduction.htmlの手順通りに取得する．
+この通りにして取得できたなかったものは以下の２つで，後続のURLから取得する
+- lfs-bootscripts-20210201.tar.xz: <a class="reference external" href="https://www.linuxfromscratch.org/lfs/downloads/stable/lfs-bootscripts-20210201.tar.xz">https://www.linuxfromscratch.org/lfs/downloads/stable/lfs-bootscripts-20210201.tar.xz</a>
+- expat-2.2.10.tar.xz: <a class="reference external" href="https://github.com/libexpat/libexpat/releases/download/R_2_2_10/expat-2.2.10.tar.xz">https://github.com/libexpat/libexpat/releases/download/R_2_2_10/expat-2.2.10.tar.xz</a>
+フットプリントのチェックはちゃんとOKになったので大丈夫そう．</p>
 </div>
 </div>
 
@@ -274,29 +318,29 @@ ubuntu2004の場合，インストール済みのシステムの上でインス�
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="em_linux.html" class="btn btn-neutral float-left" title="組み込みLinux開発の時のメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="em_linux.html" class="btn btn-neutral float-right" title="組み込みLinux開発の時のメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="linux_security.html" class="btn btn-neutral float-left" title="Linuxのセキュリティモジュールについて" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -304,7 +348,6 @@ ubuntu2004の場合，インストール済みのシステムの上でインス�
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

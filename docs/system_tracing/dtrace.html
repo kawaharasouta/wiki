@@ -1,50 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>DTrace &mdash; wiki  documentation</title>
+  <title>DTrace &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="systemtap" href="systemtap.html" />
     <link rel="prev" title="カーネル関連tips" href="../cheetsheets/kernel.html" /> 
 </head>
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -144,6 +142,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -184,6 +183,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -218,18 +218,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>DTrace</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/system_tracing/dtrace.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -244,70 +246,70 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dtrace">
-<h1>DTrace<a class="headerlink" href="#dtrace" title="Permalink to this headline">¶</a></h1>
+<h1>DTrace<a class="headerlink" href="#dtrace" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
-<h2>使い方?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">probe_dewcriotion</span> <span class="o">/</span><span class="n">predicate</span><span class="o">/</span> <span class="p">{</span> <span class="n">action</span> <span class="p">}</span>
+<h2>使い方?<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probe_dewcriotion</span> <span class="o">/</span><span class="n">predicate</span><span class="o">/</span> <span class="p">{</span> <span class="n">action</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
-<h2>プローブ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">provider</span><span class="p">:</span><span class="n">module</span><span class="p">:</span><span class="n">function</span><span class="p">:</span><span class="n">name</span>
+<h2>プローブ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">provider</span><span class="p">:</span><span class="n">module</span><span class="p">:</span><span class="n">function</span><span class="p">:</span><span class="n">name</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="provider">
-<h2>provider<a class="headerlink" href="#provider" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="colwidths-given docutils">
+<h2>provider<a class="headerlink" href="#provider" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">provider</th>
-<th class="head">プロバイダ</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>provider</p></th>
+<th class="head"><p>プロバイダ</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>syscall</td>
-<td>システムコールトラップテーブル</td>
+<tbody>
+<tr class="row-even"><td><p>syscall</p></td>
+<td><p>システムコールトラップテーブル</p></td>
 </tr>
-<tr class="row-odd"><td>vminfo</td>
-<td>仮想メモリ統計</td>
+<tr class="row-odd"><td><p>vminfo</p></td>
+<td><p>仮想メモリ統計</p></td>
 </tr>
-<tr class="row-even"><td>sysinfo</td>
-<td>システム統計</td>
+<tr class="row-even"><td><p>sysinfo</p></td>
+<td><p>システム統計</p></td>
 </tr>
-<tr class="row-odd"><td>profile</td>
-<td>任意のサンプリング</td>
+<tr class="row-odd"><td><p>profile</p></td>
+<td><p>任意のサンプリング</p></td>
 </tr>
-<tr class="row-even"><td>sched</td>
-<td>カーネルスケジューリングイベント</td>
+<tr class="row-even"><td><p>sched</p></td>
+<td><p>カーネルスケジューリングイベント</p></td>
 </tr>
-<tr class="row-odd"><td>proc</td>
-<td>プロセスレベルのイベント</td>
+<tr class="row-odd"><td><p>proc</p></td>
+<td><p>プロセスレベルのイベント</p></td>
 </tr>
-<tr class="row-even"><td>io</td>
-<td>ブロックデバイスのイベント(作成，実行，終了)</td>
+<tr class="row-even"><td><p>io</p></td>
+<td><p>ブロックデバイスのイベント(作成，実行，終了)</p></td>
 </tr>
-<tr class="row-odd"><td>pid</td>
-<td>ユーザレベルの動的トレーシング</td>
+<tr class="row-odd"><td><p>pid</p></td>
+<td><p>ユーザレベルの動的トレーシング</p></td>
 </tr>
-<tr class="row-even"><td>tcp</td>
-<td>TCPプロトコルのイベント(接続，送信，受信)</td>
+<tr class="row-even"><td><p>tcp</p></td>
+<td><p>TCPプロトコルのイベント(接続，送信，受信)</p></td>
 </tr>
-<tr class="row-odd"><td>ip</td>
-<td>IPプロトコルのイベント</td>
+<tr class="row-odd"><td><p>ip</p></td>
+<td><p>IPプロトコルのイベント</p></td>
 </tr>
-<tr class="row-even"><td>fbt</td>
-<td>カーネルレベルの動的トレーシング</td>
+<tr class="row-even"><td><p>fbt</p></td>
+<td><p>カーネルレベルの動的トレーシング</p></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>また，その他の高水準言語</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p>また，その他の高水準言語</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -319,29 +321,29 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="systemtap.html" class="btn btn-neutral float-right" title="systemtap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../cheetsheets/kernel.html" class="btn btn-neutral float-left" title="カーネル関連tips" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="systemtap.html" class="btn btn-neutral float-right" title="systemtap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../cheetsheets/kernel.html" class="btn btn-neutral float-left" title="カーネル関連tips" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -349,7 +351,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,50 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>kvm &mdash; wiki  documentation</title>
+  <title>kvm &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="xen" href="xen.html" />
     <link rel="prev" title="DPDK" href="dpdk.html" /> 
 </head>
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -138,7 +136,7 @@
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -184,6 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -219,6 +218,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -253,18 +253,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>kvm</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/contents/kvm.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -279,12 +281,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="kvm">
-<h1>kvm<a class="headerlink" href="#kvm" title="Permalink to this headline">¶</a></h1>
+<h1>kvm<a class="headerlink" href="#kvm" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
-<h2>注意<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>注意<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>BIOSでIntel-VT無効になっていても，KVMはQEMUで頑張ってVMを動かすらしいので，
 普通にVM動かすだけだと気づかないこと多いから確認しろ．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo kvm-ok                               ### ダメな例やぞ
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo kvm-ok                               ### ダメな例やぞ
   INFO: /dev/kvm does not exist
   HINT:   sudo modprobe kvm_intel
   INFO: Your CPU supports KVM extensions
@@ -297,7 +299,7 @@
 <p><a class="reference external" href="https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82">https://momijiame.tumblr.com/post/92845673876/kvm-%E3%81%A8-proccpuinfo-%E3%81%AE%E5%BE%AE%E5%A6%99%E3%81%AA%E9%96%A2%E4%BF%82</a></p>
 <p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation">ubuntu_kvm_installation</a></p>
 <p>ダメな例だったらやること</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>### とりあえずBIOSで有効にしてくる
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### とりあえずBIOSで有効にしてくる
 $ lsmod | grep kvm
 kvm と kvm_intel がなかったら
 $ sudo modprobe -r kvm_intel      // kvm も一緒にロードされる
@@ -305,8 +307,8 @@ $ sudo modprobe -r kvm_intel      // kvm も一緒にロードされる
 </div>
 </div>
 <div class="section" id="package">
-<h2>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
+<h2>package<a class="headerlink" href="#package" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
 #ubuntu2004 (&gt;=1810?) toriaezu
 $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
@@ -314,7 +316,7 @@ $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils v
 </div>
 <p>ubuntu2004での変更点とか?
 <a class="reference external" href="https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja">https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja</a> の libvirt のところみる</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Ubuntu 18.04 において、単体のモノリシックなパッケージであったlibvirt-binから、以下の3つのメインコンポーネントに分割されました:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ubuntu 18.04 において、単体のモノリシックなパッケージであったlibvirt-binから、以下の3つのメインコンポーネントに分割されました:
 libvirt-daemon-system - 設定とsystemdのサービスファイル群によるデーモンのシステム統合（これは、古いlibvirt-bin最も似ているパッケージです）
 libvirt-clients - virshのようなlibvirtに関連したcliツール群
 libvirt-daemon - サービス群や設定を除いたlibvirtデーモンのみ
@@ -324,8 +326,8 @@ libvirt-daemon - サービス群や設定を除いたlibvirtデーモンのみ
 </div>
 </div>
 <div class="section" id="start-config">
-<h2>start config<a class="headerlink" href="#start-config" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemctl enable libvirt-bin
+<h2>start config<a class="headerlink" href="#start-config" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl enable libvirt-bin
 
 # ???
 $ sudo systemctl enable libvirtd
@@ -333,16 +335,16 @@ $ sudo systemctl enable libvirtd
 </div>
 </div>
 <div class="section" id="make-image">
-<h2>make image<a class="headerlink" href="#make-image" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.img 8G
+<h2>make image<a class="headerlink" href="#make-image" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/ubuntu1804.img 8G
 </pre></div>
 </div>
 </div>
 <div class="section" id="install">
-<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<h2>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="serial">
-<h3>serial<a class="headerlink" href="#serial" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span># これだと成功するきっと location が url にしたら通った
+<h3>serial<a class="headerlink" href="#serial" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># これだと成功するきっと location が url にしたら通った
 $ sudo virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
@@ -447,7 +449,7 @@ ssh-keygen -R [hostname]
 キックスタートインストールとか行ってRHEL系だけなのか?よくわからんけど．
 ubuntuもできたようなできなかったような気がするけどよくわからん．</p>
 <p>なんかvirt-installのmanにlocationのURLここだぞって(おそらく)言ってるとこがあったから貼っとく</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Some</span> <span class="n">distro</span> <span class="n">specific</span> <span class="n">url</span> <span class="n">samples</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Some</span> <span class="n">distro</span> <span class="n">specific</span> <span class="n">url</span> <span class="n">samples</span><span class="p">:</span>
 
  <span class="n">Fedora</span><span class="o">/</span><span class="n">Red</span> <span class="n">Hat</span> <span class="n">Based</span>
      <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">fedoraproject</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="mi">25</span><span class="o">/</span><span class="n">Server</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">os</span>
@@ -472,7 +474,7 @@ ubuntuもできたようなできなかったような気がするけどよく�
 調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． <a class="reference internal" href="../technote/boot.html#ubuntu2020-on-kvm"><span class="std std-ref">virt-install でubuntu2020がインストールできなかった話</span></a>
 ISOをwgetしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．
 ISOをマウントしてもできるはず(manにはそう書いてある)なんだけど，マウントした場合だとinstall中にmount errorみたいなのが起きてダメだったんだよね．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
 ####  なんか↑notfoundしたので (20.04がなくて20.04.1だけになってた)
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso
@@ -501,8 +503,8 @@ $ sudo virt-install \
 <a class="reference external" href="https://forums.freebsd.org/threads/mount-cdrom.60063/">https://forums.freebsd.org/threads/mount-cdrom.60063/</a></p>
 </div>
 <div class="section" id="vnc">
-<h3>vnc<a class="headerlink" href="#vnc" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-install \
+<h3>vnc<a class="headerlink" href="#vnc" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install \
   --name ubuntu1804 \
   --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
   --vcpus 2 \
@@ -516,10 +518,10 @@ $ sudo virt-install \
 </div>
 </div>
 <div class="section" id="console">
-<h2>console接続について<a class="headerlink" href="#console" title="Permalink to this headline">¶</a></h2>
+<h2>console接続について<a class="headerlink" href="#console" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>環境というかOSによってインストール後もそのままconsole接続できるやつとできないやつがいる．
 ちなみに今確認しできているのだと</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">できる</span><span class="p">:</span> <span class="n">centos8</span><span class="p">(</span><span class="n">あと一応asianux</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">できる</span><span class="p">:</span> <span class="n">centos8</span><span class="p">(</span><span class="n">あと一応asianux</span><span class="p">)</span>
 <span class="n">できない</span><span class="p">:</span> <span class="n">ubuntu2004</span> <span class="n">ubuntu1804</span>
 </pre></div>
 </div>
@@ -527,16 +529,16 @@ $ sudo virt-install \
 できない奴らは↓をやっておくと幸せになれる．</p>
 </div>
 <div class="section" id="clone">
-<h2>clone<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img   # .imgを作成しておく必要はない
+<h2>clone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img   # .imgを作成しておく必要はない
 $ sudo virt-sysprep -d [vm_clone] --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
 </pre></div>
 </div>
 <p>and change hostname</p>
 </div>
 <div class="section" id="delete-vm">
-<h2>delete vm<a class="headerlink" href="#delete-vm" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virsh undefine [vm]
+<h2>delete vm<a class="headerlink" href="#delete-vm" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virsh undefine [vm]
 $ sudo virsh pool-list
 $ sudo virsh vol-list [pool]
 $ sudo virsh vol-delete [path to vol]
@@ -544,8 +546,8 @@ $ sudo virsh vol-delete [path to vol]
 </div>
 </div>
 <div class="section" id="change-memory-size">
-<h2>change memory size<a class="headerlink" href="#change-memory-size" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>#max memory sizeを変更
+<h2>change memory size<a class="headerlink" href="#change-memory-size" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#max memory sizeを変更
 $ sudo virsh setmaxmem [domain] 4G
 
 #起動中にmemory size変更(停止したら戻る)
@@ -560,12 +562,12 @@ $ sudo virsh dominfo [domain] | grep mem
 </div>
 </div>
 <div class="section" id="extend-disk-size">
-<h2>extend disk size<a class="headerlink" href="#extend-disk-size" title="Permalink to this headline">¶</a></h2>
+<h2>extend disk size<a class="headerlink" href="#extend-disk-size" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>下の方に詳しく書いた．</p>
 </div>
 <div class="section" id="rename-domain">
-<h2>rename domain<a class="headerlink" href="#rename-domain" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ uuidgen           #コピっとく
+<h2>rename domain<a class="headerlink" href="#rename-domain" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ uuidgen           #コピっとく
 $ sudo virsh edit [old domain]
   change name &amp; uuid
 $ sudo virsh undefine [old domain]
@@ -573,8 +575,8 @@ $ sudo virsh undefine [old domain]
 </div>
 </div>
 <div class="section" id="file-location">
-<h2>file location<a class="headerlink" href="#file-location" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>vm images         /var/lib/libvirt/images/
+<h2>file location<a class="headerlink" href="#file-location" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vm images         /var/lib/libvirt/images/
 iso images          /var/lib/libvirt/boot/    ←???
 xml file                /etc/libvirt/qemu/
 network file       /etc/libvirt/qemu/networks/
@@ -583,20 +585,20 @@ autostart file    /etc/libvirt/qemu/autostart/
 </div>
 </div>
 <div class="section" id="id2">
-<h2>ブリッジ接続<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>ブリッジ接続<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="linux-bridge">
-<h3>Linux bridge<a class="headerlink" href="#linux-bridge" title="Permalink to this headline">¶</a></h3>
+<h3>Linux bridge<a class="headerlink" href="#linux-bridge" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ブリッジ作成してそこに物理インタフェースぶっこむだけ.
 インタフェースとブリッジのリンク上げ忘れよくするから注意.
 なんか知らないけどグローバルに向けられない．</p>
 </div>
 <div class="section" id="ovs">
-<h3>ovs<a class="headerlink" href="#ovs" title="Permalink to this headline">¶</a></h3>
+<h3>ovs<a class="headerlink" href="#ovs" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="macvtap-macvlan">
-<h3>macvtap, macvlan<a class="headerlink" href="#macvtap-macvlan" title="Permalink to this headline">¶</a></h3>
+<h3>macvtap, macvlan<a class="headerlink" href="#macvtap-macvlan" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ゲストのxmlファイルを</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;direct&#39;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;direct&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">mac</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;52:54:00:94:9a:a0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">dev</span><span class="o">=</span><span class="s1">&#39;eth0&#39;</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">/&gt;</span>    <span class="c1">#devがtapでも動いた</span>
   <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;virtio&#39;</span><span class="o">/&gt;</span>
@@ -607,7 +609,7 @@ autostart file    /etc/libvirt/qemu/autostart/
 <p>とかするとブリッジ接続されるが，ホストの物理インタフェース(ここではeth0はvlanの外と見なされてホストとゲストが通信ができない．
 そこでmacvlanを使う．
 ホストで</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ip link add dev macvlan0 link eth0 type macvlan mode bridge
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ip link add dev macvlan0 link eth0 type macvlan mode bridge
 $ sudo ip addr del &lt;address&gt; dev eth0
 $ sudo ip addr add &lt;address&gt; dev macvlan0
 $ sudo ip link set up dev macvlan0
@@ -619,9 +621,9 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 </div>
 </div>
 <div class="section" id="add-nic">
-<h2>add nic<a class="headerlink" href="#add-nic" title="Permalink to this headline">¶</a></h2>
+<h2>add nic<a class="headerlink" href="#add-nic" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>e1000</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;virbr0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;e1000&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
@@ -629,7 +631,7 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 </pre></div>
 </div>
 <p>virtio</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;virbr0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">model</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;virtio&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
@@ -637,7 +639,7 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 </pre></div>
 </div>
 <p>ブリッジがovsの場合</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;ovs-sw&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">virtualport</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;openvswitch&#39;</span><span class="o">/&gt;</span>
@@ -646,10 +648,10 @@ $ sudo ip route add default via &lt;default route&gt; (dev ~~)
 </div>
 </div>
 <div class="section" id="pci-passthrough">
-<h2>PCI passthrough<a class="headerlink" href="#pci-passthrough" title="Permalink to this headline">¶</a></h2>
+<h2>PCI passthrough<a class="headerlink" href="#pci-passthrough" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>BIOSでIOMMU拡張を有効化する．
 なんかよくわからんけど「Intel VT-d」「I/O Virtualization Technology」とからへん?</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>### ブートオプションでiommuを有効化
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### ブートオプションでiommuを有効化
 $ sudo vim /etc/default/grub
 - GRUB_CMDLINE_LINUX=
 + GRUB_CMDLINE_LINUX=&quot;intel_iommu=on&quot;
@@ -684,13 +686,13 @@ VMを停止(shutdown)したらデバイスは帰ってきた．</p>
 <p><a class="reference external" href="http://uramocha02.blogspot.com/2017/01/pciiommu.html">http://uramocha02.blogspot.com/2017/01/pciiommu.html</a></p>
 </div>
 <div class="section" id="sr-iov-single-root-i-o-virtualization">
-<h2>SR-IOV (Single Root I/O Virtualization)<a class="headerlink" href="#sr-iov-single-root-i-o-virtualization" title="Permalink to this headline">¶</a></h2>
+<h2>SR-IOV (Single Root I/O Virtualization)<a class="headerlink" href="#sr-iov-single-root-i-o-virtualization" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>仕様が書いてある? <a class="reference external" href="https://pcisig.com/">https://pcisig.com/</a></p>
 <p>利用可能なintel nic: <a class="reference external" href="https://www.intel.co.jp/content/www/jp/ja/support/articles/000005722/network-and-io/ethernet-products.html">https://www.intel.co.jp/content/www/jp/ja/support/articles/000005722/network-and-io/ethernet-products.html</a></p>
 <p>とりあえずpci-passthroughできる環境にしておく．</p>
 <p>とりあえずmodprobeし直してやる方法(/etc/modrobe.d/ に構成ファイルおいとくのが本当はいいのだけれどまだ試してないので後で)
 そして，X540-t2(と言うかixgbeなのだけれど)の場合．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo modprobe -r ixgbe
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo modprobe -r ixgbe
 $ sudo modprobe ixgbe max_vfs=16        // 最大63だと思う
 $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生えるのでホストでは外しとく
 </pre></div>
@@ -700,21 +702,21 @@ $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生え�
 それから，同じ物理IFのvf同士はlinkはつながってない感じある．</p>
 </div>
 <div class="section" id="ubuntu-image-download">
-<h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ wget http://ftp-srv2.kddilabs.jp/Linux/packages/ubuntu/releases-cd/18.04.3/ubuntu-18.04.3-live-server-amd64.iso
+<h2>ubuntu image download<a class="headerlink" href="#ubuntu-image-download" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget http://ftp-srv2.kddilabs.jp/Linux/packages/ubuntu/releases-cd/18.04.3/ubuntu-18.04.3-live-server-amd64.iso
 </pre></div>
 </div>
 </div>
 <div class="section" id="vm-ip-addr">
-<h2>vm ip addr<a class="headerlink" href="#vm-ip-addr" title="Permalink to this headline">¶</a></h2>
+<h2>vm ip addr<a class="headerlink" href="#vm-ip-addr" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>VMのアドレス探すやつだけど，arp-scanじゃなくていいの見つけてしまった．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo arp-scan -I virbr0 -l | awk &#39;{print $1}&#39; | tail -n 6 | head -n3    #オプションは適当
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo arp-scan -I virbr0 -l | awk &#39;{print $1}&#39; | tail -n 6 | head -n3    #オプションは適当
 $ sudo virsh net-dhcp-leases default | awk &#39;{print $5, $6}&#39;
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>接続方法とかに関して<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>接続方法とかに関して<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>接続方法は多分
 - ssh
 - console
@@ -728,17 +730,17 @@ sshはもちろんsshdが動いてないとで
 consoleはちゃんとカーネルパラメータ設定してからじゃないと無理．</p>
 </div>
 <div class="section" id="autostart-setting">
-<h2>autostart setting<a class="headerlink" href="#autostart-setting" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virsh autostart [vm name]              #enable
+<h2>autostart setting<a class="headerlink" href="#autostart-setting" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virsh autostart [vm name]              #enable
 $ sudo virsh autostart --disable [vm name]    #disable
 $ ls -1 /etc/libvirt/qemu/autostart           # 確認
 </pre></div>
 </div>
 </div>
 <div class="section" id="s411">
-<h2>S411の環境を作った時のメモやつ<a class="headerlink" href="#s411" title="Permalink to this headline">¶</a></h2>
+<h2>S411の環境を作った時のメモやつ<a class="headerlink" href="#s411" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>vpn掘ってVMがローカルに落ちててシームレスに使えるようにするみたいなやつ．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/networks/interface    # linux bridgeを永続化して立てる
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/networks/interface    # linux bridgeを永続化して立てる
 ...
 ...
 $ sudo ip link set up dev labnet-br
@@ -756,12 +758,12 @@ $ sudo ip route add 10.8.0.0/24 via 192.168.200.1 dev [生やしたif]
 </div>
 </div>
 <div class="section" id="disk">
-<h2>disk拡張する時の話<a class="headerlink" href="#disk" title="Permalink to this headline">¶</a></h2>
+<h2>disk拡張する時の話<a class="headerlink" href="#disk" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>diskとかでよくLVMってあるけど，よくわからなくて何もしないでいたんだけど，
 ボリューム増やしたい時に，LVMじゃないとめちゃくちゃめんどくさかったのでとりあえずLVMにしとけよ．</p>
 <p>ボリュームの増やし方．
 ちゃんと元からLVMになっててそこからimgに容量増やしてVMにちゃんとマウントしてあげるやつ．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>// 現状確認 (ゲストで)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// 現状確認 (ゲストで)
 $ sudo fdisk -l
 Disk /dev/sda: 8 GiB, 438086664192 bytes, 855638016 sectors
 Disk model: QEMU HARDDISK
@@ -1054,9 +1056,9 @@ The filesystem on /dev/vgubuntu2004/root is now 106572800 (4k) blocks long.
 <a class="reference external" href="https://gist.github.com/koudaiii/bfcaa6941bd99d688ade">https://gist.github.com/koudaiii/bfcaa6941bd99d688ade</a></p>
 </div>
 <div class="section" id="nested">
-<h2>nestedしたい時<a class="headerlink" href="#nested" title="Permalink to this headline">¶</a></h2>
+<h2>nestedしたい時<a class="headerlink" href="#nested" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ホストで</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat /sys/module/kvm_intel/parameters/nested
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat /sys/module/kvm_intel/parameters/nested
 /// 1 か Y ならOK    0 か N だったら↓
 $ sudo su
 # sudo cat &lt;&lt; EOF &gt; /etc/modprobe.d/kvm-nested.conf       ///名前はなんでもいい
@@ -1071,32 +1073,32 @@ $ sudo virsh edit [vm]
 </pre></div>
 </div>
 <p>ゲストで確認</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat /proc/cpuinfo | grep vmx
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat /proc/cpuinfo | grep vmx
 ///  なんか出てくればよい
 </pre></div>
 </div>
 <p><a class="reference external" href="http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html">http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html</a></p>
 </div>
 <div class="section" id="reference">
-<h2>reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><a class="reference external" href="https://libvirt.org/format.html">domain_xml_format</a></p>
 <p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
 <p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>
 </div>
 <div class="section" id="id4">
-<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="helloworld">
-<h3>helloworld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h3>
+<h3>helloworld<a class="headerlink" href="#helloworld" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Xwindowのあるシステムで↓を実行</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ kvm -monitor stdio
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kvm -monitor stdio
 </pre></div>
 </div>
 <p>空のVMのウィンドウが立ち上がる．
 当然何もないのでbootしないけど．</p>
 </div>
 <div class="section" id="id5">
-<h3>インストールと起動<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>### install
+<h3>インストールと起動<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### install
 $ qemu-img create -f qcow2 test.img 4G
 $ sudo kvm -hda test.img -cdrom [path to iso file] -boot d -m 1024
 
@@ -1113,29 +1115,29 @@ $ sudo kvm -hda test.img -boot c -m 1024
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="xen.html" class="btn btn-neutral float-right" title="xen" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="dpdk.html" class="btn btn-neutral float-left" title="DPDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="xen.html" class="btn btn-neutral float-right" title="xen" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dpdk.html" class="btn btn-neutral float-left" title="DPDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -1143,7 +1145,6 @@ $ sudo kvm -hda test.img -boot c -m 1024
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

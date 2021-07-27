@@ -1,50 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>DPDK &mdash; wiki  documentation</title>
+  <title>DPDK &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="kvm" href="kvm.html" />
     <link rel="prev" title="wiki of khwarizmi" href="../index.html" /> 
 </head>
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -115,7 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -161,6 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -196,6 +195,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -230,18 +230,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>DPDK</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/contents/dpdk.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -256,11 +258,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dpdk">
-<h1>DPDK<a class="headerlink" href="#dpdk" title="Permalink to this headline">¶</a></h1>
+<h1>DPDK<a class="headerlink" href="#dpdk" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="setup">
-<h2>setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<h2>setup<a class="headerlink" href="#setup" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ビルドツールがmakeからmeson &amp; ninjaに変わっていた(とりあえず確認 2020-09-22 DPDK 20.08.0)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install meson ninja-build
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install meson ninja-build
 
 とりあえずライブラリのインストールはこれで良さげ?
 $ cd $RTE_SDK
@@ -300,31 +302,31 @@ $ ninja
 <p>また，将来は廃止されることが明記されていて，makeを利用した方法は推奨されていない．</p>
 </div>
 <div class="section" id="id1">
-<h2>以前のsetup<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>以前のsetup<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="envs">
-<h3>envs<a class="headerlink" href="#envs" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ echo &quot;export RTE_SDK=$HOME/dpdk&quot; &gt;&gt; $HOME/.bashrc
+<h3>envs<a class="headerlink" href="#envs" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;export RTE_SDK=$HOME/dpdk&quot; &gt;&gt; $HOME/.bashrc
 $ echo &quot;export RTE_TARGET=x86_64-native-linuxapp-gcc&quot; &gt;&gt; $HOME/.bashrc
 </pre></div>
 </div>
 </div>
 <div class="section" id="packages">
-<h3>packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install -y libpcap-dev python linux-headers-`uname -r` build-essential git libnuma-dev
+<h3>packages<a class="headerlink" href="#packages" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install -y libpcap-dev python linux-headers-`uname -r` build-essential git libnuma-dev
 </pre></div>
 </div>
 </div>
 <div class="section" id="clone-and-build-dpdk">
-<h3>clone and build DPDK<a class="headerlink" href="#clone-and-build-dpdk" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone http://dpdk.org/git/dpdk $RTE_SDK
+<h3>clone and build DPDK<a class="headerlink" href="#clone-and-build-dpdk" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone http://dpdk.org/git/dpdk $RTE_SDK
 $ cd $RTE_SDK
 $ make install T=$RTE_TARGET
 </pre></div>
 </div>
 </div>
 <div class="section" id="setup-hugepages">
-<h3>setup Hugepages<a class="headerlink" href="#setup-hugepages" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
+<h3>setup Hugepages<a class="headerlink" href="#setup-hugepages" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
 - GRUB_CMDLINE_LINUX=&quot;&quot;
 + GRUB_CMDLINE_LINUX=&quot;hugepages=1024&quot;
 $ sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -336,36 +338,36 @@ $ reboot
 </div>
 </div>
 <div class="section" id="helloworld">
-<h3>helloworld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd $RTE_SDK/examples/helloworld
+<h3>helloworld<a class="headerlink" href="#helloworld" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $RTE_SDK/examples/helloworld
 $ make
 $ sudo ./build/helloworld
 </pre></div>
 </div>
 </div>
 <div class="section" id="bind-nic">
-<h3>bind NIC<a class="headerlink" href="#bind-nic" title="Permalink to this headline">¶</a></h3>
+<h3>bind NIC<a class="headerlink" href="#bind-nic" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>comming soon</p>
 </div>
 <div class="section" id="useage">
-<h3>useage<a class="headerlink" href="#useage" title="Permalink to this headline">¶</a></h3>
+<h3>useage<a class="headerlink" href="#useage" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="skelton-with-tap">
-<h4>skelton with tap<a class="headerlink" href="#skelton-with-tap" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ./build/basicfwd --vdev=net_tap0,iface=tap0 --vdev=net_tap1,iface=tap1
+<h4>skelton with tap<a class="headerlink" href="#skelton-with-tap" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ./build/basicfwd --vdev=net_tap0,iface=tap0 --vdev=net_tap1,iface=tap1
 </pre></div>
 </div>
 </div>
 <div class="section" id="pktgen">
-<h4>pktgen<a class="headerlink" href="#pktgen" title="Permalink to this headline">¶</a></h4>
+<h4>pktgen<a class="headerlink" href="#pktgen" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>dpdk v16.11</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/slankdev/pktgen
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/slankdev/pktgen
 $ sudo ./app/x86_64-native-linuxapp-gcc/pktgen -- -P -m &quot;[1-7].0,[16-23].0,[8-15].1,[24-31].1&quot;
 </pre></div>
 </div>
 <div class="section" id="command">
-<h5>command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h5>
+<h5>command<a class="headerlink" href="#command" title="このヘッドラインへのパーマリンク">¶</a></h5>
 <p><em>再表示</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">redisplay</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">redisplay</span>
 </pre></div>
 </div>
 </div>
@@ -379,29 +381,29 @@ $ sudo ./app/x86_64-native-linuxapp-gcc/pktgen -- -P -m &quot;[1-7].0,[16-23].0,
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="kvm.html" class="btn btn-neutral float-right" title="kvm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../index.html" class="btn btn-neutral float-left" title="wiki of khwarizmi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="kvm.html" class="btn btn-neutral float-right" title="kvm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="wiki of khwarizmi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -409,7 +411,6 @@ $ sudo ./app/x86_64-native-linuxapp-gcc/pktgen -- -P -m &quot;[1-7].0,[16-23].0,
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

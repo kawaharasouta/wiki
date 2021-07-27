@@ -1,50 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>virshのソースコードを読んだ時のメモ &mdash; wiki  documentation</title>
+  <title>virshのソースコードを読んだ時のメモ &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="kvm api でいろいろするやつ" href="kvm_api.html" />
     <link rel="prev" title="golangでちょっと文字列関連性能計測した時のいろんなメモ" href="golang_perf.html" /> 
 </head>
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -144,6 +142,7 @@
 <li class="toctree-l1"><a class="reference internal" href="make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -179,6 +178,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -213,18 +213,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>virshのソースコードを読んだ時のメモ</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/technote/virsh_source.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -239,17 +241,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="virsh">
-<h1>virshのソースコードを読んだ時のメモ<a class="headerlink" href="#virsh" title="Permalink to this headline">¶</a></h1>
+<h1>virshのソースコードを読んだ時のメモ<a class="headerlink" href="#virsh" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>virshはlihbvirt内の <a class="reference external" href="https://github.com/libvirt/libvirt/tree/c6c23415706ee303a9fbeee5326a4e504645fe3e/tools">https://github.com/libvirt/libvirt/tree/c6c23415706ee303a9fbeee5326a4e504645fe3e/tools</a> にあるのでそこをみていく．</p>
 <p>とりあえずvirsh.cの一番下を見ると，mainがあるので動作の発端が見える．
 初期化周りが見えるが，consoleのescapekeyがハードコードしてあったりして笑う．
 l. 489</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virshCtl</span><span class="o">.</span><span class="n">escapeChar</span> <span class="o">=</span> <span class="s2">&quot;^]&quot;</span><span class="p">;</span>     <span class="o">/*</span> <span class="n">Same</span> <span class="n">default</span> <span class="k">as</span> <span class="n">telnet</span> <span class="o">*/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virshCtl</span><span class="o">.</span><span class="n">escapeChar</span> <span class="o">=</span> <span class="s2">&quot;^]&quot;</span><span class="p">;</span>     <span class="o">/*</span> <span class="n">Same</span> <span class="n">default</span> <span class="k">as</span> <span class="n">telnet</span> <span class="o">*/</span>
 </pre></div>
 </div>
 <p>こんな大きなコードでも愚直にprognameを出してるもんなんだなあと思う．
 l.852</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>if (!(progname = strrchr(argv[0], &#39;/&#39;)))
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if (!(progname = strrchr(argv[0], &#39;/&#39;)))
   progname = argv[0];
 else
   progname++;
@@ -261,7 +263,7 @@ ctl-&gt;progname = progname;
 コマンドを読み解くにはctl(vshControlなる構造体)が重要そう．
 ちょっと上にあるvirshParseArgvで引数を解釈して構造体を作り上げてよしなにしている感じがある．
 l.885</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>if (!virshParseArgv(ctl, argc, argv) ||
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if (!virshParseArgv(ctl, argc, argv) ||
   !virshInit(ctl)) {
   virshDeinit(ctl);
   exit(EXIT_FAILURE);
@@ -284,29 +286,29 @@ if (!ctl-&gt;imode) {
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="kvm_api.html" class="btn btn-neutral float-right" title="kvm api でいろいろするやつ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="golang_perf.html" class="btn btn-neutral float-left" title="golangでちょっと文字列関連性能計測した時のいろんなメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="kvm_api.html" class="btn btn-neutral float-right" title="kvm api でいろいろするやつ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="golang_perf.html" class="btn btn-neutral float-left" title="golangでちょっと文字列関連性能計測した時のいろんなメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -314,7 +316,6 @@ if (!ctl-&gt;imode) {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

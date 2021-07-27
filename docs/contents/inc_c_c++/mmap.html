@@ -1,50 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>mmapについて &mdash; wiki  documentation</title>
+  <title>mmapについて &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="golang" href="../golang.html" />
     <link rel="prev" title="pthread" href="pthread.html" /> 
 </head>
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../c_c++.html">c, c++</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../c_c%2B%2B.html">c, c++</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="option.html">option</a></li>
 <li class="toctree-l2"><a class="reference internal" href="attribute.html">attribute (関数の属性機能)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="signal.html">signal</a></li>
@@ -159,6 +157,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../technote/auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -194,6 +193,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -228,20 +228,22 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../c_c++.html">c, c++</a> &raquo;</li>
+          <li><a href="../c_c%2B%2B.html">c, c++</a> &raquo;</li>
         
       <li>mmapについて</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/contents/inc_c_c++/mmap.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -256,12 +258,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mmap">
-<h1>mmapについて<a class="headerlink" href="#mmap" title="Permalink to this headline">¶</a></h1>
+<h1>mmapについて<a class="headerlink" href="#mmap" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>参考:
 <a class="reference external" href="http://www.ncad.co.jp/~komata/c-kouza20.htm">http://www.ncad.co.jp/~komata/c-kouza20.htm</a>
 <a class="reference external" href="https://www.it-swarm-ja.tech/ja/c/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%ABmmap%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E5%BF%85%E8%A6%81%E3%81%8C%E3%81%82%E3%82%8B%E3%81%AE%E3%81%AF%E3%81%84%E3%81%A4%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F/958534019/#:~:text=mmap%20%E3%81%AB%E3%81%AF%E3%80%81%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB,%E3%81%AB%E3%81%AA%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82">https://www.it-swarm-ja.tech/ja/c/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%ABmmap%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E5%BF%85%E8%A6%81%E3%81%8C%E3%81%82%E3%82%8B%E3%81%AE%E3%81%AF%E3%81%84%E3%81%A4%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F/958534019/#:~:text=mmap%20%E3%81%AB%E3%81%AF%E3%80%81%E5%A4%A7%E3%81%8D%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB,%E3%81%AB%E3%81%AA%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82</a></p>
 <div class="section" id="id1">
-<h2>概要<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>※とりあえず参考リンクから多くを引用している※</p>
 <p>mmapはファイルをメモリにマッピングするものです。わかりやすく言うと、UNIXのOSが行なっているページングやスワッピングを自プロセスで行なうようなものです。
 これを使うメリットとしては、メモリ確保サイズが確保開始時に決定できない場合、簡単にはmalloc()で適当な量を確保し、足りなければrealloc()を使用して拡大することになりますが、
@@ -273,20 +275,20 @@ mmapを使用すれば、別々に拡大していくような管理が可能な�
 また、mmapは可能な範囲でRAM上に展開しながら動作してくれるので比較的高速ですが、巨大な領域を移動する場合には当然ページングなどと同様に遅くなります。
 その他に、メモリイメージをファイルとして扱えますので、単純なメモリイメージの保存・再利用も可能ですし、更に共有メモリの用にメモリイメージを共有することも可能です。</p>
 <ul class="simple">
-<li>ファイルをメモリにマッピングする</li>
-<li>malloc系でチマチマメモリ領域を獲得すると空きが出やすくなったりするがそれがない</li>
-<li>fdの数に注意しないといけない．</li>
-<li>巨大な領域の移動は当然ページングのように遅くなる</li>
-<li>同じファイルの読み取りを複数のプロセスが行うような場合はmmapで同じ物理メモリページを共有してできるのが良い．</li>
-<li>mallocと比較して，スワップの時にバッファに書き込む必要がない．ファイルからの復元ができれば良いだけだから．</li>
-<li>mmapは連続したアドレス空間が必要だから，アドレス空間が小さかったりすると(32bitマシンだと)ファイルサイズを気を付ける場面が出てくる．</li>
-<li>mmapはページサイズのオフセットでマッピングを開始する必要がある</li>
-<li>mmapはパイプやttyには利用できない</li>
-<li>ファイルサイズが十分小さい(16K未満?)と遅いらしい．read()とかと比べて．
+<li><p>ファイルをメモリにマッピングする</p></li>
+<li><p>malloc系でチマチマメモリ領域を獲得すると空きが出やすくなったりするがそれがない</p></li>
+<li><p>fdの数に注意しないといけない．</p></li>
+<li><p>巨大な領域の移動は当然ページングのように遅くなる</p></li>
+<li><p>同じファイルの読み取りを複数のプロセスが行うような場合はmmapで同じ物理メモリページを共有してできるのが良い．</p></li>
+<li><p>mallocと比較して，スワップの時にバッファに書き込む必要がない．ファイルからの復元ができれば良いだけだから．</p></li>
+<li><p>mmapは連続したアドレス空間が必要だから，アドレス空間が小さかったりすると(32bitマシンだと)ファイルサイズを気を付ける場面が出てくる．</p></li>
+<li><p>mmapはページサイズのオフセットでマッピングを開始する必要がある</p></li>
+<li><p>mmapはパイプやttyには利用できない</p></li>
+<li><p>ファイルサイズが十分小さい(16K未満?)と遅いらしい．read()とかと比べて．
 これは、タイムスライス内でカーネルが読み取りを完全に満たすことがあり、コードが切り替わらないことがあるためです。
-ページフォールトでは、別のプログラムがスケジュールされる可能性が高くなり、ファイル操作の待ち時間が長くなります。</li>
-<li>mmapは大きいファイルにランダムアクセスする際に有用．</li>
-<li>mmapはバッファリングに煩わされることなく，メモリ操作（memcpy・ポインター演算）でアクセスできる</li>
+ページフォールトでは、別のプログラムがスケジュールされる可能性が高くなり、ファイル操作の待ち時間が長くなります。</p></li>
+<li><p>mmapは大きいファイルにランダムアクセスする際に有用．</p></li>
+<li><p>mmapはバッファリングに煩わされることなく，メモリ操作（memcpy・ポインター演算）でアクセスできる</p></li>
 </ul>
 <p>mmap, munmap - map or unmap files or devices into memory
 ってことはデバイス(のメモリ空間)もmapできるんか</p>
@@ -294,26 +296,26 @@ mmapを使用すれば、別々に拡大していくような管理が可能な�
 <p><strong>mmap( )の利点</strong>
 mmap( )を介したファイルの操作には、標準のread( )およびwrite( )システムコールに比べていくつかの利点があります。</p>
 <ul class="simple">
-<li>メモリマップファイルの読み取りと書き込みにより、read( )またはwrite( )システムコールを使用するときに発生する余分なコピーを回避します。この場合、データはユーザースペースバッファーとの間でコピーする必要があります。</li>
-<li>潜在的なページフォールトは別として、メモリマップトファイルの読み取りと書き込みでは、システムコールやコンテキストスイッチのオーバーヘッドは発生しません。メモリにアクセスするのと同じくらい簡単です。</li>
-<li>複数のプロセスが同じオブジェクトをメモリにマップすると、データはすべてのプロセス間で共有されます。読み取り専用および共有の書き込み可能なマッピングは完全に共有されます。書き込み可能なプライベートマッピングには、まだCOW（コピーオンライト）ページが共有されています。</li>
-<li>マッピングを探索するには、簡単なポインター操作が必要です。 lseek( )システムコールは不要です。</li>
+<li><p>メモリマップファイルの読み取りと書き込みにより、read( )またはwrite( )システムコールを使用するときに発生する余分なコピーを回避します。この場合、データはユーザースペースバッファーとの間でコピーする必要があります。</p></li>
+<li><p>潜在的なページフォールトは別として、メモリマップトファイルの読み取りと書き込みでは、システムコールやコンテキストスイッチのオーバーヘッドは発生しません。メモリにアクセスするのと同じくらい簡単です。</p></li>
+<li><p>複数のプロセスが同じオブジェクトをメモリにマップすると、データはすべてのプロセス間で共有されます。読み取り専用および共有の書き込み可能なマッピングは完全に共有されます。書き込み可能なプライベートマッピングには、まだCOW（コピーオンライト）ページが共有されています。</p></li>
+<li><p>マッピングを探索するには、簡単なポインター操作が必要です。 lseek( )システムコールは不要です。</p></li>
 </ul>
 <p>これらの理由から、mmap( )は多くのアプリケーションにとって賢明な選択です。</p>
 <p><strong>mmap( )の欠点</strong>
 mmap( )を使用する際に留意すべき点がいくつかあります。</p>
 <ul class="simple">
-<li>メモリマッピングは常に整数のページ数です。したがって、バッキングファイルのサイズと整数のページ数の差は、スラックスペースとして「無駄」になります。小さなファイルの場合、マッピングのかなりの割合が無駄になる可能性があります。たとえば、4 KBページでは、7バイトのマッピングは4,089バイトを無駄にします。</li>
-<li>メモリマッピングは、プロセスのアドレス空間に収まる必要があります。 32ビットのアドレス空間では、非常に多数のさまざまなサイズのマッピングにより、アドレス空間が断片化され、大きな空きの連続した領域を見つけることが難しくなります。もちろん、この問題は64ビットのアドレス空間ではそれほど顕著ではありません。</li>
-<li>カーネル内のメモリマッピングおよび関連するデータ構造の作成と保守にはオーバーヘッドがあります。このオーバーヘッドは、特に大きく頻繁にアクセスされるファイルの場合は特に、前のセクションで説明した二重コピーを削除することで一般的に不要になります。</li>
+<li><p>メモリマッピングは常に整数のページ数です。したがって、バッキングファイルのサイズと整数のページ数の差は、スラックスペースとして「無駄」になります。小さなファイルの場合、マッピングのかなりの割合が無駄になる可能性があります。たとえば、4 KBページでは、7バイトのマッピングは4,089バイトを無駄にします。</p></li>
+<li><p>メモリマッピングは、プロセスのアドレス空間に収まる必要があります。 32ビットのアドレス空間では、非常に多数のさまざまなサイズのマッピングにより、アドレス空間が断片化され、大きな空きの連続した領域を見つけることが難しくなります。もちろん、この問題は64ビットのアドレス空間ではそれほど顕著ではありません。</p></li>
+<li><p>カーネル内のメモリマッピングおよび関連するデータ構造の作成と保守にはオーバーヘッドがあります。このオーバーヘッドは、特に大きく頻繁にアクセスされるファイルの場合は特に、前のセクションで説明した二重コピーを削除することで一般的に不要になります。</p></li>
 </ul>
 <p>これらの理由から、mmap( )の利点は、マップされたファイルが大きい場合（したがって、無駄なスペースがマッピング全体のわずかな割合である場合）、またはマップされたファイルの合計サイズが均等に割り切れる場合に最も大きく実現されますページサイズによって（したがって、無駄なスペースはありません）。</p>
 <p><strong>pipeとの比較についても書く必要がありそう</strong></p>
 <p>aaaaaaaaaaaaaaaaaa</p>
 </div>
 <div class="section" id="man">
-<h2>man<a class="headerlink" href="#man" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include&lt;sys/mman.h&gt;</span>
+<h2>man<a class="headerlink" href="#man" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;sys/mman.h&gt;</span>
 <span class="n">void</span> <span class="o">*</span><span class="n">mmap</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">length</span><span class="p">,</span> <span class="nb">int</span> <span class="n">prot</span><span class="p">,</span> <span class="nb">int</span> <span class="n">flags</span><span class="p">,</span> <span class="nb">int</span> <span class="n">fd</span><span class="p">,</span> <span class="n">off_t</span> <span class="n">offset</span><span class="p">);</span>
 <span class="nb">int</span> <span class="n">munmap</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">length</span><span class="p">);</span>
 </pre></div>
@@ -326,29 +328,29 @@ mmap( )を使用する際に留意すべき点がいくつかあります。</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../golang.html" class="btn btn-neutral float-right" title="golang" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="pthread.html" class="btn btn-neutral float-left" title="pthread" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../golang.html" class="btn btn-neutral float-right" title="golang" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pthread.html" class="btn btn-neutral float-left" title="pthread" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -356,7 +358,6 @@ mmap( )を使用する際に留意すべき点がいくつかあります。</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

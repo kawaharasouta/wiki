@@ -1,50 +1,47 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Linuxの認証周りの話 &mdash; wiki  documentation</title>
+  <title>Linuxの認証周りの話 &mdash; wiki  ドキュメント</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'',
-              LANGUAGE:'ja',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Linuxのセキュリティモジュールについて" href="linux_security.html" />
     <link rel="prev" title="自作カーネル的なそう言う話" href="make_kernel.html" /> 
 </head>
@@ -83,6 +80,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -150,6 +148,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
@@ -185,6 +184,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -219,18 +219,20 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Linuxの認証周りの話</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/technote/auth.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -245,19 +247,19 @@
            <div itemprop="articleBody">
             
   <div class="section" id="linux">
-<h1>Linuxの認証周りの話<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<h1>Linuxの認証周りの話<a class="headerlink" href="#linux" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="pam">
-<h2>PAM<a class="headerlink" href="#pam" title="Permalink to this headline">¶</a></h2>
+<h2>PAM<a class="headerlink" href="#pam" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Linuxには認証機能を使うソフトウェアがたくさんあるけど，それぞれのソフトウェアで独自に認証機能を実装してるのはよくないのでモジュールにしたものがある．
 それが PAMとかPAM認証 とかってやつ．</p>
 <p>/etc/pam.d を見ると，なんかよく見るデーモンの名前のファイルとかがあって，認証にはこいつらを使ってるぽいらしいくさい．
 これ以上はよくわからなくなりそうだから触れない．こういうのがあったよっていうメモ．</p>
 <p>参照: <a class="reference external" href="https://ozuma.hatenablog.jp/entry/20131005/1380942386">https://ozuma.hatenablog.jp/entry/20131005/1380942386</a></p>
 <div class="section" id="passwd">
-<h3>passwd変更<a class="headerlink" href="#passwd" title="Permalink to this headline">¶</a></h3>
+<h3>passwd変更<a class="headerlink" href="#passwd" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>it is based on a dictionary word とかって怒られる時の対処
 なんか↓のようにしたら動いた．</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/pam.d/passwd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/pam.d/passwd
 
 + password   sufficient   pam_unix.so nullok md5 shadow
 + password   required     pam_deny.so
@@ -273,29 +275,29 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="linux_security.html" class="btn btn-neutral float-right" title="Linuxのセキュリティモジュールについて" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="make_kernel.html" class="btn btn-neutral float-left" title="自作カーネル的なそう言う話" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="linux_security.html" class="btn btn-neutral float-right" title="Linuxのセキュリティモジュールについて" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="make_kernel.html" class="btn btn-neutral float-left" title="自作カーネル的なそう言う話" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, KAWAHARAsouta
+        &#169; Copyright 2021, KAWAHARAsouta.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -303,7 +305,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
