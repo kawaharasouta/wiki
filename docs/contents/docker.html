@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Docker &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>Docker &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ssh_config" href="ssh_config.html" />
     <link rel="prev" title="vagrant" href="vagrant.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -101,7 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -182,7 +184,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -217,20 +218,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>Docker</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/contents/docker.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -245,10 +244,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="docker">
-<h1>Docker<a class="headerlink" href="#docker" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="install-ubuntu">
-<h2>install (ubuntu)<a class="headerlink" href="#install-ubuntu" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt update &amp;&amp; sudo apt install -y \
+<h2>install (ubuntu)<a class="headerlink" href="#install-ubuntu" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt update &amp;&amp; sudo apt install -y \
   apt-transport-https ca-certificates curl software-properties-common
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $ sudo add-apt-repository \
@@ -264,8 +263,8 @@ $ sudo usermod -aG docker $USER   #sudoなしで現ユーザでdockerkコマン�
 <a class="reference external" href="https://qiita.com/zembutsu/items/bedb18e1061303e217b8">https://qiita.com/zembutsu/items/bedb18e1061303e217b8</a></p>
 </div>
 <div class="section" id="commands">
-<h2>commands<a class="headerlink" href="#commands" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name [name] ubuntu:18.04 bash        #名前をつける
+<h2>commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker run -it --name [name] ubuntu:18.04 bash        #名前をつける
 $ docker run -p 8080:80 -it ubuntu:18.04 bash           #ホストの8080ポートをコンテナの80ポートにフォアード
 $ docker run --link [container name]:{link name] nginx  #コンテナをリンクさせる例(nginxでリバースプロキシするときにやったので
 $ docker stop $(docker ps -q)                           #起動中のコンテナ全部停止
@@ -278,10 +277,10 @@ $ docker build -t khwarizmi/[name] .      #Dockerfileからbuildする(Dockerfil
 </div>
 </div>
 <div class="section" id="images">
-<h2>images<a class="headerlink" href="#images" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
 <p>elixir(コードを見やすく表示するやつ)のコンテナ
 <a class="reference external" href="https://hub.docker.com/r/yutarohayakawa/elixir/">https://hub.docker.com/r/yutarohayakawa/elixir/</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/projects
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir ~/projects
 $ docker run --name elixir -p 8090:80 -v ~/projects:/usr/local/elixir/http/projects -d yutarohayakawa/elixir
 $ docker exec elixir ./add_project -r https://github.com/nginx/nginx -n nginx
 </pre></div>
@@ -294,29 +293,29 @@ $ docker exec elixir ./add_project -r https://github.com/nginx/nginx -n nginx
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="ssh_config.html" class="btn btn-neutral float-right" title="ssh_config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="vagrant.html" class="btn btn-neutral float-left" title="vagrant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="ssh_config.html" class="btn btn-neutral float-right" title="ssh_config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vagrant.html" class="btn btn-neutral float-left" title="vagrant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -324,6 +323,7 @@ $ docker exec elixir ./add_project -r https://github.com/nginx/nginx -n nginx
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

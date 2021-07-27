@@ -60,6 +60,7 @@ wiki
   technote/make_kernel
   technote/auth
   technote/linux_security
+  technote/linux_from_scratch
   technote/em_linux
 
 .. toctree::

@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>golangでちょっと文字列関連性能計測した時のいろんなメモ &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>golangでちょっと文字列関連性能計測した時のいろんなメモ &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="virshのソースコードを読んだ時のメモ" href="virsh_source.html" />
     <link rel="prev" title="規格とか思想とか" href="standard.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -182,7 +184,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -217,20 +218,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>golangでちょっと文字列関連性能計測した時のいろんなメモ</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/technote/golang_perf.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -245,15 +244,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="golang">
-<h1>golangでちょっと文字列関連性能計測した時のいろんなメモ<a class="headerlink" href="#golang" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>golangでちょっと文字列関連性能計測した時のいろんなメモ<a class="headerlink" href="#golang" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>この調査に至った動機<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>この調査に至った動機<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>libvirt-go を使ってちょっとしたプログラムを書いていて，
 各ドメインから情報をゲットして雑に文字列をいじらなきゃいけないなーと思っていたんだが，
 stringや[]byteでの文字列操作に関するパフォーマンスについて触れた記事がいくつかあって，少しいじいじした．</p>
 </div>
 <div class="section" id="id2">
-<h2>文字列の結合とかそこら辺の話<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>文字列の結合とかそこら辺の話<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>文字列の操作に関して，↑に書いたようにstringと[]byteで文字列の操作をできるんだけど，
 結合に関してもそのどちらを使うかとかメソッドをどうするかで当然パフォーマンスは変わる．
 ところで，stringはgolangではどうもimmutable(不変)なため，
@@ -262,14 +261,14 @@ stringや[]byteでの文字列操作に関するパフォーマンスについ�
 いやいやなんかstrings.Join(というかstrings.Builder)が意外と速いんですよみたいな話とかがあったりする．
 それについてはリンクを貼っておくのでそこをみて確認するようにしよう．</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://qiita.com/ono_matope/items/d5e70d8a9ff2b54d5c37">https://qiita.com/ono_matope/items/d5e70d8a9ff2b54d5c37</a></p></li>
-<li><p><a class="reference external" href="https://qiita.com/ruiu/items/2bb83b29baeae2433a79">https://qiita.com/ruiu/items/2bb83b29baeae2433a79</a></p></li>
-<li><p><a class="reference external" href="https://qiita.com/spiegel-im-spiegel/items/16ab7dabbd0749281227">https://qiita.com/spiegel-im-spiegel/items/16ab7dabbd0749281227</a></p></li>
-<li><p><a class="reference external" href="https://text.baldanders.info/golang/join-strings-2/">https://text.baldanders.info/golang/join-strings-2/</a>     ☆</p></li>
+<li><a class="reference external" href="https://qiita.com/ono_matope/items/d5e70d8a9ff2b54d5c37">https://qiita.com/ono_matope/items/d5e70d8a9ff2b54d5c37</a></li>
+<li><a class="reference external" href="https://qiita.com/ruiu/items/2bb83b29baeae2433a79">https://qiita.com/ruiu/items/2bb83b29baeae2433a79</a></li>
+<li><a class="reference external" href="https://qiita.com/spiegel-im-spiegel/items/16ab7dabbd0749281227">https://qiita.com/spiegel-im-spiegel/items/16ab7dabbd0749281227</a></li>
+<li><a class="reference external" href="https://text.baldanders.info/golang/join-strings-2/">https://text.baldanders.info/golang/join-strings-2/</a>     ☆</li>
 </ul>
 </div>
 <div class="section" id="id3">
-<h2>僕の状況と↑の話<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>僕の状況と↑の話<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>↑の話なんですが，[]stringが与えられて，それを結合する話でした．
 strings.Joinは第一引数が[]stringだしね．
 ところで今の僕の状況は，
@@ -284,7 +283,7 @@ appendが結構重いみたいな話も聞くから，これだったら実は+�
 <a class="reference external" href="https://qiita.com/ikawaha/items/3c3994559dfeffb9f8c9">https://qiita.com/ikawaha/items/3c3994559dfeffb9f8c9</a>
 <a class="reference external" href="https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b75ef">https://medium.com/a-journey-with-go/go-string-conversion-optimization-767b019b75ef</a></p>
 <p>と言うわけで実験</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s2">&quot;testing&quot;</span>
@@ -313,7 +312,7 @@ appendが結構重いみたいな話も聞くから，これだったら実は+�
 <span class="p">}</span>
 
 <span class="n">func</span> <span class="n">Benchmark_Byte</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">byt</span> <span class="o">:=</span> <span class="p">[]</span><span class="n">byte</span><span class="p">{}</span>
+  <span class="n">byt</span> <span class="p">:</span><span class="o">=</span> <span class="p">[]</span><span class="n">byte</span><span class="p">{}</span>
   <span class="k">for</span> <span class="nb">range</span> <span class="p">(</span><span class="n">make</span><span class="p">([]</span><span class="nb">int</span><span class="p">,</span> <span class="n">nn</span><span class="p">))</span> <span class="p">{</span>
     <span class="n">byt</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">byt</span><span class="p">,</span> <span class="n">ret_string</span><span class="p">()</span><span class="o">...</span><span class="p">)</span>
     <span class="n">byt</span> <span class="o">=</span> <span class="n">append</span><span class="p">(</span><span class="n">byt</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">...</span><span class="p">)</span>
@@ -322,7 +321,7 @@ appendが結構重いみたいな話も聞くから，これだったら実は+�
 </pre></div>
 </div>
 <p>結果</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### nn = 500
+<div class="highlight-default"><div class="highlight"><pre><span></span>### nn = 500
 $ go test -bench . -benchmem
 goos: linux
 goarch: amd64
@@ -379,29 +378,29 @@ ok      dev/string      9.631s
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="virsh_source.html" class="btn btn-neutral float-right" title="virshのソースコードを読んだ時のメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="standard.html" class="btn btn-neutral float-left" title="規格とか思想とか" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="virsh_source.html" class="btn btn-neutral float-right" title="virshのソースコードを読んだ時のメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="standard.html" class="btn btn-neutral float-left" title="規格とか思想とか" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -409,6 +408,7 @@ ok      dev/string      9.631s
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

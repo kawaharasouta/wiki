@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Open vSwitch &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>Open vSwitch &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="TRex" href="trex.html" />
     <link rel="prev" title="XDP" href="xdp.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -188,7 +190,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -223,20 +224,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>Open vSwitch</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/contents/ovs.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -251,30 +250,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="open-vswitch">
-<h1>Open vSwitch<a class="headerlink" href="#open-vswitch" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>Open vSwitch<a class="headerlink" href="#open-vswitch" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="install">
-<h2>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install openvswitch-switch openvswitch-common
+<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install openvswitch-switch openvswitch-common
 </pre></div>
 </div>
 </div>
 <div class="section" id="command-type">
-<h2>command type<a class="headerlink" href="#command-type" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>command type<a class="headerlink" href="#command-type" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>ovs-vsctl
-Used for configuring the ovs-vswitchd configuration database (known as ovs-db)</p></li>
-<li><p>ovs-ofctl
-A command line tool for monitoring and administering OpenFlow switches</p></li>
-<li><p>ovs-dpctl
-Used to administer Open vSwitch datapaths</p></li>
-<li><p>ovs−appctl
-Used for querying and controlling Open vSwitch daemons</p></li>
+<li>ovs-vsctl
+Used for configuring the ovs-vswitchd configuration database (known as ovs-db)</li>
+<li>ovs-ofctl
+A command line tool for monitoring and administering OpenFlow switches</li>
+<li>ovs-dpctl
+Used to administer Open vSwitch datapaths</li>
+<li>ovs−appctl
+Used for querying and controlling Open vSwitch daemons</li>
 </ul>
 <p>参考: <a class="reference external" href="https://komeiy.hatenablog.com/entry/2015/06/26/233746">https://komeiy.hatenablog.com/entry/2015/06/26/233746</a> クソほど有能な資料</p>
 </div>
 <div class="section" id="operation">
-<h2>operation<a class="headerlink" href="#operation" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ovs-vsctl show
+<h2>operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo ovs-vsctl show
 $ sudo ovs-vsctl add-br [switch]
 $ sudo ovs-vsctl del-br [switch]
 $ sudo ovs-vsctl add-port [switch] [port]
@@ -300,8 +299,8 @@ $ sudo ovs-ofctl add-flow br0 in_port=1,action=output:3     # 特定のフロー
 <p>flow追加: <a class="reference external" href="http://alexei-karamazov.hatenablog.com/entry/2013/12/20/103346">http://alexei-karamazov.hatenablog.com/entry/2013/12/20/103346</a></p>
 </div>
 <div class="section" id="kvmvmovs">
-<h2>kvmのVMをovsに接続<a class="headerlink" href="#kvmvmovs" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
+<h2>kvmのVMをovsに接続<a class="headerlink" href="#kvmvmovs" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">interface</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bridge&#39;</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="n">source</span> <span class="n">bridge</span><span class="o">=</span><span class="s1">&#39;[ovs sw name]&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">address</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pci&#39;</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;0x0000&#39;</span> <span class="n">bus</span><span class="o">=</span><span class="s1">&#39;0x01&#39;</span> <span class="n">slot</span><span class="o">=</span><span class="s1">&#39;0x02&#39;</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;0x0&#39;</span><span class="o">/&gt;</span>
   <span class="o">&lt;</span><span class="n">virtualport</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;openvswitch&#39;</span><span class="o">/&gt;</span>
@@ -311,23 +310,23 @@ $ sudo ovs-ofctl add-flow br0 in_port=1,action=output:3     # 特定のフロー
 </div>
 </div>
 <div class="section" id="ovs-dpdk">
-<h1>OvS DPDK<a class="headerlink" href="#ovs-dpdk" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>OvS DPDK<a class="headerlink" href="#ovs-dpdk" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>install<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install openvswitch-switch-dpdk
+<h2>install<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install openvswitch-switch-dpdk
 $ sudo update-alternatives --set ovs-vswitchd /usr/lib/openvswitch-switch-dpdk/ovs-vswitchd-dpdk      # dpdk対応verに切り替えてるだけ
 ※/usr/sbin/ovs-vswitchd      #戻す時こっち
 </pre></div>
 </div>
 </div>
 <div class="section" id="requirement">
-<h2>requirement<a class="headerlink" href="#requirement" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DPDK</span><span class="p">:</span>
+<h2>requirement<a class="headerlink" href="#requirement" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DPDK</span><span class="p">:</span>
 <span class="n">OVS</span><span class="p">:</span>
 <span class="n">QEMU</span><span class="p">:</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl restart ovsdb-server ovs-vswitchd
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo killall ovsdb-server ovs-vswitchd  or $ systemctl restart ovsdb-server ovs-vswitchd
 $ sudo vim /etc/default/grub
   + GRUB_CMDLINE_LINUX_DEFAULT=&quot;default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87&quot;
 $ sudo vim /etc/dpdk/dpdk.conf
@@ -393,9 +392,9 @@ curentじゃないのが1G, currentが500Mで動いてたけどどうなんだ�
 他のVMにはあげられてるのでOVS-DPDKが原因なんだろうけどなんなんだろう．</p>
 </div>
 <div class="section" id="memo">
-<h2>memo<a class="headerlink" href="#memo" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>memo<a class="headerlink" href="#memo" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>最初flowはNORMALが設定されてるけど，ちゃんとflowをそれぞれ設定した方がスループット出る．</p></li>
+<li>最初flowはNORMALが設定されてるけど，ちゃんとflowをそれぞれ設定した方がスループット出る．</li>
 </ul>
 <p>参考
 <a class="reference external" href="https://www.miraclelinux.com/tech-blog/dpdk-open-vswitch-study-7">https://www.miraclelinux.com/tech-blog/dpdk-open-vswitch-study-7</a>
@@ -413,29 +412,29 @@ curentじゃないのが1G, currentが500Mで動いてたけどどうなんだ�
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="trex.html" class="btn btn-neutral float-right" title="TRex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="xdp.html" class="btn btn-neutral float-left" title="XDP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="trex.html" class="btn btn-neutral float-right" title="TRex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="xdp.html" class="btn btn-neutral float-left" title="XDP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -443,6 +442,7 @@ curentじゃないのが1G, currentが500Mで動いてたけどどうなんだ�
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>unikernelについて &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>unikernelについて &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="related computer science" href="cs.html" />
     <link rel="prev" title="コンテナ技術周辺について" href="container.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -213,7 +215,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -248,20 +249,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>unikernelについて</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/technote/unikernel.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -276,7 +275,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="unikernel">
-<h1>unikernelについて<a class="headerlink" href="#unikernel" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>unikernelについて<a class="headerlink" href="#unikernel" title="Permalink to this headline">¶</a></h1>
 <p>クラウド環境で，シングルプロセスなVMを並列に展開するみたいな用途が結構ある．
 SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみたいなやつとか)．
 その場合，汎用OS使ってVMたてるのって汎用性が無駄だしパフォーマンスが出ない．
@@ -286,34 +285,34 @@ SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみ
 <a class="reference external" href="https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0">https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0</a>
 <a class="reference external" href="https://proc-cpuinfo.fixstars.com/2020/03/unikernel/">https://proc-cpuinfo.fixstars.com/2020/03/unikernel/</a></p>
 <div class="section" id="mirageoshelloworld">
-<h2>mirageOSでHelloWorldする<a class="headerlink" href="#mirageoshelloworld" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>mirageOSでHelloWorldする<a class="headerlink" href="#mirageoshelloworld" title="Permalink to this headline">¶</a></h2>
 <p>インストール
 <a class="reference external" href="https://mirage.io/wiki/install">https://mirage.io/wiki/install</a></p>
 <p>はろわ
 <a class="reference external" href="https://mirage.io/wiki/hello-world">https://mirage.io/wiki/hello-world</a></p>
 <div class="section" id="id1">
-<h3>環境<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OS</span><span class="p">:</span> <span class="n">ubuntu18</span><span class="mf">.04</span>
-<span class="n">kernel</span><span class="p">:</span> <span class="mf">4.15.0</span><span class="o">-</span><span class="mi">91</span><span class="o">-</span><span class="n">generic</span>
+<h3>環境<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">OS</span><span class="p">:</span> <span class="n">ubuntu18</span><span class="o">.</span><span class="mi">04</span>
+<span class="n">kernel</span><span class="p">:</span> <span class="mf">4.15</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">91</span><span class="o">-</span><span class="n">generic</span>
 <span class="n">kvm</span>
-<span class="n">ocaml</span><span class="p">:</span> <span class="mf">4.05.0</span>
-<span class="n">opam</span><span class="p">:</span> <span class="mf">2.0.4</span>
+<span class="n">ocaml</span><span class="p">:</span> <span class="mf">4.05</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">opam</span><span class="p">:</span> <span class="mf">2.0</span><span class="o">.</span><span class="mi">4</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
-<h3>手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>手順<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>kvmはkvmのとこみろや</p>
 <p>ocamlとopamのインストール</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:avsm/ppa
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:avsm/ppa
 $ sudo apt update
 $ sudo apt install opam ocaml gcc make bubblewrap m4 pkg-config
 </pre></div>
 </div>
 </div>
 <div class="section" id="opam">
-<h3>opam環境構築<a class="headerlink" href="#opam" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ opam init
+<h3>opam環境構築<a class="headerlink" href="#opam" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ opam init
   いろいろインストールで聞かれるから適当にyしとけ
 $ vim ~/.bashrc
   + eval `opam config env`
@@ -322,17 +321,17 @@ $ source ~/.bashrc
 </div>
 </div>
 <div class="section" id="mirage">
-<h3>mirageパッケージのインストール<a class="headerlink" href="#mirage" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ opam install mirage
+<h3>mirageパッケージのインストール<a class="headerlink" href="#mirage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ opam install mirage
 $ mirage    #確認
 </pre></div>
 </div>
 </div>
 <div class="section" id="mirageapp">
-<h3>mirageAPP<a class="headerlink" href="#mirageapp" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>mirageAPP<a class="headerlink" href="#mirageapp" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="hello">
-<h4>hello言うやつ<a class="headerlink" href="#hello" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/mirage/mirage-skeleton.git ~/git/mirage-skeleton
+<h4>hello言うやつ<a class="headerlink" href="#hello" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/mirage/mirage-skeleton.git ~/git/mirage-skeleton
 $ cd ~/git/mirage-skeleton
 $ mirage configure -t hvt     # -tはターゲット指定? これでコンパイルに必要なファイルが流れてくる． autotoolsみたいなのりだと思う． Makefileも出てくる
 $ make depend                 # 依存関係のあるパッケージを入れてるらしい
@@ -343,12 +342,12 @@ Error: This expression has type unit Time.io
 </pre></div>
 </div>
 <p>make configure の ターゲット一覧一応</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Target</span> <span class="n">platform</span> <span class="n">to</span> <span class="nb">compile</span> <span class="n">the</span> <span class="n">unikernel</span> <span class="k">for</span><span class="o">.</span> <span class="n">Valid</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Target</span> <span class="n">platform</span> <span class="n">to</span> <span class="nb">compile</span> <span class="n">the</span> <span class="n">unikernel</span> <span class="k">for</span><span class="o">.</span> <span class="n">Valid</span> <span class="n">values</span> <span class="n">are</span><span class="p">:</span>
 <span class="n">xen</span><span class="p">,</span> <span class="n">qubes</span><span class="p">,</span> <span class="n">unix</span><span class="p">,</span> <span class="n">macosx</span><span class="p">,</span> <span class="n">virtio</span><span class="p">,</span> <span class="n">hvt</span><span class="p">,</span> <span class="n">muen</span><span class="p">,</span> <span class="n">genode</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>ちょっと保存用</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mirage</span> <span class="n">build</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mirage</span> <span class="n">build</span>
 <span class="o">+</span> <span class="n">ocamlfind</span> <span class="n">ocamlc</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="nb">bin</span><span class="o">-</span><span class="n">annot</span> <span class="o">-</span><span class="n">safe</span><span class="o">-</span><span class="n">string</span> <span class="o">-</span><span class="n">principal</span> <span class="o">-</span><span class="n">strict</span><span class="o">-</span><span class="n">sequence</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">types</span><span class="o">-</span><span class="n">lwt</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">types</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">solo5</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">runtime</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">logs</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">clock</span><span class="o">-</span><span class="n">freestanding</span> <span class="o">-</span><span class="n">package</span> <span class="n">mirage</span><span class="o">-</span><span class="n">bootvar</span><span class="o">-</span><span class="n">solo5</span> <span class="o">-</span><span class="n">package</span> <span class="n">lwt</span> <span class="o">-</span><span class="n">package</span> <span class="n">functoria</span><span class="o">-</span><span class="n">runtime</span> <span class="o">-</span><span class="n">package</span> <span class="n">duration</span> <span class="o">-</span><span class="n">predicates</span> <span class="n">mirage_solo5</span> <span class="o">-</span><span class="n">w</span> <span class="n">A</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">41</span><span class="o">-</span><span class="mi">42</span><span class="o">-</span><span class="mi">44</span> <span class="o">-</span><span class="n">color</span> <span class="n">always</span> <span class="o">-</span><span class="n">o</span> <span class="n">unikernel</span><span class="o">.</span><span class="n">cmo</span> <span class="n">unikernel</span><span class="o">.</span><span class="n">ml</span>
 <span class="n">File</span> <span class="s2">&quot;unikernel.ml&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">11</span><span class="p">,</span> <span class="n">characters</span> <span class="mi">8</span><span class="o">-</span><span class="mi">41</span><span class="p">:</span>
 <span class="n">Error</span><span class="p">:</span> <span class="n">This</span> <span class="n">expression</span> <span class="n">has</span> <span class="nb">type</span> <span class="n">unit</span> <span class="n">Time</span><span class="o">.</span><span class="n">io</span>
@@ -370,7 +369,7 @@ Error: This expression has type unit Time.io
 </pre></div>
 </div>
 <p>とりあえず動くように改良</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">Lwt</span><span class="o">.</span><span class="n">Infix</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">Lwt</span><span class="o">.</span><span class="n">Infix</span>
 
 <span class="n">module</span> <span class="n">Hello</span> <span class="p">(</span><span class="n">Time</span> <span class="p">:</span> <span class="n">Mirage_time</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">=</span> <span class="n">struct</span>
 
@@ -393,7 +392,7 @@ Error: This expression has type unit Time.io
 </pre></div>
 </div>
 <p>とりあえずunixAPPとして動かす</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mirage configure -t unix
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mirage configure -t unix
 $ make depend
 $ make
 $ ./hello
@@ -401,14 +400,14 @@ $ ./hello
 </pre></div>
 </div>
 <p>kvmで動かす</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aaaaaa</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">aaaaaa</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h4>なんもしないやつ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>なんもしないやつ<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>とりあえずunixappで動かす</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/git/mirage-skeleton/tutorial/noop
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd ~/git/mirage-skeleton/tutorial/noop
 $ mirage configure -t unix
 $ make depend
 $ make
@@ -420,9 +419,9 @@ $ echo $?     # リターンコード確認するけど普通に0だからなん
 </div>
 </div>
 <div class="section" id="static-website-tls">
-<h3>static-website-tlsを動かそうとしてみたら<a class="headerlink" href="#static-website-tls" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>static-website-tlsを動かそうとしてみたら<a class="headerlink" href="#static-website-tls" title="Permalink to this headline">¶</a></h3>
 <p>make dependでエラー</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The following dependencies couldn&#39;t be met:
+<div class="highlight-default"><div class="highlight"><pre><span></span>The following dependencies couldn&#39;t be met:
   - mirage-unikernel-https-unix → conduit-mirage &lt; 3.0.0 → ocaml &gt;= 4.07.0
       base of this switch (use `--unlock-base&#39; to force)
   - mirage-unikernel-https-unix → conduit-mirage &lt; 3.0.0 → mirage-kv &gt;= 3.0.0 → ocaml &gt;= 4.06.0
@@ -434,24 +433,24 @@ $ echo $?     # リターンコード確認するけど普通に0だからなん
 <p>ocamlのバージョン4.07.0にする必要ありそう．</p>
 </div>
 <div class="section" id="id4">
-<h3>参考<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>参考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>MirageOSのHelloWorldやってみるやつ
 <a class="reference external" href="https://qiita.com/t-imada/items/6ee299653ac063532b4f">https://qiita.com/t-imada/items/6ee299653ac063532b4f</a></p>
 </div>
 </div>
 <div class="section" id="osv">
-<h2>OSv<a class="headerlink" href="#osv" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>OSv<a class="headerlink" href="#osv" title="Permalink to this headline">¶</a></h2>
 <p>2014年のアドベントカレンダー: <a class="reference external" href="https://qiita.com/advent-calendar/2014/osv">https://qiita.com/advent-calendar/2014/osv</a>
 いろいろ記事あるからあとで参照したい．capstanの使い方とか．</p>
 <div class="section" id="id5">
-<h3>やってみる<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libvirt0
+<h3>やってみる<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install libvirt0
 </pre></div>
 </div>
 </div>
 <div class="section" id="apps">
-<h3>apps<a class="headerlink" href="#apps" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/cloudius-systems/osv.git &amp; cd $_
+<h3>apps<a class="headerlink" href="#apps" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/cloudius-systems/osv.git &amp; cd $_
 $ git submodule update --init --recursive
 $ sudo ./scripts/setup.py             ### 必要なパッケージ類とかインストールしてる．
 ////// とりあえずiperfしてみたい
@@ -463,10 +462,10 @@ ctrl A + X で抜ける
 <p>ちなみにビルドした後のイメージの場所は /home/khwarizmi/git/osv/build/last/usr.img</p>
 </div>
 <div class="section" id="id6">
-<h3>サンプル以外の動作(と言うかアプリと本来はすべきだけどまだそこまでしてない)をさせる時<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>サンプル以外の動作(と言うかアプリと本来はすべきだけどまだそこまでしてない)をさせる時<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>module.py のところに起動時のコマンドみたいなのがあるからそこいじる．
 例えばiperfをclientにしたい時．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp -f ./apps/iperf/ ./apps/iperf-client/
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cp -f ./apps/iperf/ ./apps/iperf-client/
 $ vim ./apps/iperf-client/module.py
 default = api.run(&#39;*************&#39;)          /// *****のところがコマンドなのでそこをiperf -c ***.***~~~ とかにすればいい．
 </pre></div>
@@ -475,10 +474,10 @@ default = api.run(&#39;*************&#39;)          /// *****のところがコ�
 <p>これ，起動時に-eでコマンド変えられるからmodule.pyいじる必要なさげ．</p>
 </div>
 <div class="section" id="id7">
-<h3>複数台動かした時のメモ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>複数台動かした時のメモ<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>とりあえずここではiperf server と client を動かしてみることにする．
 ↑のclientはすでに作ってあるとする．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/// とりあえずイメージをどっかにmvする．デフォルトにおいておくと違うイメージを動かす際にビルドし直したら前のイメージが消えちゃうのでね．
+<div class="highlight-default"><div class="highlight"><pre><span></span>/// とりあえずイメージをどっかにmvする．デフォルトにおいておくと違うイメージを動かす際にビルドし直したら前のイメージが消えちゃうのでね．
 $ sudo ./script/build -j$(nproc) image=iperf
 $ sudo mv ./build/last/usr.img ./build/last/iperf-server.img
 /// とりあえず1個目起動するんだけど，macアドレスを変えて起動しとく
@@ -494,25 +493,25 @@ $ sudo ./scripts/run.py sudo ./scripts/run.py -nv --novnc --nogdb
 natはiptablesだってよく聞くけど．</p>
 </div>
 <div class="section" id="virsh">
-<h3>virsh で管理させる<a class="headerlink" href="#virsh" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>virsh で管理させる<a class="headerlink" href="#virsh" title="Permalink to this headline">¶</a></h3>
 <p>ビルドして出てくるimgを任意の場所に保存して，xmlファイルのsourceのところを合わせて変更すればいいだけ．
 ちなみにホスト名はosvで，net-dhcpとか見たらosvって出てくる．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/etc/libvirt/qemu/~~~~~~.img&#39;</span><span class="o">/&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/etc/libvirt/qemu/~~~~~~.img&#39;</span><span class="o">/&gt;</span>
 <span class="o">+</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/home/khwarizmi/git/osv/build/last/~~~~~~.img&#39;</span><span class="o">/&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="capstan">
-<h3>capstan でやってみる<a class="headerlink" href="#capstan" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>capstan でやってみる<a class="headerlink" href="#capstan" title="Permalink to this headline">¶</a></h3>
 <p>osvを簡単に動かすためのCUIツール
 なんかlibvirtというかvirshと言うかくらいの感じある．</p>
 <p>rep: <a class="reference external" href="https://github.com/cloudius-systems/capstan">https://github.com/cloudius-systems/capstan</a></p>
 <p>using capstan wiki: <a class="reference external" href="https://github.com/cloudius-systems/osv/wiki/Build-and-run-apps-on-OSv-using-Capstan">https://github.com/cloudius-systems/osv/wiki/Build-and-run-apps-on-OSv-using-Capstan</a></p>
 <div class="section" id="install">
-<h4>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h4>
 <p>installガイド: <a class="reference external" href="https://github.com/cloudius-systems/capstan/blob/master/Documentation/Installation.md">https://github.com/cloudius-systems/capstan/blob/master/Documentation/Installation.md</a></p>
 <p>go &gt;= 1.13</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install qemu-system-x86 qemu-utils
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install qemu-system-x86 qemu-utils
 $ git clone https://github.com/cloudius-systems/capstan.git &amp; cd $_
 $ go install
 $ capstan --help
@@ -520,9 +519,9 @@ $ capstan --help
 </div>
 </div>
 <div class="section" id="build-run">
-<h4>build &amp; run<a class="headerlink" href="#build-run" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>build &amp; run<a class="headerlink" href="#build-run" title="Permalink to this headline">¶</a></h4>
 <p>example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p apps/java-example &amp; cd $_
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir -p apps/java-example &amp; cd $_
 $ capstan package init \
   --name &quot;java-example&quot; \
   --title &quot;Java Example&quot; \
@@ -553,13 +552,13 @@ $ capstan run java-example -p qemu --boot default
 </div>
 </div>
 <div class="section" id="minecraft-servermemo">
-<h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="Permalink to this headline">¶</a></h3>
 <p>apps 内のサンプルアプリケーションで，kernelにおくアプリケーションの設定ファイルとかは多分usr.manifestに書かれてる．
 必要なサブシステムは多分moduleのところとかにあって，必要なものはmodule.pyにrequireとかってしてあって，それを取りにいくと思う．
 こけてるところはca-certificateのところな感じ．
 java?のアプリケーションのいくつかも大体同じようなところでブッコケる．</p>
 <p>エラーは</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      ///sudoなしだと
+<div class="highlight-default"><div class="highlight"><pre><span></span>      ///sudoなしだと
 Makefile:8: recipe for target &#39;module&#39; failed
       make: *** [module] Error 1
       Traceback (most recent call last):
@@ -617,7 +616,7 @@ Traceback (most recent call last):
 </div>
 <p>jreの証明書?のところら辺の設定とかなのかなとは思ってるけどよくわからん．
 あとこれ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ag</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">jvm</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">cacerts</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ag</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">jvm</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">jre</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">cacerts</span>
 <span class="n">openjdk8</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">host</span><span class="o">/</span><span class="n">module</span><span class="o">.</span><span class="n">py</span>
 <span class="mi">39</span><span class="p">:</span><span class="n">usr_files</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="s1">&#39;/usr/lib/jvm/java/jre/lib/security/cacerts&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;/etc/pki/java/cacerts&#39;</span><span class="p">)</span>
 </pre></div>
@@ -626,28 +625,28 @@ Traceback (most recent call last):
 </div>
 </div>
 <div class="section" id="includeos">
-<h2>includeOS<a class="headerlink" href="#includeos" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>includeOS<a class="headerlink" href="#includeos" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/includeos/IncludeOS">https://github.com/includeos/IncludeOS</a>
 <a class="reference external" href="https://includeos.readthedocs.io/en/latest/Getting-started.html">https://includeos.readthedocs.io/en/latest/Getting-started.html</a></p>
 <div class="section" id="location">
-<h3>location<a class="headerlink" href="#location" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>location<a class="headerlink" href="#location" title="Permalink to this headline">¶</a></h3>
 <p>デフォルトのプロジェクトpathは /usr/local/includeos だけど↓で設定．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo export INCLUDEOS_PREFIX=&#39;$HOME&#39;/includeos &gt;&gt; .bashrc
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ echo export INCLUDEOS_PREFIX=&#39;$HOME&#39;/includeos &gt;&gt; .bashrc
 $ echo export PATH=&#39;$PATH&#39;:&#39;$INCLUDEOS_PREFIX&#39;/bin &gt;&gt; $HOME/.bashrc
 </pre></div>
 </div>
 </div>
 <div class="section" id="id8">
-<h3>install<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>install<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="dependency">
-<h3>dependency<a class="headerlink" href="#dependency" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>dependency<a class="headerlink" href="#dependency" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>The conan package manager (1.13.1 or newer)    <a class="reference external" href="https://docs.conan.io/en/latest/installation.html">https://docs.conan.io/en/latest/installation.html</a></p></li>
-<li><p>cmake, make, nasm (x86/x86_64 only)</p></li>
-<li><p>clang, or alternatively gcc on linux. Prebuilt packages are available for clang 6.0 and gcc 7.3.</p></li>
+<li>The conan package manager (1.13.1 or newer)    <a class="reference external" href="https://docs.conan.io/en/latest/installation.html">https://docs.conan.io/en/latest/installation.html</a></li>
+<li>cmake, make, nasm (x86/x86_64 only)</li>
+<li>clang, or alternatively gcc on linux. Prebuilt packages are available for clang 6.0 and gcc 7.3.</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install cmake nasm build-essential
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install cmake nasm build-essential
 </pre></div>
 </div>
 <p>ちょっとconanがわからんかったのでいったんやめとく</p>
@@ -660,29 +659,29 @@ $ echo export PATH=&#39;$PATH&#39;:&#39;$INCLUDEOS_PREFIX&#39;/bin &gt;&gt; $HOM
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="container.html" class="btn btn-neutral float-left" title="コンテナ技術周辺について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="container.html" class="btn btn-neutral float-left" title="コンテナ技術周辺について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -690,6 +689,7 @@ $ echo export PATH=&#39;$PATH&#39;:&#39;$INCLUDEOS_PREFIX&#39;/bin &gt;&gt; $HOM
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

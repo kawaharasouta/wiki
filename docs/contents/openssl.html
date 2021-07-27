@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openSSLを利用する &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>openSSLを利用する &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="OpenVPN" href="openvpn.html" />
     <link rel="prev" title="TRex" href="trex.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -181,7 +183,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -216,20 +217,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>openSSLを利用する</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/contents/openssl.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -244,10 +243,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="openssl">
-<h1>openSSLを利用する<a class="headerlink" href="#openssl" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>openSSLを利用する<a class="headerlink" href="#openssl" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>ここら辺に関してメモメモメモ<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/etc/pki/CA # tree .
+<h2>ここら辺に関してメモメモメモ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>/etc/pki/CA # tree .
 .
 ├── cacert.pem                  ##### 認証局の(CSRをもとに発行された)証明書．ほんとは上位の認証局に署名してもらうやつ?
 ├── certs                       ### CSR(証明書に認証局の署名をリクエストするファイル?)のディレクトリ
@@ -273,14 +272,18 @@
 </pre></div>
 </div>
 <ul>
-<li><p>秘密鍵は基本的に本来はそれぞれのホストが持つもの(実験では簡単のため認証局が全部作ってしまっている)で外部に流出してはいけない．流出したら失効とかある(課題を参照)</p></li>
-<li><p>CSRは認証局に署名をリクエストするためのもので各自の秘密鍵から作られる．
+<li><p class="first">秘密鍵は基本的に本来はそれぞれのホストが持つもの(実験では簡単のため認証局が全部作ってしまっている)で外部に流出してはいけない．流出したら失効とかある(課題を参照)</p>
+</li>
+<li><p class="first">CSRは認証局に署名をリクエストするためのもので各自の秘密鍵から作られる．
 このファイルの中にはサーバ情報(本来だと会社情報とか)が含まれていて，ガチだとここでいろいろ審査するんだと思う．
-これは普通に(ここでいう普通とは特に機密性とか担保する必要がないということ)認証局に送っていいやつだと思う．</p></li>
-<li><p>認証局自身も本来はこの CSRを上位の認証局に送って署名してもらうんだと思う．
-(実験では簡単のため自己署名になっている．ただし，現実でも最上位の認証局はたぶんこうしてそう)</p></li>
-<li><p>ちなみに署名して証明書発行するのには CSR・認証局の秘密鍵・認証局の証明書を使う</p></li>
-<li><p>クライアント証明書の受け渡しみたいなことにPKCS#12ファイルを使ったのだが，↓のことが気になる
+これは普通に(ここでいう普通とは特に機密性とか担保する必要がないということ)認証局に送っていいやつだと思う．</p>
+</li>
+<li><p class="first">認証局自身も本来はこの CSRを上位の認証局に送って署名してもらうんだと思う．
+(実験では簡単のため自己署名になっている．ただし，現実でも最上位の認証局はたぶんこうしてそう)</p>
+</li>
+<li><p class="first">ちなみに署名して証明書発行するのには CSR・認証局の秘密鍵・認証局の証明書を使う</p>
+</li>
+<li><p class="first">クライアント証明書の受け渡しみたいなことにPKCS#12ファイルを使ったのだが，↓のことが気になる
 - まず基本的にPKCS#12ファイルは情報交換のためのファイルで，中身を確認したり取り出したり(含まれていれば証明書や秘密鍵まで取り出すことができる)
 - 今回クライアントのブラウザにはこのPKCS#12ファイル本体を読み込ませて使ったけど，たぶん証明書単体でも大丈夫だよね?(後で確認しよう)
 - 要は，証明書発行の時に認証局側でよきに計らって発行対象の秘密鍵まで作ってしまって手続きを簡単にして，</p>
@@ -291,7 +294,7 @@
 </ul>
 </div>
 <div class="section" id="id2">
-<h2>認証局構築・証明書発行・失効まで<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>認証局構築・証明書発行・失効まで<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>OpenSSLを利用して認証局を構築したり証明書を発行してそれを組み込んだり，
 発行した証明書を失効したりみたいなのをやる．</p>
 </div>
@@ -302,29 +305,29 @@
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="openvpn.html" class="btn btn-neutral float-right" title="OpenVPN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="trex.html" class="btn btn-neutral float-left" title="TRex" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="openvpn.html" class="btn btn-neutral float-right" title="OpenVPN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="trex.html" class="btn btn-neutral float-left" title="TRex" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -332,6 +335,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

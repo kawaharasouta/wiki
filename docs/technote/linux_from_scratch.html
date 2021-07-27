@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TUN/TAPの調査 &mdash; wiki  documentation</title>
+  <title>Linux From Scratch メモ &mdash; wiki  documentation</title>
   
 
   
@@ -45,8 +45,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CPU関連のメモ" href="cpu.html" />
-    <link rel="prev" title="カーネル関連について" href="inc_cs/kernel.html" /> 
+    <link rel="next" title="bash" href="../cheetsheets/bash.html" />
+    <link rel="prev" title="組み込みLinux開発の時のメモ" href="em_linux.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -134,7 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cs.html">related computer science</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">TUN/TAPの調査</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuntap.html">TUN/TAPの調査</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">CPU関連のメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fpga.html">FPGA関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standard.html">規格とか思想とか</a></li>
@@ -145,6 +145,12 @@
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Linuxの認証周りの話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_security.html">Linuxのセキュリティモジュールについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linux From Scratch メモ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#envs">envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lfs">LFS用パーティションの作成や環境準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">LFS用パーティションの作成</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -219,13 +225,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>TUN/TAPの調査</li>
+      <li>Linux From Scratch メモ</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/technote/tuntap.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/technote/linux_from_scratch.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -238,8 +244,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tun-tap">
-<h1>TUN/TAPの調査<a class="headerlink" href="#tun-tap" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="linux-from-scratch">
+<h1>Linux From Scratch メモ<a class="headerlink" href="#linux-from-scratch" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.linuxfromscratch.org/">https://www.linuxfromscratch.org/</a>
+<a class="reference external" href="http://lfsbookja.osdn.jp/">http://lfsbookja.osdn.jp/</a></p>
+<div class="section" id="envs">
+<h2>envs<a class="headerlink" href="#envs" title="Permalink to this headline">¶</a></h2>
+<p>OS: ubuntu2004
+kernel: 5.8.0-43-generic</p>
+</div>
+<div class="section" id="lfs">
+<h2>LFS用パーティションの作成や環境準備<a class="headerlink" href="#lfs" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2>LFS用パーティションの作成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>LFS用のパーティションを作成する．
+ubuntu2004の場合，インストール済みのシステムの上でインストーラーから既存パーティションの変更ができたため，
+それによりすでにあるパーティションの一部をLFS用のパーティションとして切り出した．</p>
+<p>他の方法として，
+- システムを新規インストールしてその際にパーティションを切る
+- fdisk等の古来の方法で既存のシステムからパーティションを切り出す? (できるのかよくわからない)
+- 新しいディスクを用意してそれにLFS用のパーティションを作成する．
+等々がありそう．</p>
+</div>
 </div>
 
 
@@ -250,10 +277,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cpu.html" class="btn btn-neutral float-right" title="CPU関連のメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../cheetsheets/bash.html" class="btn btn-neutral float-right" title="bash" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="inc_cs/kernel.html" class="btn btn-neutral float-left" title="カーネル関連について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="em_linux.html" class="btn btn-neutral float-left" title="組み込みLinux開発の時のメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

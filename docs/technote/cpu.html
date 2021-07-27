@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CPU関連のメモ &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>CPU関連のメモ &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FPGA関連" href="fpga.html" />
     <link rel="prev" title="TUN/TAPの調査" href="tuntap.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -184,7 +186,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -219,20 +220,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>CPU関連のメモ</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/technote/cpu.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -247,43 +246,43 @@
            <div itemprop="articleBody">
             
   <div class="section" id="cpu">
-<h1>CPU関連のメモ<a class="headerlink" href="#cpu" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>CPU関連のメモ<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>そもそもCPUってなんなのって話<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>そもそもCPUってなんなのって話<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>昔適当にIC並べて全加算器作ったりとかあったけど，これにレジスタついたりしたらもうCPUだよねって人と話たりしたんだけど，それだけだと正直よくわからんよね．
 だって僕の知ってるCPUってプログラム読み込んだりするし，なんかidleしたりするし，計算のために人間のいろんな助け必要としないし，
 そう考えるとCPUってなんなのかが本当にわからなくなる．
 じゃあCPUってなんなのか．</p>
 <p><strong>CPUとは</strong></p>
 <ul class="simple">
-<li><p>命令fetch:  プログラムカウンタ(レジスタ?)を見て命令(プログラム)をメモリから読む</p></li>
-<li><p>デコード:   命令を解読?</p></li>
-<li><p>演算:       命令を実行</p></li>
-<li><p>ストア:     結果をメモリに格納</p></li>
+<li>命令fetch:  プログラムカウンタ(レジスタ?)を見て命令(プログラム)をメモリから読む</li>
+<li>デコード:   命令を解読?</li>
+<li>演算:       命令を実行</li>
+<li>ストア:     結果をメモリに格納</li>
 </ul>
 <p>以上の動作をクロックに合わせて繰り返す．</p>
 <p>これがCPU．
 逆にいうとこれだけ満たしていればCPU．</p>
 </div>
 <div class="section" id="id2">
-<h2>リセット回路とクロック回路の話する前に<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>リセット回路とクロック回路の話する前に<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>チャタリングとかCRフィルタとかシュミットトリガとかの説明もしかしたらした方がいいのかもしれないけど
 とりあえず今はかかなくていいかな．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>今チャタリング: スイッチの接点の衝突により発生する物理的なバウンド．
+<div class="highlight-default"><div class="highlight"><pre><span></span>今チャタリング: スイッチの接点の衝突により発生する物理的なバウンド．
 今CRフィルタ: コンデンサへの電荷の貯まりに時間をかけることによってチャタリングを防止する．
 今シュミットトリガ: 回路にHでもLでもない不安定な状態の電圧が入力されることがあるとき，それを綺麗に整形するみたいなやつ．
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>リセット回路<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>リセット回路<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>CPUが動くときに一番最初に必要になるやつ．．．みたいな．こんな書き方でいいのか．
 もちろん設計によるけど，スイッチ押したらL(またはH)になるみたいな回路作ればいい．
 クロックジェネレータ見ればわかるから説明省く．
 ちなみに，リセット回路のスイッチを手動でぽちぽちすれば手動クロックになるぜ．</p>
 </div>
 <div class="section" id="id4">
-<h2>クロックジェネレータ(発振回路)<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>クロックジェネレータ(発振回路)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>CPUの動作の同期を取っているもの．
 あんま詳しくない人でもCPU選ぶときにクロック周波数とかあるから知ってるやつ．
 電気的には，ある一定周期でHとLを行ったり来たりする回路．
@@ -308,7 +307,7 @@ AがHだと，(最初の図に戻って見るとわかりやすいけど)BがL�
 <a class="reference internal image-reference" href="../_images/clock_generator_2.png"><img alt="../_images/clock_generator_2.png" class="align-center" src="../_images/clock_generator_2.png" style="width: 514.8000000000001px; height: 294.8px;" /></a>
 </div>
 <div class="section" id="romram">
-<h2>ROMとかRAMとかメモリ系の話<a class="headerlink" href="#romram" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ROMとかRAMとかメモリ系の話<a class="headerlink" href="#romram" title="Permalink to this headline">¶</a></h2>
 <p>メモリとはなんなのか．
 0,1を記憶・保持しておく素子．(素子ってなんか違う気がするけどとりあえずこのままでいいや)
 そんなのはわかっている．
@@ -346,29 +345,29 @@ AがHだと，(最初の図に戻って見るとわかりやすいけど)BがL�
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="fpga.html" class="btn btn-neutral float-right" title="FPGA関連" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="tuntap.html" class="btn btn-neutral float-left" title="TUN/TAPの調査" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="fpga.html" class="btn btn-neutral float-right" title="FPGA関連" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tuntap.html" class="btn btn-neutral float-left" title="TUN/TAPの調査" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -376,6 +375,7 @@ AがHだと，(最初の図に戻って見るとわかりやすいけど)BがL�
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

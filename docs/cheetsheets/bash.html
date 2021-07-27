@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bash &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>bash &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ip command" href="ip_command.html" />
     <link rel="prev" title="組み込みLinux開発の時のメモ" href="../technote/em_linux.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -212,7 +214,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -247,20 +248,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>bash</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/cheetsheets/bash.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -275,19 +274,19 @@
            <div itemprop="articleBody">
             
   <div class="section" id="bash">
-<h1>bash<a class="headerlink" href="#bash" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h1>
 <p>※このページcommand util的な名前に変えた方がいい気がするんだ．</p>
 <div class="section" id="add-user">
-<h2>add user<a class="headerlink" href="#add-user" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
+<h2>add user<a class="headerlink" href="#add-user" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo useradd -m -G users,sudo -s /bin/bash [username]
 $ sudo passwd [username]
 </pre></div>
 </div>
 <p>CentOSとかだとグループはsudoじゃなくてwheel</p>
 </div>
 <div class="section" id="change-hostname">
-<h2>change hostname<a class="headerlink" href="#change-hostname" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/cloud/cloud.cfg   #cloud-init が入ってる場合
+<h2>change hostname<a class="headerlink" href="#change-hostname" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/cloud/cloud.cfg   #cloud-init が入ってる場合
  - preserve_hostname: fauls
  + preserve_hostname: true
 $ sudo hostnamectl set-hostname [hostname]
@@ -295,60 +294,60 @@ $ sudo hostnamectl set-hostname [hostname]
 </div>
 </div>
 <div class="section" id="shelltips">
-<h2>shell芸的tips<a class="headerlink" href="#shelltips" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;{print $1, $3}&#39;</span>        <span class="c1">#1,3列目を取得</span>
+<h2>shell芸的tips<a class="headerlink" href="#shelltips" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;{print $1, $3}&#39;</span>        <span class="c1">#1,3列目を取得</span>
 <span class="n">awk</span> <span class="s1">&#39;NR==2,NR==5&#39;</span>           <span class="c1">#2~5行目を取得</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id1">
-<h2>エディタ<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>エディタ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>正直どこまでカバーしてるのかよくわかんないけど</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo select-editor
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo select-editor
 </pre></div>
 </div>
 <p>sudo必要だったのと，ホームディレクトリ以下に .select-editorみたいなファイルできる．</p>
 </div>
 <div class="section" id="gnu-coreutils">
-<h2>GNU coreutils<a class="headerlink" href="#gnu-coreutils" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>GNU coreutils<a class="headerlink" href="#gnu-coreutils" title="Permalink to this headline">¶</a></h2>
 <p>Linux(GNUオペレーティングシステム)の一般的なコマンドツールのパッケージらしい.</p>
 <p>参考:</p>
 <p>コマンドの種類:</p>
 </div>
 <div class="section" id="git">
-<h2>git系<a class="headerlink" href="#git" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>git系<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="clone">
-<h3>でっけえのclone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>でっけえのclone<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h3>
 <p>ソフトウェアが使いたいだけなら
 タグ指定でcloneしちゃう</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone [repo url] -b [tag name]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone [repo url] -b [tag name]
 </pre></div>
 </div>
 <p>とりあえずお手元に引っ張る時
 直近でcloneする</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">depth</span> <span class="mi">1</span> <span class="p">[</span><span class="n">repo</span> <span class="n">url</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">depth</span> <span class="mi">1</span> <span class="p">[</span><span class="n">repo</span> <span class="n">url</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://qiita.com/yasshcy/items/bd96469f4f30c0e57312">https://qiita.com/yasshcy/items/bd96469f4f30c0e57312</a></p>
 </div>
 <div class="section" id="id2">
-<h3>リリース物をダウンロード<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>リリース物をダウンロード<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>cloudius-systemsのosvでの例</p>
 <p>とりあえず以下のようにするとrelease情報がまとまってjsonみたいな感じで落ちてくる．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://api.github.com/repos/cloudius-systems/osv/releases
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl https://api.github.com/repos/cloudius-systems/osv/releases
 </pre></div>
 </div>
 <p>これは</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$
+<div class="highlight-default"><div class="highlight"><pre><span></span>$
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h3>プロジェクトのサブディレクトリだけcloneする<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>プロジェクトのサブディレクトリだけcloneする<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://mseeeen.msen.jp/git-sparse-checkout/">https://mseeeen.msen.jp/git-sparse-checkout/</a></p>
 </div>
 <div class="section" id="gitignore-gloval">
-<h3>gitignore Gloval<a class="headerlink" href="#gitignore-gloval" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>gitignore Gloval<a class="headerlink" href="#gitignore-gloval" title="Permalink to this headline">¶</a></h3>
 <p>${XDG_CONFIG_HOME}/git/ignore
 に配置すると，全てのプロジェクトに対してignoreしたいファイルを指定できる．</p>
 <p>Globalなignoreの例が
@@ -357,7 +356,7 @@ $ sudo hostnamectl set-hostname [hostname]
 </div>
 </div>
 <div class="section" id="update-alternatives">
-<h2>update-alternatives でコマンドを管理するやつ<a class="headerlink" href="#update-alternatives" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>update-alternatives でコマンドを管理するやつ<a class="headerlink" href="#update-alternatives" title="Permalink to this headline">¶</a></h2>
 <p>コマンドの日本語リファレンス:
 <a class="reference external" href="https://manpages.debian.org/wheezy/dpkg/update-alternatives.8.ja.html">https://manpages.debian.org/wheezy/dpkg/update-alternatives.8.ja.html</a></p>
 <p>Linuxには，同等の役割を持ったソフトウェアが複数あったり，(エディタとか)
@@ -368,72 +367,72 @@ $ sudo hostnamectl set-hostname [hostname]
 <a class="reference external" href="https://vinelinux.org/docs/vine6/cui-guide/update-alternatives.html">https://vinelinux.org/docs/vine6/cui-guide/update-alternatives.html</a></p>
 </div>
 <div class="section" id="sudocommand-not-fount">
-<h2>sudoでcommand not fountする<a class="headerlink" href="#sudocommand-not-fount" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>sudoでcommand not fountする<a class="headerlink" href="#sudocommand-not-fount" title="Permalink to this headline">¶</a></h2>
 <p>sudoers の env_reset オプションが有効になっている場合，
 セキュリティ上環境変数が初期化されて secure_path に設定しているパスが使われるので，環境変数 PATH が通らない。</p>
 <ol class="arabic simple">
-<li><p>env_reset を無効化する</p></li>
+<li>env_reset を無効化する</li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo visudo
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo visudo
   - Defaults env_reset
   + #Defaults env_reset
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>環境変数を引き継ぐ</p></li>
+<li>環境変数を引き継ぐ</li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo visudo
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo visudo
   - Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
   + #Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
   + Defaults env_keep += &quot;PATH&quot;
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>secure_pathにパスを設定してしまう</p></li>
+<li>secure_pathにパスを設定してしまう</li>
 </ol>
 <p>コマンド省略</p>
 </div>
 <div class="section" id="id4">
-<h2>メモ系<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>メモ系<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">help</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">less</span>
+<h3>標準エラー出力のリダイレクト例<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">help</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">less</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id6">
-<h3>ファイル内検索<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -r &quot;xxx&quot; ./
+<h3>ファイル内検索<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ grep -r &quot;xxx&quot; ./
 </pre></div>
 </div>
 </div>
 <div class="section" id="id7">
-<h3>該当ファイル以外を削除<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls | grep -v &quot;file name&quot; | xargs rm -rf
+<h3>該当ファイル以外を削除<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ls | grep -v &quot;file name&quot; | xargs rm -rf
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="id8">
-<h2>マウントとかそういう系のやつ<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>マウントとかそういう系のやつ<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fs">
-<h3>fs(ファイルシステム)もマウント状況をみたいやつ<a class="headerlink" href="#fs" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ df -aT
+<h3>fs(ファイルシステム)もマウント状況をみたいやつ<a class="headerlink" href="#fs" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ df -aT
 </pre></div>
 </div>
 </div>
 <div class="section" id="usb">
-<h3>USBをマウントするやつ<a class="headerlink" href="#usb" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>USBをマウントするやつ<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
 <p>USBを刺したあとdmesgをみてデバイスファイルの場所を確認．
 (怖かったら/dev/sda とか /dev/sdb とかあたりをUSBを抜き差ししながらみてデバイスファイルにあたりをつける)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mount -t vfat /dev/[dev file] /media
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo mount -t vfat /dev/[dev file] /media
 
 #isoファイルの場合もここにかいとくわ
 $ sudo mount -t iso9660 [iso file] [target]
 </pre></div>
 </div>
 <p>マウントしたら，状況確認するために↓やってみとくといい．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ df
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ df
 
 Filesystem     1K-blocks     Used Available Use% Mounted on
 udev             8110576        0   8110576   0% /dev
@@ -450,26 +449,26 @@ tmpfs            1628412        0   1628412   0% /run/user/1000
 </pre></div>
 </div>
 <p>アンマウントは↓</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo umount /dev/[dev file]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo umount /dev/[dev file]
 </pre></div>
 </div>
 </div>
 <div class="section" id="id9">
-<h3>フォーマットする<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>フォーマットする<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>もしマウントしてたらまずはアンマウントする．
 まじでしないとうんちになる．</p>
 <p><strong>ゼロフォーマットする</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dd if=/dev/zero of=/dev/[dev file] bs=16M
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dd if=/dev/zero of=/dev/[dev file] bs=16M
 </pre></div>
 </div>
 <p>※ddによる書き込みは多分最後「dd: error writing '/dev/sdc1': No space left on device」って言われるけど
 ※最後まで書き込んで出てしまうだけ(仕様なのかは知らん)なので多分無視して大丈夫</p>
 <p><strong>USBをFAT32にフォーマットする</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdosfs</span> <span class="o">-</span><span class="n">F32</span> <span class="o">-</span><span class="n">nUSB</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="p">[</span><span class="n">dev</span> <span class="n">file</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdosfs</span> <span class="o">-</span><span class="n">F32</span> <span class="o">-</span><span class="n">nUSB</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="p">[</span><span class="n">dev</span> <span class="n">file</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>※fat32のデフォルトのクラスタサイズ</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Partition</span> <span class="n">size</span>           <span class="n">Cluster</span> <span class="n">size</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Partition</span> <span class="n">size</span>           <span class="n">Cluster</span> <span class="n">size</span>
 <span class="o">-------------------------------------</span>
 <span class="mi">512</span> <span class="n">MB</span> <span class="n">to</span> <span class="mi">8</span><span class="p">,</span><span class="mi">191</span> <span class="n">MB</span>          <span class="mi">4</span> <span class="n">KB</span>
 <span class="mi">8</span><span class="p">,</span><span class="mi">192</span> <span class="n">MB</span> <span class="n">to</span> <span class="mi">16</span><span class="p">,</span><span class="mi">383</span> <span class="n">MB</span>       <span class="mi">8</span> <span class="n">KB</span>
@@ -478,7 +477,7 @@ tmpfs            1628412        0   1628412   0% /run/user/1000
 </pre></div>
 </div>
 <p><strong>isoファイルを焼く</strong> (とりあえず例)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dd</span> <span class="n">bs</span><span class="o">=</span><span class="mi">16</span><span class="n">M</span> <span class="k">if</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">khwarizmi</span><span class="o">/</span><span class="n">FreeBSD</span><span class="o">-</span><span class="mf">12.1</span><span class="o">-</span><span class="n">RELEASE</span><span class="o">-</span><span class="n">amd64</span><span class="o">-</span><span class="n">disc1</span><span class="o">.</span><span class="n">iso</span> <span class="n">of</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span> <span class="n">status</span><span class="o">=</span><span class="n">progress</span> <span class="o">&amp;&amp;</span> <span class="n">sync</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dd</span> <span class="n">bs</span><span class="o">=</span><span class="mi">16</span><span class="n">M</span> <span class="k">if</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">khwarizmi</span><span class="o">/</span><span class="n">FreeBSD</span><span class="o">-</span><span class="mf">12.1</span><span class="o">-</span><span class="n">RELEASE</span><span class="o">-</span><span class="n">amd64</span><span class="o">-</span><span class="n">disc1</span><span class="o">.</span><span class="n">iso</span> <span class="n">of</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span> <span class="n">status</span><span class="o">=</span><span class="n">progress</span> <span class="o">&amp;&amp;</span> <span class="n">sync</span>
 </pre></div>
 </div>
 <p>あとでやる
@@ -490,23 +489,23 @@ tmpfs            1628412        0   1628412   0% /run/user/1000
 </div>
 </div>
 <div class="section" id="apt-ppa">
-<h2>apt のPPAの話<a class="headerlink" href="#apt-ppa" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>apt のPPAの話<a class="headerlink" href="#apt-ppa" title="Permalink to this headline">¶</a></h2>
 <p>参考
 <a class="reference external" href="https://kazuhira-r.hatenablog.com/entry/2019/03/10/225459">https://kazuhira-r.hatenablog.com/entry/2019/03/10/225459</a></p>
 </div>
 <div class="section" id="the-following-packages-have-unmet-dependencies">
-<h2>The following packages have unmet dependencies: とか言われた時<a class="headerlink" href="#the-following-packages-have-unmet-dependencies" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">have</span> <span class="n">unmet</span> <span class="n">dependencies</span><span class="p">:</span>
- <span class="n">virtualbox</span><span class="o">-</span><span class="mf">5.2</span> <span class="p">:</span> <span class="n">Depends</span><span class="p">:</span> <span class="n">libpng12</span><span class="o">-</span><span class="mi">0</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="mf">1.2.13</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="n">but</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installable</span>
-                  <span class="n">Depends</span><span class="p">:</span> <span class="n">libvpx3</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="mf">1.5.0</span><span class="p">)</span> <span class="n">but</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installable</span>
-                  <span class="n">Recommends</span><span class="p">:</span> <span class="n">libsdl</span><span class="o">-</span><span class="n">ttf2</span><span class="mf">.0</span><span class="o">-</span><span class="mi">0</span> <span class="n">but</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">going</span> <span class="n">to</span> <span class="n">be</span> <span class="n">installed</span>
+<h2>The following packages have unmet dependencies: とか言われた時<a class="headerlink" href="#the-following-packages-have-unmet-dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">have</span> <span class="n">unmet</span> <span class="n">dependencies</span><span class="p">:</span>
+ <span class="n">virtualbox</span><span class="o">-</span><span class="mf">5.2</span> <span class="p">:</span> <span class="n">Depends</span><span class="p">:</span> <span class="n">libpng12</span><span class="o">-</span><span class="mi">0</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="mf">1.2</span><span class="o">.</span><span class="mi">13</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="n">but</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installable</span>
+                  <span class="n">Depends</span><span class="p">:</span> <span class="n">libvpx3</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="mf">1.5</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="n">but</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">installable</span>
+                  <span class="n">Recommends</span><span class="p">:</span> <span class="n">libsdl</span><span class="o">-</span><span class="n">ttf2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">0</span> <span class="n">but</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">going</span> <span class="n">to</span> <span class="n">be</span> <span class="n">installed</span>
                   <span class="n">Recommends</span><span class="p">:</span> <span class="n">pdf</span><span class="o">-</span><span class="n">viewer</span>
 </pre></div>
 </div>
 <p>↑こんな感じで言われる．
 とりあえずパッケージ名でググってみると大体出てくるからppaを確認する．
 ppa名を適当に</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo add-apt-repository &quot;deb http://security.ubuntu.com/ubuntu xenial-security main&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo add-apt-repository &quot;deb http://security.ubuntu.com/ubuntu xenial-security main&quot;
 </pre></div>
 </div>
 <p>とかってすると /etc/apt/sources.list にいい感じに書き込んでくれるので，
@@ -517,31 +516,31 @@ ppa名を適当に</p>
 <a class="reference external" href="https://hibiki-press.tech/dev-env/ubuntu/add-ppa/4640#toc3">https://hibiki-press.tech/dev-env/ubuntu/add-ppa/4640#toc3</a></p>
 </div>
 <div class="section" id="apt-ctrl-c">
-<h2>aptが途中で死んだ(ctrl-cで殺した)とき<a class="headerlink" href="#apt-ctrl-c" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>aptが途中で死んだ(ctrl-cで殺した)とき<a class="headerlink" href="#apt-ctrl-c" title="Permalink to this headline">¶</a></h2>
 <p>install するときに依存関係とかで足りないやつがあったときは↓みたいに(1行目いらないかも)
 すると依存関係を解決してinstallしてくれるみたい．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dpkg --configure -a
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dpkg --configure -a
 $ sudo apt --fix-broken install
 </pre></div>
 </div>
 <p><a class="reference external" href="https://codeday.me/jp/qa/20190808/1401674.html">https://codeday.me/jp/qa/20190808/1401674.html</a></p>
 <p>上でダメだったやつはこれでフットプリント?履歴?みたいなのを削除?すればいい．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dpkg -r --force-all [パッケージ名]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo dpkg -r --force-all [パッケージ名]
 </pre></div>
 </div>
 <p><a class="reference external" href="https://lb.raspberrypi.org/forums/viewtopic.php?t=200575">https://lb.raspberrypi.org/forums/viewtopic.php?t=200575</a></p>
 </div>
 <div class="section" id="id10">
-<h2>いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>いろいろインストールし直したりしてたら入れたはずなのに動かないみたいな時<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>コマンドって大体cacheされてるからいろんな方法でインストールし直して繰り返したりしてると
 同じコマンド名だけどインストールされるPathが違くて前の場所にcacheされてて思い通りのところを見に行かないみたいなそういうのある．</p>
 <p>cache確認</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ type [command]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ type [command]
 [command] is hashed (/usr/bin/[command])    #みたいな感じ
 </pre></div>
 </div>
 <p>vimのcacheを消す</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ hash -d vim
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ hash -d vim
 </pre></div>
 </div>
 <p>シェルがビルトインコマンドではないコマンドを実行する場合、環境変数PATHから該当する実行ファイルを探す必要がありますが、
@@ -552,17 +551,17 @@ $ sudo apt --fix-broken install
 <a class="reference external" href="https://open-groove.net/shell/builtin/">https://open-groove.net/shell/builtin/</a></p>
 </div>
 <div class="section" id="linux">
-<h2>Linuxデストリ<a class="headerlink" href="#linux" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Linuxデストリ<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://note.kurodigi.com/linux-version/">http://note.kurodigi.com/linux-version/</a></p>
 </div>
 <div class="section" id="id11">
-<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">start</span> <span class="n">job</span> <span class="ow">is</span> <span class="n">running</span> <span class="k">for</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">network</span> <span class="n">to</span> <span class="n">be</span> <span class="n">configured</span><span class="o">.</span>
+<h2>起動時にネットワークどうのこうので起動がおそいやつ<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">start</span> <span class="n">job</span> <span class="ow">is</span> <span class="n">running</span> <span class="k">for</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">network</span> <span class="n">to</span> <span class="n">be</span> <span class="n">configured</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>とかって言われるやつ．
 ↓のようにする．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ systemctl disable systemd-networkd-wait-online.service
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ systemctl disable systemd-networkd-wait-online.service
 $ systemctl mask systemd-networkd-wait-online.service
 </pre></div>
 </div>
@@ -570,13 +569,13 @@ $ systemctl mask systemd-networkd-wait-online.service
 <a class="reference external" href="https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216">https://takuya-1st.hatenablog.jp/entry/2017/12/19/211216</a></p>
 </div>
 <div class="section" id="id12">
-<h2>シャットダウンに時間がかかる問題<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>A stop job is running for Session 3 of user …
+<h2>シャットダウンに時間がかかる問題<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>A stop job is running for Session 3 of user …
 </pre></div>
 </div>
 <p>とかって言われるやつ
 ↓のようにする</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/systemd/system.conf
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/systemd/system.conf
 - DefaultTimeoutStopSec=90s
 + DefaultTimeoutStopSec=30s
 </pre></div>
@@ -590,29 +589,29 @@ $ systemctl mask systemd-networkd-wait-online.service
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="ip_command.html" class="btn btn-neutral float-right" title="ip command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../technote/em_linux.html" class="btn btn-neutral float-left" title="組み込みLinux開発の時のメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="ip_command.html" class="btn btn-neutral float-right" title="ip command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../technote/em_linux.html" class="btn btn-neutral float-left" title="組み込みLinux開発の時のメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -620,6 +619,7 @@ $ systemctl mask systemd-networkd-wait-online.service
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

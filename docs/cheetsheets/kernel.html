@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>カーネル関連tips &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>カーネル関連tips &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DTrace" href="../system_tracing/dtrace.html" />
     <link rel="prev" title="vim" href="vim.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -195,7 +197,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -230,20 +231,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>カーネル関連tips</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/cheetsheets/kernel.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -258,10 +257,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tips">
-<h1>カーネル関連tips<a class="headerlink" href="#tips" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>カーネル関連tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>カーネルバージョン変更<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>変更可能なバージョン確認
+<h2>カーネルバージョン変更<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>変更可能なバージョン確認
 $ sudo apt-cache search linux-image
 
 上で確認した中から変更したいバージョンを指定
@@ -270,8 +269,8 @@ $ sudo apt install [linux-images-***]
 </div>
 </div>
 <div class="section" id="id2">
-<h2>起動時にカーネルモジュールがロードされるようにする<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>カーネルモジュールの正式な置き場?にモジュールをおく
+<h2>起動時にカーネルモジュールがロードされるようにする<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>カーネルモジュールの正式な置き場?にモジュールをおく
 $ sudo cp [your module] /lib/modules/$(uname -r)/kernel/drivers/
 
 依存関係更新
@@ -283,9 +282,9 @@ $ sudo vim /etc/modules-load.d/modules.conf
 </div>
 </div>
 <div class="section" id="id3">
-<h2>デフォルトでロードされるモジュールをロードされなくする<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>デフォルトでロードされるモジュールをロードされなくする<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>↑と合わせてあとでちゃんとここら辺確認したい．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/modprobe.d/blacklist.comf
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/modprobe.d/blacklist.comf
 + blacklist [mod name]
 $ sudo update-initramfs -u
 $ sudo reboot
@@ -293,8 +292,8 @@ $ sudo reboot
 </div>
 </div>
 <div class="section" id="grub">
-<h2>grubで起動時に選べるカーネルの種類を見る<a class="headerlink" href="#grub" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo grep menuentry /boot/grub/grub.cfg
+<h2>grubで起動時に選べるカーネルの種類を見る<a class="headerlink" href="#grub" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo grep menuentry /boot/grub/grub.cfg
   ...
   menuentry &#39;Ubuntu, with Linux 5.0.0-25-generic&#39; --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option &#39;gnulinux-5.0.0-25-generic-advanced-e99082e4-8470-4019-9dcc-4535f97283ac&#39; {
   menuentry &#39;Ubuntu, with Linux 5.0.0-25-generic (recovery mode)&#39; --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option &#39;gnulinux-5.0.0-25-generic-recovery-e99082e4-8470-4019-9dcc-4535f97283ac&#39; {
@@ -304,8 +303,8 @@ $ sudo reboot
 <p>ちなみにlinux-imageをinstallしたらこれ増える</p>
 </div>
 <div class="section" id="kernel-up-target">
-<span id="id4"></span><h2>標準で起動するカーネルを指定<a class="headerlink" href="#kernel-up-target" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
+<span id="id4"></span><h2>標準で起動するカーネルを指定<a class="headerlink" href="#kernel-up-target" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
 
   #indexで指定する
   GRUB_DEFAULT=0
@@ -318,8 +317,8 @@ $ sudo reboot
 <a class="reference external" href="http://syuu1228.hatenablog.com/entry/20130120/1358690996">http://syuu1228.hatenablog.com/entry/20130120/1358690996</a></p>
 </div>
 <div class="section" id="dbgsym">
-<h2>dbgsymパッケージリポジトリ導入<a class="headerlink" href="#dbgsym" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install gnupg
+<h2>dbgsymパッケージリポジトリ導入<a class="headerlink" href="#dbgsym" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install gnupg
 
 $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C8CAB6595FDFF622            #11371番ポートがデフォルトだけど↓
   or
@@ -340,23 +339,23 @@ $ sudo apt update
 <p>ちなみに具体的にはここ
 <a class="reference external" href="http://ddebs.ubuntu.com/pool/main/l/linux/">http://ddebs.ubuntu.com/pool/main/l/linux/</a>
 迷ったら直に持ってきちゃえばいい</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span>  <span class="p">[</span><span class="n">debian</span> <span class="n">package</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span>  <span class="p">[</span><span class="n">debian</span> <span class="n">package</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id5">
-<h2>カーネル再構築<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>カーネル再構築<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB/%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95">https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB/%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95</a>
 ↑のリンクを参考にした．</p>
 <p>カーネルのソースをダウンロードして展開する．
 他のバージョンは適当に探せhttps://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir kernel &amp;&amp; cd $_
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir kernel &amp;&amp; cd $_
 $ wget https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/linux-4.15.1.tar.xz
 $ tar -xvJf linux-4.15.1.tar.xz
 </pre></div>
 </div>
 <p>ビルドする</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd linux-4.15.1/
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd linux-4.15.1/
 $ make clean &amp;&amp; make mrproper   #色々cleanするみたいな mrproperだけでいいって聞いたこともある
 
 # とりあえず既存の.configを持ってくる系のmakeターゲットいくつか並べておく
@@ -395,16 +394,16 @@ archだとmkinitcpioってコマンド叩いてるけどubuntuにはなくて，
 再起動するとビルドしたカーネルで動いてます．</p>
 </div>
 <div class="section" id="id6">
-<h2>便利なカーネルコンフィグ<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>便利なカーネルコンフィグ<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="proc-config-gz">
-<h3>起動中に /proc/config.gz でカーネルコンフィグを確認できるようにする．<a class="headerlink" href="#proc-config-gz" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep IKCONFIG .config
+<h3>起動中に /proc/config.gz でカーネルコンフィグを確認できるようにする．<a class="headerlink" href="#proc-config-gz" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ grep IKCONFIG .config
 CONFIG_IKCONFIG=y
 CONFIG_IKCONFIG_PROC=y
 </pre></div>
 </div>
 <p>menuconfigだと</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">General</span> <span class="n">setup</span> <span class="o">---&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">General</span> <span class="n">setup</span> <span class="o">---&gt;</span>
   <span class="o">&lt;*&gt;</span> <span class="n">Kernel</span> <span class="o">.</span><span class="n">config</span> <span class="n">support</span>
   <span class="p">[</span><span class="o">*</span><span class="p">]</span>   <span class="n">Enable</span> <span class="n">access</span> <span class="n">to</span> <span class="o">.</span><span class="n">config</span> <span class="n">through</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
@@ -413,17 +412,17 @@ CONFIG_IKCONFIG_PROC=y
 </div>
 </div>
 <div class="section" id="id7">
-<h2>カーネルブートオプション<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>カーネルブートオプション<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>ブートオプションという呼び方があってるのかわからないんだけど，/proc/cmdline で確認できるやつ．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat /proc/cdmline
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat /proc/cdmline
 BOOT_IMAGE=/boot/vmlinuz-4.15.0-101-generic root=UUID=f1f76259-f300-4ddf-9e64-4d770bf4b031 ro default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on isolcpus=1-21,23-43,45-65,67-87 kgdboc=ttyS0,115200 console=ttyS0,115200
 </pre></div>
 </div>
 <div class="section" id="id8">
-<h3>設定<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>設定<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>※grubの場合は/etc/grub/grub.conf を編集する</p>
 <p>grub2の場合</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim /etc/default/grub
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim /etc/default/grub
 
 $ sudo grub-mkconfig
   or
@@ -439,7 +438,7 @@ $ update-grub2
 </div>
 </div>
 <div class="section" id="id9">
-<h2>参考<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>参考<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>ソースコード: <a class="reference external" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
 <p>コードリーディング: <a class="reference external" href="https://elixir.bootlin.com/linux/latest/source">https://elixir.bootlin.com/linux/latest/source</a></p>
 <p>linux kernel の make target: <a class="reference external" href="https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c">https://qiita.com/satoru_takeuchi/items/b372303f62b7ca8b128c</a></p>
@@ -451,29 +450,29 @@ $ update-grub2
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../system_tracing/dtrace.html" class="btn btn-neutral float-right" title="DTrace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="vim.html" class="btn btn-neutral float-left" title="vim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="../system_tracing/dtrace.html" class="btn btn-neutral float-right" title="DTrace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vim.html" class="btn btn-neutral float-left" title="vim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -481,6 +480,7 @@ $ update-grub2
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

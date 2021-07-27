@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>vim &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>vim &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="カーネル関連tips" href="kernel.html" />
     <link rel="prev" title="ip command" href="ip_command.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -206,7 +208,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -241,20 +242,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>vim</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/cheetsheets/vim.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -269,29 +268,29 @@
            <div itemprop="articleBody">
             
   <div class="section" id="vim">
-<h1>vim<a class="headerlink" href="#vim" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h1>
 <p>cheetsheetじゃなくてcontentsの方がいい気がしてきた．</p>
 <p>vim日本語ドキュメント:
 <a class="reference external" href="https://vim-jp.org/vimdoc-ja/usr_90.html">https://vim-jp.org/vimdoc-ja/usr_90.html</a>
 vim-jp:
 <a class="reference external" href="https://vim-jp.org/docs/build_linux.html">https://vim-jp.org/docs/build_linux.html</a></p>
 <div class="section" id="id1">
-<h2>ビルド<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ビルド<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>インストール</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/vim/vim.git -b v8.2.0000
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/vim/vim.git -b v8.2.0000
 $ cd vim
 $ ./configure --with-features=huge --enable-fail-if-missing
 $ make &amp;&amp; sudo make install
 </pre></div>
 </div>
 <p>アンインストール</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">uninstall</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">uninstall</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vundle">
-<h2>プラグイン(vundle)導入<a class="headerlink" href="#vundle" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+<h2>プラグイン(vundle)導入<a class="headerlink" href="#vundle" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 $ vim ~/.vimrc    # head
   + set nocompatible
   + filetype off
@@ -308,12 +307,12 @@ $ vim +PluginInstall +qall
 </div>
 </div>
 <div class="section" id="vimrc">
-<h2>vimrcの書き方<a class="headerlink" href="#vimrc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>vimrcの書き方<a class="headerlink" href="#vimrc" title="Permalink to this headline">¶</a></h2>
 <p>参考
 <a class="reference external" href="https://thinca.hatenablog.com/entry/20100205/1265307642">https://thinca.hatenablog.com/entry/20100205/1265307642</a></p>
 </div>
 <div class="section" id="id2">
-<h2>操作系<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>操作系<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>一応，dotfilesにcheetsheetがおいてあって，&lt;c-h&gt;で見れるようにしてあるけど，ほとんど意味がない．
 何かあった時，(しばらくコード書いてなくて慣らしたいとか，キーボード変わってちょめちょめしてるとか)
 の時に雑に編集してみたりしてる．
@@ -322,23 +321,23 @@ $ vim +PluginInstall +qall
 <a class="reference external" href="https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html">https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html</a></p>
 <p><em>以下メモ的な奴ら</em></p>
 <div class="section" id="tab">
-<h3>tab空白<a class="headerlink" href="#tab" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>tab空白<a class="headerlink" href="#tab" title="Permalink to this headline">¶</a></h3>
 <p>tab -&gt; 空白</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">expandtab</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">expandtab</span>
 <span class="p">:</span><span class="n">retab</span>
 </pre></div>
 </div>
 <p>空白 -&gt; tab</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:set noexpndtab
+<div class="highlight-default"><div class="highlight"><pre><span></span>:set noexpndtab
 :retab!
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="help">
-<h2>helpの使い方<a class="headerlink" href="#help" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>helpの使い方<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
 <p>vimにはめっちゃ充実したオンラインドキュメントがついていて，これを活用しない手はないらしいから使おう．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### 基本的な使い方</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">### 基本的な使い方</span>
 <span class="p">:</span><span class="n">h</span> <span class="p">[</span><span class="n">わかんないこと</span><span class="p">]</span>
 
 <span class="c1">### 便利な使い方</span>
@@ -350,17 +349,17 @@ $ vim +PluginInstall +qall
 </pre></div>
 </div>
 <div class="section" id="id3">
-<h3>参照<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>参照<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://nanasi.jp/articles/howto/help/vim_help.html">https://nanasi.jp/articles/howto/help/vim_help.html</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="neovim">
-<h1>neovim<a class="headerlink" href="#neovim" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>neovim<a class="headerlink" href="#neovim" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="install">
-<h2>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/neovim/neovim/wiki/Installing-Neovim">https://github.com/neovim/neovim/wiki/Installing-Neovim</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install software-properties-common
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt install software-properties-common
 #######################    $ sudo add-apt-repository ppa:neovim-ppa/unstable
 $ sudo add-apt-repository ppa:neovim-ppa/stable
 $ sudo apt update
@@ -373,19 +372,19 @@ $ sudo apt install xclip xsel
 </pre></div>
 </div>
 <p>nvim開いて</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">echo</span> <span class="n">has</span><span class="p">(</span><span class="s1">&#39;python3&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">echo</span> <span class="n">has</span><span class="p">(</span><span class="s1">&#39;python3&#39;</span><span class="p">)</span>
 <span class="mi">1</span>
 </pre></div>
 </div>
 <p>なるの確認しといた方が良さげ．</p>
 </div>
 <div class="section" id="dein-vim">
-<h2>dein.vim<a class="headerlink" href="#dein-vim" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>dein.vim<a class="headerlink" href="#dein-vim" title="Permalink to this headline">¶</a></h2>
 <p>※なんかこれやったら/etc/alternatives/vimがnvimみるようになってビビったんだけど．</p>
 <div class="section" id="xdg">
-<h3>XDG系?の変数の定義<a class="headerlink" href="#xdg" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>XDG系?の変数の定義<a class="headerlink" href="#xdg" title="Permalink to this headline">¶</a></h3>
 <p>これに関してはneovimのインストール時にやった方が良さげな気はしてる．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim ~/.bashrc
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.bashrc
 + export XDG_CONFIG_HOME=$HOME/.config
 + export XDG_CACHE_HOME=$HOME/.cache
 
@@ -395,8 +394,8 @@ $ source ~/.bashrc
 </div>
 </div>
 <div class="section" id="init-vim">
-<h3>init.vimの作成<a class="headerlink" href="#init-vim" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir $XDG_CONFIG_HOME/nvim
+<h3>init.vimの作成<a class="headerlink" href="#init-vim" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir $XDG_CONFIG_HOME/nvim
 $ vim $XDG_CONFIG_HOME/nvim/init.vim
 + &quot; dein.vim {{{
 + &quot;  directory configuration
@@ -427,53 +426,53 @@ $ vim $XDG_CONFIG_HOME/nvim/init.vim
 </div>
 <p>Neovimを再起動したらdeinが取得される．
 dein.vimのヘルプが↓のように見れたらOK．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">helptags</span> <span class="o">~/.</span><span class="n">cache</span><span class="o">/</span><span class="n">dein</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Shougo</span><span class="o">/</span><span class="n">dein</span><span class="o">.</span><span class="n">vim</span><span class="o">/</span><span class="n">doc</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">helptags</span> <span class="o">~/.</span><span class="n">cache</span><span class="o">/</span><span class="n">dein</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Shougo</span><span class="o">/</span><span class="n">dein</span><span class="o">.</span><span class="n">vim</span><span class="o">/</span><span class="n">doc</span>
 <span class="p">:</span><span class="n">h</span> <span class="n">dein</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="hook">
-<h3>hookの使い方とか<a class="headerlink" href="#hook" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id9">
-<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id9" title="このテーブルへのパーマリンク">¶</a></caption>
+<h3>hookの使い方とか<a class="headerlink" href="#hook" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="colwidths-given docutils" id="id9">
+<caption><span class="caption-text">hookの種類</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>名前</p></th>
-<th class="head"><p>実行のタイミング</p></th>
-<th class="head"><p>lazy OFF</p></th>
-<th class="head"><p>lazy ON</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">名前</th>
+<th class="head">実行のタイミング</th>
+<th class="head">lazy OFF</th>
+<th class="head">lazy ON</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>hook_add</p></td>
-<td><p>プラグインが追加されたとき</p></td>
-<td><p>OK</p></td>
-<td><p>OK</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>hook_add</td>
+<td>プラグインが追加されたとき</td>
+<td>OK</td>
+<td>OK</td>
 </tr>
-<tr class="row-odd"><td><p>hook_source</p></td>
-<td><p>プラグインが読み込まれる直前</p></td>
-<td><p>NG</p></td>
-<td><p>OK</p></td>
+<tr class="row-odd"><td>hook_source</td>
+<td>プラグインが読み込まれる直前</td>
+<td>NG</td>
+<td>OK</td>
 </tr>
-<tr class="row-even"><td><p>hook_post_source</p></td>
-<td><p>プラグインが読み込まれた直後</p></td>
-<td><p>NG</p></td>
-<td><p>OK</p></td>
+<tr class="row-even"><td>hook_post_source</td>
+<td>プラグインが読み込まれた直後</td>
+<td>NG</td>
+<td>OK</td>
 </tr>
-<tr class="row-odd"><td><p>hook_post_update</p></td>
-<td><p>プラグインが更新された直後</p></td>
-<td><p>OK</p></td>
-<td><p>OK</p></td>
+<tr class="row-odd"><td>hook_post_update</td>
+<td>プラグインが更新された直後</td>
+<td>OK</td>
+<td>OK</td>
 </tr>
-<tr class="row-even"><td><p>hook_done_update</p></td>
-<td><p>プラグイン全ての更新が終わった直後</p></td>
-<td><p>OK</p></td>
-<td><p>OK</p></td>
+<tr class="row-even"><td>hook_done_update</td>
+<td>プラグイン全ての更新が終わった直後</td>
+<td>OK</td>
+<td>OK</td>
 </tr>
 </tbody>
 </table>
@@ -481,14 +480,14 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <a class="reference external" href="https://qiita.com/delphinus/items/cd221a450fd23506e81a">https://qiita.com/delphinus/items/cd221a450fd23506e81a</a></p>
 </div>
 <div class="section" id="id4">
-<h3>プラグイン導入例<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim ~/.config/nvim/dein/toml/dein.toml
+<h3>プラグイン導入例<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim ~/.config/nvim/dein/toml/dein.toml
 + [[plugins]]
 + repo = &#39;itchyny/lightline.vim&#39;
 </pre></div>
 </div>
 <p>起動したら導入されるが，一部のプラグインで</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">UpdateRemotePlugins</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">UpdateRemotePlugins</span>
 </pre></div>
 </div>
 <p>して再起動しないといけないものもあるみたい．</p>
@@ -496,17 +495,17 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 <a class="reference external" href="https://qiita.com/giwagiwa/items/128aec59af622efc7a97">https://qiita.com/giwagiwa/items/128aec59af622efc7a97</a></p>
 </div>
 <div class="section" id="id5">
-<h3>プラグインアンインストール<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>プラグインアンインストール<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>tomlファイルから該当行を消したあと，</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">call</span> <span class="nb">map</span><span class="p">(</span><span class="n">dein</span><span class="c1">#check_clean(), &quot;delete(v:val, &#39;rf&#39;)&quot;)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">call</span> <span class="nb">map</span><span class="p">(</span><span class="n">dein</span><span class="c1">#check_clean(), &quot;delete(v:val, &#39;rf&#39;)&quot;)</span>
 <span class="p">:</span><span class="n">call</span> <span class="n">dein</span><span class="c1">#recache_runtimepath()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id6">
-<h3>設定????<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>設定????<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>これ init.vim に入れないとコマンドが正しく動かなかった</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot; Define mappings
+<div class="highlight-default"><div class="highlight"><pre><span></span>&quot; Define mappings
       autocmd FileType denite call s:denite_my_settings()
       function! s:denite_my_settings() abort
         nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;CR&gt;
@@ -533,23 +532,23 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 </div>
 </div>
 <div class="section" id="vim-plugin">
-<h1>vim pluginの作り方<a class="headerlink" href="#vim-plugin" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>vim pluginの作り方<a class="headerlink" href="#vim-plugin" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id7">
-<h2>※とりあえず細かい知識とか文法とか<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>※とりあえず細かい知識とか文法とか<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>pluginの作り方と言うか基本的にvim scriptに関して．</p>
 <ul class="simple">
-<li><p>そもそもvim scriptはvimのExコマンド(:から始まるやつ)の集まりらしい．ただ，言語と呼ぶに差し支えない機能がしっかり備わってる．
-このファイルの基本的な実行には，:source [file name]をする．</p></li>
+<li>そもそもvim scriptはvimのExコマンド(:から始まるやつ)の集まりらしい．ただ，言語と呼ぶに差し支えない機能がしっかり備わってる．
+このファイルの基本的な実行には，:source [file name]をする．</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim sample.vim
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ vim sample.vim
 + echo &quot;unko&quot;
 :source sample.vim
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>変数にはスコープがあるが，接頭子によって指定する． :h internal-variables</p></li>
+<li>変数にはスコープがあるが，接頭子によって指定する． :h internal-variables</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">buffer</span><span class="o">-</span><span class="n">variable</span><span class="o">|</span>    <span class="n">b</span><span class="p">:</span>         <span class="n">Local</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">buffer</span><span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">buffer</span><span class="o">-</span><span class="n">variable</span><span class="o">|</span>    <span class="n">b</span><span class="p">:</span>         <span class="n">Local</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">buffer</span><span class="o">.</span>
 <span class="o">|</span><span class="n">window</span><span class="o">-</span><span class="n">variable</span><span class="o">|</span>    <span class="n">w</span><span class="p">:</span>         <span class="n">Local</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">window</span><span class="o">.</span>
 <span class="o">|</span><span class="n">tabpage</span><span class="o">-</span><span class="n">variable</span><span class="o">|</span>   <span class="n">t</span><span class="p">:</span>         <span class="n">Local</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">tab</span> <span class="n">page</span><span class="o">.</span>
 <span class="o">|</span><span class="k">global</span><span class="o">-</span><span class="n">variable</span><span class="o">|</span>    <span class="n">g</span><span class="p">:</span>         <span class="n">Global</span><span class="o">.</span>
@@ -564,8 +563,8 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 ここを見る随時ググれ．</p>
 </div>
 <div class="section" id="id8">
-<h2>ディレクトリ構成<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[plugin]/
+<h2>ディレクトリ構成<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>[plugin]/
 ├── autoload
 │   └── [plugin].vim
 ├── doc
@@ -575,14 +574,14 @@ dein.vimのヘルプが↓のように見れたらOK．</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>pluginディレクトリ
+<li>pluginディレクトリ
 プラグインが提供するExコマンドやオプションを記述したスクリプトファイルをおく．
-メインの処理はautoloadに記述する．</p></li>
-<li><p>autoloadディレクトリ
+メインの処理はautoloadに記述する．</li>
+<li>autoloadディレクトリ
 メインの処理を記述したスクリプトファイルをおく．
 配下のスクリプトファイルはvim起動時ではなくコマンド実行時に一度だけ読み込まれる．
-plugin配下から呼ぶことができる関数をautoload配下に定義する時、ファイル名#関数名()という命名規則に従う必要があります。これはpluginで定義したコマンドを実行する時にautoload配下のどのファイルのどの関数を呼べば良いのかを知る必要があるからです。そのため、プラグイン名が被るとautoload配下のスクリプトファイル名も被り、最悪違うプラグインの関数で上書きされる可能性があります。これがプラグイン名が被らないようにする必要がある理由です。</p></li>
-<li><p>ヘルプファイルをおく．:helpでコマンドのヘルプを引けるようになる．</p></li>
+plugin配下から呼ぶことができる関数をautoload配下に定義する時、ファイル名#関数名()という命名規則に従う必要があります。これはpluginで定義したコマンドを実行する時にautoload配下のどのファイルのどの関数を呼べば良いのかを知る必要があるからです。そのため、プラグイン名が被るとautoload配下のスクリプトファイル名も被り、最悪違うプラグインの関数で上書きされる可能性があります。これがプラグイン名が被らないようにする必要がある理由です。</li>
+<li>ヘルプファイルをおく．:helpでコマンドのヘルプを引けるようになる．</li>
 </ul>
 </div>
 </div>
@@ -592,29 +591,29 @@ plugin配下から呼ぶことができる関数をautoload配下に定義する
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="kernel.html" class="btn btn-neutral float-right" title="カーネル関連tips" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="ip_command.html" class="btn btn-neutral float-left" title="ip command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="kernel.html" class="btn btn-neutral float-right" title="カーネル関連tips" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ip_command.html" class="btn btn-neutral float-left" title="ip command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -622,6 +621,7 @@ plugin配下から呼ぶことができる関数をautoload配下に定義する
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

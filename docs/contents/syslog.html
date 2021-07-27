@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>syslogについて &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>syslogについて &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linux capabilities" href="capabilities.html" />
     <link rel="prev" title="DHCP" href="dhcp.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
@@ -193,7 +195,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -228,20 +229,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>syslogについて</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/contents/syslog.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -256,94 +255,94 @@
            <div itemprop="articleBody">
             
   <div class="section" id="syslog">
-<h1>syslogについて<a class="headerlink" href="#syslog" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>syslogについて<a class="headerlink" href="#syslog" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://eng-entrance.com/linux-log-syslog">https://eng-entrance.com/linux-log-syslog</a></p>
 <p>ログのやつ
 rsyslogはsyslogのモジュール拡張ができるやつで，割と最近はこっち．
 jounraldとの関係はよくわかってない．</p>
 <div class="section" id="id1">
-<h2>設定ファイルについて<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>設定ファイルについて<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>syslogの場合は /etc/syslog.conf rsyslogの場合は /etc/rsyslog.conf</p>
 <div class="section" id="id2">
-<h3>モジュールのロード<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ModLoad &lt;モジュールの名前&gt;
+<h3>モジュールのロード<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ModLoad &lt;モジュールの名前&gt;
 $ModLoad imjournal
 </pre></div>
 </div>
 <p>頭文字にルールがあって，</p>
 <ul class="simple">
-<li><p>omから始まるモジュールはアウトプットモジュール</p></li>
-<li><p>im から始まるのがインプットモジュール</p></li>
-<li><p>pm から始まるのがパーサモジュール</p></li>
-<li><p>mm から始まるのがメッセージ修正モジュール</p></li>
-<li><p>sm から始まるのがメッセージ生成モジュール</p></li>
-<li><p>その他ライブラリモジュール</p></li>
+<li>omから始まるモジュールはアウトプットモジュール</li>
+<li>im から始まるのがインプットモジュール</li>
+<li>pm から始まるのがパーサモジュール</li>
+<li>mm から始まるのがメッセージ修正モジュール</li>
+<li>sm から始まるのがメッセージ生成モジュール</li>
+<li>その他ライブラリモジュール</li>
 </ul>
 <p>とかってなっている．</p>
 </div>
 <div class="section" id="id3">
-<h3>書き方<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>書き方<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>書式</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ファシリティ</span><span class="o">&gt;.&lt;</span><span class="n">プライオリティ</span><span class="o">&gt;</span> <span class="n">出力先</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ファシリティ</span><span class="o">&gt;.&lt;</span><span class="n">プライオリティ</span><span class="o">&gt;</span> <span class="n">出力先</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><ul>
-<li><p>はワイルドカード</p></li>
+<li><ul class="first">
+<li>はワイルドカード</li>
 </ul>
 </li>
-<li><p>;で区切って複数ファシリティやプライオリティの指定</p></li>
-<li><p>noneで無効にする．(ワイルドカードで指定したあと特定のだけ無視させたりする時に使う)</p></li>
+<li>;で区切って複数ファシリティやプライオリティの指定</li>
+<li>noneで無効にする．(ワイルドカードで指定したあと特定のだけ無視させたりする時に使う)</li>
 </ul>
 <div class="section" id="id4">
-<h4>ファシリティの種類<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>ファシリティの種類<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>auth,authpriv 認証系(usなど)</p></li>
-<li><p>cron cronからのメッセージ</p></li>
-<li><p>daemon daemonからのメッセージ</p></li>
-<li><p>kern カーネルからのメッセージ</p></li>
-<li><p>lpr プリンタ、印刷関係のメッセージ</p></li>
-<li><p>mail システムメール関係のメッセージ</p></li>
-<li><p>syslog syslogの機能関係のメッセージ</p></li>
-<li><p>local0~7 独自設定</p></li>
+<li>auth,authpriv 認証系(usなど)</li>
+<li>cron cronからのメッセージ</li>
+<li>daemon daemonからのメッセージ</li>
+<li>kern カーネルからのメッセージ</li>
+<li>lpr プリンタ、印刷関係のメッセージ</li>
+<li>mail システムメール関係のメッセージ</li>
+<li>syslog syslogの機能関係のメッセージ</li>
+<li>local0~7 独自設定</li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h4>プライオリティの種類<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>プライオリティの種類<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>高い順から</p>
 <ul class="simple">
-<li><p>emerg: 致命的状態</p></li>
-<li><p>alert: 早急な対処が必要</p></li>
-<li><p>crit: 危険な状態</p></li>
-<li><p>err: 一般的エラー</p></li>
-<li><p>warning: 一般的警告</p></li>
-<li><p>notice: 重要な通知</p></li>
-<li><p>info: システムからの情報</p></li>
-<li><p>debug: デバッグ情報</p></li>
-<li><p>none: ファシリティの無効化 ログの除外</p></li>
+<li>emerg: 致命的状態</li>
+<li>alert: 早急な対処が必要</li>
+<li>crit: 危険な状態</li>
+<li>err: 一般的エラー</li>
+<li>warning: 一般的警告</li>
+<li>notice: 重要な通知</li>
+<li>info: システムからの情報</li>
+<li>debug: デバッグ情報</li>
+<li>none: ファシリティの無効化 ログの除外</li>
 </ul>
 </div>
 <div class="section" id="id6">
-<h4>出力先の種類と書き方<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>出力先の種類と書き方<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>ファイル名: ファイルに出力</p></li>
-<li><p>&#64;ホスト名: リモートホストのsyslogデーモンへ出力する。</p></li>
-<li><p>ユーザ名: ユーザの端末に出力する。</p></li>
-<li><p>/dev/console: コンソールへ出力する。</p></li>
-<li><p>*: 全てにユーザ端末へ出力する。</p></li>
+<li>ファイル名: ファイルに出力</li>
+<li>&#64;ホスト名: リモートホストのsyslogデーモンへ出力する。</li>
+<li>ユーザ名: ユーザの端末に出力する。</li>
+<li>/dev/console: コンソールへ出力する。</li>
+<li>*: 全てにユーザ端末へ出力する。</li>
 </ul>
 </div>
 </div>
 <div class="section" id="logger">
-<h3>loggerコマンドでテスト<a class="headerlink" href="#logger" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>loggerコマンドでテスト<a class="headerlink" href="#logger" title="Permalink to this headline">¶</a></h3>
 <p>任意のログメッセージを生成する．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ logger -p &lt;ファシリティ&gt;.&lt;プライオリティ&gt; -t &lt;タグ&gt; メッセージ
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ logger -p &lt;ファシリティ&gt;.&lt;プライオリティ&gt; -t &lt;タグ&gt; メッセージ
 </pre></div>
 </div>
 <div class="section" id="id7">
-<h4>ローテーション設定<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>ローテーション設定<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>いつまでログを保持するか的な設定</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/logrotate.conf
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo vim /etc/logrotate.conf
 
 ### example ###
 # ローテーション周期を1週間ごとに
@@ -371,7 +370,7 @@ include /etc/logrotate.d
 </pre></div>
 </div>
 <p>現在のローテーション設定</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo cat /var/lib/logrotate.status
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo cat /var/lib/logrotate.status
 </pre></div>
 </div>
 </div>
@@ -384,29 +383,29 @@ include /etc/logrotate.d
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="capabilities.html" class="btn btn-neutral float-right" title="Linux capabilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="dhcp.html" class="btn btn-neutral float-left" title="DHCP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="capabilities.html" class="btn btn-neutral float-right" title="Linux capabilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dhcp.html" class="btn btn-neutral float-left" title="DHCP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -414,6 +413,7 @@ include /etc/logrotate.d
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

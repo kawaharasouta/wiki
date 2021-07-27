@@ -1,47 +1,50 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ブートローダについてのメモ &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
+  <title>ブートローダについてのメモ &mdash; wiki  documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'',
+              LANGUAGE:'ja',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ハイパーバイザ仮想化に関する内容" href="virtualization.html" />
     <link rel="prev" title="linuxのパケットの送受信について" href="kernel_packet.html" /> 
 </head>
@@ -80,7 +83,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -96,7 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/vagrant.html">vagrant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ssh_config.html">ssh_config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/c_c++.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
@@ -189,7 +191,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -224,20 +225,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>ブートローダについてのメモ</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/technote/boot.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -252,7 +251,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>ブートローダについてのメモ<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>ブートローダについてのメモ<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>PCが起動時に, OSを呼び出すためのソフトウェア．
 一般的にハードディスクの先頭にある「MBR(マスターブートレコード)」
 という領域に記録されている．
@@ -271,19 +270,19 @@ UEFIは Unified Extensible Firmware Interface とかっていう
 他にはSyslinux とか LILOとかっていうのがあるらしい．</p>
 </div>
 <div class="section" id="grub2">
-<h1>GRUB2<a class="headerlink" href="#grub2" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>GRUB2<a class="headerlink" href="#grub2" title="Permalink to this headline">¶</a></h1>
 <p>以下，GRUB2についてのメモ</p>
 <div class="section" id="id2">
-<h2>仕組み<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>仕組み<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="id3">
-<h2>ファイル構成と設定方法について<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ファイル構成と設定方法について<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>設定のメインファイルは「/etc/grub/grub.cfg」だが，
 このファイルは直接編集する訳ではなく，別のファイルに設定を書き，
 コマンドを実行してファイルを生成する．
 編集するファイルは「/etc/default/grub」と「/etc/grub.d/」．
 これらを編集したのちに</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo grub-mkconfig -o /boot/grub/grub.cfg
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 or
 
@@ -293,74 +292,74 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 <p>とかする．</p>
 </div>
 <div class="section" id="etc-default-grub">
-<h2>/etc/default/grub<a class="headerlink" href="#etc-default-grub" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>/etc/default/grub<a class="headerlink" href="#etc-default-grub" title="Permalink to this headline">¶</a></h2>
 <p>grub-mkconfigはシェル(sh)スクリプトで，基本的にはそれに読み込まれる
 パラメータを記述するファイル．</p>
-<table class="colwidths-given docutils align-default">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col width="50%" />
+<col width="50%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>パラメータ</p></th>
-<th class="head"><p>説明</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">パラメータ</th>
+<th class="head">説明</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>GRUB_DEFAULT</p></td>
-<td><div class="line-block">
+<tbody valign="top">
+<tr class="row-even"><td>GRUB_DEFAULT</td>
+<td><div class="first last line-block">
 <div class="line">デフォルトのOSを指定する為のパラメータ．</div>
 <div class="line">index，メニューで表示される名称の他,</div>
 <div class="line">「saved」とすると前回起動したOSがデフォルトになる．</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>GRUB_TIMEOUT</p></td>
-<td><p>デフォルトのOSを起動するまでの時間を秒で指定する．</p></td>
+<tr class="row-odd"><td>GRUB_TIMEOUT</td>
+<td>デフォルトのOSを起動するまでの時間を秒で指定する．</td>
 </tr>
-<tr class="row-even"><td><p>GRUB_HIDDEN_TIMEOUT</p></td>
-<td><div class="line-block">
+<tr class="row-even"><td>GRUB_HIDDEN_TIMEOUT</td>
+<td><div class="first last line-block">
 <div class="line">これが指定されるとメニューの表示がない．</div>
 <div class="line">また，これで指定された秒数だけ待つ．</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>GRUB_HIDDEN_TIMEOUT_QUIET</p></td>
-<td><div class="line-block">
+<tr class="row-odd"><td>GRUB_HIDDEN_TIMEOUT_QUIET</td>
+<td><div class="first last line-block">
 <div class="line">trueかfalseを指定する．</div>
 <div class="line">falseの場合画面にGRUB_HIDDEN_TIMEOUTの残り時間を表示する．</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>GRUB_CMDLINE_LINUX</p></td>
-<td><p>カーネルのコマンドラインオプションを追加する．</p></td>
+<tr class="row-even"><td>GRUB_CMDLINE_LINUX</td>
+<td>カーネルのコマンドラインオプションを追加する．</td>
 </tr>
-<tr class="row-odd"><td><p>GRUB_CMDLINE_LINUX_DEFAULT_DEFAULT</p></td>
-<td><p>通常起動の場合にコマンドラインオプションを追加する．</p></td>
+<tr class="row-odd"><td>GRUB_CMDLINE_LINUX_DEFAULT_DEFAULT</td>
+<td>通常起動の場合にコマンドラインオプションを追加する．</td>
 </tr>
-<tr class="row-even"><td><p>GRUB_GFXMOD</p></td>
-<td><p>画像の解像度を指定するパラメータ．</p></td>
+<tr class="row-even"><td>GRUB_GFXMOD</td>
+<td>画像の解像度を指定するパラメータ．</td>
 </tr>
-<tr class="row-odd"><td><p>GRUB_BACKGROUND</p></td>
-<td><p>背景画像を指定するパラメータ．</p></td>
+<tr class="row-odd"><td>GRUB_BACKGROUND</td>
+<td>背景画像を指定するパラメータ．</td>
 </tr>
 </tbody>
 </table>
 <p>コマンドラインオプションに関して: <a class="reference external" href="http://manpages.ubuntu.com/manpages/bionic/ja/man7/bootparam.7.html">http://manpages.ubuntu.com/manpages/bionic/ja/man7/bootparam.7.html</a></p>
 <p>コマンドラインオプションを確認する</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo cat /proc/cmdline
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo cat /proc/cmdline
 </pre></div>
 </div>
 </div>
 <div class="section" id="etc-grub-d">
-<h2>/etc/grub.d/<a class="headerlink" href="#etc-grub-d" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>/etc/grub.d/<a class="headerlink" href="#etc-grub-d" title="Permalink to this headline">¶</a></h2>
 <p>「README」，「.dpkg-」以外の実行権限のあるファイルが対象．
 これらは/etc/default/grubの設定に従った内容を出力するので，
 基本的にこのファイルも編集しない．どうしてもの場合のみ編集する．</p>
 </div>
 </div>
 <div class="section" id="id4">
-<h1>カーネルが起動した後どうなってるのって話<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>カーネルが起動した後どうなってるのって話<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
 <p>カーネルが起動した後，まず初期化の為のソフトウェア(ブートプロセス)を走らせる．
 これが古いubuntuだとinit/Upstart?だったり，1604くらいから?はsystemdだったりする．
 カーネルは初期の実行コマンドとして/sbin/init, /etc/init, /bin/init, /bin/shの順番で実行を試み，全てに失敗したらpanicする．
@@ -368,7 +367,7 @@ $ sudo update-grub2       #これちょっとオプションとか足りない�
 今は/sbin/initはsystemd(/lib/systemd/systemdとか)へのシンボリックリンクになっているため，systemdが動くことになる．</p>
 <p>あとはまだ書くのめんどいからここ参照(<a class="reference external" href="http://equj65.net/tech/systemd-boot/">http://equj65.net/tech/systemd-boot/</a>)</p>
 <div class="section" id="init">
-<h2>initについてとプロセスの話<a class="headerlink" href="#init" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>initについてとプロセスの話<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h2>
 <p>Linuxでは厳密にプロセスツリーという階層が存在する．
 これの一番上にinitがある．
 プロセスはforkすることで子プロセスを作るが，(作った元は親プロセス)
@@ -382,48 +381,47 @@ initはゾンビプロセスが永久に存在することの内容に定期的�
 </div>
 </div>
 <div class="section" id="systemd">
-<h1>systemd<a class="headerlink" href="#systemd" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>systemd<a class="headerlink" href="#systemd" title="Permalink to this headline">¶</a></h1>
 <p>うおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお
 詳細はまたこんどだなああああああああああああ</p>
 <div class="section" id="systemctl">
-<h2>systemctlコマンド<a class="headerlink" href="#systemctl" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>systemctlコマンド<a class="headerlink" href="#systemctl" title="Permalink to this headline">¶</a></h2>
 <p><strong>SYNOPSIS</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl [OPTIONS...] COMMAND [NAME...]
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemctl [OPTIONS...] COMMAND [NAME...]
 </pre></div>
 </div>
 <p><strong>OPTIONS</strong></p>
 <blockquote>
-<div><p>めんどいあとでかく</p>
-</div></blockquote>
+<div>めんどいあとでかく</div></blockquote>
 <p><strong>COMMAND</strong></p>
-<table class="colwidths-given docutils align-default">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col width="50%" />
+<col width="50%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>COMMAND</p></th>
-<th class="head"><p>意味</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">COMMAND</th>
+<th class="head">意味</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>start</p></td>
-<td><p>Unitを開始</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>start</td>
+<td>Unitを開始</td>
 </tr>
-<tr class="row-odd"><td><p>stop</p></td>
-<td><p>Unitを停止</p></td>
+<tr class="row-odd"><td>stop</td>
+<td>Unitを停止</td>
 </tr>
-<tr class="row-even"><td><p>status</p></td>
-<td><p>ステータスを見る</p></td>
+<tr class="row-even"><td>status</td>
+<td>ステータスを見る</td>
 </tr>
-<tr class="row-odd"><td><p>reload</p></td>
-<td><p>設定ファイルをリロード</p></td>
+<tr class="row-odd"><td>reload</td>
+<td>設定ファイルをリロード</td>
 </tr>
-<tr class="row-even"><td><p>restart</p></td>
-<td><p>リスタート(対象が停止してたら起動)</p></td>
+<tr class="row-even"><td>restart</td>
+<td>リスタート(対象が停止してたら起動)</td>
 </tr>
-<tr class="row-odd"><td><p>kill</p></td>
-<td><p>対象のUnitに対してシグナルを送る．デフォルトはSIGTERM(killコマンドで出るシグナル)． --signal= で指定可能．</p></td>
+<tr class="row-odd"><td>kill</td>
+<td>対象のUnitに対してシグナルを送る．デフォルトはSIGTERM(killコマンドで出るシグナル)． --signal= で指定可能．</td>
 </tr>
 </tbody>
 </table>
@@ -431,7 +429,7 @@ initはゾンビプロセスが永久に存在することの内容に定期的�
 </div>
 </div>
 <div class="section" id="boot">
-<h1>bootに関するまとめ<a class="headerlink" href="#boot" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>bootに関するまとめ<a class="headerlink" href="#boot" title="Permalink to this headline">¶</a></h1>
 <p>ちなみにこれはUEFIの場合はおそらく間違っているので修正が必要．</p>
 <p>※参考※<a class="reference external" href="https://eng-entrance.com/linux-bootloader">https://eng-entrance.com/linux-bootloader</a>
 UEFIの場合はUEFI自体が一つのシステムとして形になっており、
@@ -440,17 +438,17 @@ FAT系のパーティションを自力で検出、のちにGPTをロードしOS
 しかし、もし何か事情があって古いブートローダ、例えば古典的なLILOを使用しなければならないときはUEFIをレガシーなモードで動作させると、
 従来のBIOSとMBRの組み合わせと同じ挙動を再現するようになっている。</p>
 <ol class="arabic simple">
-<li><p>電源が入る．</p></li>
-<li><p>BIOS(UEFI)が起動し，ハードウェアが初期化される．</p></li>
-<li><p>MBRからブートローダが読み込まれ起動し，カーネルの読み込み・起動が行われる．</p></li>
-<li><p>モジュールのロード後，/sbin/init(systemd)が起動する．</p></li>
-<li><p>default.targetというUnitが処理される．</p></li>
-<li><p>システムの用途に適した(登録された?)ターゲットが処理される．</p></li>
-<li><p>ログイン受付開始(まずinitがgettyプロセスを作ってそこからgettyがlogin(1)にexecで良いはず．ちなみに login: のプロンプト表示まで?はgettyらしい?このへんちょい怪しい)</p></li>
+<li>電源が入る．</li>
+<li>BIOS(UEFI)が起動し，ハードウェアが初期化される．</li>
+<li>MBRからブートローダが読み込まれ起動し，カーネルの読み込み・起動が行われる．</li>
+<li>モジュールのロード後，/sbin/init(systemd)が起動する．</li>
+<li>default.targetというUnitが処理される．</li>
+<li>システムの用途に適した(登録された?)ターゲットが処理される．</li>
+<li>ログイン受付開始(まずinitがgettyプロセスを作ってそこからgettyがlogin(1)にexecで良いはず．ちなみに login: のプロンプト表示まで?はgettyらしい?このへんちょい怪しい)</li>
 </ol>
 </div>
 <div class="section" id="vmlinuzinitrd-img">
-<h1>vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ<a class="headerlink" href="#vmlinuzinitrd-img" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ<a class="headerlink" href="#vmlinuzinitrd-img" title="Permalink to this headline">¶</a></h1>
 <p>vmlinuzは，ブートローダから実行されるカーネルの実行バイナリらしい．
 簡単な初期化を行なった後にカーネル本体を解凍してメモリにロードする．</p>
 <p>initrdは初期RAMディスクとかっていうらしい．
@@ -470,7 +468,7 @@ nmコマンドの出力結果そのままであるらしいが正直よくわか
 <a class="reference external" href="https://ja.wikipedia.org/wiki/System.map">https://ja.wikipedia.org/wiki/System.map</a></p>
 </div>
 <div class="section" id="virt-install-ubuntu2020">
-<span id="ubuntu2020-on-kvm"></span><h1>virt-install でubuntu2020がインストールできなかった話<a class="headerlink" href="#virt-install-ubuntu2020" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<span id="ubuntu2020-on-kvm"></span><h1>virt-install でubuntu2020がインストールできなかった話<a class="headerlink" href="#virt-install-ubuntu2020" title="Permalink to this headline">¶</a></h1>
 <p>題の通りのことになった調べた時のメモ
 普段は location に <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/</a> (2018, bionic) とかってしてインストールできてるんだけど，
 2020(focali) で <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/</a> ってしたらエラった． <a class="reference internal" href="../contents/kvm.html"><span class="doc">kvm</span></a></p>
@@ -480,10 +478,10 @@ nmコマンドの出力結果そのままであるらしいが正直よくわか
 (これってマージされたらどっから見えるようになるんかな? これ見えなくなるんかな?)
 ちなみに内容は↓のような感じ</p>
 <ol class="arabic simple">
-<li><p>(おそらく)locationで指定されたのの後に取得できたもののpathをみて，URL指定かpath指定かを判断しているところがあるが，
+<li>(おそらく)locationで指定されたのの後に取得できたもののpathをみて，URL指定かpath指定かを判断しているところがあるが，
 URLだった時にcurrent/images/MANIFESTを見るようになっていて，
-ubuntu2020の場合だとそこが/current/legacy-images/MANIFESTだからmatchしなくなっているのでそれを足した．</p></li>
-<li><p>os_variantが2004以上?だった時にurl_prefixなるものをlagacy~~に書き換えること</p></li>
+ubuntu2020の場合だとそこが/current/legacy-images/MANIFESTだからmatchしなくなっているのでそれを足した．</li>
+<li>os_variantが2004以上?だった時にurl_prefixなるものをlagacy~~に書き換えること</li>
 </ol>
 <p>プルリクのコメントや，実際に中をみてみた感じ，指定したpath以降の中身に差がないようだったのでこれでいけるらしい?
 (header.htmlとfooter.htmlが含まれているだけだった)
@@ -512,29 +510,29 @@ d-i builds are going away.」
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="virtualization.html" class="btn btn-neutral float-right" title="ハイパーバイザ仮想化に関する内容" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="kernel_packet.html" class="btn btn-neutral float-left" title="linuxのパケットの送受信について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="virtualization.html" class="btn btn-neutral float-right" title="ハイパーバイザ仮想化に関する内容" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kernel_packet.html" class="btn btn-neutral float-left" title="linuxのパケットの送受信について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
+        &copy; Copyright 2021, KAWAHARAsouta
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -542,6 +540,7 @@ d-i builds are going away.」
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
