@@ -149,7 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id2">LFS ファイルシステムの限定的なディレクトリレイアウトの生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">LFSユーザの追加</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">環境設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sbu">SBU値について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">ホストシステム要件のやつ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
@@ -339,8 +339,17 @@ wgetのやつとか普通にできることは確認してある．
 bash.bashrcについては <a class="reference external" href="https://sources.debian.org/src/bash/5.1-3/debian/README/#L50">https://sources.debian.org/src/bash/5.1-3/debian/README/#L50</a> ここを参照しろ．
 -DSYS_BASHRCオプションをつけてbashをコンパイルするとここを見るようになるらしいぞ．</p>
 </div>
-<div class="section" id="sbu">
-<h2>SBU値について<a class="headerlink" href="#sbu" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h2>ホストシステム要件のやつ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>gawkじゃなくてmawkだった．
+yaccないし，bisonもないし，もちろんリンクも正しくないし．
+m4ない
+makeinfoというかtexinfoない．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install m4 bison texinfo gawk
+</pre></div>
+</div>
+<p>※ bison入れたら/usr/bin/yacc → /etc/alternatives/yacc → /usr/bin/bison.yacc になってたけどこれでいいんかな．
+※ gawk入れたら /etc/alternatives/awk も gawk向いた．</p>
 </div>
 </div>
 

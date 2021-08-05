@@ -113,8 +113,27 @@ LFSユーザの追加
 bash.bashrcについては https://sources.debian.org/src/bash/5.1-3/debian/README/#L50 ここを参照しろ．
 -DSYS_BASHRCオプションをつけてbashをコンパイルするとここを見るようになるらしいぞ．
 
-SBU値について
-================
+
+
+
+ホストシステム要件のやつ
+=============================
+
+gawkじゃなくてmawkだった．
+yaccないし，bisonもないし，もちろんリンクも正しくないし．
+m4ない
+makeinfoというかtexinfoない．
+
+::
+
+  $ sudo apt install m4 bison texinfo gawk
+
+※ bison入れたら/usr/bin/yacc → /etc/alternatives/yacc → /usr/bin/bison.yacc になってたけどこれでいいんかな．
+※ gawk入れたら /etc/alternatives/awk も gawk向いた．
+
+
+
+
 
 
 
