@@ -139,3 +139,12 @@ makeinfoというかtexinfoない．
 
 
 
+
+
+
+
+
+
+
+
+
