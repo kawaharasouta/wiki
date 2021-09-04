@@ -470,11 +470,14 @@ ubuntuもできたようなできなかったような気がするけどよく�
      <span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="n">distrib</span><span class="o">-</span><span class="n">coffee</span><span class="o">.</span><span class="n">ipsl</span><span class="o">.</span><span class="n">jussieu</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">Mageia</span><span class="o">/</span><span class="n">distrib</span><span class="o">/</span><span class="mi">1</span>
 </pre></div>
 </div>
-<p>ubuntu2020を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
-調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． <a class="reference internal" href="../technote/boot.html#ubuntu2020-on-kvm"><span class="std std-ref">virt-install でubuntu2020がインストールできなかった話</span></a>
+<p>ubuntu2004を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
+調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． <span class="xref std std-ref">ubuntu2004_on_kvm</span>
 ISOをwgetしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．
 ISOをマウントしてもできるはず(manにはそう書いてある)なんだけど，マウントした場合だとinstall中にmount errorみたいなのが起きてダメだったんだよね．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
+<p><strong>2021/09/04追記</strong>
+ubuntu2004でもnetinstallできた．
+urlは <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#isoファイル選ぶから注意 ubuntu2004の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
 ####  なんか↑notfoundしたので (20.04がなくて20.04.1だけになってた)
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso

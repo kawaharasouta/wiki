@@ -206,14 +206,18 @@ ubuntuもできたようなできなかったような気がするけどよく�
    Mageia
        ftp://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/1
 
-ubuntu2020を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
-調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． :ref:`ubuntu2020_on_kvm`
+ubuntu2004を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
+調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． :ref:`ubuntu2004_on_kvm`
 ISOをwgetしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．
 ISOをマウントしてもできるはず(manにはそう書いてある)なんだけど，マウントした場合だとinstall中にmount errorみたいなのが起きてダメだったんだよね．
 
+**2021/09/04追記**
+ubuntu2004でもnetinstallできた．
+urlは http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/
+
 ::
 
-  #isoファイル選ぶから注意 ubuntu2020の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
+  #isoファイル選ぶから注意 ubuntu2004の場合はこれで行けた コマンドコピペ直してないところあるけど使う時に合わせろあとで直す．
   $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
   ####  なんか↑notfoundしたので (20.04がなくて20.04.1だけになってた)
   $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso
