@@ -274,7 +274,21 @@ console接続について
   できない: ubuntu2004 ubuntu1804
 
 多分これはextraargsで渡したカーネルオプションがそのまま使われているかインストール後初期化されてるかみたいなそう言う話だとは思う．
+
+さらに，ubuntuではvirt-install時に--locationでnetwork installerから起こさないと--extra-argsが使えないためちゃんとインストールができない．
+(要は--cdromでISOイメージを指定する方法だとうまくserialでインストールできないということ)
+詳細はわからないが，https://blog.cybozu.io/entry/3792 ここを読むと少しわかるかもしれない．
+また，このコンソール系のカーネルオプションの説明は https://www.support.nec.co.jp/View.aspx?id=3150110824 を読むと少しわかるかもしれない．
+
 できない奴らは↓をやっておくと幸せになれる．
+
+::
+
+  $ sudo vim /etc/default/grub
+    + GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8"        //! 他に追加で書いてあるやつは残しておいたほうがいい．起動時のログをどの程度出すか的な設定がデフォルトで入ってるので．
+  $ sudo update-grub2
+  $ sudo reboot
+
 
 clone
 =========

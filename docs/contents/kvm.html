@@ -528,8 +528,18 @@ $ sudo virt-install \
 <span class="n">できない</span><span class="p">:</span> <span class="n">ubuntu2004</span> <span class="n">ubuntu1804</span>
 </pre></div>
 </div>
-<p>多分これはextraargsで渡したカーネルオプションがそのまま使われているかインストール後初期化されてるかみたいなそう言う話だとは思う．
-できない奴らは↓をやっておくと幸せになれる．</p>
+<p>多分これはextraargsで渡したカーネルオプションがそのまま使われているかインストール後初期化されてるかみたいなそう言う話だとは思う．</p>
+<p>さらに，ubuntuではvirt-install時に--locationでnetwork installerから起こさないと--extra-argsが使えないためちゃんとインストールができない．
+(要は--cdromでISOイメージを指定する方法だとうまくserialでインストールできないということ)
+詳細はわからないが，<a class="reference external" href="https://blog.cybozu.io/entry/3792">https://blog.cybozu.io/entry/3792</a> ここを読むと少しわかるかもしれない．
+また，このコンソール系のカーネルオプションの説明は <a class="reference external" href="https://www.support.nec.co.jp/View.aspx?id=3150110824">https://www.support.nec.co.jp/View.aspx?id=3150110824</a> を読むと少しわかるかもしれない．</p>
+<p>できない奴らは↓をやっておくと幸せになれる．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
+  + GRUB_CMDLINE_LINUX=&quot;console=tty0 console=ttyS0,115200n8&quot;        //! 他に追加で書いてあるやつは残しておいたほうがいい．起動時のログをどの程度出すか的な設定がデフォルトで入ってるので．
+$ sudo update-grub2
+$ sudo reboot
+</pre></div>
+</div>
 </div>
 <div class="section" id="clone">
 <h2>clone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク">¶</a></h2>
