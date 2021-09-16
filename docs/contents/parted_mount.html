@@ -284,8 +284,8 @@ $ sudo umount /mnt/part2
 
 //! /etc/fstab を編集
 $ sudo vim /etc/fstab
-  + /dev/sdb1 /mnt/part1  ext4  defaults  0 2         ### 最後の 2 はなんかよくわかってないんだけど
-  + /dev/sdb2 /mnt/part1  ext4  defaults  0 2         ### なんか入れとくほうがいい? fsckをする設定らしい．
+  + /dev/sdb1 /mnt/part1  ext4  defaults  0 2         ### 最後の 2 はなんかよくわかってないんだけどなんか入れとくほうがいい?
+  + /dev/sdb2 /mnt/part1  ext4  defaults  0 2         ### fsckでファイルシステムをチェックする設定らしい．1 は最優先(ルートfs) で 2 はその次 0 はチェックしない．
 </pre></div>
 </div>
 </div>
