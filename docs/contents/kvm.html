@@ -124,10 +124,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#s411">S411の環境を作った時のメモやつ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#disk">disk拡張する時の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nested">nestedしたい時</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">レスキューモードで起動</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">kvmコマンドと言うものがあるらしく</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">kvmコマンドと言うものがあるらしく</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">インストールと起動</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">インストールと起動</a></li>
 </ul>
 </li>
 </ul>
@@ -155,6 +156,7 @@
 <li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parted_mount.html">パーティション・マウント関連</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -1092,14 +1094,33 @@ $ sudo virsh edit [vm]
 </div>
 <p><a class="reference external" href="http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html">http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html</a></p>
 </div>
+<div class="section" id="id4">
+<h2>レスキューモードで起動<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-rescue [vm name]      ### ディスクイメージでも可らしい
+</pre></div>
+</div>
+<p>起き上がった状態だと簡易的な状態? (どこまで起き上がってるかとかはちょっとよくわからんけど) のため，
+いろいろマウントしてchrootしてあげるとよい．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mapper</span><span class="o">/</span><span class="p">[</span><span class="n">vm</span> <span class="n">name</span><span class="p">]</span><span class="n">_root</span>  <span class="o">/</span><span class="n">sysroot</span>      <span class="n">パテへのdevへのパスはちょっと適当なので環境でちゃんとやること</span>
+<span class="o">&gt;</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda1</span> <span class="o">/</span><span class="n">sysroot</span><span class="o">/</span><span class="n">boot</span>
+<span class="o">&gt;</span> <span class="n">mount</span> <span class="o">--</span><span class="n">bind</span> <span class="o">/</span><span class="n">dev</span> <span class="o">/</span><span class="n">sysroot</span><span class="o">/</span><span class="n">dev</span>
+<span class="o">&gt;</span> <span class="n">mount</span> <span class="o">--</span><span class="n">bind</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">pts</span> <span class="o">/</span><span class="n">sysroot</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">pts</span>
+<span class="o">&gt;</span> <span class="n">mount</span> <span class="o">--</span><span class="n">bind</span> <span class="o">/</span><span class="n">proc</span> <span class="o">/</span><span class="n">sysroot</span><span class="o">/</span><span class="n">proc</span>
+<span class="o">&gt;</span> <span class="n">mount</span> <span class="o">--</span><span class="n">bind</span> <span class="o">/</span><span class="n">sys</span> <span class="o">/</span><span class="n">sysroot</span><span class="o">/</span><span class="n">sys</span>
+<span class="o">&gt;</span> <span class="n">chroot</span> <span class="o">/</span><span class="n">sysroot</span>
+</pre></div>
+</div>
+<p>この後はある程度よしなにやりたいことができるはず．</p>
+<p><a class="reference external" href="http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html">http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html</a></p>
+</div>
 <div class="section" id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><a class="reference external" href="https://libvirt.org/format.html">domain_xml_format</a></p>
 <p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
 <p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>
 </div>
-<div class="section" id="id4">
-<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="helloworld">
 <h3>helloworld<a class="headerlink" href="#helloworld" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Xwindowのあるシステムで↓を実行</p>
@@ -1109,8 +1130,8 @@ $ sudo virsh edit [vm]
 <p>空のVMのウィンドウが立ち上がる．
 当然何もないのでbootしないけど．</p>
 </div>
-<div class="section" id="id5">
-<h3>インストールと起動<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id6">
+<h3>インストールと起動<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### install
 $ qemu-img create -f qcow2 test.img 4G
 $ sudo kvm -hda test.img -cdrom [path to iso file] -boot d -m 1024

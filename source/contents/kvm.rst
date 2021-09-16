@@ -902,6 +902,35 @@ nestedしたい時
 
 http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html
 
+
+
+レスキューモードで起動
+==============================
+
+::
+
+  $ sudo virt-rescue [vm name]      ### ディスクイメージでも可らしい
+
+起き上がった状態だと簡易的な状態? (どこまで起き上がってるかとかはちょっとよくわからんけど) のため，
+いろいろマウントしてchrootしてあげるとよい．
+
+::
+
+  > mount /dev/mapper/[vm name]_root  /sysroot      パテへのdevへのパスはちょっと適当なので環境でちゃんとやること
+  > mount /dev/sda1 /sysroot/boot
+  > mount --bind /dev /sysroot/dev
+  > mount --bind /dev/pts /sysroot/dev/pts
+  > mount --bind /proc /sysroot/proc
+  > mount --bind /sys /sysroot/sys
+  > chroot /sysroot
+
+この後はある程度よしなにやりたいことができるはず．
+
+
+http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html
+
+
+
 reference
 ===========
 
