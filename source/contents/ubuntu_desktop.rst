@@ -242,6 +242,23 @@ Macbookの場合
   $ sudo apt install bcmwl-kernel-source
 
 
+Macbook で ubuntu を起動時に 「Failed to Set MokListRT: Invalid Parameter」が出る
+========================================================================================
+
+どうも shim とかの周りで問題があるらしい．
+下記の通りで対処可能．
+
+::
+
+  # cd /boot/efi/EFI/ubuntu
+  # cp grubx64.efi shimx64.efi
+  # reboot
+
+なお，upgradeすると再度発生する模様．
+
+参考: https://uluma-coma.net/blog/2021/01/31/mba%E3%82%92ubuntu%EF%BC%8820-04%EF%BC%89%E3%81%A7%E4%BD%BF%E3%81%86%E3%80%80%E5%B0%8E%E5%85%A5%E3%83%BB%E8%A8%AD%E5%AE%9A/
+
+
 そもそもxwindowとかgnomeとかについて
 ======================================
 

@@ -141,6 +141,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#macbook">Macbookの場合</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#macbook-ubuntu-failed-to-set-moklistrt-invalid-parameter">Macbook で ubuntu を起動時に 「Failed to Set MokListRT: Invalid Parameter」が出る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#xwindowgnome">そもそもxwindowとかgnomeとかについて</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gpu-nvidia">GPU(nvidia)のドライバ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#appimage">AppImageとかいうパッケージ?の話</a></li>
@@ -160,6 +161,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parted_mount.html">パーティション・マウント関連</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -481,6 +483,18 @@ $ xbindkeys
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="macbook-ubuntu-failed-to-set-moklistrt-invalid-parameter">
+<h2>Macbook で ubuntu を起動時に 「Failed to Set MokListRT: Invalid Parameter」が出る<a class="headerlink" href="#macbook-ubuntu-failed-to-set-moklistrt-invalid-parameter" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>どうも shim とかの周りで問題があるらしい．
+下記の通りで対処可能．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd /boot/efi/EFI/ubuntu</span>
+<span class="c1"># cp grubx64.efi shimx64.efi</span>
+<span class="c1"># reboot</span>
+</pre></div>
+</div>
+<p>なお，upgradeすると再度発生する模様．</p>
+<p>参考: <a class="reference external" href="https://uluma-coma.net/blog/2021/01/31/mba%E3%82%92ubuntu%EF%BC%8820-04%EF%BC%89%E3%81%A7%E4%BD%BF%E3%81%86%E3%80%80%E5%B0%8E%E5%85%A5%E3%83%BB%E8%A8%AD%E5%AE%9A/">https://uluma-coma.net/blog/2021/01/31/mba%E3%82%92ubuntu%EF%BC%8820-04%EF%BC%89%E3%81%A7%E4%BD%BF%E3%81%86%E3%80%80%E5%B0%8E%E5%85%A5%E3%83%BB%E8%A8%AD%E5%AE%9A/</a></p>
 </div>
 <div class="section" id="xwindowgnome">
 <h2>そもそもxwindowとかgnomeとかについて<a class="headerlink" href="#xwindowgnome" title="このヘッドラインへのパーマリンク">¶</a></h2>
