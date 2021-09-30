@@ -139,6 +139,7 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
   $ make nconfig        # コマンドラインの新しい ncurses インターフェイス
   $ make xconfig        #  ユーザーフレンドリーなグラフィカルインターフェイス  packagekit-qt4パッケージ必要? 簡単で初心者向けらしい
   $ make gconfig        # GTK+ を使用する
+  $ make defconfig      # default らしい．わかんなかったら変にいじるよりこれしたほうがいいみたいだけど意外に no change だったりもしたけど．
 
   # いるっぽかったやつ 他もあるかも信ないけどぐぐりゃだいたいでる
   $ sudo apt install libssl-dev bc libelf-dev(make install の時)
