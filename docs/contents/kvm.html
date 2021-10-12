@@ -284,6 +284,8 @@
             
   <div class="section" id="kvm">
 <h1>kvm<a class="headerlink" href="#kvm" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>※virsh系の操作の多くは sudo いらない(kvmグループで管理できるのでね)からひとまず目についた分は消して見たけど
+一部反映不足あるかもしれないので気づいたらなおそう．</p>
 <div class="section" id="id1">
 <h2>注意<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>BIOSでIntel-VT無効になっていても，KVMはQEMUで頑張ってVMを動かすらしいので，
@@ -347,7 +349,7 @@ $ sudo systemctl enable libvirtd
 <div class="section" id="serial">
 <h3>serial<a class="headerlink" href="#serial" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># これだと成功するきっと location が url にしたら通った
-$ sudo virt-install \
+$ virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
 --vcpus 2 \
@@ -359,7 +361,7 @@ $ sudo virt-install \
 --nographics --extra-args=&#39;console=tty0 console=ttyS0,115200n8&#39;
 
 # よく使われる --cdrom は --extra-args と併用できないのでこれダメ
-$ sudo virt-install --connect=qemu:///system \
+$ virt-install --connect=qemu:///system \
 --name ubuntu1 \
 --vcpus 1 \
 --ram 512 \
@@ -372,7 +374,7 @@ $ sudo virt-install --connect=qemu:///system \
 #centosの場合 (os-installerが変わるだけだから後でまとめたい
 #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
 #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
-$ sudo virt-install \
+$ virt-install \
 --connect=qemu:///system \
 --name centos7 \
 --vcpus 2 \
@@ -388,7 +390,7 @@ $ sudo virt-install \
 
 # fedora 24までしかなかったけどとりあえず通ったっぽい．
 # 他のミラーサイトみて install tree? installable distribution image? あること探した方がいいかも
-$ sudo virt-install \
+$ virt-install \
 --connect=qemu:///system \
 --name fedora24 \
 --vcpus 2 --ram 2048 --accelerate --hvm \
@@ -407,8 +409,8 @@ sudo apt iunstall gparted ダメ
 # FreeBSD なんかダメそう2
 https://www.freebsd.org/ja/where.html
 こっから仮想マシンイメージゲットしてきて
-$ sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
-sudo virsh --connect qemu:///system start freebsd1201
+$ virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
+virsh --connect qemu:///system start freebsd1201
 とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．見えたけどsshd動いてなくて泣いた．
 
 # shuu先生ありがとうございます．． ちゃんと動いたやつ．
@@ -425,7 +427,7 @@ $ echo &#39;console=&quot;comconsole&quot;&#39; &gt; boot/loader.conf #ワンチ
 $ sudo apt install genisoimage
 $ mkisofs -v -b boot/cdboot -no-emul-boot -r -J -V &quot;FREEBSD_INSTALL&quot; -o ~/Headless-FreeBSD.iso ./
 $ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/freebsd.img 15G
-$ sudo virt-install --connect=qemu:///system --name freebsd \
+$ virt-install --connect=qemu:///system --name freebsd \
   --vcpus 2 --ram 2048 \
   --serial pty -v \
   --disk=/var/lib/libvirt/images/freebsd.img,format=qcow2,bus=virtio --nographics \
@@ -483,7 +485,7 @@ urlは <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/d
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
 ####  なんか↑notfoundしたので (20.04がなくて20.04.1だけになってた)
 $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso
-$ sudo virt-install \
+$ virt-install \
 --connect=qemu:///system \
 --name ubuntu1 \
 --vcpus 2 \
@@ -509,7 +511,7 @@ $ sudo virt-install \
 </div>
 <div class="section" id="vnc">
 <h3>vnc<a class="headerlink" href="#vnc" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virt-install \
   --name ubuntu1804 \
   --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
   --vcpus 2 \
@@ -545,7 +547,7 @@ $ sudo reboot
 </div>
 <div class="section" id="clone">
 <h2>clone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img   # .imgを作成しておく必要はない
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img   # .imgを作成しておく必要はない
 $ sudo virt-sysprep -d [vm_clone] --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
 </pre></div>
 </div>
@@ -553,26 +555,26 @@ $ sudo virt-sysprep -d [vm_clone] --enable dhcp-client-state,machine-id,net-hwad
 </div>
 <div class="section" id="delete-vm">
 <h2>delete vm<a class="headerlink" href="#delete-vm" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virsh undefine [vm]
-$ sudo virsh pool-list
-$ sudo virsh vol-list [pool]
-$ sudo virsh vol-delete [path to vol]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virsh undefine [vm]
+$ virsh pool-list
+$ virsh vol-list [pool]
+$ virsh vol-delete [path to vol]
 </pre></div>
 </div>
 </div>
 <div class="section" id="change-memory-size">
 <h2>change memory size<a class="headerlink" href="#change-memory-size" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#max memory sizeを変更
-$ sudo virsh setmaxmem [domain] 4G
+$ virsh setmaxmem [domain] 4G
 
 #起動中にmemory size変更(停止したら戻る)
-$ sudo viesh setmem [domain] 4G
+$ virsh setmem [domain] 4G
 
 #停止中のマシンの次回以降のmemory sizeを変更
-$ sudo virsh setmem [domain] 4G --config
+$ virsh setmem [domain] 4G --config
 
 #確認
-$ sudo virsh dominfo [domain] | grep mem
+$ virsh dominfo [domain] | grep mem
 </pre></div>
 </div>
 </div>
@@ -583,9 +585,9 @@ $ sudo virsh dominfo [domain] | grep mem
 <div class="section" id="rename-domain">
 <h2>rename domain<a class="headerlink" href="#rename-domain" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ uuidgen           #コピっとく
-$ sudo virsh edit [old domain]
+$ virsh edit [old domain]
   change name &amp; uuid
-$ sudo virsh undefine [old domain]
+$ virsh undefine [old domain]
 </pre></div>
 </div>
 </div>
@@ -686,7 +688,7 @@ $ bash iommu.sh
 ### なんかGPUの場合とかゲストがwindowsの場合とか少し追加でやることあるらしいけど今はNICだけなので後で調べる
 
 ### 適当に編集する．
-$ sudo virsh edit [vm]
+$ virsh edit [vm]
 + &lt;hostdev mode=&#39;subsystem&#39; type=&#39;pci&#39; managed=&#39;yes&#39;&gt;
 +   &lt;source&gt;
 +     &lt;address domain=&#39;0x00&#39; bus=&#39;0x5e&#39; slot=&#39;0x10&#39; function=&#39;0x00&#39;/&gt;           // 5e:10.0 の場合
@@ -726,7 +728,7 @@ $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生え�
 <h2>vm ip addr<a class="headerlink" href="#vm-ip-addr" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>VMのアドレス探すやつだけど，arp-scanじゃなくていいの見つけてしまった．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo arp-scan -I virbr0 -l | awk &#39;{print $1}&#39; | tail -n 6 | head -n3    #オプションは適当
-$ sudo virsh net-dhcp-leases default | awk &#39;{print $5, $6}&#39;
+$ virsh net-dhcp-leases default | awk &#39;{print $5, $6}&#39;
 </pre></div>
 </div>
 </div>
@@ -746,8 +748,8 @@ consoleはちゃんとカーネルパラメータ設定してからじゃない�
 </div>
 <div class="section" id="autostart-setting">
 <h2>autostart setting<a class="headerlink" href="#autostart-setting" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virsh autostart [vm name]              #enable
-$ sudo virsh autostart --disable [vm name]    #disable
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virsh autostart [vm name]              #enable
+$ virsh autostart --disable [vm name]    #disable
 $ ls -1 /etc/libvirt/qemu/autostart           # 確認
 </pre></div>
 </div>
@@ -809,9 +811,9 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 
 
 // img を拡張
-$ sudo virsh shutdown [vm]
+$ virsh shutdown [vm]
 $ sudo qemu-img resize /var/lib/libvirt/images/[vm].img +400G
-$ sudo virsh start [vm]
+$ virsh start [vm]
 
 
 // ゲストからディスク確認 408GiB に変わってる．けどパテは増えてない．
@@ -1076,13 +1078,13 @@ The filesystem on /dev/vgubuntu2004/root is now 106572800 (4k) blocks long.
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat /sys/module/kvm_intel/parameters/nested
 /// 1 か Y ならOK    0 か N だったら↓
 $ sudo su
-# sudo cat &lt;&lt; EOF &gt; /etc/modprobe.d/kvm-nested.conf       ///名前はなんでもいい
+# cat &lt;&lt; EOF &gt; /etc/modprobe.d/kvm-nested.conf       ///名前はなんでもいい
 &gt; options kvm_intel nested=1
 &gt; EOF
 $ sudo modprobe -r kvm_intel
 
 /// ゲストの設定を書き直す
-$ sudo virsh edit [vm]
+$ virsh edit [vm]
 /////// cpu のところに追加する
 + &lt;feature policy=&#39;require&#39; name=&#39;vmx&#39;/&gt;
 </pre></div>
@@ -1096,7 +1098,7 @@ $ sudo virsh edit [vm]
 </div>
 <div class="section" id="id4">
 <h2>レスキューモードで起動<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo virt-rescue [vm name]      ### ディスクイメージでも可らしい
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virt-rescue [vm name]      ### ディスクイメージでも可らしい
 </pre></div>
 </div>
 <p>起き上がった状態だと簡易的な状態? (どこまで起き上がってるかとかはちょっとよくわからんけど) のため，

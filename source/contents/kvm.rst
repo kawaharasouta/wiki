@@ -2,6 +2,8 @@
 kvm
 ====
 
+※virsh系の操作の多くは sudo いらない(kvmグループで管理できるのでね)からひとまず目についた分は消して見たけど
+一部反映不足あるかもしれないので気づいたらなおそう．
 
 注意
 =======
@@ -79,7 +81,7 @@ serial
 ::
 
   # これだと成功するきっと location が url にしたら通った
-  $ sudo virt-install \
+  $ virt-install \
   --connect=qemu:///system \
   --name ubuntu1 \
   --vcpus 2 \
@@ -91,7 +93,7 @@ serial
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
 
   # よく使われる --cdrom は --extra-args と併用できないのでこれダメ
-  $ sudo virt-install --connect=qemu:///system \
+  $ virt-install --connect=qemu:///system \
   --name ubuntu1 \
   --vcpus 1 \
   --ram 512 \
@@ -104,7 +106,7 @@ serial
   #centosの場合 (os-installerが変わるだけだから後でまとめたい
   #centosのCUIインストーラは結構癖ある．メニューから番号選んで叩いて設定すればいいだけ．
   #メモリが足りないとinitramfsが死ぬからちょっと多めにメモリあげる．
-  $ sudo virt-install \
+  $ virt-install \
   --connect=qemu:///system \
   --name centos7 \
   --vcpus 2 \
@@ -120,7 +122,7 @@ serial
 
   # fedora 24までしかなかったけどとりあえず通ったっぽい．
   # 他のミラーサイトみて install tree? installable distribution image? あること探した方がいいかも
-  $ sudo virt-install \ 
+  $ virt-install \ 
   --connect=qemu:///system \ 
   --name fedora24 \
   --vcpus 2 --ram 2048 --accelerate --hvm \
@@ -139,8 +141,8 @@ serial
   # FreeBSD なんかダメそう2
   https://www.freebsd.org/ja/where.html
   こっから仮想マシンイメージゲットしてきて
-  $ sudo virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
-  sudo virsh --connect qemu:///system start freebsd1201
+  $ virt-install --import --noreboot --name freebsd1201 --autostart --vcpus 2 --ram 2048 --accelerate --hvm --disk path=/var/lib/libvirt/images/freebsd1201.img --network network=default,model=virtio
+  virsh --connect qemu:///system start freebsd1201
   とかってやったらなんかとりあえず動いたの確認できたけどネットワークから見えなくてツムツムした．見えたけどsshd動いてなくて泣いた．
 
   # shuu先生ありがとうございます．． ちゃんと動いたやつ．
@@ -157,7 +159,7 @@ serial
   $ sudo apt install genisoimage
   $ mkisofs -v -b boot/cdboot -no-emul-boot -r -J -V "FREEBSD_INSTALL" -o ~/Headless-FreeBSD.iso ./
   $ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/freebsd.img 15G
-  $ sudo virt-install --connect=qemu:///system --name freebsd \
+  $ virt-install --connect=qemu:///system --name freebsd \
     --vcpus 2 --ram 2048 \
     --serial pty -v \
     --disk=/var/lib/libvirt/images/freebsd.img,format=qcow2,bus=virtio --nographics \
@@ -221,7 +223,7 @@ urlは http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/
   $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso
   ####  なんか↑notfoundしたので (20.04がなくて20.04.1だけになってた)
   $ wget http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso
-  $ sudo virt-install \
+  $ virt-install \
   --connect=qemu:///system \
   --name ubuntu1 \
   --vcpus 2 \
@@ -252,7 +254,7 @@ vnc
 -----
 ::
 
-  $ sudo virt-install \
+  $ virt-install \
     --name ubuntu1804 \
     --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
     --vcpus 2 \
@@ -295,7 +297,7 @@ clone
 
 ::
 
-  $ sudo virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img   # .imgを作成しておく必要はない
+  $ virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img   # .imgを作成しておく必要はない
   $ sudo virt-sysprep -d [vm_clone] --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
 
 and change hostname 
@@ -305,10 +307,10 @@ delete vm
 
 ::
   
-  $ sudo virsh undefine [vm]
-  $ sudo virsh pool-list
-  $ sudo virsh vol-list [pool]
-  $ sudo virsh vol-delete [path to vol]
+  $ virsh undefine [vm]
+  $ virsh pool-list
+  $ virsh vol-list [pool]
+  $ virsh vol-delete [path to vol]
 
 
 change memory size
@@ -317,16 +319,16 @@ change memory size
 ::
 
   #max memory sizeを変更
-  $ sudo virsh setmaxmem [domain] 4G
+  $ virsh setmaxmem [domain] 4G
 
   #起動中にmemory size変更(停止したら戻る)
-  $ sudo viesh setmem [domain] 4G
+  $ virsh setmem [domain] 4G
 
   #停止中のマシンの次回以降のmemory sizeを変更
-  $ sudo virsh setmem [domain] 4G --config
+  $ virsh setmem [domain] 4G --config
 
   #確認
-  $ sudo virsh dominfo [domain] | grep mem
+  $ virsh dominfo [domain] | grep mem
 
 extend disk size
 =================
@@ -340,9 +342,9 @@ rename domain
 ::
   
   $ uuidgen           #コピっとく
-  $ sudo virsh edit [old domain]
+  $ virsh edit [old domain]
     change name & uuid
-  $ sudo virsh undefine [old domain]
+  $ virsh undefine [old domain]
 
 file location
 ==============
@@ -458,7 +460,7 @@ BIOSでIOMMU拡張を有効化する．
   ### なんかGPUの場合とかゲストがwindowsの場合とか少し追加でやることあるらしいけど今はNICだけなので後で調べる
 
   ### 適当に編集する．
-  $ sudo virsh edit [vm]
+  $ virsh edit [vm]
   + <hostdev mode='subsystem' type='pci' managed='yes'>
   +   <source>
   +     <address domain='0x00' bus='0x5e' slot='0x10' function='0x00'/>           // 5e:10.0 の場合
@@ -516,7 +518,7 @@ VMのアドレス探すやつだけど，arp-scanじゃなくていいの見つ�
 ::
 
   $ sudo arp-scan -I virbr0 -l | awk '{print $1}' | tail -n 6 | head -n3    #オプションは適当
-  $ sudo virsh net-dhcp-leases default | awk '{print $5, $6}'
+  $ virsh net-dhcp-leases default | awk '{print $5, $6}'
 
 接続方法とかに関して
 =======================
@@ -538,8 +540,8 @@ autostart setting
 
 ::
 
-  $ sudo virsh autostart [vm name]              #enable
-  $ sudo virsh autostart --disable [vm name]    #disable
+  $ virsh autostart [vm name]              #enable
+  $ virsh autostart --disable [vm name]    #disable
   $ ls -1 /etc/libvirt/qemu/autostart           # 確認
   
 
@@ -608,9 +610,9 @@ diskとかでよくLVMってあるけど，よくわからなくて何もしな�
   
 
   // img を拡張
-  $ sudo virsh shutdown [vm]
+  $ virsh shutdown [vm]
   $ sudo qemu-img resize /var/lib/libvirt/images/[vm].img +400G
-  $ sudo virsh start [vm]
+  $ virsh start [vm]
 
 
   // ゲストからディスク確認 408GiB に変わってる．けどパテは増えてない．
@@ -882,13 +884,13 @@ nestedしたい時
   $ cat /sys/module/kvm_intel/parameters/nested
   /// 1 か Y ならOK    0 か N だったら↓
   $ sudo su 
-  # sudo cat << EOF > /etc/modprobe.d/kvm-nested.conf       ///名前はなんでもいい
+  # cat << EOF > /etc/modprobe.d/kvm-nested.conf       ///名前はなんでもいい
   > options kvm_intel nested=1
   > EOF
   $ sudo modprobe -r kvm_intel
 
   /// ゲストの設定を書き直す
-  $ sudo virsh edit [vm]
+  $ virsh edit [vm]
   /////// cpu のところに追加する
   + <feature policy='require' name='vmx'/>
 
@@ -909,7 +911,7 @@ http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html
 
 ::
 
-  $ sudo virt-rescue [vm name]      ### ディスクイメージでも可らしい
+  $ virt-rescue [vm name]      ### ディスクイメージでも可らしい
 
 起き上がった状態だと簡易的な状態? (どこまで起き上がってるかとかはちょっとよくわからんけど) のため，
 いろいろマウントしてchrootしてあげるとよい．
