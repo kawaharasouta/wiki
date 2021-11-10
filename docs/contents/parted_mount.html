@@ -117,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">パーティション・マウント関連</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">新しいディスクのパテを切ってマウントするまでの一般的な方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memo">その他操作の適当なmemo</a></li>
 </ul>
 </li>
 </ul>
@@ -286,6 +287,14 @@ $ sudo umount /mnt/part2
 $ sudo vim /etc/fstab
   + /dev/sdb1 /mnt/part1  ext4  defaults  0 2         ### 最後の 2 はなんかよくわかってないんだけどなんか入れとくほうがいい?
   + /dev/sdb2 /mnt/part1  ext4  defaults  0 2         ### fsckでファイルシステムをチェックする設定らしい．1 は最優先(ルートfs) で 2 はその次 0 はチェックしない．
+</pre></div>
+</div>
+</div>
+<div class="section" id="memo">
+<h2>その他操作の適当なmemo<a class="headerlink" href="#memo" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>boot flag を立てて fat32 で mkfs する．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo parted /dev/sdb1 set 1 boot on
+$ sudo mkfs -t vfat -F 32 /dev/sdb1
 </pre></div>
 </div>
 </div>

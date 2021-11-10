@@ -51,6 +51,14 @@
     + /dev/sdb2 /mnt/part1  ext4  defaults  0 2         ### fsckでファイルシステムをチェックする設定らしい．1 は最優先(ルートfs) で 2 はその次 0 はチェックしない．
 
 
+その他操作の適当なmemo
+=============================================
 
+boot flag を立てて fat32 で mkfs する．
 
+::
+  
+  $ sudo parted /dev/sdb1 set 1 boot on
+  $ sudo mkfs -t vfat -F 32 /dev/sdb1
+  
 
