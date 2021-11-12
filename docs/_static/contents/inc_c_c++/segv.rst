@@ -70,3 +70,12 @@ https://doss.eidos.ic.i.u-tokyo.ac.jp/html/gdb_step_into_libraries.html
 
 
 
+
+
+
+
+memo
+----------
+
+fedoraでcore吐かせようとしたら，デフォルトの出力がよくわからんかったのでいじったときの参照URL
+https://qiita.com/suzutsuki0220/items/aa84d7e2e8f37e867f3d
