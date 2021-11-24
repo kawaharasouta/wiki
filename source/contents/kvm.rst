@@ -87,7 +87,7 @@ serial
   --vcpus 2 \
   --ram 2048 \
   --accelerate --hvm \
-  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8,format=raw \
   --location 'http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' \
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
@@ -98,7 +98,7 @@ serial
   --vcpus 1 \
   --ram 512 \
   --accelerate --hvm \
-  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8,format=raw \
   --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso \
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
@@ -112,7 +112,7 @@ serial
   --vcpus 2 \
   --ram 2048   \
   --accelerate --hvm \
-  --disk path=/var/lib/libvirt/images/centos7.img,size=8 \
+  --disk path=/var/lib/libvirt/images/centos7.img,size=8,format=raw \
   --location 'http://ftp.iij.ad.jp/pub/linux/centos/7/os/x86_64/' \
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
@@ -126,7 +126,7 @@ serial
   --connect=qemu:///system \ 
   --name fedora24 \
   --vcpus 2 --ram 2048 --accelerate --hvm \
-  --disk path=/var/lib/libvirt/images/fedora24.img,size=8 \
+  --disk path=/var/lib/libvirt/images/fedora24.img,size=8,format=raw \
   --location 'http://ftp.iij.ad.jp/pub/linux/fedora/archive/fedora/linux/releases/24/Server/x86_64/os/' \ 
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8'
@@ -229,7 +229,7 @@ urlは http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/
   --vcpus 2 \
   --ram 2048 \
   --accelerate --hvm \
-  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8 \
+  --disk path=/var/lib/libvirt/images/ubuntu1.img,size=8,format=raw \
   --location 'path to iso file' \
   --network network=default,model=virtio \
   --nographics --extra-args='console=tty0 console=ttyS0,115200n8' 
@@ -256,7 +256,7 @@ vnc
 
   $ virt-install \
     --name ubuntu1804 \
-    --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8 \
+    --disk path=/var/lib/libvirt/images/ubuntu1804.qcow2,size=8,format=raw \
     --vcpus 2 \
     --ram 512 \
     --os-type linux \
