@@ -47,7 +47,7 @@ package
   $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
 
   //! fedora34 toriaezu
-  $ sudo dnf install 
+  $ sudo dnf install qemu-kvm libvirt virt-install guestfs-tools
 
 
   //! この後一応 libvirtd 起動とか自動起動しとく
@@ -64,6 +64,20 @@ https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja の libvirt のところみ�
   libvirt-daemon - サービス群や設定を除いたlibvirtデーモンのみ
   同様に、めったに使用されずサポートが少ないvirtualboxやxenコントロールなどのサブ機能、一般的でないストレージオプションが、さまざまなlibvirt-daemon-driver-*パッケージに分割されました。 これにより、インストール時の専有領域とインストール時の大部分のアクティブコードを削減できます。
   パッケージとプロジェクトには十分な移行時間があったため、libvirt-daemon-system + libvirt-clientsを取り込む空の互換性パッケージであるlibvirt-binがついに削除されました。古い名前を参照しているスクリプトまたはサードパーティのコンポーネントがある場合は、上記のリストを使用して最も新しいパッケージを選択してください。
+
+fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話1
+=================================================================================================
+
+詳しい話は後ろでやる．ここでは操作だけ．
+
+::
+
+  //! ユーザを libvirt グループに追加
+  $ sudo usermod -a -G libvirt $(whoami)
+
+  //! デフォルトの接続ドメインを設定
+  $ vi $XDG_CONFIG_HOME/libvirt/libvirt.conf
+    + uri_default = "qemu:///system"
 
 start config
 =============
@@ -939,6 +953,33 @@ http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html
 http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html
 
 
+fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2
+=================================================================================================
+
+まあ 1 の方である程度察しはつくけど，
+まずvirsh listとかとかでちゃんとVMが見えないことの根本的な原因は，コマンドの対象ドメインすなわち
+
+virsh --connect [domain]
+
+のここのdomainが設定されないから．
+
+ここ，まずdebian系では，バイナリ自体が指定がなければ qemu:///system を見るようになっている．
+(ビルド時にこうなるようなオプション指定をしているのかそれともコードに改変加えてるのかはしらん)
+で，fedoraとかではそうなっていなく，その時は次のような動作になるらしい．
+
+::
+
+  If the URI passed to virConnectOpen* is NULL, then libvirt will use the following logic to determine what URI to use.
+
+  1.  The environment variable LIBVIRT_DEFAULT_URI
+  2.  The client configuration file uri_default parameter
+  3.  Probe each hypervisor in turn until one that works is found
+
+https://libvirt.org/uri.html#URI_default
+
+というわけです．
+
+参考: https://listman.redhat.com/archives/libvirt-users/2011-April/msg00091.html
 
 reference
 ===========

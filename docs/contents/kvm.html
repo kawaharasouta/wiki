@@ -94,6 +94,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">kvm</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">注意</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#package">package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fedora-debian-virsh-listvm1">fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#start-config">start config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#make-image">make image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">install</a><ul>
@@ -125,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#disk">disk拡張する時の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nested">nestedしたい時</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">レスキューモードで起動</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fedora-debian-virsh-listvm2">fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">kvmコマンドと言うものがあるらしく</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
@@ -318,7 +320,7 @@ $ sudo modprobe -r kvm_intel      // kvm も一緒にロードされる
 $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
 
 //! fedora34 toriaezu
-$ sudo dnf install
+$ sudo dnf install qemu-kvm libvirt virt-install guestfs-tools
 
 
 //! この後一応 libvirtd 起動とか自動起動しとく
@@ -333,6 +335,18 @@ libvirt-clients - virshのようなlibvirtに関連したcliツール群
 libvirt-daemon - サービス群や設定を除いたlibvirtデーモンのみ
 同様に、めったに使用されずサポートが少ないvirtualboxやxenコントロールなどのサブ機能、一般的でないストレージオプションが、さまざまなlibvirt-daemon-driver-*パッケージに分割されました。 これにより、インストール時の専有領域とインストール時の大部分のアクティブコードを削減できます。
 パッケージとプロジェクトには十分な移行時間があったため、libvirt-daemon-system + libvirt-clientsを取り込む空の互換性パッケージであるlibvirt-binがついに削除されました。古い名前を参照しているスクリプトまたはサードパーティのコンポーネントがある場合は、上記のリストを使用して最も新しいパッケージを選択してください。
+</pre></div>
+</div>
+</div>
+<div class="section" id="fedora-debian-virsh-listvm1">
+<h2>fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話1<a class="headerlink" href="#fedora-debian-virsh-listvm1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>詳しい話は後ろでやる．ここでは操作だけ．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//! ユーザを libvirt グループに追加
+$ sudo usermod -a -G libvirt $(whoami)
+
+//! デフォルトの接続ドメインを設定
+$ vi $XDG_CONFIG_HOME/libvirt/libvirt.conf
+  + uri_default = &quot;qemu:///system&quot;
 </pre></div>
 </div>
 </div>
@@ -1121,6 +1135,26 @@ $ virsh edit [vm]
 </div>
 <p>この後はある程度よしなにやりたいことができるはず．</p>
 <p><a class="reference external" href="http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html">http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html</a></p>
+</div>
+<div class="section" id="fedora-debian-virsh-listvm2">
+<h2>fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2<a class="headerlink" href="#fedora-debian-virsh-listvm2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>まあ 1 の方である程度察しはつくけど，
+まずvirsh listとかとかでちゃんとVMが見えないことの根本的な原因は，コマンドの対象ドメインすなわち</p>
+<p>virsh --connect [domain]</p>
+<p>のここのdomainが設定されないから．</p>
+<p>ここ，まずdebian系では，バイナリ自体が指定がなければ qemu:///system を見るようになっている．
+(ビルド時にこうなるようなオプション指定をしているのかそれともコードに改変加えてるのかはしらん)
+で，fedoraとかではそうなっていなく，その時は次のような動作になるらしい．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">If</span> <span class="n">the</span> <span class="n">URI</span> <span class="n">passed</span> <span class="n">to</span> <span class="n">virConnectOpen</span><span class="o">*</span> <span class="ow">is</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">then</span> <span class="n">libvirt</span> <span class="n">will</span> <span class="n">use</span> <span class="n">the</span> <span class="n">following</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">determine</span> <span class="n">what</span> <span class="n">URI</span> <span class="n">to</span> <span class="n">use</span><span class="o">.</span>
+
+<span class="mf">1.</span>  <span class="n">The</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">LIBVIRT_DEFAULT_URI</span>
+<span class="mf">2.</span>  <span class="n">The</span> <span class="n">client</span> <span class="n">configuration</span> <span class="n">file</span> <span class="n">uri_default</span> <span class="n">parameter</span>
+<span class="mf">3.</span>  <span class="n">Probe</span> <span class="n">each</span> <span class="n">hypervisor</span> <span class="ow">in</span> <span class="n">turn</span> <span class="n">until</span> <span class="n">one</span> <span class="n">that</span> <span class="n">works</span> <span class="ow">is</span> <span class="n">found</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://libvirt.org/uri.html#URI_default">https://libvirt.org/uri.html#URI_default</a></p>
+<p>というわけです．</p>
+<p>参考: <a class="reference external" href="https://listman.redhat.com/archives/libvirt-users/2011-April/msg00091.html">https://listman.redhat.com/archives/libvirt-users/2011-April/msg00091.html</a></p>
 </div>
 <div class="section" id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク">¶</a></h2>
