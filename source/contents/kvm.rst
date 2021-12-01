@@ -43,8 +43,15 @@ package
 
   $ sudo apt install qemu-kvm libvirt0 libvirt-bin bridge-utils virtinst libguestfs-tools
 
-  #ubuntu2004 (>=1810?) toriaezu
+  //! ubuntu2004 (>=1810?) toriaezu
   $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst libguestfs-tools
+
+  //! fedora34 toriaezu
+  $ sudo dnf install 
+
+
+  //! この後一応 libvirtd 起動とか自動起動しとく
+  $ sudo systemctl enable --now libvirtd
 
 ubuntu2004での変更点とか?
 https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja の libvirt のところみる
