@@ -115,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/parted_mount.html">パーティション・マウント関連</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -273,115 +274,141 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ip link add [veth name] type veth peer name [veth peer name]
 </pre></div>
 </div>
-<p>net-tools と iprouteの比較</p>
+<p>net-tools と iprouteの比較
+ついでに nmcli も並べておく
+(ちょっとめもりたいのでまあとりあえずいつかかえよ)</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>動作</p></th>
 <th class="head"><p>net-tools</p></th>
 <th class="head"><p>iproute</p></th>
+<th class="head"><p>nmcli</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>arp table表示</p></td>
 <td><p>arp -a</p></td>
 <td><p>ip neigh</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p>arp -v</p></td>
 <td><p>ip -s neigh</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>arp tableエントリ追加</p></td>
 <td><p>arp -s 192.168.1.1 1:2:3:4:5:6</p></td>
 <td><p>ip neigh add 192.168.1.1 lladdr 1:2:3:4:5:6 dev eth1</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>arp tableエントリ削除</p></td>
 <td><p>arp -i eth1 -d 192.168.1.1</p></td>
 <td><p>ip neigh del 192.168.1.1 dev eth1</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>インタフェースアドレス表示</p></td>
 <td><p>ifconfig -a</p></td>
 <td><p>ip a</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>interface link down</p></td>
 <td><p>ifconfig eth0 down</p></td>
 <td><p>ip link set down dev eth0</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>interface link up</p></td>
 <td><p>ifconfig eth0 up</p></td>
 <td><p>ip link set up dev eth0</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>interface add addr</p></td>
 <td><p>ifconfig eth0 192.168.0.1</p></td>
 <td><p>ip addr add 192.168.0.1/24 dev eth0</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>set mtu</p></td>
 <td><p>ifconfig eth0 mtu 9000</p></td>
 <td><p>ip link set eth0 mtu 9000</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p>netstat</p></td>
 <td><p>ss</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td></td>
 <td><p>netstat -neopa</p></td>
 <td><p>ss -neopa</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td></td>
 <td><p>netstat -g</p></td>
 <td><p>ip maddr</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>ip table 表示</p></td>
 <td><p>route</p></td>
 <td><p>ip route</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>set default gate way</p></td>
 <td><p>route add default gw 192.168.1.1</p></td>
 <td><p>ip route add default via 192.168.0.1</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <p>brctl と iprouteの比較</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>動作</p></th>
 <th class="head"><p>brctl</p></th>
 <th class="head"><p>iproute</p></th>
+<th class="head"><p>nmcli</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>ブリッジ追加</p></td>
 <td><p>brctl addbr [bridge]</p></td>
 <td><p>ip link add [bridge] type bridge</p></td>
+<td><p>nmcli con add type bridge ifname [bridge]</p></td>
 </tr>
 <tr class="row-odd"><td><p>ブリッジ削除</p></td>
 <td><p>brctl delbr [bridge]</p></td>
 <td><p>ip link del [bridge]</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>対象のブリッジのIF表示</p></td>
 <td><p>brctl show [bridge]</p></td>
-<td><p>ip link show master [bridge] (or bridge link show [bridge] ※期待通りに動作しない</p></td>
+<td><p>ip link show master [bridge] (or bridge link show [bridge] ※ 期待通りに動作しない</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>全ブリッジのIF表示</p></td>
 <td><p>brctl show</p></td>
 <td><p>bridge link show</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>IF追加</p></td>
 <td><p>brctl addif [bridge] [if]</p></td>
 <td><p>ip link set dev [if] master [bridge]</p></td>
+<td><p>nmcli con add [bridge(con)] bridge-slave ifname [if] master [bridge(con)]</p></td>
 </tr>
 <tr class="row-odd"><td><p>IF削除</p></td>
 <td><p>brctl delif [bridge] [if]</p></td>
 <td><p>ip link set dev [if] nomaster</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
