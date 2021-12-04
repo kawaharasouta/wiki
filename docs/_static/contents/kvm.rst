@@ -316,10 +316,15 @@ console接続について
 clone
 =========
 
+virt-sysprep の man より
+You do not need to run virt-sysprep as root.  In fact we'd generally recommend that you don't.  The time you might want to run it as root is when you need root in order to access the disk image, but even in this case it would be better to change the permissions on the disk image to be writable as the non-root user running virt-sysprep.
+らしいので，下のコマンドsudoなしのがいいけど，上にも書いてあるように，libvirtのディレクトリはだいたいsudoないとたどり着けないので，
+そのあたりも考えて手順を作る必要がありそう．
+
 ::
 
-  $ virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img   # .imgを作成しておく必要はない
-  $ sudo virt-sysprep -d [vm_clone] --enable dhcp-client-state,machine-id,net-hwaddr             # dhcp clientリースだけで良いはずだが一応
+  $ virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img    # .imgを作成しておく必要はない
+  $ sudo virt-sysprep -d [vm_clone]                   # operations は 指定しないとすべて (というか man には most と書いてあるけど) になるはずなので指定しない．[;w
 
 and change hostname 
 
