@@ -324,9 +324,12 @@ You do not need to run virt-sysprep as root.  In fact we'd generally recommend t
 ::
 
   $ virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img    # .imgを作成しておく必要はない
-  $ sudo virt-sysprep -d [vm_clone]                   # operations は 指定しないとすべて (というか man には most と書いてあるけど) になるはずなので指定しない．[;w
+  $ sudo virt-sysprep -d [vm_clone]                   # operations は 指定しないとすべて (というか man には most と書いてあるけど) になるはずなので指定しない．
 
 and change hostname 
+
+
+clone 用の template を作る場合，先に virt-sysprep しておいて，それを virt-clone するといい．
 
 delete vm
 ==============

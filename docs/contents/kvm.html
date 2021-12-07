@@ -573,10 +573,11 @@ You do not need to run virt-sysprep as root.  In fact we'd generally recommend t
 らしいので，下のコマンドsudoなしのがいいけど，上にも書いてあるように，libvirtのディレクトリはだいたいsudoないとたどり着けないので，
 そのあたりも考えて手順を作る必要がありそう．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virt-clone --original [vm_org] --name [vm_clone] --file /var/lib/libvirt/images/[vm_clone].img    # .imgを作成しておく必要はない
-$ sudo virt-sysprep -d [vm_clone]                   # operations は 指定しないとすべて (というか man には most と書いてあるけど) になるはずなので指定しない．[;w
+$ sudo virt-sysprep -d [vm_clone]                   # operations は 指定しないとすべて (というか man には most と書いてあるけど) になるはずなので指定しない．
 </pre></div>
 </div>
 <p>and change hostname</p>
+<p>clone 用の template を作る場合，先に virt-sysprep しておいて，それを virt-clone するといい．</p>
 </div>
 <div class="section" id="delete-vm">
 <h2>delete vm<a class="headerlink" href="#delete-vm" title="このヘッドラインへのパーマリンク">¶</a></h2>
