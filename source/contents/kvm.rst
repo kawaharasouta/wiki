@@ -701,7 +701,7 @@ diskとかでよくLVMってあるけど，よくわからなくて何もしな�
 
   Command (m for help): t         ### パテタイプ変更
   Partition number (1-3,5, default 5): 3            ### sda3なのでね
-  Hex code (type L to list all codes): 8e           ### 8eがLVM
+  Hex code (type L to list all codes): 8e           ### 8eがLVM．ただこれディストリビューションごとに違いそう．fedora34 だと 30 だった．随時確認しろ．
   
   Changed type of partition 'Linux' to 'Linux LVM'.
 
