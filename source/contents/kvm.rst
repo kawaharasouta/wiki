@@ -885,7 +885,7 @@ diskとかでよくLVMってあるけど，よくわからなくて何もしな�
     Block device           253:1
 
   // ファイルシステムの拡張 (少し時間かかる)
-  $ sudo resize2fs /dev/vgubuntu2004/root
+  $ sudo resize2fs /dev/vgubuntu2004/root           # ←は ext4 とかの場合らしく，XFS の場合 (fedora34 というか RHEL 系とか) xfs_growfs コマンドにすればいい．引数も一緒．
   resize2fs 1.45.5 (07-Jan-2020)
   Filesystem at /dev/vgubuntu2004/root is mounted on /; on-line resizing required
   old_desc_blocks = 1, new_desc_blocks = 51
