@@ -118,6 +118,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">パーティション・マウント関連</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">新しいディスクのパテを切ってマウントするまでの一般的な方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#memo">その他操作の適当なmemo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lvm">LVM パテ切りから新規作成・追加など</a></li>
 </ul>
 </li>
 </ul>
@@ -297,6 +298,70 @@ $ sudo vim /etc/fstab
 $ sudo mkfs -t vfat -F 32 /dev/sdb1
 </pre></div>
 </div>
+</div>
+<div class="section" id="lvm">
+<h2>LVM パテ切りから新規作成・追加など<a class="headerlink" href="#lvm" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>/dev/vdb を利用して LV を作成してマウントする．
+その後 /dev/vdc を追加して LV を拡張する．
+参考: <a class="reference external" href="https://qiita.com/ngyuki/items/93da394fd0847ed5155e#lvm">https://qiita.com/ngyuki/items/93da394fd0847ed5155e#lvm</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install lvm2   //! ubuntu はいらん
+$ sudo yum install lvm2
+
+# parted -l
+  Error: /dev/vdb: unrecognised disk label
+  Model: Virtio Block Device (virtblk)
+  Disk /dev/vdb: 2147MB
+  Sector size (logical/physical): 512B/512B
+  Partition Table: unknown
+  Disk Flags:
+
+  Error: /dev/vdc: unrecognised disk label
+  Model: Virtio Block Device (virtblk)
+  Disk /dev/vdc: 2147MB
+  Sector size (logical/physical): 512B/512B
+  Partition Table: unknown
+  Disk Flags:
+
+# parted -l
+# parted -s /dev/vdb print free
+
+//! ひとまず MBR にラベルを設定
+# parted /dev/vdb mklabel msdos
+
+//! パテを切る例えば今回２つ切ることにする サイズは適当
+# parted -s -a optimal /dev/vdb -- mkpart primary 1 -1
+
+//! lvm ラベルを設定
+# parted -s -a optimal /dev/vdb set 1 lvm on
+
+//! パテ切りとラベル設定とかはこんな感じでワンライナーでも行けるらしい
+# parted -s -a optimal /dev/vdb -- mklabel msdos mkpart primary 1 -1 set 1 lvm on
+</pre></div>
+</div>
+<p>LV の作成まで</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//! さっき作ったパテを pv(phisical volume) に登録
+# pvcreate /dev/vdb1              //! 複数指定も可
+  Physical volume &quot;/dev/vdb1&quot; successfully created.
+# pvdisplay                       //! 追加されているか確認
+
+//! vg(volume group) 作成
+# vgcreate vg01 /dev/sdb1         //! 複数指定も可．
+# vgdisplay                       //! 作成できているか確認
+
+//! lv(logical volume) 作成
+# lvcreate --name lv01 --size 1GB vg01
+# lvdisplay                       //! 作成できているか確認
+</pre></div>
+</div>
+<p>ここまでやったら /dev/mapper/vg01-lv01 とかみたいなのができているはずなので，フォーマットしてマウントする．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># mkfs -t ext4 /dev/mapper/vg01-lv01</span>
+<span class="c1"># mkdir -pv /mnt/vg01-lv01</span>
+<span class="c1"># mout -t ext4 /dev/mapper/vg01-lv01 /mnt/vg01-lv01</span>
+</pre></div>
+</div>
+<p>これで新規作成は完了．</p>
+<p>ここから追加手順．まあほとんど変わらんので，新規作成手順ができればできる．
+いつか気が向いたら書く．</p>
 </div>
 </div>
 
