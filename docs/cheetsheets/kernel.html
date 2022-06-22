@@ -354,7 +354,7 @@ $ sudo apt update
 他のバージョンは適当に探せhttps://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir kernel &amp;&amp; cd $_
 $ wget https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/linux-4.15.1.tar.xz
-$ tar -xvJf linux-4.15.1.tar.xz
+$ tar -xvJf linux-4.15.1.tar.xz -C /usr/src/kernels     //! カーネルとディストリ基本ぽいののソースは /usr/src 配下においたほうが良いぞという話．
 </pre></div>
 </div>
 <p>ビルドする</p>

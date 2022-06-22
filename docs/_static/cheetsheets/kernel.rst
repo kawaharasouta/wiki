@@ -119,7 +119,7 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
 
   $ mkdir kernel && cd $_
   $ wget https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/linux-4.15.1.tar.xz
-  $ tar -xvJf linux-4.15.1.tar.xz
+  $ tar -xvJf linux-4.15.1.tar.xz -C /usr/src/kernels     //! カーネルとディストリ基本ぽいののソースは /usr/src 配下においたほうが良いぞという話．
 
 ビルドする
 
