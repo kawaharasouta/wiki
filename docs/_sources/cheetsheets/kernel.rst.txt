@@ -114,6 +114,7 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
 
 カーネルのソースをダウンロードして展開する．
 他のバージョンは適当に探せhttps://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/
+↑ なんか過去の僕は mirror.kernel.org から探せといっているようだが，普通に https://www.kernel.org/ からでいいよね．
 
 ::
 
