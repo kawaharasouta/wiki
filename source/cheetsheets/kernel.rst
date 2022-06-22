@@ -146,8 +146,8 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
   $ sudo apt install libssl-dev bc libelf-dev(make install の時)
   $ make 
 
-  # モジュールをビルド
-  $ sudo make module_install
+  # モジュールをビルド & インストール (/lib/modules/kernel version>-<config local version> 配下)
+  $ sudo make modules_install
 
   # なんかこの後下のコマンドしたらよしなにやってくれます
   $ sudo make install 

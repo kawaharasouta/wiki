@@ -379,8 +379,8 @@ $ make defconfig      # default らしい．わかんなかったら変にいじ
 $ sudo apt install libssl-dev bc libelf-dev(make install の時)
 $ make
 
-# モジュールをビルド
-$ sudo make module_install
+# モジュールをビルド &amp; インストール (/lib/modules/kernel version&gt;-&lt;config local version&gt; 配下)
+$ sudo make modules_install
 
 # なんかこの後下のコマンドしたらよしなにやってくれます
 $ sudo make install
