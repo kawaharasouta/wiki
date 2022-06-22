@@ -149,11 +149,14 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
   # モジュールをビルド & インストール (/lib/modules/kernel version>-<config local version> 配下)
   $ sudo make modules_install
 
-  # なんかこの後下のコマンドしたらよしなにやってくれます
+  # 下のコマンドしたら，Image のコピー・initramfs の作成配置・systemtap ファイルの配置などなどよしなにやってくれます
   $ sudo make install 
 
+
+  //!!!! 以下は過去の文章などちょっと memo 的に残しておく
+  //!!!! initramfs 作成と systemtap 周りについてはそのうちちゃんとした文章で書きたい．
   # /boot にカーネルをコピー
-  $ sudo cp -v /arch/x86_64/boot/bzImage /boot/vmlinux-4.15.1
+  $ sudo cp -v /arch/x86_64/boot/bzImage /boot/vmlinuz-4.15.1
 
   # 初期RAMディスク(initrd)を作成 ubuntuだとinitramfs?
   これ正直よくわからない．
