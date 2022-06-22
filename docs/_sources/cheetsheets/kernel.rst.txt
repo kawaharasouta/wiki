@@ -44,6 +44,8 @@
 grubで起動時に選べるカーネルの種類を見る
 ========================================
 
+※ あとの章で述べているが，grubby でやれという話がある．
+
 ::
   
   $ sudo grep menuentry /boot/grub/grub.cfg
@@ -60,6 +62,8 @@ grubで起動時に選べるカーネルの種類を見る
 標準で起動するカーネルを指定
 ===============================
 
+※ あとの章で述べているが，grubby でやれという話がある．
+
 ::
 
   $ sudo vim /etc/default/grub
@@ -74,6 +78,26 @@ grubで起動時に選べるカーネルの種類を見る
 メインメニュー>サブメニュー とかって表記したらいいらしいんだけど，正直よくわからねえ
 http://syuu1228.hatenablog.com/entry/20130120/1358690996
 
+
+grubby での操作
+=====================
+
+ちょっとしたカーネル関連の設定変更は grubby でやれという話がさっきから出ている．
+
+::
+
+  //! 起動できるカーネルの種類の確認
+  $ sudo grubby --info=ALL
+
+  //! デフォルトで起動するカーネルの確認
+  $ sudo grubby --default-kernel
+  $ sudo grubby --default-index
+
+  //!
+  $ sudo grubby --set-default
+  $ sudo grubby --set-default-index=[n]
+
+他にもいろいろありそうだがとりあえずで．
 
 dbgsymパッケージリポジトリ導入
 ==============================

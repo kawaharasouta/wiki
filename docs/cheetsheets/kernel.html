@@ -159,6 +159,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id3">デフォルトでロードされるモジュールをロードされなくする</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#grub">grubで起動時に選べるカーネルの種類を見る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#kernel-up-target">標準で起動するカーネルを指定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grubby">grubby での操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dbgsym">dbgsymパッケージリポジトリ導入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">カーネル再構築</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">便利なカーネルコンフィグ</a><ul>
@@ -296,6 +297,7 @@ $ sudo reboot
 </div>
 <div class="section" id="grub">
 <h2>grubで起動時に選べるカーネルの種類を見る<a class="headerlink" href="#grub" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>※ あとの章で述べているが，grubby でやれという話がある．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo grep menuentry /boot/grub/grub.cfg
   ...
   menuentry &#39;Ubuntu, with Linux 5.0.0-25-generic&#39; --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option &#39;gnulinux-5.0.0-25-generic-advanced-e99082e4-8470-4019-9dcc-4535f97283ac&#39; {
@@ -307,6 +309,7 @@ $ sudo reboot
 </div>
 <div class="section" id="kernel-up-target">
 <span id="id4"></span><h2>標準で起動するカーネルを指定<a class="headerlink" href="#kernel-up-target" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>※ あとの章で述べているが，grubby でやれという話がある．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/default/grub
 
   #indexで指定する
@@ -318,6 +321,23 @@ $ sudo reboot
 </div>
 <p>メインメニュー&gt;サブメニュー とかって表記したらいいらしいんだけど，正直よくわからねえ
 <a class="reference external" href="http://syuu1228.hatenablog.com/entry/20130120/1358690996">http://syuu1228.hatenablog.com/entry/20130120/1358690996</a></p>
+</div>
+<div class="section" id="grubby">
+<h2>grubby での操作<a class="headerlink" href="#grubby" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ちょっとしたカーネル関連の設定変更は grubby でやれという話がさっきから出ている．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//! 起動できるカーネルの種類の確認
+$ sudo grubby --info=ALL
+
+//! デフォルトで起動するカーネルの確認
+$ sudo grubby --default-kernel
+$ sudo grubby --default-index
+
+//!
+$ sudo grubby --set-default
+$ sudo grubby --set-default-index=[n]
+</pre></div>
+</div>
+<p>他にもいろいろありそうだがとりあえずで．</p>
 </div>
 <div class="section" id="dbgsym">
 <h2>dbgsymパッケージリポジトリ導入<a class="headerlink" href="#dbgsym" title="このヘッドラインへのパーマリンク">¶</a></h2>
