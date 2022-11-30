@@ -1,74 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>golangでちょっと文字列関連性能計測した時のいろんなメモ &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="virshのソースコードを読んだ時のメモ" href="virsh_source.html" />
     <link rel="prev" title="規格とか思想とか" href="standard.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> wiki
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,19 +37,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
@@ -115,8 +65,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/parted_mount.html">パーティション・マウント関連</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Technote:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Technote:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
@@ -150,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
@@ -159,102 +110,61 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
-<p class="caption"><span class="caption-text">system tracing:</span></p>
+<p class="caption" role="heading"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
-<p class="caption"><span class="caption-text">poems:</span></p>
+<p class="caption" role="heading"><span class="caption-text">poems:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
 </ul>
-<p class="caption"><span class="caption-text">documents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
 </ul>
-<p class="caption"><span class="caption-text">test:</span></p>
+<p class="caption" role="heading"><span class="caption-text">test:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">wiki</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>golangでちょっと文字列関連性能計測した時のいろんなメモ</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">golangでちょっと文字列関連性能計測した時のいろんなメモ</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/technote/golang_perf.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="golang">
-<h1>golangでちょっと文字列関連性能計測した時のいろんなメモ<a class="headerlink" href="#golang" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
-<h2>この調査に至った動機<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+             
+  <section id="golang">
+<h1>golangでちょっと文字列関連性能計測した時のいろんなメモ<a class="headerlink" href="#golang" title="このヘッドラインへのパーマリンク"></a></h1>
+<section id="id1">
+<h2>この調査に至った動機<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>libvirt-go を使ってちょっとしたプログラムを書いていて，
 各ドメインから情報をゲットして雑に文字列をいじらなきゃいけないなーと思っていたんだが，
 stringや[]byteでの文字列操作に関するパフォーマンスについて触れた記事がいくつかあって，少しいじいじした．</p>
-</div>
-<div class="section" id="id2">
-<h2>文字列の結合とかそこら辺の話<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="id2">
+<h2>文字列の結合とかそこら辺の話<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>文字列の操作に関して，↑に書いたようにstringと[]byteで文字列の操作をできるんだけど，
 結合に関してもそのどちらを使うかとかメソッドをどうするかで当然パフォーマンスは変わる．
 ところで，stringはgolangではどうもimmutable(不変)なため，
@@ -268,9 +178,9 @@ stringや[]byteでの文字列操作に関するパフォーマンスについ�
 <li><p><a class="reference external" href="https://qiita.com/spiegel-im-spiegel/items/16ab7dabbd0749281227">https://qiita.com/spiegel-im-spiegel/items/16ab7dabbd0749281227</a></p></li>
 <li><p><a class="reference external" href="https://text.baldanders.info/golang/join-strings-2/">https://text.baldanders.info/golang/join-strings-2/</a>     ☆</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h2>僕の状況と↑の話<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="id3">
+<h2>僕の状況と↑の話<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>↑の話なんですが，[]stringが与えられて，それを結合する話でした．
 strings.Joinは第一引数が[]stringだしね．
 ところで今の僕の状況は，
@@ -372,55 +282,38 @@ ok      dev/string      9.631s
 ここの考察部分あとでかこ〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜</p>
 <p>ちなみに，また別のところで計測はしたけど，
 []byteをstringに変換するのも別にパフォーマンス落ちなかったので，とりあえず僕のパターンでは[]byteにして処理させてstringに戻すのが良さげだと思った．</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="virsh_source.html" class="btn btn-neutral float-right" title="virshのソースコードを読んだ時のメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="standard.html" class="btn btn-neutral float-left" title="規格とか思想とか" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="virsh_source.html" class="btn btn-neutral float-right" title="virshのソースコードを読んだ時のメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
-
-    </p>
+    <p>&#169; Copyright 2021, KAWAHARAsouta.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

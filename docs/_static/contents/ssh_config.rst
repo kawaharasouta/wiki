@@ -39,23 +39,45 @@ config for git
 ssh-agent とか Forward の設定
 ===============================
 
-ローカルの設定
+サーバ設定
 ----------------
-
-ssh-agent に鍵を設定する
 
 ::
 
-  $ ssh-add -K [path to secretkey]
-  $ ssh-add -l  // 確認
+  $ vim /etc/ssh/sshd_config
 
-configを書き換える
+
+ローカル設定
+----------------
+
+※ config で ForwardAgent を有効化するとき
 
 ::
 
   $ vim ~/.ssh/config
   (ssh-agentを利用したいホストのところに)
   + ForwardAgent yes
+
+ssh-agent の起動と鍵登録
+※ 端末開くごとにこれらやらなきゃいけない(ssh-agent が同じ数いる)んだけど，その辺どういう仕組みというかつながりになっているんだろう．
+  ログインセッションのスライスごとに制御しているとか?
+
+::
+
+  $ eval `ssh-agent` 
+    → なんかこれ，exec ssh-agent bash とかのほうがいいかも? こっちだと端末殺したら一緒に ssh-agent も死んでくれそう．
+      ただコマンド試してないから微妙に動かんかも．調整はそのうちする．
+  $ ssh-add -K [path to secretkey]
+  $ ssh-add -l  // 確認
+
+ssh 先で鍵が forward されているか確認  
+参考: https://docs.github.com/ja/developers/overview/using-ssh-agent-forwarding#testing-ssh-agent-forwarding
+
+::
+
+  $ echo "$SSH_AUTH_SOCK"
+  > /tmp/ssh-4hNGMk8AZX/agent.79453
+
 
 踏み台設定
 ============

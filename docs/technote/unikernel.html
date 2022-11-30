@@ -1,74 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>unikernelについて &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="related computer science" href="cs.html" />
     <link rel="prev" title="コンテナ技術周辺について" href="container.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> wiki
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,19 +37,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
@@ -115,8 +65,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/parted_mount.html">パーティション・マウント関連</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Technote:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Technote:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
@@ -181,7 +132,7 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
@@ -190,94 +141,53 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
-<p class="caption"><span class="caption-text">system tracing:</span></p>
+<p class="caption" role="heading"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
-<p class="caption"><span class="caption-text">poems:</span></p>
+<p class="caption" role="heading"><span class="caption-text">poems:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
 </ul>
-<p class="caption"><span class="caption-text">documents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
 </ul>
-<p class="caption"><span class="caption-text">test:</span></p>
+<p class="caption" role="heading"><span class="caption-text">test:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">wiki</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>unikernelについて</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">unikernelについて</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/technote/unikernel.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="unikernel">
-<h1>unikernelについて<a class="headerlink" href="#unikernel" title="このヘッドラインへのパーマリンク">¶</a></h1>
+             
+  <section id="unikernel">
+<h1>unikernelについて<a class="headerlink" href="#unikernel" title="このヘッドラインへのパーマリンク"></a></h1>
 <p>クラウド環境で，シングルプロセスなVMを並列に展開するみたいな用途が結構ある．
 SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみたいなやつとか)．
 その場合，汎用OS使ってVMたてるのって汎用性が無駄だしパフォーマンスが出ない．
@@ -286,14 +196,14 @@ SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみ
 <p>unikernalの情報
 <a class="reference external" href="https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0">https://qiita.com/t-imada/items/ed6a76f5b257f5608ad0</a>
 <a class="reference external" href="https://proc-cpuinfo.fixstars.com/2020/03/unikernel/">https://proc-cpuinfo.fixstars.com/2020/03/unikernel/</a></p>
-<div class="section" id="mirageoshelloworld">
-<h2>mirageOSでHelloWorldする<a class="headerlink" href="#mirageoshelloworld" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="mirageoshelloworld">
+<h2>mirageOSでHelloWorldする<a class="headerlink" href="#mirageoshelloworld" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>インストール
 <a class="reference external" href="https://mirage.io/wiki/install">https://mirage.io/wiki/install</a></p>
 <p>はろわ
 <a class="reference external" href="https://mirage.io/wiki/hello-world">https://mirage.io/wiki/hello-world</a></p>
-<div class="section" id="id1">
-<h3>環境<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id1">
+<h3>環境<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OS</span><span class="p">:</span> <span class="n">ubuntu18</span><span class="mf">.04</span>
 <span class="n">kernel</span><span class="p">:</span> <span class="mf">4.15.0</span><span class="o">-</span><span class="mi">91</span><span class="o">-</span><span class="n">generic</span>
 <span class="n">kvm</span>
@@ -301,9 +211,9 @@ SaaSのさらに上みたいなやつとかもあったりする(AWSのlambdaみ
 <span class="n">opam</span><span class="p">:</span> <span class="mf">2.0.4</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h3>手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="id2">
+<h3>手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>kvmはkvmのとこみろや</p>
 <p>ocamlとopamのインストール</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:avsm/ppa
@@ -311,9 +221,9 @@ $ sudo apt update
 $ sudo apt install opam ocaml gcc make bubblewrap m4 pkg-config
 </pre></div>
 </div>
-</div>
-<div class="section" id="opam">
-<h3>opam環境構築<a class="headerlink" href="#opam" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="opam">
+<h3>opam環境構築<a class="headerlink" href="#opam" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ opam init
   いろいろインストールで聞かれるから適当にyしとけ
 $ vim ~/.bashrc
@@ -321,18 +231,18 @@ $ vim ~/.bashrc
 $ source ~/.bashrc
 </pre></div>
 </div>
-</div>
-<div class="section" id="mirage">
-<h3>mirageパッケージのインストール<a class="headerlink" href="#mirage" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="mirage">
+<h3>mirageパッケージのインストール<a class="headerlink" href="#mirage" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ opam install mirage
 $ mirage    #確認
 </pre></div>
 </div>
-</div>
-<div class="section" id="mirageapp">
-<h3>mirageAPP<a class="headerlink" href="#mirageapp" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="section" id="hello">
-<h4>hello言うやつ<a class="headerlink" href="#hello" title="このヘッドラインへのパーマリンク">¶</a></h4>
+</section>
+<section id="mirageapp">
+<h3>mirageAPP<a class="headerlink" href="#mirageapp" title="このヘッドラインへのパーマリンク"></a></h3>
+<section id="hello">
+<h4>hello言うやつ<a class="headerlink" href="#hello" title="このヘッドラインへのパーマリンク"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/mirage/mirage-skeleton.git ~/git/mirage-skeleton
 $ cd ~/git/mirage-skeleton
 $ mirage configure -t hvt     # -tはターゲット指定? これでコンパイルに必要なファイルが流れてくる． autotoolsみたいなのりだと思う． Makefileも出てくる
@@ -405,9 +315,9 @@ $ ./hello
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aaaaaa</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h4>なんもしないやつ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h4>
+</section>
+<section id="id3">
+<h4>なんもしないやつ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h4>
 <p>とりあえずunixappで動かす</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/git/mirage-skeleton/tutorial/noop
 $ mirage configure -t unix
@@ -418,10 +328,10 @@ $ echo $?     # リターンコード確認するけど普通に0だからなん
   0
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="static-website-tls">
-<h3>static-website-tlsを動かそうとしてみたら<a class="headerlink" href="#static-website-tls" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+</section>
+<section id="static-website-tls">
+<h3>static-website-tlsを動かそうとしてみたら<a class="headerlink" href="#static-website-tls" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>make dependでエラー</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The following dependencies couldn&#39;t be met:
   - mirage-unikernel-https-unix → conduit-mirage &lt; 3.0.0 → ocaml &gt;= 4.07.0
@@ -433,25 +343,25 @@ $ echo $?     # リターンコード確認するけど普通に0だからなん
 </pre></div>
 </div>
 <p>ocamlのバージョン4.07.0にする必要ありそう．</p>
-</div>
-<div class="section" id="id4">
-<h3>参考<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="id4">
+<h3>参考<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>MirageOSのHelloWorldやってみるやつ
 <a class="reference external" href="https://qiita.com/t-imada/items/6ee299653ac063532b4f">https://qiita.com/t-imada/items/6ee299653ac063532b4f</a></p>
-</div>
-</div>
-<div class="section" id="osv">
-<h2>OSv<a class="headerlink" href="#osv" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+</section>
+<section id="osv">
+<h2>OSv<a class="headerlink" href="#osv" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>2014年のアドベントカレンダー: <a class="reference external" href="https://qiita.com/advent-calendar/2014/osv">https://qiita.com/advent-calendar/2014/osv</a>
 いろいろ記事あるからあとで参照したい．capstanの使い方とか．</p>
-<div class="section" id="id5">
-<h3>やってみる<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id5">
+<h3>やってみる<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install libvirt0
 </pre></div>
 </div>
-</div>
-<div class="section" id="apps">
-<h3>apps<a class="headerlink" href="#apps" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="apps">
+<h3>apps<a class="headerlink" href="#apps" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/cloudius-systems/osv.git &amp; cd $_
 $ git submodule update --init --recursive
 $ sudo ./scripts/setup.py             ### 必要なパッケージ類とかインストールしてる．
@@ -462,9 +372,9 @@ ctrl A + X で抜ける
 </pre></div>
 </div>
 <p>ちなみにビルドした後のイメージの場所は /home/khwarizmi/git/osv/build/last/usr.img</p>
-</div>
-<div class="section" id="id6">
-<h3>サンプル以外の動作(と言うかアプリと本来はすべきだけどまだそこまでしてない)をさせる時<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="id6">
+<h3>サンプル以外の動作(と言うかアプリと本来はすべきだけどまだそこまでしてない)をさせる時<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>module.py のところに起動時のコマンドみたいなのがあるからそこいじる．
 例えばiperfをclientにしたい時．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp -f ./apps/iperf/ ./apps/iperf-client/
@@ -474,9 +384,9 @@ default = api.run(&#39;*************&#39;)          /// *****のところがコ�
 </div>
 <p>ちなみにusr.manifstにファイルの配置とかが書いてある．</p>
 <p>これ，起動時に-eでコマンド変えられるからmodule.pyいじる必要なさげ．</p>
-</div>
-<div class="section" id="id7">
-<h3>複数台動かした時のメモ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="id7">
+<h3>複数台動かした時のメモ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>とりあえずここではiperf server と client を動かしてみることにする．
 ↑のclientはすでに作ってあるとする．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/// とりあえずイメージをどっかにmvする．デフォルトにおいておくと違うイメージを動かす際にビルドし直したら前のイメージが消えちゃうのでね．
@@ -493,24 +403,24 @@ $ sudo ./scripts/run.py sudo ./scripts/run.py -nv --novnc --nogdb
 <p>-b [bridge] で接続するブリッジを指定できるけど，dhcpいないとアドレス振られない．
 もちろん普通にkvmのやつでよい．て言うかkvmの(と言うかlibvirtの?)dhcpってどこでやってるんだろうね．
 natはiptablesだってよく聞くけど．</p>
-</div>
-<div class="section" id="virsh">
-<h3>virsh で管理させる<a class="headerlink" href="#virsh" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="virsh">
+<h3>virsh で管理させる<a class="headerlink" href="#virsh" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>ビルドして出てくるimgを任意の場所に保存して，xmlファイルのsourceのところを合わせて変更すればいいだけ．
 ちなみにホスト名はosvで，net-dhcpとか見たらosvって出てくる．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/etc/libvirt/qemu/~~~~~~.img&#39;</span><span class="o">/&gt;</span>
 <span class="o">+</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/home/khwarizmi/git/osv/build/last/~~~~~~.img&#39;</span><span class="o">/&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="capstan">
-<h3>capstan でやってみる<a class="headerlink" href="#capstan" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="capstan">
+<h3>capstan でやってみる<a class="headerlink" href="#capstan" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>osvを簡単に動かすためのCUIツール
 なんかlibvirtというかvirshと言うかくらいの感じある．</p>
 <p>rep: <a class="reference external" href="https://github.com/cloudius-systems/capstan">https://github.com/cloudius-systems/capstan</a></p>
 <p>using capstan wiki: <a class="reference external" href="https://github.com/cloudius-systems/osv/wiki/Build-and-run-apps-on-OSv-using-Capstan">https://github.com/cloudius-systems/osv/wiki/Build-and-run-apps-on-OSv-using-Capstan</a></p>
-<div class="section" id="install">
-<h4>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<section id="install">
+<h4>install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク"></a></h4>
 <p>installガイド: <a class="reference external" href="https://github.com/cloudius-systems/capstan/blob/master/Documentation/Installation.md">https://github.com/cloudius-systems/capstan/blob/master/Documentation/Installation.md</a></p>
 <p>go &gt;= 1.13</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install qemu-system-x86 qemu-utils
@@ -519,9 +429,9 @@ $ go install
 $ capstan --help
 </pre></div>
 </div>
-</div>
-<div class="section" id="build-run">
-<h4>build &amp; run<a class="headerlink" href="#build-run" title="このヘッドラインへのパーマリンク">¶</a></h4>
+</section>
+<section id="build-run">
+<h4>build &amp; run<a class="headerlink" href="#build-run" title="このヘッドラインへのパーマリンク"></a></h4>
 <p>example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p apps/java-example &amp; cd $_
 $ capstan package init \
@@ -551,10 +461,10 @@ $ capstan package compose --pull-missing java-example
 $ capstan run java-example -p qemu --boot default
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="minecraft-servermemo">
-<h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+</section>
+<section id="minecraft-servermemo">
+<h3>minecraft serverを動かそうとした時のmemo<a class="headerlink" href="#minecraft-servermemo" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>apps 内のサンプルアプリケーションで，kernelにおくアプリケーションの設定ファイルとかは多分usr.manifestに書かれてる．
 必要なサブシステムは多分moduleのところとかにあって，必要なものはmodule.pyにrequireとかってしてあって，それを取りにいくと思う．
 こけてるところはca-certificateのところな感じ．
@@ -624,25 +534,25 @@ Traceback (most recent call last):
 </pre></div>
 </div>
 <p>module/openjdk8-from-host/module.pyをちょっと編集してみたりはした．</p>
-</div>
-</div>
-<div class="section" id="includeos">
-<h2>includeOS<a class="headerlink" href="#includeos" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+</section>
+<section id="includeos">
+<h2>includeOS<a class="headerlink" href="#includeos" title="このヘッドラインへのパーマリンク"></a></h2>
 <p><a class="reference external" href="https://github.com/includeos/IncludeOS">https://github.com/includeos/IncludeOS</a>
 <a class="reference external" href="https://includeos.readthedocs.io/en/latest/Getting-started.html">https://includeos.readthedocs.io/en/latest/Getting-started.html</a></p>
-<div class="section" id="location">
-<h3>location<a class="headerlink" href="#location" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="location">
+<h3>location<a class="headerlink" href="#location" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>デフォルトのプロジェクトpathは /usr/local/includeos だけど↓で設定．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo export INCLUDEOS_PREFIX=&#39;$HOME&#39;/includeos &gt;&gt; .bashrc
 $ echo export PATH=&#39;$PATH&#39;:&#39;$INCLUDEOS_PREFIX&#39;/bin &gt;&gt; $HOME/.bashrc
 </pre></div>
 </div>
-</div>
-<div class="section" id="id8">
-<h3>install<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
-<div class="section" id="dependency">
-<h3>dependency<a class="headerlink" href="#dependency" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="id8">
+<h3>install<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク"></a></h3>
+</section>
+<section id="dependency">
+<h3>dependency<a class="headerlink" href="#dependency" title="このヘッドラインへのパーマリンク"></a></h3>
 <ul class="simple">
 <li><p>The conan package manager (1.13.1 or newer)    <a class="reference external" href="https://docs.conan.io/en/latest/installation.html">https://docs.conan.io/en/latest/installation.html</a></p></li>
 <li><p>cmake, make, nasm (x86/x86_64 only)</p></li>
@@ -652,56 +562,39 @@ $ echo export PATH=&#39;$PATH&#39;:&#39;$INCLUDEOS_PREFIX&#39;/bin &gt;&gt; $HOM
 </pre></div>
 </div>
 <p>ちょっとconanがわからんかったのでいったんやめとく</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="container.html" class="btn btn-neutral float-left" title="コンテナ技術周辺について" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cs.html" class="btn btn-neutral float-right" title="related computer science" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
-
-    </p>
+    <p>&#169; Copyright 2021, KAWAHARAsouta.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

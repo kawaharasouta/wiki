@@ -1,74 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>linuxのパケットの送受信について &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="ブートローダについてのメモ" href="boot.html" />
     <link rel="prev" title="NICの割り込みについて" href="interrupt.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> wiki
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,19 +37,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
@@ -115,8 +65,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/parted_mount.html">パーティション・マウント関連</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Technote:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Technote:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
@@ -148,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
@@ -157,96 +108,55 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
-<p class="caption"><span class="caption-text">system tracing:</span></p>
+<p class="caption" role="heading"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
-<p class="caption"><span class="caption-text">poems:</span></p>
+<p class="caption" role="heading"><span class="caption-text">poems:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
 </ul>
-<p class="caption"><span class="caption-text">documents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
 </ul>
-<p class="caption"><span class="caption-text">test:</span></p>
+<p class="caption" role="heading"><span class="caption-text">test:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">wiki</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>linuxのパケットの送受信について</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">linuxのパケットの送受信について</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/technote/kernel_packet.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="linux">
-<h1>linuxのパケットの送受信について<a class="headerlink" href="#linux" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id1">
-<h2>送信の時に使われるコアの話<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+             
+  <section id="linux">
+<h1>linuxのパケットの送受信について<a class="headerlink" href="#linux" title="このヘッドラインへのパーマリンク"></a></h1>
+<section id="id1">
+<h2>送信の時に使われるコアの話<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>この間L3フォアーディングの計測をしていて，あるインタフェースに4，あるインタフェースに1このコアを割り当ててた．
 ※ここでいる割り当てるとはRSSのところに書いたビットマスクを割り当てたと言う意味で，ポーリングとか言う意味ではない．※
 いろんな調査の関係で4コアのインタフェースから1コアのインタフェースに片方向だけのトラフィックを流していた．
@@ -254,55 +164,38 @@
 これはつまり，送信の場合もirqのビットマスクを見てコアが使われていると言うことになる．
 ここら辺の送信周りがどうなっているか調査したい．</p>
 <p>ちなみに感覚的に送信と受信のコアの使用率の関係は大体送信が受信の1/2くらいな感じがしてる．</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="boot.html" class="btn btn-neutral float-right" title="ブートローダについてのメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="interrupt.html" class="btn btn-neutral float-left" title="NICの割り込みについて" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="boot.html" class="btn btn-neutral float-right" title="ブートローダについてのメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
-
-    </p>
+    <p>&#169; Copyright 2021, KAWAHARAsouta.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

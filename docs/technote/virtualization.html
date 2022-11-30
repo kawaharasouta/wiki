@@ -1,74 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>ハイパーバイザ仮想化に関する内容 &mdash; wiki  ドキュメント</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/translations.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="コンテナ技術周辺について" href="container.html" />
     <link rel="prev" title="ブートローダについてのメモ" href="boot.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> wiki
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,19 +37,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contents/dpdk.html">DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/kvm.html">kvm</a></li>
@@ -115,8 +65,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/XDG.html">XDG Base Directry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ubuntu_desktop.html">ubuntu desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/parted_mount.html">パーティション・マウント関連</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Technote:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Technote:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="rss.html">linuxのRSSに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrupt.html">NICの割り込みについて</a></li>
@@ -178,7 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
 </ul>
-<p class="caption"><span class="caption-text">cheetsheets:</span></p>
+<p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
@@ -187,97 +138,56 @@
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
 </ul>
-<p class="caption"><span class="caption-text">system tracing:</span></p>
+<p class="caption" role="heading"><span class="caption-text">system tracing:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
 </ul>
-<p class="caption"><span class="caption-text">poems:</span></p>
+<p class="caption" role="heading"><span class="caption-text">poems:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
 </ul>
-<p class="caption"><span class="caption-text">documents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">documents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
 </ul>
-<p class="caption"><span class="caption-text">test:</span></p>
+<p class="caption" role="heading"><span class="caption-text">test:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">wiki</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>ハイパーバイザ仮想化に関する内容</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">ハイパーバイザ仮想化に関する内容</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/technote/virtualization.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="id1">
-<h1>ハイパーバイザ仮想化に関する内容<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+             
+  <section id="id1">
+<h1>ハイパーバイザ仮想化に関する内容<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h1>
 <p>※ここでの話は基本的にKVM/QEMUの話が前提．そうでない場合は注釈をつける．※</p>
-<div class="section" id="id2">
-<h2>仮想化の問題点<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<section id="id2">
+<h2>仮想化の問題点<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>現代のマシンの3大コンポーネントは CPU・メモリ・(データ/デバイス)IO の3つである．
 仮想マシンを動かすということは，上記の3つをなんらかの方法により動いているように見せるというものである．
 IOはハードウェアエミュレータで取り合えず仮想化ができそうだ．
@@ -306,8 +216,8 @@ CPUに~~~~~~
 それについて説明する．</p>
 <p>2020.10.01追記
 初期の回答についても少しだけ加える．</p>
-<div class="section" id="id3">
-<h3>初期の回答について<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id3">
+<h3>初期の回答について<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>「動的バイナリトランスレーション」というらしい．
 仮想化ソフトウェアがVMのセンシティブ命令をトラップして，ring3の命令としてCPUに投げる．
 今考えれば，VTをソフトウェア実装した感じののり．
@@ -316,9 +226,9 @@ QEMUとかは今でもこの方式のはず．
 また，(ここで書くことではない気がするけど)
 KVMはQEMUを基本的に利用していてCPUエミュレーションだけひったくってるみたいなイメージであってるはず．
 そのため，メモリとかディスクとかPCIとか他のエミュレーションは(特に変なことしてなければ)QEMUを使っているはず．</p>
-</div>
-<div class="section" id="xen">
-<h3>Xenの準仮想化について<a class="headerlink" href="#xen" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="xen">
+<h3>Xenの準仮想化について<a class="headerlink" href="#xen" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>Xenの仮想化手法について説明する．
 Xenは準仮想化，すなわち，ゲストOSに一部改変を加えることによって仮想化を実現している．
 具体的には，OSが実行されるリングプロテクションの権限を変更することである．
@@ -327,14 +237,14 @@ Xenは準仮想化，すなわち，ゲストOSに一部改変を加えること
 この時もちろんハイパーバイザであるXenはring0である．
 これにより他に影響を与えることを防ぐことができる．
 ただしこれはOSに変更を加える必要がある．</p>
-</div>
-<div class="section" id="cpu">
-<h3>CPUの仮想化支援<a class="headerlink" href="#cpu" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="cpu">
+<h3>CPUの仮想化支援<a class="headerlink" href="#cpu" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>Intel-VTとかの話をするんだけど今時間ないから後でするね．
 ring -1 なのかなあ．</p>
-</div>
-<div class="section" id="id4">
-<h3>自分のしばらく悩んでいたこと<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="id4">
+<h3>自分のしばらく悩んでいたこと<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>CPUを完全仮想化した場合はなんとなく仮想マシンの動作の主体みたいなものがわかる．
 当然ユーザプロセスなんだからホストでプロセスとして処理されてるんだろうなって感じ．
 じゃあ，仮想化支援使った場合どうなんだろうって話．
@@ -358,26 +268,26 @@ qemuプロセスはホストユーザ空間上で実行されているプロセ�
 <p>qemu プロセスは各ゲスト VM 用に作成されるので、N 個の VM を作成すると N 個の qemu プロセスが作成され、libvirt はそれぞれの VM と通信します。
 (A qemu process is created for each guest VM so if you create N VMs you will have N qemu processes, and libvirt will communicate with each of them. )</p>
 <p>どうも動作の主体はqemuプロセスでやっぱりいいのか．</p>
-</div>
-</div>
-<div class="section" id="intel-vt">
-<h2>Intel-VT と それに含まれるコンポーネント類について<a class="headerlink" href="#intel-vt" title="このヘッドラインへのパーマリンク">¶</a></h2>
-</div>
-<div class="section" id="id5">
-<h2>ハイパーバイザに関して<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+</section>
+<section id="intel-vt">
+<h2>Intel-VT と それに含まれるコンポーネント類について<a class="headerlink" href="#intel-vt" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="id5">
+<h2>ハイパーバイザに関して<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>そのうちハイパーバイザに関するVMenter/exitとかnonrootとかintel-VTとかそこらへんのことを書くけど今は書いてない</p>
 <p>ちなみに，VMCSはVMの数だけ用意されるとshuu先生の資料にあったが，あれはおそらく間違いで，vcpuの数だけ存在するはずだ．</p>
 <p>intel-VTはVMX-rootモードとVMX-non-rootモードを追加するもの．それはそうなのだが，どうやら別の見方があるようだ．
 一部の見解では，「リングプロテクションにring0よりも上の特権階層を加えるもの」という見解があるらしい．
 これは非常に大きなポイントである．
 今までは，</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../_images/before.png"><img alt="../_images/before.png" src="../_images/before.png" style="width: 346.40000000000003px; height: 278.8px;" /></a>
-</div>
+</figure>
 <p>だと思ってたのが実は</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../_images/after.png"><img alt="../_images/after.png" src="../_images/after.png" style="width: 549.6px; height: 434.8px;" /></a>
-</div>
+</figure>
 <p>というような風になっている可能性があるということである．
 つまりどういうことかというと，ハイパーバイザとホストカーネル空間は今まで同じ位置だと思ってた
 (なんならハイパーバイザはホストカーネルサブセットだと思ってた)
@@ -387,26 +297,26 @@ qemuプロセスはホストユーザ空間上で実行されているプロセ�
 でも普通に考えてHOSTはVMX-rootであるような気がするから上の図は違う気がするんだけど，
 いやていうかこの緑の下の図のリングプロテクションの番号だとゲストOSに変更加わっちゃうからこれは絶対に違う．</p>
 <p>とりあえずshuu先生の</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../_images/shuu-vt.png"><img alt="../_images/shuu-vt.png" src="../_images/shuu-vt.png" style="width: 167.20000000000002px; height: 143.20000000000002px;" /></a>
-</div>
+</figure>
 <p>には途轍もない違和感を感じるようになってしまった．</p>
 <p>色々考えた結果，</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../_images/my-vt.png"><img alt="../_images/my-vt.png" src="../_images/my-vt.png" style="width: 511.20000000000005px; height: 458.0px;" /></a>
-</div>
+</figure>
 <p>とすると，OSにプロテクションの番号の変更もなくなんとなくいい感じになってる気もするんだ．
 もっと調査が必要だ．</p>
-</div>
-<div class="section" id="paravirtualization-virtio">
-<h2>準仮想化(paravirtualization)とvirtioに関して<a class="headerlink" href="#paravirtualization-virtio" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="paravirtualization-virtio">
+<h2>準仮想化(paravirtualization)とvirtioに関して<a class="headerlink" href="#paravirtualization-virtio" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>すでに述べた(ことになっている)通り，通常の仮想化の際はハードウェアに対するIOは全てハードウェアのシミュレーションが行われる．
 これにより，従来のドライバをそのまま使用することができるため，可用性?を担保できる．このような物を完全仮想化とかいう．
 ところでこのハードウェアをエミュレートする方式は，ハードウェア操作のたびにVMexitが発生してしまうため，効率的ではない．
 そこで，エミュレーションによる性能低下を図るものが準仮想化(paravirtualization)であり，
 その(Linuxでの)フレームワークがvirtioである．</p>
-<div class="section" id="id6">
-<h3>完全仮想化が遅い理由<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id6">
+<h3>完全仮想化が遅い理由<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>ハードウェア操作はその主たる部分がレジスタ操作である．仮想環境でもそれは同じであり，ハードウェア操作の際には
 数回のレジスタ操作が行われる．
 また，ハードウェアをエミュレーションするとは，ハードウェアの持つべきレジスタ群を持ちそれらの動作に関する定義を持つことである．
@@ -416,14 +326,14 @@ VMexitしてハイパーバイザにハードウェアレジスタアクセス�
 エミュレートが終わるとVMenterされ動作がゲストOSに帰ってくる．
 この一連の動作は仮想環境でのみ起こる操作であるため，実ハードウェアとの性能差が出ます．</p>
 <p>(以下，一般的なハイパーバイザ環境でのIO性能低下についての引用)</p>
-<div class="section" id="vmx-non-root-modevmx-root-mode">
-<h4>VMX non-root mode・VMX root mode間のモード遷移にかかるコスト<a class="headerlink" href="#vmx-non-root-modevmx-root-mode" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<section id="vmx-non-root-modevmx-root-mode">
+<h4>VMX non-root mode・VMX root mode間のモード遷移にかかるコスト<a class="headerlink" href="#vmx-non-root-modevmx-root-mode" title="このヘッドラインへのパーマリンク"></a></h4>
 <p>ハードウェアレジスタアクセス時のVMExitとゲスト再開時のVMEntryでは，
 それぞれVMX non-root modeとVMX root modeの間でモード遷移が発生します．
 この遷移のコストはCPUの進化に伴い小さくなってきているものの，VMExit・VMEntryにそれぞれ1000サイクルほど消費します．</p>
-</div>
-<div class="section" id="id7">
-<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h4>
+</section>
+<section id="id7">
+<h4>デバイスエミュレーションの呼び出しにかかるコスト<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク"></a></h4>
 <p>多くの場合，ハイパーバイザのデバイスエミュレータはユーザプロセス上で動作しています．
 このため，ハードウェアレジスタアクセスをエミュレートするにはカーネルモードからユーザモードへ遷移し，
 エミュレーションを行ってからカーネルモード へ戻ってくる必要があります．</p>
@@ -437,25 +347,25 @@ VMExit直後にデバイスエミュレータのプロセスが実行される�
 高速なI/Oが求められるデバイスの場合には，ここが性能上のボトルネックになります．</p>
 <p>(以上，ハイパーバイザの作り方～ちゃんと理解する仮想化技術～ 第１１回 virtioによる準仮想化デバイス
 その１「virtioの概要とVirtio PCI」より引用)</p>
-</div>
-</div>
-</div>
-<div class="section" id="virtio">
-<h2>virtio関連について<a class="headerlink" href="#virtio" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="virtio">
+<h2>virtio関連について<a class="headerlink" href="#virtio" title="このヘッドラインへのパーマリンク"></a></h2>
 <p><a class="reference external" href="https://wiki.libvirt.org/page/Virtio">https://wiki.libvirt.org/page/Virtio</a></p>
-<div class="section" id="id8">
-<h3>virtioの概要<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="id8">
+<h3>virtioの概要<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>virtio_pciっていうのがなんかPCIデバイスをエミュレートしてる見たいな立ち回りをする感じ．
 実際のデータやりとりはvirtio ringっていうメモリ領域でやる．これはshared memory空間にいて，
 完全仮想化の場合はデータのやりとり(つまりレジスタ操作)の際に必ず逐一VMExitを発生させる必要があったけど，
 共有メモリだからそれがないはず．
 virtqueueはvirtioのキュー構造体．</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../_images/virtio-net.png"><img alt="../_images/virtio-net.png" src="../_images/virtio-net.png" style="width: 307.6px; height: 344.0px;" /></a>
-</div>
-</div>
-<div class="section" id="vhost">
-<h3>vhostとは<a class="headerlink" href="#vhost" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</figure>
+</section>
+<section id="vhost">
+<h3>vhostとは<a class="headerlink" href="#vhost" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>この文章はかなりの不確実な成分を含んでいるのであとで必ず書き直す．
 virtioと並んでvhostという準仮想ドライバがある．
 virtioはバックエンドにQEMUを用いるが，vhostはカーネル空間にバックエンドが存在する．
@@ -465,40 +375,40 @@ vhost-net module enables KVM (QEMU) to offload the servicing of virtio-net devic
 vhostはゲストから見るとvirtioとはなんら違いがないんじゃないか．
 ゲストから見たらvirtioって見えてそう．多分virtio_pciが見えてるだろうし．</p>
 <p>vhostは、ゲストネットワークトラフィックをカーネル側から直接TUNデバイスに直接渡すことにより、上記のプロセスを加速できます。 このモデルでは、QEMUはvirtqueueの直接制御をカーネルドライバーに渡します。</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../_images/vhost-net.png"><img alt="../_images/vhost-net.png" src="../_images/vhost-net.png" style="width: 426.8px; height: 340.40000000000003px;" /></a>
-</div>
-</div>
-<div class="section" id="vhost-user">
-<h3>vhost-user<a class="headerlink" href="#vhost-user" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</figure>
+</section>
+<section id="vhost-user">
+<h3>vhost-user<a class="headerlink" href="#vhost-user" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>これ絶対間違ってるので後で調査しなおさないといけない．</p>
 <p>上のvhostのDPDKアプライアンスのための実装としてvhost-userなるものがあるらしい．
 vhostでカーネル空間にあったバックエンドをユーザ空間に持ち出すことにより，ホストでのDPDKの利用可能性を高めたもの．??</p>
-</div>
-<div class="section" id="vhost-user-server-client">
-<h3>vhost-user server と client<a class="headerlink" href="#vhost-user-server-client" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="vhost-user-server-client">
+<h3>vhost-user server と client<a class="headerlink" href="#vhost-user-server-client" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>DPDK v16.07でvHostユーザークライアントモードが導入され、DPDKの制限に対処しました。これにより、vHostユーザーバックエンド（DPDKを備えたOVSなどのDPDKベースのアプリケーション）がクラッシュまたは再起動した場合、DPDK vHostユーザーポートを備えたVM バックエンドとの接続を確立し、基本的にネットワークの観点からは役に立たないようにします。 vHostユーザークライアントモードはこの問題を解決します。
 とりあえずclient使っとけばいいよみたいな感じ．
 要は，DPDKアプライアンスがvhost-userの主体?になる(clientはQEMUらしい)とそれがクラッシュした時に再現が大変になるから
 serverは別にいてDPDKアプライアンスはclientとしてそれ(serverはQEMU)を利用するような形態にしたということ．</p>
-</div>
-<div class="section" id="virtio-vhost-user">
-<h3>virtio-vhost-user<a class="headerlink" href="#virtio-vhost-user" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="virtio-vhost-user">
+<h3>virtio-vhost-user<a class="headerlink" href="#virtio-vhost-user" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>なんか，VM間の通信に強いようなやつっぽくて，
 一つのゲストに対してvhostのバックエンドをオフロードしてるっぽくて，VM-VMの通信がホストを介さないでできているような感じのものっぽい．
 <a class="reference external" href="https://wiki.qemu.org/Features/VirtioVhostUser">https://wiki.qemu.org/Features/VirtioVhostUser</a></p>
-</div>
-<div class="section" id="memo">
-<h3>memo<a class="headerlink" href="#memo" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</section>
+<section id="memo">
+<h3>memo<a class="headerlink" href="#memo" title="このヘッドラインへのパーマリンク"></a></h3>
 <ul class="simple">
 <li><p>virtioのゲスト側の実装はVMM側の実装とは別れている．
 ゲストマシンはvirtioのドライバを持っていてかつVMM側でvirtioのバックエンドドライバが動いている必要がある．
 なんかvritioだのvhostうんたらだのあるけどゲストはともかくvirtioだと思っておけばいいよってやつ．</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="kvm">
-<h2>kvmのコードのディレクトリ<a class="headerlink" href="#kvm" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+</section>
+<section id="kvm">
+<h2>kvmのコードのディレクトリ<a class="headerlink" href="#kvm" title="このヘッドラインへのパーマリンク"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">virt</span><span class="o">/</span><span class="n">kvm</span><span class="o">/</span> <span class="n">アーキテクチャ非依存コード</span>
 <span class="o">/</span><span class="n">arch</span><span class="o">/*/</span><span class="n">kvm</span><span class="o">/</span> <span class="n">各アーキテクチャ向けコード</span>
 </pre></div>
@@ -506,12 +416,12 @@ serverは別にいてDPDKアプライアンスはclientとしてそれ(serverは
 <p>** x86向けの注意点 **
 x86はIntel-VTとAMD-VTで互換性がないのでそれぞれの依存コードとx86共通のコードがある．
 ここら辺説明分書くよりもそのディレクトリに置いてあるMakefile見た方が早い．/arch/x86/kvm/Makefileみろ．</p>
-</div>
-<div class="section" id="pci-passthrough-iommu-sr-iov">
-<h2>pci passthrough とか iommu とか SR-IOV とか<a class="headerlink" href="#pci-passthrough-iommu-sr-iov" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</section>
+<section id="pci-passthrough-iommu-sr-iov">
+<h2>pci passthrough とか iommu とか SR-IOV とか<a class="headerlink" href="#pci-passthrough-iommu-sr-iov" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>※とりあえずここにメモとか残しておくけど，これらは後でcontentsの方に移す．</p>
-<div class="section" id="iommu">
-<h3>iommuを有効化?<a class="headerlink" href="#iommu" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<section id="iommu">
+<h3>iommuを有効化?<a class="headerlink" href="#iommu" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>とりあえずいつも通りintel-vtもそうなんだけど，iommuもBIOSで有効かする必要があるかも?
 なんかここら辺情報も僕の実験も雑にやって錯綜してしまっていてよくわからん．</p>
 <p>カーネルロードオプションでiommuを有効化</p>
@@ -529,56 +439,39 @@ $ dmesg | grep -i iommu
 </pre></div>
 </div>
 <p>とりあえずこんな感じになれば良さげ．</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="container.html" class="btn btn-neutral float-right" title="コンテナ技術周辺について" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="boot.html" class="btn btn-neutral float-left" title="ブートローダについてのメモ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="container.html" class="btn btn-neutral float-right" title="コンテナ技術周辺について" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, KAWAHARAsouta.
-
-    </p>
+    <p>&#169; Copyright 2021, KAWAHARAsouta.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
