@@ -121,7 +121,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
@@ -405,7 +405,8 @@ ubuntuもできたようなできなかったような気がするけどよく�
 </pre></div>
 </div>
 <p>ubuntu2004を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
-調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． <span class="xref std std-ref">ubuntu2004_on_kvm</span>
+調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする．
+<a class="reference internal" href="../technote/boot.html#ubuntu2004-on-kvm"><span class="std std-ref">virt-install でubuntu2004がインストールできなかった話</span></a>
 ISOをwgetしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．
 ISOをマウントしてもできるはず(manにはそう書いてある)なんだけど，マウントした場合だとinstall中にmount errorみたいなのが起きてダメだったんだよね．</p>
 <p><strong>2021/09/04追記</strong>
@@ -528,13 +529,26 @@ $ virsh undefine [old domain]
 </section>
 <section id="file-location">
 <h2>file location<a class="headerlink" href="#file-location" title="このヘッドラインへのパーマリンク"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vm images         /var/lib/libvirt/images/
-iso images          /var/lib/libvirt/boot/    ←???
-xml file                /etc/libvirt/qemu/
-network file       /etc/libvirt/qemu/networks/
-autostart file    /etc/libvirt/qemu/autostart/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vm</span> <span class="n">images</span>         <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">images</span><span class="o">/</span>
+<span class="n">iso</span> <span class="n">images</span>          <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span>
+<span class="n">xml</span> <span class="n">file</span>                <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">qemu</span><span class="o">/</span>
+<span class="n">network</span> <span class="n">file</span>       <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">qemu</span><span class="o">/</span><span class="n">networks</span><span class="o">/</span>
+<span class="n">autostart</span> <span class="n">file</span>    <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libvirt</span><span class="o">/</span><span class="n">qemu</span><span class="o">/</span><span class="n">autostart</span><span class="o">/</span>
 </pre></div>
 </div>
+<p>isoファイルをローカルにダウンロードしてVMのOSインストール時に利用する場合，上にある &quot;/var/lib/libvirt/boot&quot; 配下に置くべし．
+この時，RHEL系だとqemu, debian系だとlibvirtユーザー/グループでのアクセス権限がないとインストールに失敗する．
+事前に以下のコマンドを実行してパーミッションを設定しておくと良し．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo chown :libvirt /var/lib/libvirt/boot
+$ sudo chmod g+rws /var/lib/libvirt/boot
+</pre></div>
+</div>
+<p>参考:
+上記の設定方法について
+<a class="reference external" href="https://wiki.wut.ee/sysadmin/libvirt">https://wiki.wut.ee/sysadmin/libvirt</a>
+パーミッションについて
+<a class="reference external" href="https://wiki.archlinux.jp/index.php/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E5%B1%9E%E6%80%A7">https://wiki.archlinux.jp/index.php/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E5%B1%9E%E6%80%A7</a>
+<a class="reference external" href="https://docs.oracle.com/cd/E19455-01/806-2718/secfiles-69/index.html">https://docs.oracle.com/cd/E19455-01/806-2718/secfiles-69/index.html</a></p>
 </section>
 <section id="id2">
 <h2>ブリッジ接続<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>

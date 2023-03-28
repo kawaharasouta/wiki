@@ -224,15 +224,15 @@ https://ja.wikipedia.org/wiki/System.map
 
 
 
-.. _ubuntu2020_on_kvm:
+.. _ubuntu2004_on_kvm:
 
 ======================================================
-virt-install でubuntu2020がインストールできなかった話
+virt-install でubuntu2004がインストールできなかった話
 ======================================================
 
 題の通りのことになった調べた時のメモ
 普段は location に http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/ (2018, bionic) とかってしてインストールできてるんだけど，
-2020(focali) で http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/ ってしたらエラった． :doc:`../contents/kvm`
+2004(focal) で http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/ ってしたらエラった． :doc:`../contents/kvm`
 
 ググったら
 https://github.com/virt-manager/virt-manager/pull/101

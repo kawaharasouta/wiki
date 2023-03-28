@@ -230,7 +230,8 @@ ubuntuもできたようなできなかったような気がするけどよく�
        ftp://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib/1
 
 ubuntu2004を(netboot?(locationでURL指定してやるやつ)で) インストールしようとした時，うまく入らなかった．
-調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． :ref:`ubuntu2004_on_kvm`
+調べてみたらなんか面白そうな内容だったので別の記事にして書いておくことにする． 
+:ref:`ubuntu2004_on_kvm`
 ISOをwgetしてやる方法を↓に書いとく．ちなみに詳細?は↑の場所の記事に一緒に書いておくことにする．
 ISOをマウントしてもできるはず(manにはそう書いてある)なんだけど，マウントした場合だとinstall中にmount errorみたいなのが起きてダメだったんだよね．
 
@@ -380,10 +381,26 @@ file location
 ::
 
   vm images         /var/lib/libvirt/images/
-  iso images          /var/lib/libvirt/boot/    ←???
+  iso images          /var/lib/libvirt/boot/
   xml file                /etc/libvirt/qemu/
   network file       /etc/libvirt/qemu/networks/
   autostart file    /etc/libvirt/qemu/autostart/
+
+isoファイルをローカルにダウンロードしてVMのOSインストール時に利用する場合，上にある "/var/lib/libvirt/boot" 配下に置くべし．
+この時，RHEL系だとqemu, debian系だとlibvirtユーザー/グループでのアクセス権限がないとインストールに失敗する．
+事前に以下のコマンドを実行してパーミッションを設定しておくと良し．
+
+::
+
+ $ sudo chown :libvirt /var/lib/libvirt/boot
+ $ sudo chmod g+rws /var/lib/libvirt/boot
+
+参考:  
+上記の設定方法について
+https://wiki.wut.ee/sysadmin/libvirt
+パーミッションについて
+https://wiki.archlinux.jp/index.php/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E5%B1%9E%E6%80%A7
+https://docs.oracle.com/cd/E19455-01/806-2718/secfiles-69/index.html
 
 ブリッジ接続
 =============

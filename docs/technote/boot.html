@@ -90,7 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
@@ -380,11 +380,11 @@ nmコマンドの出力結果そのままであるらしいが正直よくわか
 <p><a class="reference external" href="https://ja.wikipedia.org/wiki/Vmlinux">https://ja.wikipedia.org/wiki/Vmlinux</a>
 <a class="reference external" href="https://ja.wikipedia.org/wiki/System.map">https://ja.wikipedia.org/wiki/System.map</a></p>
 </section>
-<section id="virt-install-ubuntu2020">
-<span id="ubuntu2020-on-kvm"></span><h1>virt-install でubuntu2020がインストールできなかった話<a class="headerlink" href="#virt-install-ubuntu2020" title="このヘッドラインへのパーマリンク"></a></h1>
+<section id="virt-install-ubuntu2004">
+<span id="ubuntu2004-on-kvm"></span><h1>virt-install でubuntu2004がインストールできなかった話<a class="headerlink" href="#virt-install-ubuntu2004" title="このヘッドラインへのパーマリンク"></a></h1>
 <p>題の通りのことになった調べた時のメモ
 普段は location に <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/</a> (2018, bionic) とかってしてインストールできてるんだけど，
-2020(focali) で <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/</a> ってしたらエラった． <a class="reference internal" href="../contents/kvm.html"><span class="doc">kvm</span></a></p>
+2004(focal) で <a class="reference external" href="http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/">http://jp.archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/</a> ってしたらエラった． <a class="reference internal" href="../contents/kvm.html"><span class="doc">kvm</span></a></p>
 <p>ググったら
 <a class="reference external" href="https://github.com/virt-manager/virt-manager/pull/101">https://github.com/virt-manager/virt-manager/pull/101</a>
 こんなプルリクがvirt-managerにでてることがわかった．
