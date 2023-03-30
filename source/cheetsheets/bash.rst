@@ -47,6 +47,28 @@ shell芸的tips
 sudo必要だったのと，ホームディレクトリ以下に .select-editorみたいなファイルできる．
 
 
+一般環境設定系いろいろ
+=========================
+
+locale設定
+--------------
+
+※古くのやつは /etc/locale.gen のコメントアウト外してlocale-genしてlocale-defして.. みたいな感じ．
+ それについては今は書かない．
+
+下はfedora36でsystemdな環境での例
+
+::
+
+  $ localectl     //! 現在のlocale確認
+  $ localectl list-locales     //! 現在設定可能なlocale一覧
+  $ dnf search langpacks-     //! 欲しい言語パックがなかったら探して適当に入れる
+  $ sudo dnf install langpacks-js
+  $ localectl set-locale LANG=ja_JP.UTF-8
+
+localectlでkeymapとかも設定できるはずだけど今は知らない．
+
+
 GNU coreutils
 ==============
 
