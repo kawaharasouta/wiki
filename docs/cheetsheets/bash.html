@@ -228,10 +228,8 @@ $ sudo hostnamectl set-hostname [hostname]
 <h2>一般環境設定系いろいろ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>
 <section id="locale">
 <h3>locale設定<a class="headerlink" href="#locale" title="このヘッドラインへのパーマリンク"></a></h3>
-<dl class="simple">
-<dt>※古くのやつは /etc/locale.gen のコメントアウト外してlocale-genしてlocale-defして.. みたいな感じ．</dt><dd><p>それについては今は書かない．</p>
-</dd>
-</dl>
+<p>※古くのやつは /etc/locale.gen のコメントアウト外してlocale-genしてlocale-defして.. みたいな感じ．
+※それについては今は書かない．</p>
 <p>下はfedora36でsystemdな環境での例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ localectl     //! 現在のlocale確認
 $ localectl list-locales     //! 現在設定可能なlocale一覧
@@ -240,6 +238,8 @@ $ sudo dnf install langpacks-js
 $ localectl set-locale LANG=ja_JP.UTF-8
 </pre></div>
 </div>
+<p>再起動か <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/etc/locale.conf</span></code> で反映される．
+※hostnamectlとかもすぐ反映されないけどあれはどこを source すればいいんだろっていうの知りたい．</p>
 <p>localectlでkeymapとかも設定できるはずだけど今は知らない．</p>
 </section>
 </section>

@@ -54,7 +54,7 @@ locale設定
 --------------
 
 ※古くのやつは /etc/locale.gen のコメントアウト外してlocale-genしてlocale-defして.. みたいな感じ．
- それについては今は書かない．
+※それについては今は書かない．
 
 下はfedora36でsystemdな環境での例
 
@@ -65,6 +65,9 @@ locale設定
   $ dnf search langpacks-     //! 欲しい言語パックがなかったら探して適当に入れる
   $ sudo dnf install langpacks-js
   $ localectl set-locale LANG=ja_JP.UTF-8
+
+再起動か ``$ source /etc/locale.conf`` で反映される．
+※hostnamectlとかもすぐ反映されないけどあれはどこを source すればいいんだろっていうの知りたい．
 
 localectlでkeymapとかも設定できるはずだけど今は知らない．
 
