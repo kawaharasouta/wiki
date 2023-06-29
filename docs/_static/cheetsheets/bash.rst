@@ -35,6 +35,24 @@ shell芸的tips
   awk '{print $1, $3}'        #1,3列目を取得
   awk 'NR==2,NR==5'           #2~5行目を取得
 
+shell script skelton template
+=================================
+
+::
+
+  #!/usr/bin/env bash
+  
+  set -o errexit
+  set -o nounset 
+  set -o pipefail
+
+  # hort option も利用して一行で
+  set -ue -o pipefail
+
+  # もし言語設定系気にする場合は
+  export LC_ALL=C
+
+
 エディタ
 =========
 
