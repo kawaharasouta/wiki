@@ -77,10 +77,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#nested">nestedしたい時</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">レスキューモードで起動</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fedora-debian-virsh-listvm2">fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libvirt-monolithic-module-mode">libvirt - monolithic &amp; module mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">仮想化環境構築後にできるグループと，基本的な権限調整について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libvirt-polkit">libvirtグループを使わず，polkitを用いて権限調整をする方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">kvmコマンドと言うものがあるらしく</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id6">kvmコマンドと言うものがあるらしく</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">インストールと起動</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">インストールと起動</a></li>
 </ul>
 </li>
 </ul>
@@ -195,7 +198,7 @@
              
   <section id="kvm">
 <h1>kvm<a class="headerlink" href="#kvm" title="このヘッドラインへのパーマリンク"></a></h1>
-<p>※virsh系の操作の多くは sudo いらない(kvmグループで管理できるのでね)からひとまず目についた分は消して見たけど
+<p>※virsh系の操作の多くは sudo いらない(libvirtグループで管理できるのでね)からひとまず目についた分は消して見たけど
 一部反映不足あるかもしれないので気づいたらなおそう．</p>
 <section id="id1">
 <h2>注意<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h2>
@@ -231,11 +234,17 @@ $ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils v
 //! fedora34 toriaezu
 $ sudo dnf install qemu-kvm libvirt virt-install guestfs-tools
 
-
-//! この後一応 libvirtd 起動とか自動起動しとく
-$ sudo systemctl enable --now libvirtd
+//! rpm distoro (ofcource fedora, centos stream) can groupinstall
+$ sudo dnf groupinstall @virtualiztion
 </pre></div>
 </div>
+<p>&quot;Getting started with virtualization (on fedora)&quot;
+<a class="reference external" href="https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-virtualization/">https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-virtualization/</a></p>
+<blockquote>
+<div><p>//! この後一応 libvirtd 起動とか自動起動しとく
+//!!!!!!!!!!!!!!!!!!!!!!!!!!! i'll write about it soon
+$ sudo systemctl enable --now libvirtd</p>
+</div></blockquote>
 <p>ubuntu2004での変更点とか?
 <a class="reference external" href="https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja">https://wiki.ubuntu.com/FocalFossa/ReleaseNotes/Ja</a> の libvirt のところみる</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ubuntu 18.04 において、単体のモノリシックなパッケージであったlibvirt-binから、以下の3つのメインコンポーネントに分割されました:
@@ -1084,14 +1093,35 @@ $ virsh edit [vm]
 <p>というわけです．</p>
 <p>参考: <a class="reference external" href="https://listman.redhat.com/archives/libvirt-users/2011-April/msg00091.html">https://listman.redhat.com/archives/libvirt-users/2011-April/msg00091.html</a></p>
 </section>
+<section id="libvirt-monolithic-module-mode">
+<h2>libvirt - monolithic &amp; module mode<a class="headerlink" href="#libvirt-monolithic-module-mode" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>以前いつものように仮想環境を構築していたときに，libvirtd.serviceやlibvirtd.socketが動作していなくてもvirshコマンドが
+正常に動作してVMが操作できることに気づいた．</p>
+<p>その後調査を進めると，libvirtにはモノリシックモードとモジュールモードが存在するということがわかり，
+また例えばfedora38などではlibvirtdのインストール直後はモジュールモードで動作するためにlibvirtd.serviceなどが
+動作しない状態であり，もちろんその状態でも正常に操作できるということがわかった．</p>
+<p>詳細の説明は以下の記事に任せるが、いずれちゃんと書くかもしれない。</p>
+<p><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/monitoring_and_managing_system_status_and_performance/assembly_optimizing-libvirt-daemons_optimizing-virtual-machine-performance-in-rhel">https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/monitoring_and_managing_system_status_and_performance/assembly_optimizing-libvirt-daemons_optimizing-virtual-machine-performance-in-rhel</a></p>
+<p><a class="reference external" href="http://belbel.or.jp/opensuse-manuals_ja/cha-libvirt-overview.html">http://belbel.or.jp/opensuse-manuals_ja/cha-libvirt-overview.html</a></p>
+<p>さらに，RHEL9ではモノリシックなlibvirtdはdeprecatedになったよう．</p>
+<p><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_changes-to-libvirt_assembly_virtualization">https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_changes-to-libvirt_assembly_virtualization</a></p>
+</section>
+<section id="id5">
+<h2>仮想化環境構築後にできるグループと，基本的な権限調整について<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>aaaa</p>
+</section>
+<section id="libvirt-polkit">
+<h2>libvirtグループを使わず，polkitを用いて権限調整をする方法<a class="headerlink" href="#libvirt-polkit" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>bbbb</p>
+</section>
 <section id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク"></a></h2>
 <p><a class="reference external" href="https://libvirt.org/format.html">domain_xml_format</a></p>
 <p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
 <p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>
 </section>
-<section id="id5">
-<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id6">
+<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h2>
 <section id="helloworld">
 <h3>helloworld<a class="headerlink" href="#helloworld" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>Xwindowのあるシステムで↓を実行</p>
@@ -1101,8 +1131,8 @@ $ virsh edit [vm]
 <p>空のVMのウィンドウが立ち上がる．
 当然何もないのでbootしないけど．</p>
 </section>
-<section id="id6">
-<h3>インストールと起動<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h3>
+<section id="id7">
+<h3>インストールと起動<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### install
 $ qemu-img create -f qcow2 test.img 4G
 $ sudo kvm -hda test.img -cdrom [path to iso file] -boot d -m 1024

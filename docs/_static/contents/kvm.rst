@@ -2,7 +2,7 @@
 kvm
 ====
 
-※virsh系の操作の多くは sudo いらない(kvmグループで管理できるのでね)からひとまず目についた分は消して見たけど
+※virsh系の操作の多くは sudo いらない(libvirtグループで管理できるのでね)からひとまず目についた分は消して見たけど
 一部反映不足あるかもしれないので気づいたらなおそう．
 
 注意
@@ -49,8 +49,15 @@ package
   //! fedora34 toriaezu
   $ sudo dnf install qemu-kvm libvirt virt-install guestfs-tools
 
+  //! rpm distoro (ofcource fedora, centos stream) can groupinstall
+  $ sudo dnf groupinstall @virtualiztion
+
+"Getting started with virtualization (on fedora)"
+https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-virtualization/
+
 
   //! この後一応 libvirtd 起動とか自動起動しとく
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!! i'll write about it soon
   $ sudo systemctl enable --now libvirtd
 
 ubuntu2004での変更点とか?
@@ -1005,6 +1012,39 @@ https://libvirt.org/uri.html#URI_default
 というわけです．
 
 参考: https://listman.redhat.com/archives/libvirt-users/2011-April/msg00091.html
+
+
+libvirt - monolithic & module mode
+=====================================
+
+以前いつものように仮想環境を構築していたときに，libvirtd.serviceやlibvirtd.socketが動作していなくてもvirshコマンドが
+正常に動作してVMが操作できることに気づいた．
+
+その後調査を進めると，libvirtにはモノリシックモードとモジュールモードが存在するということがわかり，
+また例えばfedora38などではlibvirtdのインストール直後はモジュールモードで動作するためにlibvirtd.serviceなどが
+動作しない状態であり，もちろんその状態でも正常に操作できるということがわかった．
+
+詳細の説明は以下の記事に任せるが、いずれちゃんと書くかもしれない。
+
+https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/monitoring_and_managing_system_status_and_performance/assembly_optimizing-libvirt-daemons_optimizing-virtual-machine-performance-in-rhel
+
+http://belbel.or.jp/opensuse-manuals_ja/cha-libvirt-overview.html
+
+さらに，RHEL9ではモノリシックなlibvirtdはdeprecatedになったよう．
+
+https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_changes-to-libvirt_assembly_virtualization
+
+
+仮想化環境構築後にできるグループと，基本的な権限調整について
+===============================================================
+
+aaaa
+
+
+libvirtグループを使わず，polkitを用いて権限調整をする方法
+===========================================================
+
+bbbb
 
 reference
 ===========
