@@ -1112,7 +1112,17 @@ $ virsh edit [vm]
 </section>
 <section id="libvirt-polkit">
 <h2>libvirtグループを使わず，polkitを用いて権限調整をする方法<a class="headerlink" href="#libvirt-polkit" title="このヘッドラインへのパーマリンク"></a></h2>
-<p>bbbb</p>
+<p>ユーザー &quot;khwarizmi&quot; に対してvirshの操作権限を与える例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">polkit</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">localauthority</span><span class="o">/</span><span class="mi">50</span><span class="o">-</span><span class="n">local</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">libvirt</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">access</span><span class="o">.</span><span class="n">pkla</span><span class="p">:</span>
+<span class="p">[</span><span class="n">libvirt</span> <span class="n">Management</span> <span class="n">Access</span><span class="p">]</span>
+<span class="n">Identity</span><span class="o">=</span><span class="n">unix</span><span class="o">-</span><span class="n">user</span><span class="p">:</span><span class="n">khwarizmi</span>
+<span class="n">Action</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">libvirt</span><span class="o">.</span><span class="n">unix</span><span class="o">.</span><span class="n">manage</span>
+<span class="n">ResultAny</span><span class="o">=</span><span class="n">yes</span>
+<span class="n">ResultInactive</span><span class="o">=</span><span class="n">yes</span>
+<span class="n">ResultActive</span><span class="o">=</span><span class="n">yes</span>
+</pre></div>
+</div>
+<p>参考: <a class="reference external" href="https://wiki.libvirt.org/SSHPolicyKitSetup.html">https://wiki.libvirt.org/SSHPolicyKitSetup.html</a></p>
 </section>
 <section id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク"></a></h2>

@@ -1044,7 +1044,20 @@ aaaa
 libvirtグループを使わず，polkitを用いて権限調整をする方法
 ===========================================================
 
-bbbb
+
+ユーザー "khwarizmi" に対してvirshの操作権限を与える例  
+
+::
+
+  /etc/polkit-1/localauthority/50-local.d/libvirt-user-access.pkla:
+  [libvirt Management Access]
+  Identity=unix-user:khwarizmi
+  Action=org.libvirt.unix.manage
+  ResultAny=yes
+  ResultInactive=yes
+  ResultActive=yes 
+
+参考: https://wiki.libvirt.org/SSHPolicyKitSetup.html
 
 reference
 ===========
