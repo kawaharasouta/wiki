@@ -76,6 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#disk">disk拡張する時の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nested">nestedしたい時</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">レスキューモードで起動</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sysrq">仮想マシンに対してSysRqを送る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fedora-debian-virsh-listvm2">fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#libvirt-monolithic-module-mode">libvirt - monolithic &amp; module mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">仮想化環境構築後にできるグループと，基本的な権限調整について</a></li>
@@ -1072,6 +1073,23 @@ $ virsh edit [vm]
 </div>
 <p>この後はある程度よしなにやりたいことができるはず．</p>
 <p><a class="reference external" href="http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html">http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html</a></p>
+</section>
+<section id="sysrq">
+<h2>仮想マシンに対してSysRqを送る<a class="headerlink" href="#sysrq" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>任意のキーストロークを仮想マシンに送るには <cite>virsh send-key</cite> が使えるのでそれを活用する．
+以下は仮想マシン&quot;sysrq-fedora36&quot;に対してsysrqのヘルプメッセージ出力させる例．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virsh send-key sysrq-fedora36 KEY_LEFTALT KEY_SYSRQ KEY_H
+</pre></div>
+</div>
+<p>キーコードは例えば <cite>man 7 virkeycode-linux</cite> とかから．
+--codesetにもよるのであとはmanを見ること．</p>
+<dl class="simple">
+<dt>参考:</dt><dd><ul class="simple">
+<li><p>&quot;KVM virsh send-key example (Control-Alt-Delete and more)&quot;: <a class="reference external" href="https://rentry.co/x563n">https://rentry.co/x563n</a></p></li>
+<li><p>&quot;20.26. 指定したゲスト仮想マシンへのキーストロークの組み合わせの送信&quot;: <a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-editing_a_guest_virtual_machines_configuration_file-sending_keystoke_combinations_to_a_specified_domain">https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-editing_a_guest_virtual_machines_configuration_file-sending_keystoke_combinations_to_a_specified_domain</a></p></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section id="fedora-debian-virsh-listvm2">
 <h2>fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2<a class="headerlink" href="#fedora-debian-virsh-listvm2" title="このヘッドラインへのパーマリンク"></a></h2>

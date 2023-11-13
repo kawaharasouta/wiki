@@ -985,6 +985,26 @@ http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html
 http://manpages.ubuntu.com/manpages/bionic/ja/man1/virt-rescue.1.html
 
 
+仮想マシンに対してSysRqを送る
+==============================
+
+任意のキーストロークを仮想マシンに送るには `virsh send-key` が使えるのでそれを活用する．
+以下は仮想マシン"sysrq-fedora36"に対してsysrqのヘルプメッセージ出力させる例．
+
+::
+
+  $ virsh send-key sysrq-fedora36 KEY_LEFTALT KEY_SYSRQ KEY_H
+
+
+キーコードは例えば `man 7 virkeycode-linux` とかから．
+--codesetにもよるのであとはmanを見ること．
+
+
+参考:
+ - "KVM virsh send-key example (Control-Alt-Delete and more)": https://rentry.co/x563n
+ - "20.26. 指定したゲスト仮想マシンへのキーストロークの組み合わせの送信": https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-editing_a_guest_virtual_machines_configuration_file-sending_keystoke_combinations_to_a_specified_domain
+
+
 fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2
 =================================================================================================
 
