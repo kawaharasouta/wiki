@@ -293,6 +293,26 @@ vnc
     --network bridge:virbr0 \
     --cdrom /var/lib/libvirt/boot/ubuntu-18.04.2-live-server-amd64.iso 
 
+
+imageのみ入手された場合
+-------------------------
+
+オプション "--import" を付けることで，imageだけ入手できた場合もvirt-installでlibvirtに取り込んで管理のうえ動作させることができる．
+後述されるvirt-builderでイメージを作成した場合もこの方法で取り込むことができる．
+以下はコマンド実行例．
+
+locationを設定していない関係上--extra-argsが設定できなく，consoleがつながらない可能性もあるので注意が必要．
+
+::
+
+  $ virt-install --connect=qemu:///system \
+  --name ztemplate-fedora38 \
+  --vcpus 2 --ram 2048 --accelerate --import \
+  --disk path=/var/lib/libvirt/images/ztemplate-fedora38.img \
+  --network network=default,model=virtio \
+  --nographics
+
+
 console接続について
 ======================
 
