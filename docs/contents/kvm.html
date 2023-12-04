@@ -471,7 +471,9 @@ $ virt-install \
 <p>オプション &quot;--import&quot; を付けることで，imageだけ入手できた場合もvirt-installでlibvirtに取り込んで管理のうえ動作させることができる．
 後述されるvirt-builderでイメージを作成した場合もこの方法で取り込むことができる．
 以下はコマンド実行例．</p>
-<p>locationを設定していない関係上--extra-argsが設定できなく，consoleがつながらない可能性もあるので注意が必要．</p>
+<p>locationを設定していない関係上--extra-argsが設定できなく，consoleがつながらない可能性もあるので注意が必要．
+(作成したimageにこの辺りの設定がされていなかったらつながらない．)
+(ちなみに対象OSにもよるかもしれないが，今のところvirt-builder作るイメージはコンソール接続できている．)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virt-install --connect=qemu:///system \
 --name ztemplate-fedora38 \
 --vcpus 2 --ram 2048 --accelerate --import \
