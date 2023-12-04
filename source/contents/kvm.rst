@@ -339,6 +339,34 @@ and change hostname
 
 clone 用の template を作る場合，先に virt-sysprep しておいて，それを virt-clone するといい．
 
+
+テスト用VMイメージの簡単な作り方
+==================================
+
+virt-builderコマンドでminimalなVMイメージの作成ができる．libguestfsのソフトウェア．
+外部と通信を行うのでproxy環境などでは注意が必要．
+
+::
+
+  //! 作成可能なOS一覧
+  $ virt-builder --list
+
+  //! コマンド実行例
+  $ virt-builder fedora-38 \
+  --size 8G --format raw \
+  --hostname ztemplate-fedora38 \
+  --root-password 'password:root' \
+  --ssh-inject root \
+  -o /var/lib/libvirt/images/ztemplate-fedora38.img \
+  --selinux-relabel
+
+
+参考情報: 
+ - "virt-builder - Build virtual machine images quickly": https://www.libguestfs.org/virt-builder.1.html
+ - "virt-builderでUbuntuのVMイメージを作成する": https://qiita.com/masru0714/items/05d262d1ced5c32023f2 
+ - "virt-builderによるLinuxインストールの「省略」": https://endy-tech.hatenablog.jp/entry/virt_builder 
+
+
 delete vm
 ==============
 

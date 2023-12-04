@@ -54,6 +54,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#console">console接続について</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clone">clone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vm">テスト用VMイメージの簡単な作り方</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delete-vm">delete vm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-memory-size">change memory size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#extend-disk-size">extend disk size</a></li>
@@ -498,6 +499,32 @@ $ sudo virt-sysprep -d [vm_clone]                   # operations は 指定し�
 </div>
 <p>and change hostname</p>
 <p>clone 用の template を作る場合，先に virt-sysprep しておいて，それを virt-clone するといい．</p>
+</section>
+<section id="vm">
+<h2>テスト用VMイメージの簡単な作り方<a class="headerlink" href="#vm" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>virt-builderコマンドでminimalなVMイメージの作成ができる．libguestfsのソフトウェア．
+外部と通信を行うのでproxy環境などでは注意が必要．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//! 作成可能なOS一覧
+$ virt-builder --list
+
+//! コマンド実行例
+$ virt-builder fedora-38 \
+--size 8G --format raw \
+--hostname ztemplate-fedora38 \
+--root-password &#39;password:root&#39; \
+--ssh-inject root \
+-o /var/lib/libvirt/images/ztemplate-fedora38.img \
+--selinux-relabel
+</pre></div>
+</div>
+<dl class="simple">
+<dt>参考情報:</dt><dd><ul class="simple">
+<li><p>&quot;virt-builder - Build virtual machine images quickly&quot;: <a class="reference external" href="https://www.libguestfs.org/virt-builder.1.html">https://www.libguestfs.org/virt-builder.1.html</a></p></li>
+<li><p>&quot;virt-builderでUbuntuのVMイメージを作成する&quot;: <a class="reference external" href="https://qiita.com/masru0714/items/05d262d1ced5c32023f2">https://qiita.com/masru0714/items/05d262d1ced5c32023f2</a></p></li>
+<li><p>&quot;virt-builderによるLinuxインストールの「省略」&quot;: <a class="reference external" href="https://endy-tech.hatenablog.jp/entry/virt_builder">https://endy-tech.hatenablog.jp/entry/virt_builder</a></p></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section id="delete-vm">
 <h2>delete vm<a class="headerlink" href="#delete-vm" title="このヘッドラインへのパーマリンク"></a></h2>
