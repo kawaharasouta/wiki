@@ -67,11 +67,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">パッケージ管理ツールに関して</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#aptdebian-debian">APT及びdebianパッケージ(debian系)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#yumdnfrpm-redhat">YUM・DNF及びRPMパッケージ(RedHat系)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">概要</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">パッケージ開発とかのためのパッケージ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">参考</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">パッケージ開発とかのためのパッケージ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#srpm">ソースコード(SRPM)をダウンロードしてビルドする</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#neovim">neovimのパッケージを自作してリポジトリまで自作する</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">パッケージを署名する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">パッケージを署名する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#neovim">neovimのパッケージを自作してリポジトリまで自作する(一応アーカイブとして残してるけどあとで消す)</a></li>
 </ul>
 </li>
 </ul>
@@ -89,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
@@ -170,10 +171,38 @@
 <section id="yumdnfrpm-redhat">
 <h2>YUM・DNF及びRPMパッケージ(RedHat系)<a class="headerlink" href="#yumdnfrpm-redhat" title="このヘッドラインへのパーマリンク"></a></h2>
 <section id="id2">
-<h3>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h3>
+<h3>参考<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h3>
+<p>あとでそれぞれの章に移すかもしれないけど．</p>
+<dl class="simple">
+<dt><em>パッケージングに関して</em></dt><dd><ul class="simple">
+<li><p>&quot;Packaging Tutorial: GNU Hello&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/">https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/</a></p></li>
+<li><p>&quot;How to create a GNU Hello RPM package/ja&quot;: <a class="reference external" href="https://fedoraproject.org/wiki/How_to_create_a_GNU_Hello_RPM_package/ja">https://fedoraproject.org/wiki/How_to_create_a_GNU_Hello_RPM_package/ja</a></p></li>
+<li><p>&quot;Creating RPM packages&quot;: <a class="reference external" href="https://asamalik.fedorapeople.org/tmp-docs-preview/quick-docs/creating-rpm-packages/">https://asamalik.fedorapeople.org/tmp-docs-preview/quick-docs/creating-rpm-packages/</a></p></li>
+<li><p>&quot;RPM Packaging Guide&quot;: <a class="reference external" href="https://rpm-packaging-guide.github.io/">https://rpm-packaging-guide.github.io/</a></p></li>
+</ul>
+</dd>
+<dt><em>fedora account</em></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://accounts.fedoraproject.org/">https://accounts.fedoraproject.org/</a></p></li>
+</ul>
+</dd>
+<dt><em>kojiを利用したfedora向けビルドに関して</em></dt><dd><ul class="simple">
+<li><p>&quot;Building in Fedora infrastructure&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/#_building_in_fedora_infrastructure">https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/#_building_in_fedora_infrastructure</a></p></li>
+<li><p>&quot;Installing Packager Tools&quot;(認証など): <a class="reference external" href="https://docs.fedoraproject.org/en-US/package-maintainers/Installing_Packager_Tools/">https://docs.fedoraproject.org/en-US/package-maintainers/Installing_Packager_Tools/</a></p></li>
+<li><p>&quot;Using the Koji build system&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/">https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/</a></p></li>
+</ul>
+</dd>
+<dt><em>fedora COPR関連</em></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://copr.fedorainfracloud.org/coprs/">https://copr.fedorainfracloud.org/coprs/</a></p></li>
+<li><p>&quot;How to Publish your Software on Copr, Fedora’s User Repository&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/">https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/</a></p></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section id="id3">
-<h3>パッケージ開発とかのためのパッケージ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h3>
+<h3>概要<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h3>
+</section>
+<section id="id4">
+<h3>パッケージ開発とかのためのパッケージ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install @development @rpm-development-tools
 </pre></div>
 </div>
@@ -208,12 +237,8 @@ $ ls ~/rpmbuild/RPMS/                                    ### specファイルに
 </pre></div>
 </div>
 </section>
-<section id="neovim">
-<h3>neovimのパッケージを自作してリポジトリまで自作する<a class="headerlink" href="#neovim" title="このヘッドラインへのパーマリンク"></a></h3>
-<p>epelからインストールできるneovimはv3.8でバージョンが低いので，v4.4くらいのパッケージを自作してみる．</p>
-</section>
-<section id="id4">
-<h3>パッケージを署名する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h3>
+<section id="id5">
+<h3>パッケージを署名する<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### キーペアの作成と設定とか
 $ gpg --gen-key                                         ### 鍵作成．名前とかメールアドレスとか入れる ~/.gnupg ファイルの中にできる
 $ gpg --list-keys                                       ### 鍵が表示される
@@ -233,6 +258,10 @@ $ sudo vim /etc/yum.repos.d/[reponame].repo             ### このレポジト�
 + gpgcheck=1
 </pre></div>
 </div>
+</section>
+<section id="neovim">
+<h3>neovimのパッケージを自作してリポジトリまで自作する(一応アーカイブとして残してるけどあとで消す)<a class="headerlink" href="#neovim" title="このヘッドラインへのパーマリンク"></a></h3>
+<p>epelからインストールできるneovimはv3.8でバージョンが低いので，v4.4くらいのパッケージを自作してみる．</p>
 </section>
 </section>
 </section>
