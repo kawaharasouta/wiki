@@ -41,6 +41,19 @@ YUM・DNF及びRPMパッケージ(RedHat系)
  - "How to Publish your Software on Copr, Fedora’s User Repository": https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/
 
 
+テストとしてfedora kojiでCentOS Streamのreleaseパッケージを，gitlabのリンクを指定してビルドしてみたが，まだうまくいっていないという例
+
+::
+
+  $ koji build --scratch f38 git+https://gitlab.com/redhat/centos-stream/rpms/centos-release#2e8259a53fcf1fe43b29d07a48e3686e75d6a6fd
+
+まず少なくともここに指定するscmのurlは，どうやら許可された限られたurlしか受け付けなくなっているみたい? 
+スクラッチビルドの許可リストは分けたみたいな情報はあった．
+https://pagure.io/fedora-infrastructure/issue/9728
+
+gitlabにリポジトリをおいてそこのリンクを指定してkojiコマンドをたたくみたいなのを想定していたけど，少なくともfedoraのkojiを使うならそれは無理そうかな．
+  
+
 概要
 ---------
 

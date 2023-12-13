@@ -197,6 +197,14 @@
 </ul>
 </dd>
 </dl>
+<p>テストとしてfedora kojiでCentOS Streamのreleaseパッケージを，gitlabのリンクを指定してビルドしてみたが，まだうまくいっていないという例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ koji build --scratch f38 git+https://gitlab.com/redhat/centos-stream/rpms/centos-release#2e8259a53fcf1fe43b29d07a48e3686e75d6a6fd
+</pre></div>
+</div>
+<p>まず少なくともここに指定するscmのurlは，どうやら許可された限られたurlしか受け付けなくなっているみたい?
+スクラッチビルドの許可リストは分けたみたいな情報はあった．
+<a class="reference external" href="https://pagure.io/fedora-infrastructure/issue/9728">https://pagure.io/fedora-infrastructure/issue/9728</a></p>
+<p>gitlabにリポジトリをおいてそこのリンクを指定してkojiコマンドをたたくみたいなのを想定していたけど，少なくともfedoraのkojiを使うならそれは無理そうかな．</p>
 </section>
 <section id="id3">
 <h3>概要<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h3>
