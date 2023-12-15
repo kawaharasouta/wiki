@@ -21,6 +21,8 @@ YUM・DNF及びRPMパッケージ(RedHat系)
 
 あとでそれぞれの章に移すかもしれないけど．  
 
+*RPMについて，詳しく書いてあるっぽい*
+ - "GURU LABS - CREATING RPMS GUIDE": https://www.gurulabs.com/media/files/courseware-samples/GURULABS-RPM-GUIDE-v1.0.PDF
 
 *パッケージングに関して*
  - "Packaging Tutorial: GNU Hello": https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/
