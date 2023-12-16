@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFSサーバ 構築の超雑メモ &mdash; wiki  ドキュメント</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="システムプログラミング" href="system_programing.html" />
+    <link rel="prev" title="OpenVPN" href="openvpn.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> wiki
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xen.html">xen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NFSサーバ 構築の超雑メモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syslog.html">syslogについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Linux capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parted_mount.html">パーティション・マウント関連</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/golang_perf.html">golangでちょっと文字列関連性能計測した時のいろんなメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kvm_api.html">kvm api でいろいろするやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">poems:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">NFSサーバ 構築の超雑メモ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/nfs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nfs">
+<h1>NFSサーバ 構築の超雑メモ<a class="headerlink" href="#nfs" title="このヘッドラインへのパーマリンク"></a></h1>
+<p>ぶっちゃけ書くほどのもんじゃないんだけど一応記録で..</p>
+<dl class="simple">
+<dt>参考:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.server-world.info/query?os=Fedora_34&amp;p=nfs&amp;f=1">https://www.server-world.info/query?os=Fedora_34&amp;p=nfs&amp;f=1</a></p></li>
+<li><p><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/storage_administration_guide/nfs-clientconfig">https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/storage_administration_guide/nfs-clientconfig</a></p></li>
+<li><p><a class="reference external" href="https://access.redhat.com/ja/solutions/6969164">https://access.redhat.com/ja/solutions/6969164</a></p></li>
+<li><p><a class="reference external" href="https://access.redhat.com/solutions/208043">https://access.redhat.com/solutions/208043</a></p></li>
+</ul>
+</dd>
+</dl>
+<p>最初のserver-worldの記事でおおよそ構築できるけど，若干ほかの記事で対処必要だった．</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="openvpn.html" class="btn btn-neutral float-left" title="OpenVPN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="system_programing.html" class="btn btn-neutral float-right" title="システムプログラミング" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, KAWAHARAsouta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

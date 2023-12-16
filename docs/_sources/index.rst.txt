@@ -26,6 +26,7 @@ wiki
   contents/trex
   contents/openssl
   contents/openvpn
+  contents/nfs
   contents/system_programing
   contents/autotools
   contents/freebsd
