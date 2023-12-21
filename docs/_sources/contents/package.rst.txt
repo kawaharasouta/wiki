@@ -30,6 +30,10 @@ YUM・DNF及びRPMパッケージ(RedHat系)
  - "Creating RPM packages": https://asamalik.fedorapeople.org/tmp-docs-preview/quick-docs/creating-rpm-packages/
  - "RPM Packaging Guide": https://rpm-packaging-guide.github.io/
 
+*後のパッケージングで参考にしたいリンク*
+goのビルド(%buildで直コマンドたたくだけだけど)とsystemd service unit追加の例まで含まれている．
+ - "Build your own RPM package with a sample Go program": https://developers.redhat.com/articles/2021/05/21/build-your-own-rpm-package-sample-go-program#
+
 *fedora account*
  - https://accounts.fedoraproject.org/
 
