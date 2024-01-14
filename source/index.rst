@@ -64,6 +64,7 @@ wiki
   technote/linux_security
   technote/linux_from_scratch
   technote/em_linux
+  technote/leraning-ebpf
 
 .. toctree::
   :maxdepth: 1
