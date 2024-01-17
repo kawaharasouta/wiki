@@ -108,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/leraning-ebpf.html">Learning eBPF</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -205,6 +206,20 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
 <li><p>&quot;Using the Koji build system&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/">https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/</a></p></li>
 </ul>
 </dd>
+</dl>
+<p><em>&quot;Using the koji build system&quot; よりtagとターゲットについて</em>
+(<a class="reference external" href="https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/#koji_tags_and_packages_organization">https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/#koji_tags_and_packages_organization</a>)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>tagはパッケージの集合を表す．tagは継承できる．</p></li>
+<li><p>普通のビルドシステムのリポジトリがtagに該当するイメージでいいはず?</p></li>
+<li><p>targetは，buildrootとなるtag(ビルド時に参照するリポジトリに該当する)とビルド生成物に付与されるタグの設定．</p></li>
+<li><p>tagやtargetは権限がある人でないとできないようで，個人用のtagやtarget作成も現状は無理っぽい．</p></li>
+<li><p>scratchbuild指定した場合には，指定したtargetのbuildrootを利用してビルドするものの，生成物のtag付与は行わないみたいな感じっぽい．</p></li>
+<li><p>(おそらくscratchじゃなくてproduct?ビルドも権限がないと無理だと思う．)</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
 <dt><em>fedora COPR関連</em></dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://copr.fedorainfracloud.org/coprs/">https://copr.fedorainfracloud.org/coprs/</a></p></li>
 <li><p>&quot;How to Publish your Software on Copr, Fedora’s User Repository&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/">https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/</a></p></li>

@@ -42,6 +42,16 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
  - "Installing Packager Tools"(認証など): https://docs.fedoraproject.org/en-US/package-maintainers/Installing_Packager_Tools/
  - "Using the Koji build system": https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/
 
+*"Using the koji build system" よりtagとターゲットについて*
+(https://docs.fedoraproject.org/en-US/package-maintainers/Using_the_Koji_Build_System/#koji_tags_and_packages_organization)
+ - tagはパッケージの集合を表す．tagは継承できる．
+ - 普通のビルドシステムのリポジトリがtagに該当するイメージでいいはず?
+ - targetは，buildrootとなるtag(ビルド時に参照するリポジトリに該当する)とビルド生成物に付与されるタグの設定．
+ - tagやtargetは権限がある人でないとできないようで，個人用のtagやtarget作成も現状は無理っぽい．
+ - scratchbuild指定した場合には，指定したtargetのbuildrootを利用してビルドするものの，生成物のtag付与は行わないみたいな感じっぽい．
+ - (おそらくscratchじゃなくてproduct?ビルドも権限がないと無理だと思う．)
+
+
 *fedora COPR関連*
  - https://copr.fedorainfracloud.org/coprs/
  - "How to Publish your Software on Copr, Fedora’s User Repository": https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/
