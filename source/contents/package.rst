@@ -144,8 +144,186 @@ gitlabにリポジトリをおいてそこのリンクを指定してkojiコマ�
   + gpgcheck=1
 
 
+epel向けパッケージをmockでビルドしてみる例
+---------------------------------------------------
+
+mockパッケージをインストールしてuseraddしておく
+
+::
+
+  $ sudo dnf install mock
+  $ sudo usermod -a -G mock $USER
+
+swayをepel向け(ベースはAlmaLinux)でビルドしてみる．
+
+swayはfedoraでは提供されているものの，epelでは提供されていない．
+swayのビルドには，ベースのAlmaLinuxで提供されているパッケージとepelで現在提供されているパッケージ以外で，以下のパッケージが必要．
+また以下のパッケージ同士でも依存関係があるので，ビルドする順番は大事．
+
+ - seatd(libseat)
+ - wlroots
+
+kojiからfedora36向けのswayのsource rpmを持ってくる
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2088661
+
+このパッケージを取得して以下のコマンドでビルドを試してみる．
+コンフィグは/etc/mock配下のalma+epel-9-x86_64を使う．
+以下のエラーが出る．
+
+::
+
+ $ mock -r alma+epel-9-x86_64 --rebuild sway-1.7.4.fc36.src.rpm 
+ (...)
+ Error:
+  Problem: nothing provides requested (pkgconfig(wlroots) >= 0.15.0 with pkgconfig(wlroots) < 0.16)
+  (try to add '--skip-broken' to skip uninstallable packages or '--nobest' to use not only best candidate packages)
+
+pkgconfig(wlroots)がないといわれる．
+具体的なfedora上でのパッケージ名はfedora上で下のようにすればわかる．
+
+::
+  
+  ### fedora38上で実行
+  $ dnf provides "pkgconfig(wlroots)"
+  Last metadata expiration check: 0:00:01 ago on Wed 14 Feb 2024 06:08:08 PM JST.
+  wlroots-devel-0.16.2-1.fc38.i686 : Development files for wlroots
+  Repo        : fedora
+  Matched from:
+  Provide    : pkgconfig(wlroots) = 0.16.2
+
+  wlroots-devel-0.16.2-1.fc38.x86_64 : Development files for wlroots
+  Repo        : fedora
+  Matched from:
+  Provide    : pkgconfig(wlroots) = 0.16.2
+  (...)
 
 
+wlroots-develが足らないらしいので，同様に持ってきてビルドする．
+https://koji.fedoraproject.org/koji/buildinfo?buildID=2088613
+
+::
+
+  $ mock -r alma+epel-9-x86_64 --rebuild wlroots-0.15.1-5.fc36.src.rpm
+  (...)
+  No matching package to install: 'pkgconfig(libseat)'
+  No matching package to install: 'pkgconfig(xwayland)'
+  Not all dependencies satisfied
+  Error: Some packages could not be found.
+
+それぞれfedora上で確認する．
+  
+::
+
+  ### fedora38上で実行
+  $ dnf provides 'pkgconfig(libseat)'
+  Last metadata expiration check: 26 days, 10:08:29 ago on Fri 19 Jan 2024 08:13:58 AM JST.
+  libseat-devel-0.7.0-3.fc38.i686 : Development files for libseat
+  Repo        : fedora
+  Matched from:
+  Provide    : pkgconfig(libseat) = 0.7.0
+
+  libseat-devel-0.7.0-3.fc38.x86_64 : Development files for libseat
+  Repo        : fedora
+  Matched from:
+  Provide    : pkgconfig(libseat) = 0.7.0
+  (...)
+
+  $ dnf provides 'pkgconfig(xwayland)'
+  xorg-x11-server-Xwayland-devel-22.1.9-1.fc38.i686 : Development package
+  Repo        : fedora
+  Matched from:
+  Provide    : pkgconfig(xwayland) = 22.1.9
+
+  xorg-x11-server-Xwayland-devel-22.1.9-1.fc38.x86_64 : Development package
+  Repo        : fedora
+  Matched from:
+  Provide    : pkgconfig(xwayland) = 22.1.9
+
+
+xorg-x11-server-Xwayland-develはAlmaLinuxのdevelリポジトリにある．
+configでdevelも参照するようにすればよさそう．
+
+::
+
+  $ dnf list xorg-x11-server-Xwayland-devel
+  AlmaLinux 9 - AppStream                                        5.9 kB/s | 4.1 kB     00:00
+  AlmaLinux 9 - BaseOS                                           5.7 kB/s | 3.8 kB     00:00
+  AlmaLinux 9 - Devel                                            5.9 kB/s | 4.1 kB     00:00
+  AlmaLinux 9 - Extras                                           4.6 kB/s | 3.8 kB     00:00
+  Available Packages
+  xorg-x11-server-Xwayland-devel.x86_64                    22.1.9-2.el9                     devel
+
+
+というわけで以下のような/etc/mock/alma9-local.cfgを作成する．
+今までのconfigをincludeしたうえで，develリポジトリを追加するようにしている．
+(今までのconfigで使っているtemplate/almalinux-9.tplでもdevelはenable=0で定義されているけど，末尾に追加しちゃえば問題ないらしい．)
+
+::
+
+  include('alma+epel-9-x86_64.cfg')
+
+  config_opts['root'] = "alma+epel+devel+local-9-{{ target_arch }}"
+  config_opts['description'] = 'AlmaLinux 9 + EPEL + devel(for pkgconfig(xwayland)) + local'
+
+  config_opts['dnf.conf'] += """
+  [devel]
+  name=AlmaLinux $releasever - Devel
+  mirrorlist=https://mirrors.almalinux.org/mirrorlist/$releasever/devel
+  # baseurl=https://repo.almalinux.org/almalinux/$releasever/devel/$basearch/os/
+  gpgcheck=1
+  enabled=1
+  gpgkey=file:///usr/share/distribution-gpg-keys/alma/RPM-GPG-KEY-AlmaLinux-9
+  """
+
+このコンフィグでビルドしてみる．
+
+::
+
+  mock -r alma9-local --rebuild wlroots-0.15.1-5.fc36.src.rpm
+  No matching package to install: 'pkgconfig(libseat)'
+  Not all dependencies satisfied
+  Error: Some packages could not be found.
+
+libseat-develを先にビルドしないといけないので，今までと同様に取ってきてビルドしてみる．
+https://koji.fedoraproject.org/koji/buildinfo?buildID=1969776
+
+::
+
+  $ mock -r alma9-local --rebuild seatd-0.7.0-1.fc36.src.rpm
+
+こんどはビルドが成功する．
+ビルド生成物の出力先はログに書いてあるので適当に保存しておく．
+
+
+今後のビルドでは生成物を利用してビルドを行う．
+ローカルリポジトリを作成してmockビルド時にそこを参照するようにする．
+
+適当にディレクトリを掘ってそこにビルドしてできたパッケージを入れておく．
+そのディレクトリを対象にcreaterepoコマンドを実行してリポジトリ化する．
+
+::
+
+  $ createrepo [対象ディレクトリ]
+
+対象ディレクトリ配下にrepodataというサブディレクトリができていればOK
+
+今作成したローカルリポジトリを参照してmockでビルドを行う．
+コンフィグに追加しても良いが，今回はmockコマンドのオプションを使うことにする．
+再度wlrootsのビルドを行う．
+
+::
+
+  $ mock -r alma9-local --rebuild wlroots-0.15.1-5.fc36.src.rpm --addrepo=file://[ローカルリポジトリのパス]
+
+これでwlrootsのビルドも完了．
+ここで生成されたパッケージをローカルリポジトリに加えて，createrepoしなおす．
+そして最後にお目当てのswayのビルドを行う．
+
+::
+
+  $ mock -r alma9-local --rebuild sway-1.7-4.fc36.src.rpm --addrepo=file:///home/khwarizmi/localrepo/
+
+これでビルドは完了．
 
 
 neovimのパッケージを自作してリポジトリまで自作する(一応アーカイブとして残してるけどあとで消す)
