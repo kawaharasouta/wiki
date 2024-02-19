@@ -34,6 +34,14 @@ YUM・DNF及びRPMパッケージ(RedHat系)
 goのビルド(%buildで直コマンドたたくだけだけど)とsystemd service unit追加の例まで含まれている．
  - "Build your own RPM package with a sample Go program": https://developers.redhat.com/articles/2021/05/21/build-your-own-rpm-package-sample-go-program#
 
+*fedora sourcecodeとか*
+ - Fedora Pagure: https://pagure.io/
+ - Fedora Package Source: https://src.fedoraproject.org/
+
+
+fedora koji関連
+---------------------
+
 *fedora account*
  - https://accounts.fedoraproject.org/
 
@@ -51,12 +59,6 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
  - scratchbuild指定した場合には，指定したtargetのbuildrootを利用してビルドするものの，生成物のtag付与は行わないみたいな感じっぽい．
  - (おそらくscratchじゃなくてproduct?ビルドも権限がないと無理だと思う．)
 
-
-*fedora COPR関連*
- - https://copr.fedorainfracloud.org/coprs/
- - "How to Publish your Software on Copr, Fedora’s User Repository": https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/
-
-
 テストとしてfedora kojiでCentOS Streamのreleaseパッケージを，gitlabのリンクを指定してビルドしてみたが，まだうまくいっていないという例
 
 ::
@@ -68,6 +70,26 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
 https://pagure.io/fedora-infrastructure/issue/9728
 
 gitlabにリポジトリをおいてそこのリンクを指定してkojiコマンドをたたくみたいなのを想定していたけど，少なくともfedoraのkojiを使うならそれは無理そうかな．
+
+
+
+fedora COPR関連
+-----------------------------
+
+ - https://copr.fedorainfracloud.org/coprs/
+ - "How to Publish your Software on Copr, Fedora’s User Repository": https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/
+ - fedora COPR User Documentation: https://docs.pagure.org/copr.copr/user_documentation.html
+ - fedora COPR Screenshots tutorial: https://docs.pagure.org/copr.copr/screenshots_tutorial.html#screenshots-tutorial
+
+とりあえずUser DocumentationとScreenshots tutorialを見ればなんとなくビルドは仕掛けられる．
+
+::
+
+  ### まずauthentication tokenを.config/coprに作成する．詳細はUser Documentationにある．
+  $ sudo dnf install copr-cli
+  $ copr-cli build <プロジェクト名> <path to your SRPM>
+
+
   
 
 概要

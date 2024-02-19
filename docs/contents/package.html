@@ -69,6 +69,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#aptdebian-debian">APT及びdebianパッケージ(debian系)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#yumdnfrpm-redhat">YUM・DNF及びRPMパッケージ(RedHat系)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">参考</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fedora-koji">fedora koji関連</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fedora-copr">fedora COPR関連</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">概要</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">パッケージ開発とかのためのパッケージ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#srpm">ソースコード(SRPM)をダウンロードしてビルドする</a></li>
@@ -197,6 +199,16 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
 </ul>
 </div></blockquote>
 <dl class="simple">
+<dt><em>fedora sourcecodeとか</em></dt><dd><ul class="simple">
+<li><p>Fedora Pagure: <a class="reference external" href="https://pagure.io/">https://pagure.io/</a></p></li>
+<li><p>Fedora Package Source: <a class="reference external" href="https://src.fedoraproject.org/">https://src.fedoraproject.org/</a></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="fedora-koji">
+<h3>fedora koji関連<a class="headerlink" href="#fedora-koji" title="このヘッドラインへのパーマリンク"></a></h3>
+<dl class="simple">
 <dt><em>fedora account</em></dt><dd><ul class="simple">
 <li><p><a class="reference external" href="https://accounts.fedoraproject.org/">https://accounts.fedoraproject.org/</a></p></li>
 </ul>
@@ -220,13 +232,6 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
 <li><p>(おそらくscratchじゃなくてproduct?ビルドも権限がないと無理だと思う．)</p></li>
 </ul>
 </div></blockquote>
-<dl class="simple">
-<dt><em>fedora COPR関連</em></dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://copr.fedorainfracloud.org/coprs/">https://copr.fedorainfracloud.org/coprs/</a></p></li>
-<li><p>&quot;How to Publish your Software on Copr, Fedora’s User Repository&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/">https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/</a></p></li>
-</ul>
-</dd>
-</dl>
 <p>テストとしてfedora kojiでCentOS Streamのreleaseパッケージを，gitlabのリンクを指定してビルドしてみたが，まだうまくいっていないという例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ koji build --scratch f38 git+https://gitlab.com/redhat/centos-stream/rpms/centos-release#2e8259a53fcf1fe43b29d07a48e3686e75d6a6fd
 </pre></div>
@@ -235,6 +240,23 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
 スクラッチビルドの許可リストは分けたみたいな情報はあった．
 <a class="reference external" href="https://pagure.io/fedora-infrastructure/issue/9728">https://pagure.io/fedora-infrastructure/issue/9728</a></p>
 <p>gitlabにリポジトリをおいてそこのリンクを指定してkojiコマンドをたたくみたいなのを想定していたけど，少なくともfedoraのkojiを使うならそれは無理そうかな．</p>
+</section>
+<section id="fedora-copr">
+<h3>fedora COPR関連<a class="headerlink" href="#fedora-copr" title="このヘッドラインへのパーマリンク"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://copr.fedorainfracloud.org/coprs/">https://copr.fedorainfracloud.org/coprs/</a></p></li>
+<li><p>&quot;How to Publish your Software on Copr, Fedora’s User Repository&quot;: <a class="reference external" href="https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/">https://docs.fedoraproject.org/en-US/quick-docs/publish-rpm-on-copr/</a></p></li>
+<li><p>fedora COPR User Documentation: <a class="reference external" href="https://docs.pagure.org/copr.copr/user_documentation.html">https://docs.pagure.org/copr.copr/user_documentation.html</a></p></li>
+<li><p>fedora COPR Screenshots tutorial: <a class="reference external" href="https://docs.pagure.org/copr.copr/screenshots_tutorial.html#screenshots-tutorial">https://docs.pagure.org/copr.copr/screenshots_tutorial.html#screenshots-tutorial</a></p></li>
+</ul>
+</div></blockquote>
+<p>とりあえずUser DocumentationとScreenshots tutorialを見ればなんとなくビルドは仕掛けられる．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### まずauthentication tokenを.config/coprに作成する．詳細はUser Documentationにある．
+$ sudo dnf install copr-cli
+$ copr-cli build &lt;プロジェクト名&gt; &lt;path to your SRPM&gt;
+</pre></div>
+</div>
 </section>
 <section id="id3">
 <h3>概要<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h3>
