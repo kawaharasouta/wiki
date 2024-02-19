@@ -36,7 +36,8 @@ goのビルド(%buildで直コマンドたたくだけだけど)とsystemd servi
 
 *fedora sourcecodeとか*
  - Fedora Pagure: https://pagure.io/
- - Fedora Package Source: https://src.fedoraproject.org/
+ - Fedora Package Sources: https://src.fedoraproject.org/
+ - Fedora Packages: https://packages.fedoraproject.org/
 
 
 fedora koji関連
