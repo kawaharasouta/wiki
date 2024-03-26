@@ -399,6 +399,14 @@ delete vm
   $ virsh vol-list [pool]
   $ virsh vol-delete [path to vol]
 
+次のようにオプションを指定してundefineすると一緒にボリュームも消してくれていい感じ．
+詳しくはmanを参照のこと．
+
+::
+
+  $ virsh undefine --remove-all-storage [vm]
+
+
 
 change memory size
 ===================

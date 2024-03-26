@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs.html">NFSサーバ 構築の超雑メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
@@ -144,6 +145,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/leraning-ebpf.html">Learning eBPF</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -550,6 +552,11 @@ $ virt-builder fedora-38 \
 $ virsh pool-list
 $ virsh vol-list [pool]
 $ virsh vol-delete [path to vol]
+</pre></div>
+</div>
+<p>次のようにオプションを指定してundefineすると一緒にボリュームも消してくれていい感じ．
+詳しくはmanを参照のこと．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virsh undefine --remove-all-storage [vm]
 </pre></div>
 </div>
 </section>
