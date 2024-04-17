@@ -34,6 +34,10 @@ YUM・DNF及びRPMパッケージ(RedHat系)
 goのビルド(%buildで直コマンドたたくだけだけど)とsystemd service unit追加の例まで含まれている．
  - "Build your own RPM package with a sample Go program": https://developers.redhat.com/articles/2021/05/21/build-your-own-rpm-package-sample-go-program#
 
+こちらの方が参考になりそう
+ - "Golang Packaging Guidelines": https://docs.fedoraproject.org/en-US/packaging-guidelines/Golang/
+ - "More Go packaging"(obsolete): https://fedoraproject.org/wiki/More_Go_packaging
+
 *fedora sourcecodeとか*
  - Fedora Pagure: https://pagure.io/
  - Fedora Package Sources: https://src.fedoraproject.org/
