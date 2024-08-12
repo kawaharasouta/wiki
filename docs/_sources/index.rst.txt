@@ -21,6 +21,7 @@ wiki
   contents/c_c++
   contents/golang
   contents/ocaml
+  contents/ctags
   contents/xdp
   contents/ovs
   contents/trex
