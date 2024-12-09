@@ -174,6 +174,10 @@ fedora COPR関連
 epel向けパッケージをmockでビルドしてみる例
 ---------------------------------------------------
 
+参考: 
+ - https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds
+ - https://rpm-software-management.github.io/mock/
+
 mockパッケージをインストールしてuseraddしておく
 
 ::
