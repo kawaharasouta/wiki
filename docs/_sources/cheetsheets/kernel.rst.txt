@@ -192,6 +192,34 @@ https://wiki.archlinux.jp/index.php/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB/%E3%82%
 :ref:`kernel_up_target`
 再起動するとビルドしたカーネルで動いてます．
 
+
+ディストリビューションカーネルのコンフィグを持ってくるプラクティカルな方法
+------------------------------------------------------------------------------
+
+.configを用意する際の方法の例として，あるディストリビューションを使っていてそのコンフィグを流用して.configを用意する
+ソース持ってきて(/usr/src/kernelに)展開してcdしたあとから
+
+::
+
+  $ make claen && make mrproper
+
+  ### 現在動いているカーネルのコンフィグをそのまま持ってくる
+  ### すくなくともfedora38では↓のように/boot配下にコンフィグある．
+  ### あとは，linux-headers 入れてから/lib/modules/`uname -r`/build/から持ってくるとかできるはず?
+  $ cp /boot/config-6.2.9-300.fc38.x86_64 .config
+
+  ### 用意した.configから，ビルドしたいカーネルまでで追加されたconfigの一覧を見る．
+  ### またそれらのhelpも以下のようにして見れる
+  $ make listnewconfig
+  $ make helpnewconfig
+
+  ### 新しいconfigを設定するために以下のどちらかを実行する．
+  ##### すべての新しいconfigを対話的にひとつずつ指定して設定する．
+  $ make oldconfig
+  ##### すべての新しいconfigをデフォルトの値で設定する．
+  $ make olddefconfig
+
+
 便利なカーネルコンフィグ
 =========================
 

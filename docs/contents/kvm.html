@@ -82,7 +82,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#fedora-debian-virsh-listvm2">fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#libvirt-monolithic-module-mode">libvirt - monolithic &amp; module mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">仮想化環境構築後にできるグループと，基本的な権限調整について</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#libvirt-polkit">libvirtグループを使わず，polkitを用いて権限調整をする方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libvirt-polkit">libvirtグループを使わず，polkitを用いて権限調整をする方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#polkit">polkitで特定のユーザーに特定のアクションを許可する例</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">kvmコマンドと言うものがあるらしく</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
@@ -98,6 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctags.html">ctags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
@@ -1193,6 +1197,50 @@ $ virsh edit [vm]
 </pre></div>
 </div>
 <p>参考: <a class="reference external" href="https://wiki.libvirt.org/SSHPolicyKitSetup.html">https://wiki.libvirt.org/SSHPolicyKitSetup.html</a></p>
+<p>以下，関連してpolkitの活用例</p>
+<section id="polkit">
+<h3>polkitで特定のユーザーに特定のアクションを許可する例<a class="headerlink" href="#polkit" title="このヘッドラインへのパーマリンク"></a></h3>
+<p>Archwikiよりそのまま: <a class="reference external" href="https://wiki.archlinux.jp/index.php/Polkit#.E7.89.B9.E5.AE.9A.E3.81.AE.E3.83.A6.E3.83.BC.E3.82.B6.E3.83.BC.E3.81.AB_org.freedesktop.timedate1.set">https://wiki.archlinux.jp/index.php/Polkit#.E7.89.B9.E5.AE.9A.E3.81.AE.E3.83.A6.E3.83.BC.E3.82.B6.E3.83.BC.E3.81.AB_org.freedesktop.timedate1.set</a>-<a href="#id8"><span class="problematic" id="id9">timezone_</span></a>.E3.82.A2.E3.82.AF.E3.82.B7.E3.83.A7.E3.83.B3.E3.81.AE.E4.BD.BF.E7.94.A8.E3.82.92.E8.A8.B1.E5.8F.AF.E3.81.99.E3.82.8B</p>
+<p>archie という名前のユーザーに org.freedesktop.timedate1.set-timezone アクションの認証なしの使用を許可するには、以下の polkit ルールを root ユーザーを使って作成してください:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">polkit</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">rules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">49</span><span class="o">-</span><span class="n">allow</span><span class="o">-</span><span class="n">archie</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">timezone</span><span class="o">.</span><span class="n">rules</span>
+<span class="n">polkit</span><span class="o">.</span><span class="n">addRule</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="s2">&quot;org.freedesktop.timedate1.set-timezone&quot;</span> <span class="o">&amp;&amp;</span>
+        <span class="n">subject</span><span class="o">.</span><span class="n">user</span> <span class="o">==</span> <span class="s2">&quot;archie&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">polkit</span><span class="o">.</span><span class="n">Result</span><span class="o">.</span><span class="n">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>org.freedesktop.[コマンド名] みたいな感じにすると別のコマンドでできそうか．</p>
+<p>アクションは，pkactionコマンドで確認できるらしい．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pkaction --verbose
+//! アクションの詳細を見たい場合
+$ pkaction --verbose --action-id &quot;org.freedesktop.action名&quot;
+</pre></div>
+</div>
+<p><strong>注意</strong>
+polkitのアクション名は，d-busのインタフェース名と同じ記法で表現方法もかなり近く，共通する部分も多い．
+がしかし，同一ではないようなので注意が必要．</p>
+<p>例えば実例として以下らしい?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>D-Busインターフェース：
+org.freedesktop.login1.Manager
+
+関連するpolkitアクション：
+org.freedesktop.login1.power-off
+org.freedesktop.login1.reboot
+org.freedesktop.login1.suspend
+</pre></div>
+</div>
+<p>それぞれ例えば以下のような感じで確認ができるらしい</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># D-Busインターフェースの確認
+d-feet （GUIツール）
+busctl list
+
+# polkitアクションの確認
+pkaction --verbose
+</pre></div>
+</div>
+</section>
 </section>
 <section id="reference">
 <h2>reference<a class="headerlink" href="#reference" title="このヘッドラインへのパーマリンク"></a></h2>

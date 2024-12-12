@@ -1137,6 +1137,65 @@ libvirtグループを使わず，polkitを用いて権限調整をする方法
 
 参考: https://wiki.libvirt.org/SSHPolicyKitSetup.html
 
+
+以下，関連してpolkitの活用例
+
+polkitで特定のユーザーに特定のアクションを許可する例
+--------------------------------------------------------
+
+Archwikiよりそのまま: https://wiki.archlinux.jp/index.php/Polkit#.E7.89.B9.E5.AE.9A.E3.81.AE.E3.83.A6.E3.83.BC.E3.82.B6.E3.83.BC.E3.81.AB_org.freedesktop.timedate1.set-timezone_.E3.82.A2.E3.82.AF.E3.82.B7.E3.83.A7.E3.83.B3.E3.81.AE.E4.BD.BF.E7.94.A8.E3.82.92.E8.A8.B1.E5.8F.AF.E3.81.99.E3.82.8B
+
+archie という名前のユーザーに org.freedesktop.timedate1.set-timezone アクションの認証なしの使用を許可するには、以下の polkit ルールを root ユーザーを使って作成してください:
+
+::
+
+  /etc/polkit-1/rules.d/49-allow-archie-set-timezone.rules
+  polkit.addRule(function(action, subject) {
+      if (action.id == "org.freedesktop.timedate1.set-timezone" &&
+          subject.user == "archie") {
+          return polkit.Result.YES;
+      }
+  });
+
+org.freedesktop.[コマンド名] みたいな感じにすると別のコマンドでできそうか．
+
+アクションは，pkactionコマンドで確認できるらしい．
+
+::
+
+  $ pkaction --verbose
+  //! アクションの詳細を見たい場合
+  $ pkaction --verbose --action-id "org.freedesktop.action名"
+
+
+**注意**
+polkitのアクション名は，d-busのインタフェース名と同じ記法で表現方法もかなり近く，共通する部分も多い．
+がしかし，同一ではないようなので注意が必要．
+
+例えば実例として以下らしい?
+
+::
+
+  D-Busインターフェース：
+  org.freedesktop.login1.Manager
+  
+  関連するpolkitアクション：
+  org.freedesktop.login1.power-off
+  org.freedesktop.login1.reboot
+  org.freedesktop.login1.suspend
+
+それぞれ例えば以下のような感じで確認ができるらしい
+
+::
+
+  # D-Busインターフェースの確認
+  d-feet （GUIツール）
+  busctl list
+  
+  # polkitアクションの確認
+  pkaction --verbose
+
+
 reference
 ===========
 
