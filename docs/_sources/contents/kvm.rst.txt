@@ -1167,6 +1167,8 @@ org.freedesktop.[コマンド名] みたいな感じにすると別のコマン�
   //! アクションの詳細を見たい場合
   $ pkaction --verbose --action-id "org.freedesktop.action名"
 
+また，pkactionは/usr/share/polkit-1/actionsのクイックリファレンスらしく，このファイルを実際見に行けばいいっぽい?
+
 
 **注意**
 polkitのアクション名は，d-busのインタフェース名と同じ記法で表現方法もかなり近く，共通する部分も多い．
