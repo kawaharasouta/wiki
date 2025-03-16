@@ -72,6 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#sr-iov-single-root-i-o-virtualization">SR-IOV (Single Root I/O Virtualization)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#virt-net">virt-net の技術(ハック)・ソフトウェア関連の情報</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">接続方法とかに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#autostart-setting">autostart setting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#s411">S411の環境を作った時のメモやつ</a></li>
@@ -744,6 +745,49 @@ $ sudo modprobe -r ixgbevf              // ホストにバカほどvfが生え�
 <p>VMのアドレス探すやつだけど，arp-scanじゃなくていいの見つけてしまった．</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo arp-scan -I virbr0 -l | awk &#39;{print $1}&#39; | tail -n 6 | head -n3    #オプションは適当
 $ virsh net-dhcp-leases default | awk &#39;{print $5, $6}&#39;
+</pre></div>
+</div>
+</section>
+<section id="virt-net">
+<h2>virt-net の技術(ハック)・ソフトウェア関連の情報<a class="headerlink" href="#virt-net" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>まずdnsmasqがDHCPサーバとDNSフォワーディングを担当している．
+<a class="reference external" href="https://wiki.archlinux.jp/index.php/Dnsmasq">https://wiki.archlinux.jp/index.php/Dnsmasq</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dnsmasq は、DNS サーバー、DHCPv6 と PXE をサポートする DHCP サーバー および TFTP サーバー を提供します。また、dnsmasq は DNS クエリをキャッシュし、過去に訪問したことのあるサイトへの DNS 検索速度を向上させるように設定することができます。
+</pre></div>
+</div>
+<p>例えばpsでプロセスをみると，libvirtで定義したネットワーク分だけプロセスが立っている
+※以下の例ではdnsmasqだけrootで動いているプロセス見えるんだけど，ちょっと微妙．DHCPしてるからなんらかの権限必要でrootのプロセス残っているとか? 分からない．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ps aux | grep dnsmasq
+libvirt+    1282  0.0  0.0   9308   316 ?        S     2024   3:02 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/lib/libvirt/libvirt_leaseshelper
+root        1283  0.0  0.0   9280   956 ?        S     2024   1:21 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/lib/libvirt/libvirt_leaseshelper
+libvirt+  968887  0.0  0.0   9308   344 ?        S     3月16   0:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/vmenv-intnet2.conf --leasefile-ro --dhcp-script=/usr/lib/libvirt/libvirt_leaseshelper
+libvirt+  991348  0.0  0.0   9308  2332 ?        S     3月16   0:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/vmenv-intnet.conf --leasefile-ro --dhcp-script=/usr/lib/libvirt/libvirt_leaseshelper
+khwariz+  995562  0.0  0.0  10080  2640 pts/91   S+   00:02   0:00 grep --color=auto dnsmasq
+</pre></div>
+</div>
+<p>psのログを見て分かるとおりだが，/var/lib/libvirt/dnsmasq配下に設定ファイルが置かれる．たぶんlibvirtで定義したネットワークのxmlからうまく生成される感じなのかな．
+conf以外にもファイルあるがどんなものかはよく調べてない．</p>
+<p>natはiptables/nftablesが提供している．
+とりあえず以下のコマンドとかうっておくと状態が分かるかもしれないが，いまのところあんまよくわかんない．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### iptables</span>
+<span class="c1"># すべてのテーブルとチェーンを表示</span>
+<span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">v</span>
+<span class="c1"># NATテーブルの確認</span>
+<span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">v</span>
+<span class="c1"># libvirt固有のチェーンを確認</span>
+<span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">L</span> <span class="n">LIBVIRT_PRT</span> <span class="o">-</span><span class="n">v</span>
+
+<span class="c1">### nftables</span>
+<span class="c1"># すべてのルールを表示</span>
+<span class="n">sudo</span> <span class="n">nft</span> <span class="nb">list</span> <span class="n">ruleset</span>
+<span class="c1"># 特定のテーブルを表示</span>
+<span class="n">sudo</span> <span class="n">nft</span> <span class="nb">list</span> <span class="n">table</span> <span class="n">nat</span>
+</pre></div>
+</div>
+<p>あとは，接続追跡(conntrack)なるもので情報を見れたりするらしいんだけど，ちょっと動作確認できてない．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">modprobe</span> <span class="n">nf_conntrack</span>
+<span class="n">sudo</span> <span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">nf_conntrack</span>
+<span class="n">sudo</span> <span class="n">conntrack</span> <span class="o">-</span><span class="n">L</span>
 </pre></div>
 </div>
 </section>
