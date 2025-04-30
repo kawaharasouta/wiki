@@ -49,12 +49,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ctags.html">ctags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/nfs.html">NFSサーバ 構築の超雑メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
@@ -78,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
@@ -94,6 +96,15 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Linuxの認証周りの話</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pam">PAM</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#passwd">passwd変更</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">PAMの基本文法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ldappam-authselect">LDAP認証したときのpam+authselectまわりの設定に関する考察</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">やったことの概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">pamとそのまわりのソフトウェアの認証ステップの考察</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authselect">authselectの役割</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ldap">LDAPを使うように設定変更</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sudossh">sudo時の認証をssh鍵認証のみでも通るようにする</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -101,6 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="linux_security.html">Linuxのセキュリティモジュールについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leraning-ebpf.html">Learning eBPF</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -176,6 +188,158 @@
 </pre></div>
 </div>
 <p>参照: <a class="reference external" href="https://volvox.hateblo.jp/entry/20130813/1376399307">https://volvox.hateblo.jp/entry/20130813/1376399307</a></p>
+</section>
+<section id="id1">
+<h3>PAMの基本文法<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">control</span> <span class="n">module</span><span class="o">-</span><span class="n">path</span> <span class="n">module</span><span class="o">-</span><span class="n">arguments</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>type（タイプ）
+PAMの4つの管理タイプを指定します：</p></li>
+</ol>
+<p>auth: 認証プロセス（ユーザー確認）
+account: アカウント管理（アカウント有効性確認）
+password: パスワード変更メカニズム
+session: セッション管理（ログイン前後の処理）</p>
+<ol class="arabic simple" start="2">
+<li><p>control（制御フラグ）
+モジュールの失敗時の動作を指定します：</p></li>
+</ol>
+<p>2.1 単純な制御フラグ</p>
+<p>required: 失敗するとスタック全体が失敗するが、処理は続行
+requisite: 失敗するとすぐにスタック全体が失敗し、処理を中止
+sufficient: 成功すれば、それまでのrequiredモジュールも成功していれば、処理成功として終了
+optional: 成功/失敗が全体の結果に影響しない（他にモジュールがない場合は影響する）
+include: 別のPAMサービス設定を現在の位置に含める
+substack: includeと似ているが、サブスタック内のsufficientの効果がサブスタック内に限定される</p>
+<p>2.2 詳細な制御構文
+複雑な条件分岐が必要な場合、以下のような詳細な制御構文も使用できます：
+[value1=action1 value2=action2 ...]
+例：[success=1 default=ignore]
+使用可能なアクションには以下があります：</p>
+<p>ignore: 結果を無視
+ok: モジュールの成功として扱う
+done: スタック全体を成功として終了
+die: スタック全体を失敗として終了
+reset: スタックをリセット
+N（数字）: N個のモジュールをスキップ</p>
+<ol class="arabic simple" start="3">
+<li><p>module-path（モジュールパス）
+モジュールファイルへのパスを指定します。通常は相対パスで記述され、/lib/security/または/lib64/security/を基準としています。
+例：pam_unix.so</p></li>
+<li><p>module-arguments（モジュール引数）
+モジュールに渡す引数をスペース区切りで指定します。引数はモジュールによって異なります</p></li>
+</ol>
+<p>特殊な構文要素</p>
+<p>コメント: #で始まる行はコメントとして扱われます
+インクルード: &#64;include service-nameで他のサービス設定を含めることができます
+モジュール省略: モジュール名の前に-をつけると、そのモジュールの失敗が無視されます
+デフォルト設定: #%PAM-1.0のような行はバージョン情報を示します</p>
+</section>
+<section id="ldappam-authselect">
+<h3>LDAP認証したときのpam+authselectまわりの設定に関する考察<a class="headerlink" href="#ldappam-authselect" title="このヘッドラインへのパーマリンク"></a></h3>
+<section id="id2">
+<h4>やったことの概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h4>
+<p>まず，Linuxのログイン(その他)の際の認証をLDAPを使うように設定変更
+その後，sudo時の認証でLDAPパスワードを入力するのが許容できなかったので，sshキーペアを使うように設定変更．
+なおAlmaLinux9</p>
+</section>
+<section id="id3">
+<h4>pamとそのまわりのソフトウェアの認証ステップの考察<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h4>
+<p><em>sudoの場合</em></p>
+<ol class="arabic simple">
+<li><p>sudoコマンドが実行されると，sudoは認証処理をPAMに移譲する．</p></li>
+<li><p>sudoは`sudo`という名前のPAMサービスを呼び出す</p></li>
+<li><p>PAMはその設定ファイルである/etc/pam.d/sudoファイルを読み込み，そこに定義された認証モジュールの順序にしたがって処理を行う．</p></li>
+<li><p>その結果の認証の成功/失敗結果を返す</p></li>
+</ol>
+<p><em>sshdの場合(設定にもよるが一例)</em></p>
+<ol class="arabic simple">
+<li><p>sshコマンドが実行され，接続先のsshdで認証が走る．</p></li>
+<li><p>sshdは公開鍵が渡されているかを確認し，公開鍵認証が行えるようであれば認証を行う．</p></li>
+<li><p>2で公開鍵認証ができなかった場合(失敗した場合もここに流れる?)，PAMに認証を移譲する．</p></li>
+<li><p>sshdは`sshd`という名前のPAMサービスを呼び出す</p></li>
+<li><p>PAMはその設定ファイルである/etc/pam.d/sshdファイルを読み込み，そこに定義された認証モジュールの順序にしたがって処理を行う．</p></li>
+<li><p>その結果の認証の成功/失敗結果を返す</p></li>
+</ol>
+<p>ソフトウェアがPAMに認証処理を移譲してPAMにて認証を行っている．
+当然だが，ソフトウェア内に認証処理が実装されていることもあり，PAMを通らないこともある．(sshdの例)
+その点はソフトウェアの作りや設定に依存する．
+設定によってはPAM以外の認証モジュールを使うこともできるようだが，詳細は不明．</p>
+</section>
+<section id="authselect">
+<h4>authselectの役割<a class="headerlink" href="#authselect" title="このヘッドラインへのパーマリンク"></a></h4>
+<dl class="simple">
+<dt>※ authselectは結構RHEL系特有の可能性があるので気をつける．</dt><dd><p>ubuntu2004とかのころはなかったかも? 今はありそうだけど．
+またarchlinuxにはなさそう．</p>
+</dd>
+</dl>
+<p>authselectは，PAMの設定を管理するためのツール．
+NSS(Name Service Switch) + その他?認証系? の設定も同時に管理されるっぽい?</p>
+<p>authselectはプロファイルを持つ．
+プロファイルを切り替えることで，PAMの設定ファイルを特定の用途向けにまとめて変更することができる．
+イメージ的には例えばgccとかpythonとかのバージョンをシンボリックリンクで切り替えるupdate-alternativesとかのイメージ．
+しかしauthselectの場合にはシンボリックリンク差し替えではなくて実際のファイルが切り替わることには注意．</p>
+<p>後述する(と思う)が，実際にauthselectでプロファイルを切り替えるときの話
+設定済みのプロファイルのファイル内容から変更がある(手動で変更している)ときにはコマンドは失敗する．
+--forceオプションで強制上書きができる．
+がそもそも思想として，PAMの設定ファイルを書き換えたい場合にはカスタムプロファイルを定義してauthselectからそのプロファイルに切り替えるのが正攻法なんだと思う．(ただの感想)</p>
+</section>
+<section id="ldap">
+<h4>LDAPを使うように設定変更<a class="headerlink" href="#ldap" title="このヘッドラインへのパーマリンク"></a></h4>
+<p>LDAPサーバがある前提でクライアント側の設定のみを書く．
+8系以前ではnss-pam-ldapdパッケージおよびnslcdが使われていたようなのだが，9系では削除されたとのこと．
+代わりにsssdを用いる</p>
+<p>sssdでLDAPサーバと通信するように設定をし，authselectはsssd向けのプロファイルに切り替える．
+これによりPAMがsssd向けの設定に切り替わり，LDAPで認証してくれるようになる．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### 必要なパッケージインストール
+$ sudo dnf install sssd sssd-ldap sssd-tools openldap-clients
+
+### sssd設定ディレクトリ
+$ sudo mkdir /etc/sssd
+
+### sssd設定ファイル (設定は一例)
+$ sudo vi /etc/sssd/sssd.conf
+  [sssd]
+  domains = example.com
+  config_file_version = 2
+  services = nss, pam
+  [domain/example.com]
+  id_provider = ldap
+  auth_provider = ldap
+  ldap_uri = ldap://ldap1.example.com,ldap://ldap2.example.com
+  ldap_search_base = dc=example,dc=com
+  ldap_id_use_start_tls = false
+  ldap_auth_disable_tls_never_use_in_production = true
+  cache_credentials = true
+  ldap_tls_reqcert = never
+
+### authselectプロファイル切り替え
+$ sudo authselect select sssd --force
+
+### sssd再起動
+$ sudo systemctl restart sssd
+</pre></div>
+</div>
+</section>
+<section id="sudossh">
+<h4>sudo時の認証をssh鍵認証のみでも通るようにする<a class="headerlink" href="#sudossh" title="このヘッドラインへのパーマリンク"></a></h4>
+<p>ここまででLDAP認証できるようになっているが，設定を追加して，sudoの認証時はssh鍵認証だけでも通るようにする．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install pam_ssh_agent_auth
+
+$ sudo vi /etc/pam.d/sudo
+/////!!!!!!!! sufficientで，この認証のみで通過できるようにしたいので，コメント除いて一番上に書くようにする．
++ auth       sufficient   pam_ssh_agent_auth.so file=/etc/authorized_keys.d/%u&#39;
+
+$ sudo vi /etc/sudoers
+//! sudo したときに， &quot;SSH_AUTH_SOCK&quot; 環境変数は維持するようにする．
+//! visudoの方がいいか?
++ Defaults env_keep += &quot;SSH_AUTH_SOCK&quot;
+</pre></div>
+</div>
+<p>これでOK</p>
+</section>
 </section>
 </section>
 </section>

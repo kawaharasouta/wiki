@@ -49,12 +49,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../contents/c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/golang.html">golang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ocaml.html">OCamlについてとりあえずメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/ctags.html">ctags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contents/nfs.html">NFSサーバ 構築の超雑メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/autotools.html">autotools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contents/freebsd.html">freebsd関連のメモする場所</a></li>
@@ -78,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boot.html#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unikernel.html">unikernelについて</a></li>
@@ -98,12 +100,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#z">(一部の)コンテキストの表示の例(-Zオプション)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">コンテキストの変更操作系</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#httpselinux">httpサーバ構築から見るよくあるSELinuxトラブルシューティング</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systemdssh">systemdにsshトンネルを掘らせたときのトラブルシューティング</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">注意</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">対処など</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="em_linux.html">組み込みLinux開発の時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leraning-ebpf.html">Learning eBPF</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -198,6 +207,148 @@ system_u:system_r:httpd_t:s0       1708 ?        00:00:00 nginx
 </section>
 <section id="httpselinux">
 <h3>httpサーバ構築から見るよくあるSELinuxトラブルシューティング<a class="headerlink" href="#httpselinux" title="このヘッドラインへのパーマリンク"></a></h3>
+<p>ここ書いてなくてなにを書きたかったのか忘れてしまった...
+たぶん2021年4月ごろの例のあれの話...?
+とりあえず枠だけおいておくか．</p>
+</section>
+<section id="systemdssh">
+<h3>systemdにsshトンネルを掘らせたときのトラブルシューティング<a class="headerlink" href="#systemdssh" title="このヘッドラインへのパーマリンク"></a></h3>
+<section id="id3">
+<h4>注意<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h4>
+<dl class="simple">
+<dt>※この章の情報は実際の対処から半年以上経って記憶をたよりに書いていることに注意．</dt><dd><p>おおいに間違っている可能性があるが，大筋はあっているはず．
+細かいところはその時の自分がその時に確認しろ．</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h4>概要<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h4>
+<p>sshトンネルを掘るサービスユニットを定義したがうまく動作しなかった．</p>
+<dl class="simple">
+<dt>大きく以下の2つの観点</dt><dd><ul class="simple">
+<li><p>systemdから起動したプロセスはコンテキストはinit_tになっているが，このコンテキストのプロセスからネットワークポートのバインドができない?(のはず)</p></li>
+<li><p>バインドしたいポート8080が未予約であったためバインドできなかった．</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h4>対処など<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h4>
+<p>まず，denyされているログはauditかselinuxの拒否メッセージを確認するコマンドで見る．
+後者の方が使い勝手は良いけれど，最初あたりをつけるときは前者のほうがいいと思う．
+auditのログは /var/log/audit.log
+selinuxの拒否メッセージ確認は以下だが，オプションはかなり適当だし，あまり意味分かってない．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ausearch</span> <span class="o">-</span><span class="n">m</span> <span class="n">AVC</span><span class="p">,</span><span class="n">USER_AVC</span><span class="p">,</span><span class="n">SELINUX_ERR</span> <span class="o">-</span><span class="n">ts</span> <span class="n">recent</span>
+<span class="n">audit2allow</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>先ほどの2つの観点に対処するためにカスタムモジュールを作成する．</p>
+<p>詳細に入る前にコマンド系</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### インストールされているモジュール確認</span>
+<span class="n">semodule</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">hogehoge</span>
+<span class="c1">### ポートのコンテキスト</span>
+<span class="n">semanage</span> <span class="n">port</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="n">grep</span> <span class="mi">8080</span>
+
+<span class="c1">### te(text)からpp(中間ファイル)生成</span>
+<span class="n">checkmodule</span> <span class="o">-</span><span class="n">M</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">o</span> <span class="n">モジュール名</span><span class="o">.</span><span class="n">mod</span> <span class="n">モジュール名</span><span class="o">.</span><span class="n">te</span>
+<span class="c1">### pp(ポリシーパッケージ)生成</span>
+<span class="n">semodule_package</span> <span class="o">-</span><span class="n">o</span> <span class="n">モジュール名</span><span class="o">.</span><span class="n">pp</span> <span class="o">-</span><span class="n">m</span> <span class="n">モジュール名</span><span class="o">.</span><span class="n">mod</span>
+<span class="c1">### インストール</span>
+<span class="n">semodule</span> <span class="o">-</span><span class="n">i</span> <span class="n">モジュール名</span><span class="o">.</span><span class="n">pp</span>
+
+<span class="c1">### selinuxの拒否メッセージから適合するモジュールを作るコマンド</span>
+<span class="c1">### ただし少なくとも自分の環境ではそのままでは動作しなかった</span>
+<span class="c1">### 最初のベースにするのはありだと思うけど</span>
+<span class="n">ausearch</span> <span class="o">-</span><span class="n">m</span> <span class="n">AVC</span> <span class="o">-</span><span class="n">ts</span> <span class="n">recent</span> <span class="o">|</span> <span class="n">audit2allow</span> <span class="o">-</span><span class="n">M</span> <span class="n">モジュール名</span>
+</pre></div>
+</div>
+<p>カスタムモジュールは3つ作成している．
+※冗長な箇所がありそうなので注意．とりあえず確認した時の環境にインストールされていた自作モジュールの内容をダンプしてみている．</p>
+<p>1つ目 init_ssh_basic.te
+各行ごとにキャプションをつけてみた</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### モジュール名と版数を宣言</span>
+<span class="n">module</span> <span class="n">init_ssh_basic</span> <span class="mf">1.0</span><span class="p">;</span>
+
+<span class="c1">### このモジュールが必要とするSELinuxの型・ロール・クラス・権限などの定義</span>
+<span class="c1">### includeとかimportみたいなものだと思っているけどどうなん</span>
+<span class="n">require</span> <span class="p">{</span>
+    <span class="nb">type</span> <span class="n">init_t</span><span class="p">;</span>
+    <span class="nb">type</span> <span class="n">ssh_t</span><span class="p">;</span>
+    <span class="nb">type</span> <span class="n">ssh_exec_t</span><span class="p">;</span>
+    <span class="n">role</span> <span class="n">system_r</span><span class="p">;</span>
+    <span class="k">class</span> <span class="nc">process</span> <span class="p">{</span> <span class="n">transition</span> <span class="n">sigchld</span> <span class="p">};</span>
+    <span class="k">class</span> <span class="nc">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">getattr</span> <span class="nb">open</span> <span class="n">execute</span> <span class="n">execute_no_trans</span> <span class="n">entrypoint</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">#============= Type transitions =============</span>
+<span class="c1">### systemdプロセス(init_t)がSSH実行ファイル(ssh_exec_t)を実行すると，自動的に新しいプロセスがssh_t型になるという遷移ルール</span>
+<span class="n">type_transition</span> <span class="n">init_t</span> <span class="n">ssh_exec_t</span><span class="p">:</span><span class="n">process</span> <span class="n">ssh_t</span><span class="p">;</span>
+
+<span class="c1">#============= init_t ==============</span>
+<span class="c1">### systemd(init_t)にSSH実行ファイル(ssh_exec_t)を読み取り・属性取得・オープン・実行する権限を付与</span>
+<span class="n">allow</span> <span class="n">init_t</span> <span class="n">ssh_exec_t</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">getattr</span> <span class="nb">open</span> <span class="n">execute</span> <span class="n">execute_no_trans</span> <span class="p">};</span>
+<span class="c1">### systemd(init_t)にssh_t型へのプロセス遷移を許可します。</span>
+<span class="n">allow</span> <span class="n">init_t</span> <span class="n">ssh_t</span><span class="p">:</span><span class="n">process</span> <span class="n">transition</span><span class="p">;</span>
+
+<span class="c1">#============= ssh_t ==============</span>
+<span class="c1">### SSH(ssh_t)プロセスがsystemd(init_t)に子プロセス終了シグナル(SIGCHLD)を送信できるように許可</span>
+<span class="n">allow</span> <span class="n">ssh_t</span> <span class="n">init_t</span><span class="p">:</span><span class="n">process</span> <span class="n">sigchld</span><span class="p">;</span>
+<span class="c1">### SSH(ssh_t)がSSH実行ファイル(ssh_exec_t)を読み取り・実行・エントリーポイントとして使用できるように許可</span>
+<span class="n">allow</span> <span class="n">ssh_t</span> <span class="n">ssh_exec_t</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="n">execute</span> <span class="n">entrypoint</span> <span class="p">};</span>
+
+<span class="c1">#============= Role allow =============</span>
+<span class="c1">### system_rロールにssh_t型を関連付けする</span>
+<span class="c1">### systemdから起動されたプロセスはsystem_rロールで実行されるため，この行はssh_t型のプロセスがsystem_rロールで実行できることを保証します</span>
+<span class="c1">### ぶっちゃけよくわかんない</span>
+<span class="n">role</span> <span class="n">system_r</span> <span class="n">types</span> <span class="n">ssh_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>2つ目 ssh_8080.te</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">ssh_8080</span> <span class="mf">1.0</span><span class="p">;</span>
+
+<span class="n">require</span> <span class="p">{</span>
+    <span class="nb">type</span> <span class="n">ssh_t</span><span class="p">;</span>
+    <span class="nb">type</span> <span class="n">http_cache_port_t</span><span class="p">;</span>
+    <span class="k">class</span> <span class="nc">tcp_socket</span> <span class="n">name_bind</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#============= ssh_t ==============</span>
+<span class="c1">### SSH(ssh_t)プロセスがHTTPキャッシュポート(8080, http_cache_port_t)をバインドできるように許可</span>
+<span class="n">allow</span> <span class="n">ssh_t</span> <span class="n">http_cache_port_t</span><span class="p">:</span><span class="n">tcp_socket</span> <span class="n">name_bind</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>3つ目 ssh_custom_port.te</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">ssh_custom_port</span> <span class="mf">1.0</span><span class="p">;</span>
+
+<span class="n">require</span> <span class="p">{</span>
+    <span class="nb">type</span> <span class="n">ssh_t</span><span class="p">;</span>
+    <span class="nb">type</span> <span class="n">unreserved_port_t</span><span class="p">;</span>
+    <span class="k">class</span> <span class="nc">tcp_socket</span> <span class="n">name_bind</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#============= ssh_t ==============</span>
+<span class="c1">### SSH(ssh_t)プロセスが予約されていないポート(unreserved_port_t)をバインドできるようにします。これは8080以外の一般的な非予約ポートを使用するためのルールです。</span>
+<span class="n">allow</span> <span class="n">ssh_t</span> <span class="n">unreserved_port_t</span><span class="p">:</span><span class="n">tcp_socket</span> <span class="n">name_bind</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>また，メモとして各ポートタイプのポート番号一覧を自分の環境からはっておく．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo semanage port -l | grep http_cache_port_t
+http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010
+http_cache_port_t              udp      3130
+
+$ sudo semanage port -l | grep unreserved_port_t
+unreserved_port_t              sctp     1024-65535
+unreserved_port_t              tcp      61000-65535, 1024-32767
+unreserved_port_t              udp      61000-65535, 1024-32767
+</pre></div>
+</div>
+<p>さらに，自分で特定のポートを特定のタイプに入れることももちろんできる．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">semanage</span> <span class="n">port</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">http_cache_port_t</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="mi">9090</span>
+</pre></div>
+</div>
+<p>これは書いているときの心境でしかないけれど，unreserved_port_tに許可しただけで大丈夫な気がするんだ．
+だって9922とかでも動いているんだもの．</p>
+</section>
 </section>
 </section>
 </section>
