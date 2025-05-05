@@ -23,8 +23,62 @@ install
 
 ※複数バージョンの管理はいろいろあるらしいけど，とりあえず :doc:`inc_c_c++/version_management` みたいな感じにするのが良さげな気がする．
 
+複数バージョン管理 gvm
+------------------------
+
+https://github.com/moovweb/gvm
+
+依存パッケージとgvmのインストール
+
+::
+
+  ### AlmaLinux9
+  $ sudo dnf install git bison gcc make
+  $ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+  $ source ${HOME}/.gvm/scripts/gvm
+
+Goは1.5からCコンパイラでなくGoでセルフホスト? されるようになったらしく，ビルドにはGoがいる．
+つまりブートストラップ用のGoを用意しないといけない．
+また当然だが，バージョンアップに伴ってビルドに要求するバージョンも上がったりするので段階的にビルドしないといけないらしい．
+
+ディストリビューションのgolangパッケージ使うのが手軽で早いと思う．
+
+::
+
+  $ sudo dnf install golang
+  $ gvm install go1.24
+  $ sudo remove golang
+  $ gvm use go1.24 --default
+
+
+※ これ以降の手順だが，なぜかバイナリインストールがうまくいかなかったので試していない．
+
+正直に段階ビルドする手順
+https://github.com/moovweb/gvm?tab=readme-ov-file#to-install-go-120
+
+::
+
+  gvm install go1.4 -B
+  gvm use go1.4
+  export GOROOT_BOOTSTRAP=$GOROOT
+  gvm install go1.17.13
+  gvm use go1.17.13
+  export GOROOT_BOOTSTRAP=$GOROOT
+  gvm install go1.20
+  gvm use go1.20
+
+またシンプルにバイナリインストールでもいい
+
+::
+
+  $ gvm install go1.24 -B
+  
+
+雑な使い方などメモ
+===================
+
 Hello, World
-==============
+--------------
 
 ::
 
@@ -32,14 +86,14 @@ Hello, World
   $ $GOPATH/bin/helloworld
 
 Examples
-=========
+-----------
 
 ::
 
   $ go get github.com/veandco/go-sdl2-examples/examples
 
 cmd
-=======
+-------
 
 **go**
 
@@ -76,7 +130,7 @@ https://qiita.com/propella/items/e49bccc88f3cc2407745
 ======
 
 本家: https://golang.org/
-チュートリアル的な: http://golang.jp/go_tutorial  本家の日本語約で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．
+チュートリアル的な: http://golang.jp/go_tutorial  本家の日本語訳で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．
 とりあえず日本語の入門記事の一つ: http://gihyo.jp/dev/feature/01/go_4beginners
 見ると幸せになれるらしいよ: https://qiita.com/tenntenn/items/0e33a4959250d1a55045
 プロジェクトレイアウトの話: https://techdo.mediado.jp/entry/2019/01/18/112503

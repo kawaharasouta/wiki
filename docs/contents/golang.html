@@ -48,33 +48,41 @@
 <li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">golang</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello, World</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cmd">cmd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install">install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gvm">複数バージョン管理 gvm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">雑な使い方などメモ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hello-world">Hello, World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cmd">cmd</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#go-mod">go modと開発の始め(進め)方に関して</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">参考</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">条件分岐コンパイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">条件分岐コンパイル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sdl2">SDL2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">install</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sample">sample</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#struct-interface">struct と interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">型を確認する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">型を確認する</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#function-method">function と method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">バイナリ処理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">バイナリ処理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#imported-and-not-used">imported and not used</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">リンク</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">リンク</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctags.html">ctags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs.html">NFSサーバ 構築の超雑メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
@@ -98,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2020">virt-install でubuntu2020がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
@@ -115,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/leraning-ebpf.html">Learning eBPF</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
 <ul>
@@ -187,22 +196,62 @@ $ export GOPATH=$HOME/go                              # ワーキングディレ
 </pre></div>
 </div>
 <p>※複数バージョンの管理はいろいろあるらしいけど，とりあえず <a class="reference internal" href="inc_c_c%2B%2B/version_management.html"><span class="doc">update-alternativesによる複数バージョン管理</span></a> みたいな感じにするのが良さげな気がする．</p>
+<section id="gvm">
+<h3>複数バージョン管理 gvm<a class="headerlink" href="#gvm" title="このヘッドラインへのパーマリンク"></a></h3>
+<p><a class="reference external" href="https://github.com/moovweb/gvm">https://github.com/moovweb/gvm</a></p>
+<p>依存パッケージとgvmのインストール</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### AlmaLinux9
+$ sudo dnf install git bison gcc make
+$ bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+$ source ${HOME}/.gvm/scripts/gvm
+</pre></div>
+</div>
+<p>Goは1.5からCコンパイラでなくGoでセルフホスト? されるようになったらしく，ビルドにはGoがいる．
+つまりブートストラップ用のGoを用意しないといけない．
+また当然だが，バージョンアップに伴ってビルドに要求するバージョンも上がったりするので段階的にビルドしないといけないらしい．</p>
+<p>ディストリビューションのgolangパッケージ使うのが手軽で早いと思う．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install golang
+$ gvm install go1.24
+$ sudo remove golang
+$ gvm use go1.24 --default
+</pre></div>
+</div>
+<p>※ これ以降の手順だが，なぜかバイナリインストールがうまくいかなかったので試していない．</p>
+<p>正直に段階ビルドする手順
+<a class="reference external" href="https://github.com/moovweb/gvm?tab=readme-ov-file#to-install-go-120">https://github.com/moovweb/gvm?tab=readme-ov-file#to-install-go-120</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gvm install go1.4 -B
+gvm use go1.4
+export GOROOT_BOOTSTRAP=$GOROOT
+gvm install go1.17.13
+gvm use go1.17.13
+export GOROOT_BOOTSTRAP=$GOROOT
+gvm install go1.20
+gvm use go1.20
+</pre></div>
+</div>
+<p>またシンプルにバイナリインストールでもいい</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gvm install go1.24 -B
+</pre></div>
+</div>
 </section>
+</section>
+<section id="id1">
+<h2>雑な使い方などメモ<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h2>
 <section id="hello-world">
-<h2>Hello, World<a class="headerlink" href="#hello-world" title="このヘッドラインへのパーマリンク"></a></h2>
+<h3>Hello, World<a class="headerlink" href="#hello-world" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go get gopl.io/ch1/helloworld
 $ $GOPATH/bin/helloworld
 </pre></div>
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="このヘッドラインへのパーマリンク"></a></h2>
+<h3>Examples<a class="headerlink" href="#examples" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go get github.com/veandco/go-sdl2-examples/examples
 </pre></div>
 </div>
 </section>
 <section id="cmd">
-<h2>cmd<a class="headerlink" href="#cmd" title="このヘッドラインへのパーマリンク"></a></h2>
+<h3>cmd<a class="headerlink" href="#cmd" title="このヘッドラインへのパーマリンク"></a></h3>
 <p><strong>go</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go run test.go      #即時実行
 $ go build test.go    #コンパイル
@@ -214,6 +263,7 @@ $ go fmt test.go      #フォーマット整形
 $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブラウザからドキュメント確認する
 </pre></div>
 </div>
+</section>
 </section>
 <section id="go-mod">
 <h2>go modと開発の始め(進め)方に関して<a class="headerlink" href="#go-mod" title="このヘッドラインへのパーマリンク"></a></h2>
@@ -230,17 +280,17 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 <p><a class="reference external" href="https://qiita.com/uchiko/items/64fb3020dd64cf211d4e">https://qiita.com/uchiko/items/64fb3020dd64cf211d4e</a>
 <a class="reference external" href="https://qiita.com/propella/items/e49bccc88f3cc2407745">https://qiita.com/propella/items/e49bccc88f3cc2407745</a></p>
 </section>
-<section id="id1">
-<h2>参考<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id2">
+<h2>参考<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>本家: <a class="reference external" href="https://golang.org/">https://golang.org/</a>
-チュートリアル的な: <a class="reference external" href="http://golang.jp/go_tutorial">http://golang.jp/go_tutorial</a>  本家の日本語約で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．
+チュートリアル的な: <a class="reference external" href="http://golang.jp/go_tutorial">http://golang.jp/go_tutorial</a>  本家の日本語訳で無駄なコンソールないからこっち見た方がいいや． golang.jp自体は古いから情報には注意．
 とりあえず日本語の入門記事の一つ: <a class="reference external" href="http://gihyo.jp/dev/feature/01/go_4beginners">http://gihyo.jp/dev/feature/01/go_4beginners</a>
 見ると幸せになれるらしいよ: <a class="reference external" href="https://qiita.com/tenntenn/items/0e33a4959250d1a55045">https://qiita.com/tenntenn/items/0e33a4959250d1a55045</a>
 プロジェクトレイアウトの話: <a class="reference external" href="https://techdo.mediado.jp/entry/2019/01/18/112503">https://techdo.mediado.jp/entry/2019/01/18/112503</a></p>
 <p>☆つまづきポイントFAQ(これめっちゃいい感じ): <a class="reference external" href="https://future-architect.github.io/articles/20190713/">https://future-architect.github.io/articles/20190713/</a></p>
 </section>
-<section id="id2">
-<h2>条件分岐コンパイル<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id3">
+<h2>条件分岐コンパイル<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>Cとかで #ifdef でやるような条件コンパイルやる方法
 参考: <a class="reference external" href="https://qiita.com/yamasaki-masahide/items/8e5d59467dcf67d9b0be">https://qiita.com/yamasaki-masahide/items/8e5d59467dcf67d9b0be</a></p>
 </section>
@@ -250,8 +300,8 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 <a class="reference external" href="https://wiki.libsdl.org/">https://wiki.libsdl.org/</a>
 <a class="reference external" href="https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants">https://godoc.org/github.com/veandco/go-sdl2/sdl#pkg-constants</a>
 <a class="reference external" href="https://github.com/veandco/go-sdl2">https://github.com/veandco/go-sdl2</a></p>
-<section id="id3">
-<h3>install<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h3>
+<section id="id4">
+<h3>install<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ go get -v github.com/veandco/go-sdl2/{sdl,img,mix,ttf}
 </pre></div>
 </div>
@@ -267,8 +317,8 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 <h2>struct と interface<a class="headerlink" href="#struct-interface" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>なんか構造体のそれっぽいことを書く．</p>
 </section>
-<section id="id4">
-<h2>型を確認する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id5">
+<h2>型を確認する<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;%T&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 <span class="n">または</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
@@ -309,8 +359,8 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 <p>こんな感じでC++のクラス内のメソッドみたいな感じで使える．
 これでオブジェクト思考的なところを担保してるっぽい．</p>
 </section>
-<section id="id5">
-<h2>バイナリ処理<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id6">
+<h2>バイナリ処理<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>あとでメモる</p>
 <p>参照: <a class="reference external" href="https://qiita.com/Jxck_/items/c64d9ae0e910762eab37">binary</a></p>
 </section>
@@ -318,8 +368,8 @@ $ godoc -http=&quot;:3000&quot; #公式と同様のインタフェースでブ�
 <h2>imported and not used<a class="headerlink" href="#imported-and-not-used" title="このヘッドラインへのパーマリンク"></a></h2>
 <p><a class="reference external" href="https://ksakiyama134.hatenadiary.org/entry/20140309/1394378735">https://ksakiyama134.hatenadiary.org/entry/20140309/1394378735</a></p>
 </section>
-<section id="id6">
-<h2>リンク<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id7">
+<h2>リンク<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク"></a></h2>
 <p><a class="reference external" href="https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1">https://medium.com/since-i-want-to-start-blog-that-looks-like-men-do/%E6%98%94%E3%81%AE%E8%87%AA%E5%88%86%E3%81%AB%E9%80%81%E3%82%8Bgolang%E3%81%AE%E5%9F%BA%E7%A4%8E%E7%9A%84%E3%81%AA%E3%81%93%E3%81%A8-%E5%9E%8B%E7%A2%BA%E8%AA%8D-slice-method-1bd2fae694d1</a></p>
 </section>
 </section>
