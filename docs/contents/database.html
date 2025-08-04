@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>データベース &mdash; wiki  ドキュメント</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="linuxのRSSに関して" href="../technote/rss.html" />
+    <link rel="prev" title="パーティション・マウント関連" href="parted_mount.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> wiki
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dpdk.html">DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kvm.html">kvm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xen.html">xen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vagrant.html">vagrant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_config.html">ssh_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_c%2B%2B.html">c, c++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="golang.html">golang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocaml.html">OCamlについてとりあえずメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctags.html">ctags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xdp.html">XDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html">Open vSwitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovs.html#ovs-dpdk">OvS DPDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trex.html">TRex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openssl.html">openSSLを利用する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openvpn.html">OpenVPN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs.html">NFSサーバ 構築の超雑メモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_programing.html">システムプログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotools.html">autotools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freebsd.html">freebsd関連のメモする場所</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dhcp.html">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syslog.html">syslogについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Linux capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="haskell.html">haskell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XDG.html">XDG Base Directry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parted_mount.html">パーティション・マウント関連</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">データベース</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sqlite">SQLite</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#package-install-for-cli-tool-almalinux9">Package install for CLI tool (AlmaLinux9)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sqlite-cli">SQLite CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technote:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../technote/rss.html">linuxのRSSに関して</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/interrupt.html">NICの割り込みについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kernel_packet.html">linuxのパケットの送受信について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html">ブートローダについてのメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#grub2">GRUB2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#id4">カーネルが起動した後どうなってるのって話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#systemd">systemd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#boot">bootに関するまとめ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#vmlinuzinitrd-img">vmlinuzとかinitrd.imgとかがよくわからないので調べたやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/boot.html#virt-install-ubuntu2004">virt-install でubuntu2004がインストールできなかった話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virtualization.html">ハイパーバイザ仮想化に関する内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/container.html">コンテナ技術周辺について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/unikernel.html">unikernelについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cs.html">related computer science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/tuntap.html">TUN/TAPの調査</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/cpu.html">CPU関連のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/fpga.html">FPGA関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/standard.html">規格とか思想とか</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/golang_perf.html">golangでちょっと文字列関連性能計測した時のいろんなメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/virsh_source.html">virshのソースコードを読んだ時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/kvm_api.html">kvm api でいろいろするやつ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/make_kernel.html">自作カーネル的なそう言う話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/auth.html">Linuxの認証周りの話</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_security.html">Linuxのセキュリティモジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/linux_from_scratch.html">Linux From Scratch メモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/em_linux.html">組み込みLinux開発の時のメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technote/leraning-ebpf.html">Learning eBPF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">cheetsheets:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/ip_command.html">ip command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html">vim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#neovim">neovim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/vim.html#vim-plugin">vim pluginの作り方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheetsheets/kernel.html">カーネル関連tips</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">system tracing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/dtrace.html">DTrace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/systemtap.html">systemtap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system_tracing/bpf.html">BPF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">poems:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../poems/ad_cale_2020.html">Unikernelを試してみる</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">documents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documents/tex.html">Tex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documents/sphinx.html">sphinx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">test:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test/doc.html#include">include</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">wiki</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">データベース</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contents/database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>データベース<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク"></a></h1>
+<section id="sqlite">
+<h2>SQLite<a class="headerlink" href="#sqlite" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>bomctlをやるに当たって，データベースにsqliteを使っているので少し勉強しなきゃいけなくなった．
+そもそもデータベースとかSQLがわかっていないので，sqliteに限らない(例えば一般的なSQLとか)のことも書く気がするけどご愛嬌．
+場合によってはbomctlのことも書くかもしれない．</p>
+<section id="package-install-for-cli-tool-almalinux9">
+<h3>Package install for CLI tool (AlmaLinux9)<a class="headerlink" href="#package-install-for-cli-tool-almalinux9" title="このヘッドラインへのパーマリンク"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install sqlite
+</pre></div>
+</div>
+</section>
+<section id="sqlite-cli">
+<h3>SQLite CLI<a class="headerlink" href="#sqlite-cli" title="このヘッドラインへのパーマリンク"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sqlite [/path/to/dbfile]
+$ sqlite ~/.cache/bomctl/bomctl.db
+</pre></div>
+</div>
+<p>SQLiteの特殊コマンド?系</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">tables</span>
+<span class="o">.</span><span class="n">schema</span>                   <span class="o">--</span> <span class="n">全テーブルの構造</span>
+<span class="o">.</span><span class="n">schema</span> <span class="n">テーブル名</span>          <span class="o">--</span> <span class="n">特定テーブルの構造</span>
+<span class="o">.</span><span class="n">quit</span>
+<span class="o">.</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>SQL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">カラム名</span> <span class="n">FROM</span> <span class="n">テーブル名</span><span class="p">;</span>        <span class="o">--</span> <span class="n">基本的な検索</span>
+<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">テーブル名</span><span class="p">;</span>       <span class="o">--</span> <span class="n">レコード数を数える</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">テーブル名</span><span class="p">;</span>              <span class="o">--</span> <span class="n">全カラムを表示</span>
+
+<span class="n">SELECT</span> <span class="n">d</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span> <span class="n">FROM</span> <span class="n">documents</span> <span class="n">d</span> <span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">metadata</span> <span class="n">m</span> <span class="n">ON</span> <span class="n">d</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">document_id</span><span class="p">;</span>
+  <span class="c1"># JOIN: 複数のテーブルを結合</span>
+  <span class="c1"># LEFT JOIN: 左側（documents）のすべてのレコードを表示</span>
+  <span class="c1"># ON d.id = m.document_id: 結合条件（documentsのidとmetadataのdocument_idが一致）</span>
+
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">テーブル名</span> <span class="n">LIMIT</span> <span class="mi">5</span><span class="p">;</span>  <span class="o">--</span> <span class="n">最初の5件だけ表示</span>
+<span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">カラム名</span> <span class="n">FROM</span> <span class="n">テーブル名</span><span class="p">;</span>  <span class="o">--</span> <span class="n">重複を除いた値一覧</span>
+
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">テーブル名</span> <span class="n">WHERE</span> <span class="n">カラム名</span> <span class="o">=</span> <span class="s1">&#39;値&#39;</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">テーブル名</span> <span class="n">WHERE</span> <span class="n">カラム名</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">;</span>  <span class="o">--</span> <span class="n">空の値を検索</span>
+
+<span class="n">SELECT</span> <span class="n">カラム名</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">テーブル名</span> <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">カラム名</span><span class="p">;</span>  <span class="o">--</span> <span class="n">グループ別集計</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="parted_mount.html" class="btn btn-neutral float-left" title="パーティション・マウント関連" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../technote/rss.html" class="btn btn-neutral float-right" title="linuxのRSSに関して" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, KAWAHARAsouta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

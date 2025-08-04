@@ -39,6 +39,7 @@ wiki
   contents/ubuntu_desktop
   contents/package
   contents/parted_mount
+  contents/database
 
 
 .. toctree::
