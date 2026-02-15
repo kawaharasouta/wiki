@@ -343,6 +343,58 @@ console接続について
   $ sudo reboot
 
 
+ネットワーク越しのconsole接続
+===================================
+
+いろんな事情でconsole接続をネットワーク越しに行いたい場合がある．
+(VMサーバを運用していてユーザーがネットワーク設定ミスって入れなくなったとか)
+libvirtからだと意外に簡単に開放できたので．
+ただ(今の手順だと)telnetを使うことになるので，あんまりセキュアではない．ほんとはVNCとかspiceとかの方がいいかも．
+
+以下のようにVMのxmlファイルを変更する．
+なおここでは，もともと用意されているport 0のisa-serialを潰すことにする．
+serialポートを増やしてもいいのだが，カーネルコマンドラインにconsole=ttyS[n]を増やすとか，serial-getty@.serviceとかの用意しておくとかしないといけないので．
+そのうちポートを増やす場合の手順は書いてもいいかも．
+
+::
+
+  $ virsh edit [vmguest]
+    - <serial type='pty'>
+    -   <target type='isa-serial' port='0'>
+    -     <model name='isa-serial'/>
+    -   </target>
+    - </serial>
+    - <console type='pty'>
+    -   <target type='serial' port='0'/>
+    - </console>
+    + <serial type='tcp'>
+    +   <source mode='bind' host='127.0.0.1' service='4555'/>
+    +   <protocol type='telnet'/>
+    +   <target port='0'/>
+    + </serial>
+    + <console type='tcp'>
+    +   <source mode='bind' host='127.0.0.1' service='4555'/>
+    +   <protocol type='telnet'/>
+    +   <target type='serial' port='0'/>
+    + </console>
+
+仮想マシンをlibvirtから再起動する．
+
+その後，仮想マシンをホストしているマシンからであれば以下のようにtelnetなどをつかって接続できる．
+
+::
+
+  $ telnet localhost 4555
+
+リモートからの場合は，接続元から4555にsshトンネル掘ってからtelnetするとかがいいかな．
+外部向けにlistenさせてもいいが，さすがにセキュアじゃないかなと思うので．
+
+::
+
+  $ ssh -L 4555:localhost:4555 [user]@[vmhost]
+  $ telnet localhost 4555
+
+
 clone
 =========
 

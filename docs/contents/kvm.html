@@ -54,6 +54,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#console">console接続について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ネットワーク越しのconsole接続</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clone">clone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vm">テスト用VMイメージの簡単な作り方</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delete-vm">delete vm</a></li>
@@ -61,7 +62,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#extend-disk-size">extend disk size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-location">file location</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">ブリッジ接続</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">ブリッジ接続</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#linux-bridge">Linux bridge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ovs">ovs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#macvtap-macvlan">macvtap, macvlan</a></li>
@@ -73,24 +74,24 @@
 <li class="toctree-l2"><a class="reference internal" href="#ubuntu-image-download">ubuntu image download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vm-ip-addr">vm ip addr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#virt-net">virt-net の技術(ハック)・ソフトウェア関連の情報</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">接続方法とかに関して</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">接続方法とかに関して</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#autostart-setting">autostart setting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#s411">S411の環境を作った時のメモやつ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#disk">disk拡張する時の話</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nested">nestedしたい時</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">レスキューモードで起動</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">レスキューモードで起動</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sysrq">仮想マシンに対してSysRqを送る</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fedora-debian-virsh-listvm2">fedora(というかdebian系以外)だと一般ユーザvirsh listとかとかでちゃんとVMが見えないみたいな話2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#libvirt-monolithic-module-mode">libvirt - monolithic &amp; module mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">仮想化環境構築後にできるグループと，基本的な権限調整について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">仮想化環境構築後にできるグループと，基本的な権限調整について</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#libvirt-polkit">libvirtグループを使わず，polkitを用いて権限調整をする方法</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#polkit">polkitで特定のユーザーに特定のアクションを許可する例</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#reference">reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">kvmコマンドと言うものがあるらしく</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id7">kvmコマンドと言うものがあるらしく</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#helloworld">helloworld</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">インストールと起動</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">インストールと起動</a></li>
 </ul>
 </li>
 </ul>
@@ -121,6 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ubuntu_desktop.html">ubuntu desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="package.html">パッケージ管理ツールに関して</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parted_mount.html">パーティション・マウント関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">データベース</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Technote:</span></p>
 <ul>
@@ -512,6 +514,49 @@ $ sudo reboot
 </pre></div>
 </div>
 </section>
+<section id="id2">
+<h2>ネットワーク越しのconsole接続<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>いろんな事情でconsole接続をネットワーク越しに行いたい場合がある．
+(VMサーバを運用していてユーザーがネットワーク設定ミスって入れなくなったとか)
+libvirtからだと意外に簡単に開放できたので．
+ただ(今の手順だと)telnetを使うことになるので，あんまりセキュアではない．ほんとはVNCとかspiceとかの方がいいかも．</p>
+<p>以下のようにVMのxmlファイルを変更する．
+なおここでは，もともと用意されているport 0のisa-serialを潰すことにする．
+serialポートを増やしてもいいのだが，カーネルコマンドラインにconsole=ttyS[n]を増やすとか，serial-getty&#64;.serviceとかの用意しておくとかしないといけないので．
+そのうちポートを増やす場合の手順は書いてもいいかも．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virsh edit [vmguest]
+  - &lt;serial type=&#39;pty&#39;&gt;
+  -   &lt;target type=&#39;isa-serial&#39; port=&#39;0&#39;&gt;
+  -     &lt;model name=&#39;isa-serial&#39;/&gt;
+  -   &lt;/target&gt;
+  - &lt;/serial&gt;
+  - &lt;console type=&#39;pty&#39;&gt;
+  -   &lt;target type=&#39;serial&#39; port=&#39;0&#39;/&gt;
+  - &lt;/console&gt;
+  + &lt;serial type=&#39;tcp&#39;&gt;
+  +   &lt;source mode=&#39;bind&#39; host=&#39;127.0.0.1&#39; service=&#39;4555&#39;/&gt;
+  +   &lt;protocol type=&#39;telnet&#39;/&gt;
+  +   &lt;target port=&#39;0&#39;/&gt;
+  + &lt;/serial&gt;
+  + &lt;console type=&#39;tcp&#39;&gt;
+  +   &lt;source mode=&#39;bind&#39; host=&#39;127.0.0.1&#39; service=&#39;4555&#39;/&gt;
+  +   &lt;protocol type=&#39;telnet&#39;/&gt;
+  +   &lt;target type=&#39;serial&#39; port=&#39;0&#39;/&gt;
+  + &lt;/console&gt;
+</pre></div>
+</div>
+<p>仮想マシンをlibvirtから再起動する．</p>
+<p>その後，仮想マシンをホストしているマシンからであれば以下のようにtelnetなどをつかって接続できる．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ telnet localhost 4555
+</pre></div>
+</div>
+<p>リモートからの場合は，接続元から4555にsshトンネル掘ってからtelnetするとかがいいかな．
+外部向けにlistenさせてもいいが，さすがにセキュアじゃないかなと思うので．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -L 4555:localhost:4555 [user]@[vmhost]
+$ telnet localhost 4555
+</pre></div>
+</div>
+</section>
 <section id="clone">
 <h2>clone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>virt-sysprep の man より
@@ -617,8 +662,8 @@ $ sudo chmod g+rws /var/lib/libvirt/boot
 <a class="reference external" href="https://wiki.archlinux.jp/index.php/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E5%B1%9E%E6%80%A7">https://wiki.archlinux.jp/index.php/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E5%B1%9E%E6%80%A7</a>
 <a class="reference external" href="https://docs.oracle.com/cd/E19455-01/806-2718/secfiles-69/index.html">https://docs.oracle.com/cd/E19455-01/806-2718/secfiles-69/index.html</a></p>
 </section>
-<section id="id2">
-<h2>ブリッジ接続<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id3">
+<h2>ブリッジ接続<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h2>
 <section id="linux-bridge">
 <h3>Linux bridge<a class="headerlink" href="#linux-bridge" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>ブリッジ作成してそこに物理インタフェースぶっこむだけ.
@@ -791,8 +836,8 @@ conf以外にもファイルあるがどんなものかはよく調べてない�
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h2>接続方法とかに関して<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id4">
+<h2>接続方法とかに関して<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>接続方法は多分
 - ssh
 - console
@@ -1155,8 +1200,8 @@ $ virsh edit [vm]
 </div>
 <p><a class="reference external" href="http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html">http://bluearth.cocolog-nifty.com/blog/2019/10/post-78eb20.html</a></p>
 </section>
-<section id="id4">
-<h2>レスキューモードで起動<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id5">
+<h2>レスキューモードで起動<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ virt-rescue [vm name]      ### ディスクイメージでも可らしい
 </pre></div>
 </div>
@@ -1224,8 +1269,8 @@ $ virsh edit [vm]
 <p>さらに，RHEL9ではモノリシックなlibvirtdはdeprecatedになったよう．</p>
 <p><a class="reference external" href="https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_changes-to-libvirt_assembly_virtualization">https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_changes-to-libvirt_assembly_virtualization</a></p>
 </section>
-<section id="id5">
-<h2>仮想化環境構築後にできるグループと，基本的な権限調整について<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id6">
+<h2>仮想化環境構築後にできるグループと，基本的な権限調整について<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>aaaa</p>
 </section>
 <section id="libvirt-polkit">
@@ -1244,7 +1289,7 @@ $ virsh edit [vm]
 <p>以下，関連してpolkitの活用例</p>
 <section id="polkit">
 <h3>polkitで特定のユーザーに特定のアクションを許可する例<a class="headerlink" href="#polkit" title="このヘッドラインへのパーマリンク"></a></h3>
-<p>Archwikiよりそのまま: <a class="reference external" href="https://wiki.archlinux.jp/index.php/Polkit#.E7.89.B9.E5.AE.9A.E3.81.AE.E3.83.A6.E3.83.BC.E3.82.B6.E3.83.BC.E3.81.AB_org.freedesktop.timedate1.set">https://wiki.archlinux.jp/index.php/Polkit#.E7.89.B9.E5.AE.9A.E3.81.AE.E3.83.A6.E3.83.BC.E3.82.B6.E3.83.BC.E3.81.AB_org.freedesktop.timedate1.set</a>-<a href="#id8"><span class="problematic" id="id9">timezone_</span></a>.E3.82.A2.E3.82.AF.E3.82.B7.E3.83.A7.E3.83.B3.E3.81.AE.E4.BD.BF.E7.94.A8.E3.82.92.E8.A8.B1.E5.8F.AF.E3.81.99.E3.82.8B</p>
+<p>Archwikiよりそのまま: <a class="reference external" href="https://wiki.archlinux.jp/index.php/Polkit#.E7.89.B9.E5.AE.9A.E3.81.AE.E3.83.A6.E3.83.BC.E3.82.B6.E3.83.BC.E3.81.AB_org.freedesktop.timedate1.set">https://wiki.archlinux.jp/index.php/Polkit#.E7.89.B9.E5.AE.9A.E3.81.AE.E3.83.A6.E3.83.BC.E3.82.B6.E3.83.BC.E3.81.AB_org.freedesktop.timedate1.set</a>-<a href="#id9"><span class="problematic" id="id10">timezone_</span></a>.E3.82.A2.E3.82.AF.E3.82.B7.E3.83.A7.E3.83.B3.E3.81.AE.E4.BD.BF.E7.94.A8.E3.82.92.E8.A8.B1.E5.8F.AF.E3.81.99.E3.82.8B</p>
 <p>archie という名前のユーザーに org.freedesktop.timedate1.set-timezone アクションの認証なしの使用を許可するには、以下の polkit ルールを root ユーザーを使って作成してください:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">polkit</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">rules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">49</span><span class="o">-</span><span class="n">allow</span><span class="o">-</span><span class="n">archie</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">timezone</span><span class="o">.</span><span class="n">rules</span>
 <span class="n">polkit</span><span class="o">.</span><span class="n">addRule</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span> <span class="p">{</span>
@@ -1293,8 +1338,8 @@ pkaction --verbose
 <p><a class="reference external" href="https://libvirt.org/formatnetwork.html#examplesBridge">network_xml_format</a></p>
 <p><a class="reference external" href="http://lipix.ciutadella.es/wp-content/uploads/2016/09/kvm_cheatsheet.pdf">virsh</a></p>
 </section>
-<section id="id6">
-<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク"></a></h2>
+<section id="id7">
+<h2>kvmコマンドと言うものがあるらしく<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク"></a></h2>
 <section id="helloworld">
 <h3>helloworld<a class="headerlink" href="#helloworld" title="このヘッドラインへのパーマリンク"></a></h3>
 <p>Xwindowのあるシステムで↓を実行</p>
@@ -1304,8 +1349,8 @@ pkaction --verbose
 <p>空のVMのウィンドウが立ち上がる．
 当然何もないのでbootしないけど．</p>
 </section>
-<section id="id7">
-<h3>インストールと起動<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク"></a></h3>
+<section id="id8">
+<h3>インストールと起動<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>### install
 $ qemu-img create -f qcow2 test.img 4G
 $ sudo kvm -hda test.img -cdrom [path to iso file] -boot d -m 1024
