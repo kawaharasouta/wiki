@@ -60,6 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#delete-vm">delete vm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-memory-size">change memory size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#extend-disk-size">extend disk size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mount-host-directory-on-vm">mount host directory on VM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rename-domain">rename domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-location">file location</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">ブリッジ接続</a><ul>
@@ -629,6 +630,37 @@ $ virsh dominfo [domain] | grep mem
 <section id="extend-disk-size">
 <h2>extend disk size<a class="headerlink" href="#extend-disk-size" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>下の方に詳しく書いた．</p>
+</section>
+<section id="mount-host-directory-on-vm">
+<h2>mount host directory on VM<a class="headerlink" href="#mount-host-directory-on-vm" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>ホストマシンのディレクトリをVMにマウントする．
+ここではvirtiofsを使う．ただ新しい機能なので使えるかは注意．virtiofsが使えない場合は9pを使うことになると思う．</p>
+<p>ホストマシンに以下の設定を追記する．</p>
+<p>共有メモリの設定</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">memoryBacking</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">source</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;memfd&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">access</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;shared&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">memoryBacking</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>virtiofsの設定</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">devices</span><span class="o">&gt;</span>
+  <span class="o">...</span>
+  <span class="o">&lt;</span><span class="n">filesystem</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;mount&quot;</span> <span class="n">accessmode</span><span class="o">=</span><span class="s2">&quot;passthrough&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">driver</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;virtiofs&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">source</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;/path/to/host/dir&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">target</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;vmshare&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">filesystem</span><span class="o">&gt;</span>
+  <span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">devices</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>VMを再起動し，以下のコマンドを実行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">virtiofs</span> <span class="n">vmshare</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">guest</span><span class="o">/</span><span class="nb">dir</span>
+</pre></div>
+</div>
+<p>SELinuxのログが出る場合があるが，基本的な利用には問題ない．
+もしSELinuxコンテキストをいじりたくなる場合には，genfsポリシーをうまく設定する必要があるらしい．</p>
 </section>
 <section id="rename-domain">
 <h2>rename domain<a class="headerlink" href="#rename-domain" title="このヘッドラインへのパーマリンク"></a></h2>

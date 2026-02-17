@@ -483,6 +483,47 @@ extend disk size
 下の方に詳しく書いた．
 
 
+mount host directory on VM
+==============================
+
+ホストマシンのディレクトリをVMにマウントする．
+ここではvirtiofsを使う．ただ新しい機能なので使えるかは注意．virtiofsが使えない場合は9pを使うことになると思う．
+
+ホストマシンに以下の設定を追記する．
+
+共有メモリの設定
+
+::
+
+  <memoryBacking>
+    <source type="memfd"/>
+    <access mode="shared"/>
+  </memoryBacking>
+
+virtiofsの設定
+
+::
+
+  <devices>
+    ...
+    <filesystem type="mount" accessmode="passthrough">
+      <driver type="virtiofs"/>
+      <source dir="/path/to/host/dir"/>
+      <target dir="vmshare"/>
+    </filesystem>
+    ...
+  </devices>
+
+VMを再起動し，以下のコマンドを実行
+
+::
+
+  sudo mount -t virtiofs vmshare /path/to/guest/dir
+
+SELinuxのログが出る場合があるが，基本的な利用には問題ない．
+もしSELinuxコンテキストをいじりたくなる場合には，genfsポリシーをうまく設定する必要があるらしい．
+
+
 rename domain 
 ===============
 
