@@ -391,7 +391,7 @@ serialポートを増やしてもいいのだが，カーネルコマンドラ�
 
 ::
 
-  $ ssh -L 4555:localhost:4555 [user]@[vmhost]
+  $ ssh -fN -L 4555:localhost:4555 [user]@[vmhost]
   $ telnet localhost 4555
 
 

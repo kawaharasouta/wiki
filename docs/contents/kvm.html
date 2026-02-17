@@ -552,7 +552,7 @@ serialポートを増やしてもいいのだが，カーネルコマンドラ�
 </div>
 <p>リモートからの場合は，接続元から4555にsshトンネル掘ってからtelnetするとかがいいかな．
 外部向けにlistenさせてもいいが，さすがにセキュアじゃないかなと思うので．</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -L 4555:localhost:4555 [user]@[vmhost]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -fN -L 4555:localhost:4555 [user]@[vmhost]
 $ telnet localhost 4555
 </pre></div>
 </div>
